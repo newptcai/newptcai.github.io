@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>TDD is hard - Xing Shi Cai/蔡醒诗</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/shariff.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/pygments-highlight-github.css">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://newptcai.github.io/theme/js/jqcloud.min.js"></script>
+
+     <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <meta name="author" content="Xing Shi Cai" />
+    <meta name="description" content="I finished Growing Object-Oriented Software Guided by Tests (GOOS) this afternoon. It' a book that I sincerely hope I would …" /> 
+    <meta name="keywords" content=""> 
+
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="Xing Shi Cai/蔡醒诗">
+    <meta property="og:title" content="TDD is hard - Xing Shi Cai/蔡醒诗" />
+    <meta property="og:description" content="I finished Growing Object-Oriented Software Guided by Tests (GOOS) this afternoon. It' a book that I sincerely hope I would …" />
+    <meta property="og:image" content="https://newptcai.github.io">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://newptcai.github.io/tdd-is-hard.html" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TDD is hard - Xing Shi Cai/蔡醒诗">
+    <meta name="twitter:description" content="I finished Growing Object-Oriented Software Guided by Tests (GOOS) this afternoon. It' a book that I sincerely hope I would …">
+    <meta name="twitter:image" content="https://newptcai.github.io">
+</head>
+<body>
+  <div class="w3-row w3-card w3-white">
+    <header id=banner>
+       <!-- AUTHOR INITIALS-->
+      <a href="https://newptcai.github.io" id=logo title="Home">XS</a>
+      <nav id="menu">
+        <ul>
+          <li><a href="https://newptcai.github.io/pages/research.html">Research</a></li>
+          <li><a href="https://newptcai.github.io/pages/teaching.html">Teaching</a></li>
+          <li ><a href="https://newptcai.github.io/category/math.html">math</a></li>
+          <li ><a href="https://newptcai.github.io/category/photo.html">photo</a></li>
+          <li style="font-weight: bold;"><a href="https://newptcai.github.io/category/programming.html">programming</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+<br>
+<article>
+  <header class="w3-container col-main">
+    <h1>TDD is hard</h1>
+    <div class="post-info">
+      <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+        <span>  Posted on Tue 26 July 2011 in <a href="https://newptcai.github.io/category/programming.html" style="font-style: italic">programming</a>
+
+        </span>
+      </div>
+    </div>
+  </header>
+  <br>
+  <div class="col-main w3-container">
+    <main id="article-content">
+      <p>I finished <a href="http://www.growing-object-oriented-software.com/">Growing Object-Oriented Software Guided by Tests (GOOS)</a>
+this afternoon. It' a book that I
+sincerely hope I would have had the patience to read years ago.  It answers one deceivingly simple
+question in software development that has bothered me for a long time: How to practice <a href="https://en.wikipedia.org/wiki/Test-driven_development">TDD (Test
+Driven Development)</a>?</p>
+<p>When I first heard about the Golden Rule of TDD – "Never write new functionality without a failing
+test", I was quite skeptical about it.  But after several years building software a big company, I
+completely recognized why TDD was so appealing. My company has very strict software development
+procedures that require lots of meetings and documents before really writing a single line of code.
+But there wasn't even one project that I worked on finally proved these times were not absolutely
+wasted.  This kind deep frustration made me I realise that it was the effort to try to put the
+behavior of software completely in documents before writing any code is simply hopeless when it
+comes to thousands of hours of programming. We simply couldn't image exactly how the software with
+size actually works.</p>
+<p>TDD has a different view of software development.  Instead of building software with a rigid,
+predefined blueprint, it thinks software as a plant that could grow big in a naturally, just like a
+tiny seed could sprout and become a huge tree.  We know it's going to be tall, strong and beautiful,
+but we can't really predicate how exactly it looks like.</p>
+<p>I like this idea so much that I more or less tried it in all my following projects, even my
+ex-girlfriend's homework, after I finished the classical TDD book, Test Driven by Example.  TDD did
+help, but I still felt uncomfortable about the final result from time to time.  And I couldn't
+really convince my colleagues that it was necessary to write test before writing code.  As I became
+a senior engineer, I enforced TDD in my team.  However, as soon as I left the company 3 years ago,
+my former colleagues immediately dropped all those TDD rules and went back to the "write code -
+manual test" cycle.  But I don't blame them.  To really benefit from TDD, there are a lot of
+difficulties to overcome. However, I couldn't see how to address these problems properly at that
+time.</p>
+<p>TDD was difficult because:</p>
+<ul>
+<li>The test code often become messy after a while</li>
+<li>Testing with 3rd party code, like persistence layer, is slow and Refactoring code without certain design principles in mind often lead to chaos even if the size of code Mocking objects are really tedious to</li>
+<li>Asynchronous code are hard to Tests are too fragile, simple change in requirements could break many test cases</li>
+<li>Testing straight forward code make programmers feels they are wasting time</li>
+<li>Direct dependencies (new objects everywhere) makes mocking difficult ...</li>
+</ul>
+<p>These problems are why like the book, GOOS, so much.
+It's full of real experiences of TDD accumulated in the battlefield.
+In my work, I've met almost all the difficulties this book covers.
+And I have to admit that the approaches the author took to deal those problems are indeed better than my rushed solutions.</p>
+<p>However the most important thing this book taught me is that while TDD could make better software,
+that doesn't come free.  It requires very careful consideration of how to refactoring, great
+patience to make test code readable and maintainable, and experience to decide what and how to test.
+It's not a magic that could summon beautiful codes from the emptiness. It's a skill and an art like
+painting that must be learned by hardworking and practicing.</p>
+<p>Yes, TDD is hard.  But as far as I can see, it's still of best choice to coup the monstrous
+complicity in modern software systems.  If you have strong desire to write clean code as I do, I
+highly recommend you have a look of the book, Growing Object-Oriented Software Guided by Tests.</p>
+    </main>
+    <br>
+    <footer>
+      <div class="adjust-width">
+        <div id="author-block" class="w3-light-grey w3-border">
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="theme/images/bookmark-red.png" alt="bookmark"></img>
+            <div id="author-info">
+                <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><img style="width: 60px; height: 60px;" src="/authors/xing-shi-cai.png" onerror="this.src='/theme/images/avatar.png'"></img>
+                </a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><span id="author-name" class="w3-hover-text-dark-grey">Xing Shi Cai</span></a>
+                    <p id="author-story" style="max-width: 500px;"></p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+    </footer>
+  </div>
+</article>
+<br>
+<script src="https://newptcai.github.io/theme/js/shariff.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The Strahler-Horton number on random trees - Xing Shi Cai/蔡醒诗</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/shariff.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/pygments-highlight-github.css">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://newptcai.github.io/theme/js/jqcloud.min.js"></script>
+
+     <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <meta name="author" content="Xing Shi Cai" />
+    <meta name="description" content="We list some open problems regarding the Strahler-Horton number on random trees \(T_n\)." /> 
+    <meta name="keywords" content="probability, combinatorics, open-problem"> 
+
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="Xing Shi Cai/蔡醒诗">
+    <meta property="og:title" content="The Strahler-Horton number on random trees - Xing Shi Cai/蔡醒诗" />
+    <meta property="og:description" content="We list some open problems regarding the Strahler-Horton number on random trees \(T_n\)." />
+    <meta property="og:image" content="https://newptcai.github.io">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://newptcai.github.io/the-strahler-horton-number-on-random-trees.html" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Strahler-Horton number on random trees - Xing Shi Cai/蔡醒诗">
+    <meta name="twitter:description" content="We list some open problems regarding the Strahler-Horton number on random trees \(T_n\).">
+    <meta name="twitter:image" content="https://newptcai.github.io">
+</head>
+<body>
+  <div class="w3-row w3-card w3-white">
+    <header id=banner>
+       <!-- AUTHOR INITIALS-->
+      <a href="https://newptcai.github.io" id=logo title="Home">XS</a>
+      <nav id="menu">
+        <ul>
+          <li><a href="https://newptcai.github.io/pages/research.html">Research</a></li>
+          <li><a href="https://newptcai.github.io/pages/teaching.html">Teaching</a></li>
+          <li style="font-weight: bold;"><a href="https://newptcai.github.io/category/math.html">math</a></li>
+          <li ><a href="https://newptcai.github.io/category/photo.html">photo</a></li>
+          <li ><a href="https://newptcai.github.io/category/programming.html">programming</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+<br>
+<article>
+  <header class="w3-container col-main">
+    <h1>The Strahler-Horton number on random trees</h1>
+    <div class="post-info">
+      <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+        <span>  Posted on Mon 17 December 2018 in <a href="https://newptcai.github.io/category/math.html" style="font-style: italic">math</a>
+
+        </span>
+      </div>
+      <div id="article-tags">
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/probability.html" title="  All posts about Probability
+">#probability</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/combinatorics.html" title="  All posts about Combinatorics
+">#combinatorics</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/open-problem.html" title="  All posts about Open-Problem
+">#open-problem</a>
+        </span>
+      </div>
+    </div>
+  </header>
+  <br>
+  <div class="col-main w3-container">
+    <main id="article-content">
+      <p>We list some open problems regarding the Strahler-Horton number on random trees <span class="math">\(T_n\)</span>.</p>
+
+
+<h1 id="the-definition">The definition</h1>
+
+<p><img alt="Horton Number -- from Wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flussordnung_%28Strahler%29.svg/1000px-Flussordnung_%28Strahler%29.svg.png"></p>
+<p>One may assign a Strahler number to all nodes of a tree, in bottom-up order, as follows:</p>
+
+<ul>
+<li><p>If the node is a leaf (has no children), its Strahler number is one.</p></li>
+<li><p>If the node has one child with Strahler number i, and all other children have Strahler numbers less than i, then the Strahler number of the node is i again.</p></li>
+<li><p>If the node has two or more children with Strahler number i, and no children with greater number, then the Strahler number of the node is <span class="math inline">\(i + 1\)</span>.</p></li>
+</ul>
+
+<p>Horton-Strahler number is a relatively popular topic. See recent papers <a href="https://scholar.google.ca/scholar?as_ylo=2014&amp;q=Horton-Strahler+number&amp;hl=en&amp;as_sdt=0,5">here</a>.</p>
+
+<h1 id="what-is-known">What is known</h1>
+
+<h2 id="conditional-galton-watson-trees">Conditional Galton-Watson trees</h2>
+
+<h3 id="uniform-binary-tree">Uniform binary tree</h3>
+
+<p><span class="citation">Luc Devroye and Kruszewski (<a href="#ref-devroye1995">1995</a>)</span> has shown that for a uniform random binary tree of <span class="math inline">\(n\)</span> nodes, its Horton-Strahler number <span class="math inline">\(S_n\)</span> satisfies <span class="math display">\[\mathbb{E}\left(S_n\right)=\log_4(n)+O(1), \qquad
+    \mathbb{P}\left(\left| S_n-\log_4(n)\right| \geq x\right)\leq \frac{D}{4^x}\]</span> for some constant <span class="math inline">\(D&gt;0\)</span>.</p>
+
+<p>The <span class="math inline">\(O(1)\)</span> term has been studied in great details by Flajolet <span class="citation">(Prodinger <a href="#ref-prodinger2012">2012</a>)</span> using generating function.</p>
+
+<h3 id="t-ary-trees">t-ary trees</h3>
+
+<p><span class="citation">Drmota and Prodinger (<a href="#ref-drmota2006">2006</a>)</span> studied the Horton-Strahler number of uniform random trees <span class="math inline">\(T_n\)</span> with degrees in a finite set.</p>
+
+<p>They definition of Strahler-Horton Number is slightly different. Let <span class="math inline">\(c_1\geq c_2\geq \text{...}\geq c_t\)</span> be the Horton number of subtrees of node u, then Horton number of the subtree u is defined by <span class="math display">\[S(u)=\max \left(c_1,c_2+1,\ldots  ,c_t+t-1\right)\]</span> (When <span class="math inline">\(t\leq 2\)</span>, this reduces to original Horton number definition). Their result shows that the Horton number of <span class="math inline">\(S_n=S(T)\)</span> has that <span class="math display">\[\mathbb{E}\left(S_n\right)=\log_4(n)+O(1), \qquad \mathbb{P}\left(\left| S_n-\log_4(n)\right| \geq x\right)\leq O\left(2^{-y}\right)\]</span> uniformly for <span class="math inline">\(0\leq y\leq \left(\frac{1}{2}-\epsilon \right) \log_4(n)\)</span>. This somewhat surprising result basically says that <span class="math inline">\(S_n\)</span> is always <span class="math inline">\(\log_4(n)\)</span> <em>regardless of the offspring</em> distribution. The proof uses generating functions.</p>
+
+<h1 id="split-trees-binary-search-trees">Split trees (Binary Search Trees)</h1>
+
+<p><span class="citation">L. Devroye and Kruszewski (<a href="#ref-devroye1996">1996</a>)</span> showed that for binary tries, i.e., binary split trees with split vector <span class="math inline">\(\left(V_1,1-V_1\right)\)</span> and <span class="math inline">\(V_1\)</span> has Bernoulli <span class="math inline">\(p\)</span> distribution, we have <span class="math display">\[\frac{S_n}{\log (n)}\overset{p}{\to }\frac{1}{\log \left(\frac{1}{\min (p,1-p)}\right)}\]</span> The proof uses and upper bound called Balance number and a lower bound called Fill level, which converges to the same limit in this case.</p>
+
+<p>For binary search trees, the upper bound Balance number is used to show that <span class="math display">\[\frac{S_n}{n \log }\leq \frac{1}{\log (3)}\]</span> with high probability <span class="citation">(Kruszewski <a href="#ref-kruszewski1999">1999</a>)</span>. This is conjectured as the right scale. Though the lower bound given by Fill level is far away from the upper bound.</p>
+
+<h1 id="whats-more-can-be-done">What’s more can be done?</h1>
+
+<ul>
+<li><p>Can we get a probabilistic proof for the universal <span class="math inline">\(\log_4(n)\)</span> for Galton-Watson trees?</p></li>
+<li><p>Can we find the lower bound for the binary search trees?</p></li>
+<li><p>Can there be a general result on split trees?</p></li>
+<li><p>What is the Horton Number for RRT or Preferential Attachment?</p></li>
+</ul>
+
+<h1 id="references" class="unnumbered">References</h1>
+
+<div id="refs" class="references">
+<div id="ref-devroye1996">
+<p>Devroye, L., and P. Kruszewski. 1996. “On the Horton-Strahler Number for Random Tries.” <em>RAIRO Informatique Théorique et Applications. Theoretical Informatics and Applications</em> 30 (5): 443–56. doi:<a href="https://doi.org/10.1051/ita/1996300504431">10.1051/ita/1996300504431</a>.</p>
+</div>
+<div id="ref-devroye1995">
+<p>Devroye, Luc, and Paul Kruszewski. 1995. “A Note on the Horton-Strahler Number for Random Trees.” <em>Information Processing Letters</em> 56 (2): 95–99. doi:<a href="https://doi.org/10.1016/0020-0190(95)00114-R">10.1016/0020-0190(95)00114-R</a>.</p>
+</div>
+<div id="ref-drmota2006">
+<p>Drmota, Michael, and Helmut Prodinger. 2006. “The Register Function for T-Ary Trees.” <em>ACM Transactions on Algorithms</em> 2 (3): 318–34. doi:<a href="https://doi.org/10.1145/1159892.1159894">10.1145/1159892.1159894</a>.</p>
+</div>
+<div id="ref-kruszewski1999">
+<p>Kruszewski, Paul. 1999. “A Note on the Horton-Strahler Number for Random Binary Search Trees.” <em>Information Processing Letters</em> 69 (1): 47–51. doi:<a href="https://doi.org/10.1016/S0020-0190(98)00192-6">10.1016/S0020-0190(98)00192-6</a>.</p>
+</div>
+<div id="ref-prodinger2012">
+<p>Prodinger, Helmut. 2012. “Introduction to Philippe Flajolet’s Work on the Register Function and Related Topics.” <a href="http://math.sun.ac.za/~hproding/pdffiles/flajolet-introduction-register.pdf" class="uri">http://math.sun.ac.za/~hproding/pdffiles/flajolet-introduction-register.pdf</a>.</p>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </main>
+    <br>
+    <footer>
+      <div class="adjust-width">
+        <div id="author-block" class="w3-light-grey w3-border">
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="theme/images/bookmark-red.png" alt="bookmark"></img>
+            <div id="author-info">
+                <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><img style="width: 60px; height: 60px;" src="/authors/xing-shi-cai.png" onerror="this.src='/theme/images/avatar.png'"></img>
+                </a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><span id="author-name" class="w3-hover-text-dark-grey">Xing Shi Cai</span></a>
+                    <p id="author-story" style="max-width: 500px;"></p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+    </footer>
+  </div>
+</article>
+<br>
+<script src="https://newptcai.github.io/theme/js/shariff.min.js"></script>
+</body>
+</html>

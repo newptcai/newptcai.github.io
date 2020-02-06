@@ -1,0 +1,2134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The Convexity Property Related to Beta Densities -- In sage - Xing Shi Cai/蔡醒诗</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/shariff.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/pygments-highlight-github.css">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://newptcai.github.io/theme/js/jqcloud.min.js"></script>
+
+     <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <meta name="author" content="Xing Shi Cai" />
+    <meta name="description" content="This is a continuation of my previous post on beta distribution. My colleague Tilo wants me to use Sagemath instead …" /> 
+    <meta name="keywords" content="real-analysis, probability, beta-distribution, Sagemath, CAS"> 
+
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="Xing Shi Cai/蔡醒诗">
+    <meta property="og:title" content="The Convexity Property Related to Beta Densities -- In sage - Xing Shi Cai/蔡醒诗" />
+    <meta property="og:description" content="This is a continuation of my previous post on beta distribution. My colleague Tilo wants me to use Sagemath instead …" />
+    <meta property="og:image" content="https://newptcai.github.io">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://newptcai.github.io/the-convexity-property-related-to-beta-densities-in-sage.html" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Convexity Property Related to Beta Densities -- In sage - Xing Shi Cai/蔡醒诗">
+    <meta name="twitter:description" content="This is a continuation of my previous post on beta distribution. My colleague Tilo wants me to use Sagemath instead …">
+    <meta name="twitter:image" content="https://newptcai.github.io">
+</head>
+<body>
+  <div class="w3-row w3-card w3-white">
+    <header id=banner>
+       <!-- AUTHOR INITIALS-->
+      <a href="https://newptcai.github.io" id=logo title="Home">XS</a>
+      <nav id="menu">
+        <ul>
+          <li><a href="https://newptcai.github.io/pages/research.html">Research</a></li>
+          <li><a href="https://newptcai.github.io/pages/teaching.html">Teaching</a></li>
+          <li style="font-weight: bold;"><a href="https://newptcai.github.io/category/math.html">math</a></li>
+          <li ><a href="https://newptcai.github.io/category/photo.html">photo</a></li>
+          <li ><a href="https://newptcai.github.io/category/programming.html">programming</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+<br>
+<article>
+  <header class="w3-container col-main">
+    <h1>The Convexity Property Related to Beta Densities -- In sage</h1>
+    <div class="post-info">
+      <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+        <span>  Posted on Fri 07 December 2018 in <a href="https://newptcai.github.io/category/math.html" style="font-style: italic">math</a>
+
+        </span>
+      </div>
+      <div id="article-tags">
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/real-analysis.html" title="  All posts about Real-Analysis
+">#real-analysis</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/probability.html" title="  All posts about Probability
+">#probability</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/beta-distribution.html" title="  All posts about Beta-Distribution
+">#beta-distribution</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/sagemath.html" title="  All posts about Sagemath
+">#Sagemath</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/cas.html" title="  All posts about Cas
+">#CAS</a>
+        </span>
+      </div>
+    </div>
+  </header>
+  <br>
+  <div class="col-main w3-container">
+    <main id="article-content">
+      <p>This is a continuation of <a href="https://newptcai.github.io/math/2018-12-01-beta.md">my previous post on beta distribution</a>.</p>
+<p>My colleague Tilo wants me to use Sagemath instead of Mathematica, which turns out to be much harder. But now I have done it and we have a completely open source proof.</p>
+<p>This is written in a Jupyter note book which can be downloaded <a href="https://newptcai.github.io/notebook/2018-12-06-beta-2.ipynb">here</a>.</p>
+<style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><style type="text/css">
+.prompt {
+    min-width: 8ex;
+    font-size: 13px;
+}
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-setup">Some setup<a class="anchor-link" href="#Some-setup">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">B</span><span class="o">=</span><span class="n">SR</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="s1">'x,a,b, x1,B'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">x</span><span class="o">^</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The peak of $f(x)$ is at</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">m</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{a - 1}{a + b - 2}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see this from a picture</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">f_ex</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">a</span><span class="o">==</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">b</span><span class="o">==</span><span class="mi">7</span><span class="p">);</span>
+<span class="n">m_ex</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">f_ex</span><span class="p">(</span><span class="n">x</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="n">line</span><span class="p">([(</span><span class="n">m_ex</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="n">m_ex</span><span class="p">,</span><span class="n">f_ex</span><span class="p">(</span><span class="n">m_ex</span><span class="p">))],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,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rVy5co9XRkZGmYLH29at0tSpPG4F4E5urvTPf0oDB0qffuo6DQAvi7rQPfHEE+rWrZu6d++uRo0aaeDAgcrJydFzzz23z88JBAI64ogj9nh5XVGR3bHYrp3rJABS2S23SOeeK/3pT3bIOQDsTVSFbtu2bZoxY4Y6dOiwxz/v0KGDJk+evM/P27hxo+rVq6c6dero/PPP16xZs/b7PsXFxQqHw3u8Em3CBCkYlJo2Tfhbo6wqVLAdrhUquE4ClFkgIL32mlSunK2n4xYJAHsTVaFbs2aNdu7cqcN/c77X4YcfrlWrVu31c4477jgNHjxYI0aM0NChQ5WRkaGTTz5ZC/azYH3AgAEKBoO7Xzk5OdHEjImCAjt/rly5hL81yqppU2n5cto4kkbNmtIbb0ijR0uPPeY6DQAvKtWmiMBvdglEIpHf/bNdWrdurauvvlrNmjVT27ZtNWzYMB1zzDF6+umn9/nz9+vXT6FQaPdr2bJlpYlZajt22PU7PG4F4BVnninddZftfi0qcp0GgNdEVeiqV6+ucuXK/W427qeffvrdrN0+3zAtTXl5efudoUtPT1dWVtYer0SaNUvatIlC51tffinVqWMjkET+/nepRQvpiiskBytRAHhYVIWuYsWKatmypT7//PM9/vnnn3+uk0466aB+jkgkotmzZys7Ozuat06oCRPstPaWLV0nQals3y6tWMG9SUg6FSpIb70lrV4t9eghRSKuEwHwivLRfkLfvn3VpUsXtWrVSm3atNGLL76opUuXqkePHpKka665RrVr19aAAQMkSffff79at26thg0bKhwOa9CgQZo9e7by8/Nj+yuJoYICqXVrqWJF10kAYE8NGkgvvCBdeaV0yinSzTe7TgTAC6IudJdddpnWrl2rBx54QCtXrlSTJk30ySefqF69epKkpUuXKi3tl4m/9evX64YbbtCqVasUDAbVvHlzFRQU6IQTTojdryKGSkpshq53b9dJAGDvrrjCribs08cewbZu7ToRANcCkYj3J+3D4bCCwaBCoVDc19PNnSs1aSL997/SGWfE9a0QLzNn2vPyGTPsbzsgCW3bJrVvLy1bZr/la9RwnQiAS9zl+hsFBVL58nzH62sNG0pjx9oIJKmKFaVhw6TiYpux27nTdSIALlHofqOgQGrVSqpSxXUSlFpmpk1dZGa6TgLEVZ060ttv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
+"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We define $f^{-1}(x)$ to be the inverse of left and right side of $f(x)$ for $1>x>m(a,b)$ and $m(a,b)>x>0$ respectively.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">finv</span><span class="o">=</span><span class="n">function</span><span class="p">(</span><span class="s1">'finv'</span><span class="p">,</span> <span class="n">latex_name</span><span class="o">=</span><span class="s2">"f^{-1}"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let $r(x)=f(f^{-1}(x))$, which reflects a point $x$ to throught the curve of $f(x)$. We want to show that $r(x)$ is convex if $b>a>1$. See my <a href="./the-convexity-property-related-to-beta-densities.html">previous post</a> for pictures.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">r</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">finv</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">r</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is $f(x)$'s direvative.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">diff</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">combine</span><span class="p">();</span>
+<span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1} - {\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{\operatorname{B}\left(a, b\right)}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is $f^{-1}(x)$'s direvative.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">dfinv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">df</span><span class="p">(</span><span class="n">finv</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+<span class="n">dfinv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}-\frac{\operatorname{B}\left(a, b\right)}{{\left(b - 1\right)} {\left(-f^{-1}\left(x\right) + 1\right)}^{b - 2} f^{-1}\left(x\right)^{a - 1} - {\left(a - 1\right)} {\left(-f^{-1}\left(x\right) + 1\right)}^{b - 1} f^{-1}\left(x\right)^{a - 2}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="First-direvative-of-$r(x)$">First direvative of $r(x)$<a class="anchor-link" href="#First-direvative-of-$r(x)$">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1</span><span class="o">=</span><span class="n">diff</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">);</span>
+<span class="n">rd1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}{\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{\operatorname{B}\left(a, b\right)}\right)} \mathrm{D}_{0}\left(f^{-1}\right)\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">to_be_replace</span><span class="o">=</span><span class="n">rd1</span><span class="o">.</span><span class="n">operands</span><span class="p">()[</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">to_be_replace</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\mathrm{D}_{0}\left(f^{-1}\right)\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1_0</span><span class="o">=</span><span class="n">rd1</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">to_be_replace</span><span class="o">==</span><span class="n">dfinv</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)));</span>
+<span class="n">rd1_0</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}-\frac{{\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{\operatorname{B}\left(a, b\right)}\right)} \operatorname{B}\left(a, b\right)}{{\left(b - 1\right)} {\left(-f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) + 1\right)}^{b - 2} f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)^{a - 1} - {\left(a - 1\right)} {\left(-f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) + 1\right)}^{b - 1} f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)^{a - 2}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Make it a easier to manipulate by changing some symbobls. Let $B=\beta(a,b)$ and $x_1$ be the reflection point of $x$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [14]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1_1</span><span class="o">=</span><span class="n">rd1_0</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">finv</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">==</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">==</span><span class="n">B</span><span class="p">);</span>
+<span class="n">rd1_1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{B} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{B}\right)} B}{{\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Simplify using sympy.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1_2</span><span class="o">=</span><span class="n">rd1_1</span><span class="o">.</span><span class="n">_sympy_</span><span class="p">()</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">_sage_</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1_2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1} - {\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{{\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that we have three equalities.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [17]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">eq1</span><span class="o">=</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">);</span>
+<span class="n">eq1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}x^{a - 1} {\left(-x + 1\right)}^{b - 1} = x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 1}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">eq2</span><span class="o">=</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">eq2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}x_{1}^{a - 1} = \frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{{\left(-x_{1} + 1\right)}^{b - 1}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">eq3</span><span class="o">=</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">eq1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">eq3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}{\left(-x_{1} + 1\right)}^{b - 1} = \frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{x_{1}^{a - 1}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we simplify again use these equations.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1_3</span><span class="o">=</span><span class="n">rd1_2</span><span class="o">.</span><span class="n">_sympy_</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">eq2</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">eq2</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">eq3</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">eq3</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">together</span><span class="p">()</span><span class="o">.</span><span class="n">_sage_</span><span class="p">()</span>
+<span class="n">rd1_3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(x_{1} - 1\right)} x_{1}}{{\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)} {\left(x - 1\right)} x}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The final form for $r'(x)$ is</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd1_4</span><span class="o">=</span><span class="n">rd1_3</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x1</span><span class="o">==</span><span class="n">finv</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)));</span>
+<span class="n">rd1_4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) - 1\right)} f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)}{{\left(a {\left(f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) - 1\right)} + b f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) - 2 \, f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) + 1\right)} {\left(x - 1\right)} x}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Second-direvative">Second direvative<a class="anchor-link" href="#Second-direvative">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_0</span><span class="o">=</span><span class="n">rd1_4</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">rd2_0</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}a {\left(x - 1\right)} + b x - 2 \, x + 1</script></html>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{1}{a {\left(f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) - 1\right)} + b f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) - 2 \, f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) + 1}</script></html>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{\operatorname{B}\left(a, b\right)}</script></html>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{1}{x - 1}</script></html>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{1}{x}</script></html>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}f^{-1}\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right) - 1</script></html>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\mathrm{D}_{0}\left(f^{-1}\right)\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">to_be_replace_2</span><span class="o">=</span><span class="n">rd2_0</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">to_be_replace_2</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\mathrm{D}_{0}\left(f^{-1}\right)\left(\frac{x^{a - 1} {\left(-x + 1\right)}^{b - 1}}{\operatorname{B}\left(a, b\right)}\right)</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_1</span><span class="o">=</span><span class="n">rd2_0</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">to_be_replace_2</span><span class="o">==</span><span class="n">dfinv</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">finv</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">==</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">==</span><span class="n">B</span><span class="p">);</span>
+<span class="n">rd2_1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{{\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{B} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{B}\right)} B {\left(x_{1} - 1\right)}}{{\left({\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}\right)} {\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)} {\left(x - 1\right)} x} + \frac{{\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{B} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{B}\right)} B x_{1}}{{\left({\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}\right)} {\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)} {\left(x - 1\right)} x} - \frac{{\left(\frac{{\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{B} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{B}\right)} B a}{{\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}} + \frac{{\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{B} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{B}\right)} B b}{{\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}} - \frac{2 \, {\left(\frac{{\left(a - 1\right)} x^{a - 2} {\left(-x + 1\right)}^{b - 1}}{B} - \frac{{\left(b - 1\right)} x^{a - 1} {\left(-x + 1\right)}^{b - 2}}{B}\right)} B}{{\left(a - 1\right)} x_{1}^{a - 2} {\left(-x_{1} + 1\right)}^{b - 1} - {\left(b - 1\right)} x_{1}^{a - 1} {\left(-x_{1} + 1\right)}^{b - 2}}\right)} {\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(x_{1} - 1\right)} x_{1}}{{\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)}^{2} {\left(x - 1\right)} x} + \frac{{\left(a + b - 2\right)} {\left(x_{1} - 1\right)} x_{1}}{{\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)} {\left(x - 1\right)} x} - \frac{{\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(x_{1} - 1\right)} x_{1}}{{\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)} {\left(x - 1\right)} x^{2}} - \frac{{\left(a {\left(x - 1\right)} + b x - 2 \, x + 1\right)} {\left(x_{1} - 1\right)} x_{1}}{{\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)} {\left(x - 1\right)}^{2} x}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a lot, but again we can use <code>eq2,eq3</code> to simplify.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_2</span><span class="o">=</span><span class="n">rd2_1</span><span class="o">.</span><span class="n">_sympy_</span><span class="p">()</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">eq2</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">eq2</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">eq3</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">eq3</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some more simplification with <code>sympy</code>, and study the denominator and numerator separately.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_numer</span><span class="p">,</span> <span class="n">rd2_denom</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">fraction</span><span class="p">(</span><span class="n">rd2_2</span><span class="o">.</span><span class="n">together</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The denominator.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [27]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_denom1</span><span class="o">=</span><span class="n">rd2_denom</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">_sage_</span><span class="p">();</span>
+<span class="n">rd2_denom1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}{\left(a {\left(x_{1} - 1\right)} + b x_{1} - 2 \, x_{1} + 1\right)}^{2} {\left(x - 1\right)}^{2} x^{2} {\left(\frac{b - 1}{x_{1} - 1} + \frac{a - 1}{x_{1}}\right)}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want the 2nd direvative to be positive when $b>a>1$, so we can ingore the first 3 terms, which are positive.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_denom2</span><span class="o">=</span><span class="n">rd2_denom1</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="n">rd2_denom2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}\frac{b - 1}{x_{1} - 1} + \frac{a - 1}{x_{1}}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The numerator.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">rd2_numer1</span><span class="o">=</span><span class="n">rd2_numer</span><span class="o">.</span><span class="n">simplify</span><span class="p">()</span><span class="o">.</span><span class="n">_sage_</span><span class="p">();</span>
+<span class="n">rd2_numer1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}a^{2} b x^{2} + a b^{2} x^{2} - a^{2} b x_{1}^{2} - a b^{2} x_{1}^{2} - 2 \, a^{2} b x - a^{2} x^{2} - 4 \, a b x^{2} - b^{2} x^{2} + 2 \, a^{2} b x_{1} + a^{2} x_{1}^{2} + 4 \, a b x_{1}^{2} + b^{2} x_{1}^{2} + 2 \, a^{2} x + 4 \, a b x + 3 \, a x^{2} + 3 \, b x^{2} - 2 \, a^{2} x_{1} - 4 \, a b x_{1} - 3 \, a x_{1}^{2} - 3 \, b x_{1}^{2} - 4 \, a x - 2 \, b x - 2 \, x^{2} + 4 \, a x_{1} + 2 \, b x_{1} + 2 \, x_{1}^{2} + 2 \, x - 2 \, x_{1}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Put the numerator and denominator back and separte them again, which actually simplifies again.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">numer3</span><span class="p">,</span><span class="n">denom3</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">fraction</span><span class="p">((</span><span class="n">rd2_numer1</span><span class="o">/</span><span class="n">rd2_denom2</span><span class="p">)</span><span class="o">.</span><span class="n">_sympy_</span><span class="p">()</span><span class="o">.</span><span class="n">together</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The denominator.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">denom3</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">_sage_</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}{\left(a + b - 2\right)} x_{1} - a + 1</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is $>0$ if $x_1 > m(a,b)= (a-1)/(a+b-2)$, which is our assumption. So the denominator does not matter.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Factor the numerator</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">numer4</span><span class="o">=</span><span class="n">numer3</span><span class="o">.</span><span class="n">factor</span><span class="p">()</span><span class="o">.</span><span class="n">_sage_</span><span class="p">();</span>
+<span class="n">numer4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}{\left(a x + b x + a x_{1} + b x_{1} - 2 \, a - 2 \, x - 2 \, x_{1} + 2\right)} {\left(a - 1\right)} {\left(b - 1\right)} {\left(x - x_{1}\right)} {\left(x_{1} - 1\right)} x_{1}</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we restrict that $x<x_1$, then the last 4 terms are positive. So we can drop them. We only need to show the 1st term is positve.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">numer5</span> <span class="o">=</span> <span class="n">numer4</span><span class="o">.</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">numer5</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}a x + b x + a x_{1} + b x_{1} - 2 \, a - 2 \, x - 2 \, x_{1} + 2</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython2"><pre><span></span><span class="n">numer6</span><span class="o">=</span><span class="n">numer5</span><span class="o">.</span><span class="n">_sympy_</span><span class="p">()</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">numer6</span><span class="o">.</span><span class="n">_sage_</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<html><script type="math/tex; mode=display">\newcommand{\Bold}[1]{\mathbf{#1}}{\left(a + b - 2\right)} {\left(x + x_{1}\right)} - 2 \, a + 2</script></html>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is $>0$ if
+$$
+x+x_1>\frac{2 a +2 }{a+b-2}
+$$
+and I mentioned in my <a href="./the-convexity-property-related-to-beta-densities.html">earlier post</a>, this is very simple and is left as an exercise.</p>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </main>
+    <br>
+    <footer>
+      <div class="adjust-width">
+        <div id="author-block" class="w3-light-grey w3-border">
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="theme/images/bookmark-red.png" alt="bookmark"></img>
+            <div id="author-info">
+                <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><img style="width: 60px; height: 60px;" src="/authors/xing-shi-cai.png" onerror="this.src='/theme/images/avatar.png'"></img>
+                </a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><span id="author-name" class="w3-hover-text-dark-grey">Xing Shi Cai</span></a>
+                    <p id="author-story" style="max-width: 500px;"></p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+    </footer>
+  </div>
+</article>
+<br>
+<script src="https://newptcai.github.io/theme/js/shariff.min.js"></script>
+</body>
+</html>
