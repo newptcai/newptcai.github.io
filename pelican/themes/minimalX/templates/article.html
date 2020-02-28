@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block head %}
+{% block title %}<title>{{ article.title }} - {{SITENAME}}</title>{% endblock title %}
+{{ super() }}
+{% block seo %}
+    <meta name="author" content="{{ article.author.name }}" />
+    <meta name="description" content="{{ article.summary|striptags }}" /> 
+    <meta name="keywords" content="{{ article.tags|join(', ') }}"> 
+
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="{{ SITENAME }}">
+    <meta property="og:title" content="{{ article.title }} - {{ SITENAME }}" />
+    <meta property="og:description" content="{{ article.summary|striptags }}" />
+    <meta property="og:image" content="{{ SITEURL }}{{ article.headerimage }}">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ article.title }} - {{ SITENAME }}">
+    <meta name="twitter:description" content="{{ article.summary|striptags }}">
+    <meta name="twitter:image" content="{{ SITEURL }}{{ article.headerimage }}">
+{% endblock seo %}
+{% endblock %}
+{% block content %}
+<br>
+<article>
+  <header class="w3-container col-main">
+    <h1>{{ article.title }}</h1>
+    <div class="post-info">
+      <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+        <span>{{ _('Posted on %(when)s in %(category)s',
+            when=article.locale_date,
+            category='<a href="%s/%s" style="font-style: italic">%s</a>'|format(SITEURL, article.category.url, article.category)|safe) }}
+        </span>
+      </div>
+      {% if article.tags %}
+      <div id="article-tags">
+        {% for tag in article.tags %}
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="{{ SITEURL }}/{{ tag.url }}" title="{{ _('All posts about %(tag)s', tag=tag.name.title()) }}">#{{ tag }}</a>
+        </span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+  <br>
+  {% if article.headerimage %}
+  <div class="headerimage-article">
+    <img src="{{ article.headerimage }}" style="width: 100%;">
+    {% if article.headerimagecaption %}
+    <p class="caption">{{ article.headerimagecaption }}</p>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="col-main w3-container">
+    <main id="article-content">
+      {{article.content}}
+    </main>
+    <br>
+    {# if 1==1 #}
+    {# include 'slideshow.html' #}
+    {# endif #}
+    <footer>
+      <div class="adjust-width">
+        <div id="author-block" class="w3-light-grey w3-border">
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="theme/images/bookmark-red.png" alt="bookmark"></img>
+            <div id="author-info">
+                <a href="{{ SITEURL }}/authors.html#{{ article.author.page_name[7:] }}"><img style="width: 60px; height: 60px;" src="/authors/{{ article.author.page_name[7:] }}.png" onerror="this.src='/theme/images/avatar.png'"></img>
+                </a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <a href="{{ SITEURL }}/authors.html#{{ article.author.page_name[7:] }}"><span id="author-name" class="w3-hover-text-dark-grey">{{ article.author }}</span></a>
+                    <p id="author-story" style="max-width: 500px;">{% if article.author==AUTHOR %}{{ AUTHOR_INFO_SHORT_FABIAN_KEITEL }}{% endif %}</p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+      {% if SHARE_BUTTONS %}      
+      <p style="font-size:10pt; font-style: italic;">{{ _('Did you like this article? Share it with your friends!') }}</p>
+      <div class="shariff" data-services="[{% for name in SHARE_BUTTONS %}&quot;{{ name }}&quot;{% if loop.index != SHARE_BUTTONS|length %},{% endif %}{% endfor %}]" data-title="{{ article.title }} - {{ SITENAME }}" {% if SHARE_BUTTONS.find == mail %}data-mail-url="mailto:" data-mail-subject="{{ _('Interesting post on %(sitename)s', sitename=SITENAME) }}" data-mail-body="{{ _('Hey, I just read this article and really enjoyed it. I\'m sure you also like it ;) %(url)s', url='%s/%s' | format(SITEURL, article.url)) }}" {% endif %}>
+      </div>
+      <br>
+      {% endif %}
+      {% if article.related_posts %}
+      <div class="related-posts">
+        <h4>Related posts:</h4>
+        <ul>
+          {% for related_post in article.related_posts %}
+          <li><a href="{{ SITEURL }}/{{ related_post.url }}">{{ related_post.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if DISQUS_SITENAME %}
+      {% include "disqus.html" %}
+      {% endif %}
+    </footer>
+  </div>
+</article>
+<br>
+{% endblock %}

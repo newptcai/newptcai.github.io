@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block title %}<title>{{ _('Posts by %(author)s - %(sitename)s', author=author, sitename=SITENAME) }}</title>{% endblock %}
+{% block content_title %}
+<br>
+<div class="w3-container col-main w3-center">
+  <h4>{{ _('Posts by') }}</h4>
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <a href="{{ SITEURL }}/{{ author.url }}"><img style="width: 50px; height: 50px;" src="/authors/{{ author.page_name[7:] }}.png" onerror="this.src='/theme/images/avatar.png'"></img></a>
+    <a href="{{ SITEURL }}/{{ author.page_name }}"  style="margin-left: 20px;"><span class="w3-hover-text-dark-grey" style="font-size: 14pt; font-weight: bold;">{{ author }}</span></a>
+  </div>
+</div>
+{% endblock %}

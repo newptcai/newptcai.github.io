@@ -1,0 +1,88 @@
+# Translations template for Flex.
+# Copyright (C) 2018 Alexandre Vicenzi
+# This file is distributed under the same license as the Flex project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Flex 2.1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-01-19 01:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: art1fa <art1fa@mailbox.org>, 2017\n"
+"Language-Team: German (https://www.transifex.com/art1fa/teams/81045/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/article.html:34 templates/index.html:43
+#, python-format
+msgid "Posted on %(when)s in %(category)s"
+msgstr "Gepostet am %(when)s in %(category)s"
+
+#: templates/article.html:43 templates/index.html:52
+#, python-format
+msgid "All posts about %(tag)s"
+msgstr "Alle Artikel zu %(tag)s"
+
+#: templates/article.html:83
+msgid "Did you like this article? Share it with your friends!"
+msgstr "Dir gefällt dieser Post? Dann teile ihn mit deinen Freunden!"
+
+#: templates/article.html:84
+#, python-format
+msgid "Interesting post on %(sitename)s"
+msgstr "Interessanter Artikel auf %(sitename)s"
+
+#: templates/article.html:84
+#, python-format
+msgid ""
+"Hey, I just read this article and really enjoyed it. I'm sure you also like "
+"it ;) %(url)s"
+msgstr ""
+"Hey, les dir doch mal den Artikel durch! Müsste dir gefallen ;) %(url)s"
+
+#: templates/author.html:3
+#, python-format
+msgid "Posts by %(author)s - %(sitename)s"
+msgstr "Artikel von %(author)s - %(sitename)s"
+
+#: templates/author.html:7
+msgid "Posts by"
+msgstr "Artikel von"
+
+#: templates/authors.html:3 templates/base.html:118
+msgid "Authors"
+msgstr "Autoren"
+
+#: templates/authors.html:10
+msgid "About me"
+msgstr "Über mich"
+
+#: templates/authors.html:27 templates/authors.html:54
+msgid "All posts"
+msgstr "Alle Artikel"
+
+#: templates/authors.html:37
+msgid "Guest authors"
+msgstr "Gastautoren"
+
+#: templates/base.html:91
+msgid "Categories"
+msgstr "Kategorien"
+
+#: templates/base.html:148
+msgid "About | Privacy"
+msgstr "Impressum | Datenschutz"
+
+#: templates/index.html:61
+msgid "Continue reading"
+msgstr "Weiterlesen"
+
+#: templates/tag.html:11
+msgid "All posts about"
+msgstr "Alle Artikel zu"

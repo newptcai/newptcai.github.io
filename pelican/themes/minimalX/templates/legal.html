@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block head %}
+{% block title %}<title>{{ page.title }} - {{SITENAME}}</title>{% endblock title %}
+{{super()}}
+<meta name="robots" content="noindex, nofollow" />
+{% endblock head %}
+{% block content %}
+    <!-- <h1>{{ page.title }}</h1> -->
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(page) }}
+    <br>
+    <br>
+    <main class="col-main w3-container w3-medium">
+      {{ page.content }}
+    </main>
+    <br>
+    <br>
+	{% if page.modified %}
+		<p>
+		Last updated: {{ page.locale_modified }}
+		</p>
+	{% endif %}
+{% endblock %}

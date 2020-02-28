@@ -1,0 +1,20 @@
+<br>
+<div id="tagcloud" class="jqcloud w3-card w3-margin-top w3-margin-bottom w3-light-grey w3-center">
+  <script>
+  var tags = [
+    {% for tag in tag_cloud %}
+    {text: "#{{ tag.0 }}", weight: {{ TAG_CLOUD_STEPS+1-tag.1 }}, link: '{{ SITEURL }}/{{ tag.0.url }}', html: {title: "Alle Posts zum Thema {{ tag.0 }}"}},
+    {% endfor %}
+    /* ... */
+  ];
+  $('#tagcloud').jQCloud(tags, {
+    height: 400,
+    autoResize: true,
+    shape: 'rectangular',
+    center: {x: 0.4, y: 0.5},
+    steps: {{ TAG_CLOUD_STEPS }}
+  });
+  </script>
+</div>
+<br>
+<br>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+    <head>
+        {% block head %}
+        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="http://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+        {% assets filters="scss", output="css/whiteglass.min.css", "../scss/main.scss" %}
+            <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+        {% endassets %}
+
+        <link rel="icon" href="{{ SITEURL }}/favicon.ico" />
+
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: { families: [ 'Bitter:400,700,400italic:latin' ] }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+
+        {% endblock head %}
+    </head>
+
+    <body id="index" class="home">
+        <header class="site-header">
+
+            <div class="wrapper">
+
+                <a class="site-title" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+
+                <nav class="site-nav">
+                    {% for title, link in MENUITEMS %}
+                    <a class="page-link" href="{{ link }}">{{ title }}</a>
+                    {% endfor %}
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                    {% for p in pages %}
+                    <a class="page-link {% if p == page %}active"{% endif %}" href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                    {% endfor %}
+                    {% endif %}
+                    {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    {% for cat, null in categories %}
+                    {% if  cat|string != 'travel' %}
+                    <a class="page-link {% if cat == category %}active"{% endif %}" href="{{ SITEURL }}/{{ cat.url }}">{{ cat|capitalize }}</a>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </nav><!-- /#menu -->
+            </div>
+        </header>
+
+        <main class="page-content" aria-label="Content">
+        <div class="wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+        </main>
+
+        {% include "footer.html" %}
+    </body>
+</html>

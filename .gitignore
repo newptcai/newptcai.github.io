@@ -1,1 +1,6 @@
-pelican
+pelican/output/*
+**/sass-cache/*
+*.pyc
+*.pid
+*.ipynb_checkpoints*
+*.log

@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block head %}
+{% block title %}<title>#{{ tag.name }} - {{SITENAME}}</title>{% endblock title %}
+{{ super() }}
+<meta name="robots" content="noindex, follow" />
+{% endblock %}
+{% block content_title %}
+<div class="w3-row w3-light-grey w3-container w3-border-bottom">
+<br>
+<div class="col-main" style="margin-top: 30px; margin-bottom:70px; line-height:1.1;">
+  <span style="display: block; font-style:italic;">{{ _('All posts about') }}</span>
+  <span id="content-title-tag">#{{ tag }}</span>
+</div>
+<br>
+</div>
+{% endblock %}
