@@ -45,9 +45,3 @@ For more information, check my
 **Visiting Address :** Visiting address: [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
 
 **Email:** [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or [newptcai@gmail.com](mailto:newptcai@gmail.com)
-
-## How I look like
-
-More photos [here]({filename}/photo/my-photos.md).
-
-<img src="{static}/images/me1.jpg" alt="Me" style="max-width: 300px;"/>

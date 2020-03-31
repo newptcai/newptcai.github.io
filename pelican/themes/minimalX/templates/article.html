@@ -67,9 +67,10 @@
     <footer>
       <div class="adjust-width">
         <div id="author-block" class="w3-light-grey w3-border">
-            <img style="width: 35px; height: 56px; margin-left:50px;" src="theme/images/bookmark-red.png" alt="bookmark"></img>
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="{{ SITEURL }}/theme/images/bookmark-red.png" alt="bookmark"></img>
             <div id="author-info">
-                <a href="{{ SITEURL }}/authors.html#{{ article.author.page_name[7:] }}"><img style="width: 60px; height: 60px;" src="/authors/{{ article.author.page_name[7:] }}.png" onerror="this.src='/theme/images/avatar.png'"></img>
+                <a href="{{ SITEURL }}/authors.html#{{ article.author.page_name[7:] }}"><img
+                   style="width: 60px; height: 60px;" src="{{ SITEURL }}/authors/{{ article.author.page_name[7:] }}.png" onerror="this.src='{{ SITEURL }}/theme/images/avatar.png'"></img>
                 </a>
                 <div style="margin-left: 20px; margin-top: 15px;">
                     <a href="{{ SITEURL }}/authors.html#{{ article.author.page_name[7:] }}"><span id="author-name" class="w3-hover-text-dark-grey">{{ article.author }}</span></a>
