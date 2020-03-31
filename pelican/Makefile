@@ -48,6 +48,7 @@ help:
 
 html:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
+	rsync -SHqav output-skel/ $(OUTPUTDIR)
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
@@ -79,6 +80,7 @@ endif
 
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	rsync -SHqav output-skel/ $(OUTPUTDIR)
 
 gitpublish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(GITPUBLISHCONF) $(PELICANOPTS)

@@ -1,58 +1,16 @@
-title: Small o bound for the tail of distribution with finite expectation.
-date: 2020-02-28
+title: Online Probability and Combinatorics Seminars
+date: 2020-03-31
 layout: post
-tags: probability, real-analysis
+tags: probability, combinatorics
 status: published
 
-Let $X \ge 0$ be a random variable with finite mean, i.e., $\mathbb E{X} < \infty$.
-By Markov inequality, we have
-$$
-\mathbb P(X \ge n) \le \frac{\mathbb E X}{n} = O(n^{-1}).
-$$
-However,  $\mathbb E{X} < \infty$ actually implies that
-$$
-\mathbb P(X \ge n) = o(n^{-1}).
-$$
-This can be very helpful in some cases.
+In this time of Covid-19 pandemic, many seminars have been moved to online. Here are some that I
+know of. I will try to keep it updated.
 
-The proof is by contradiction. Assume that
-$$
-\liminf_{n \to \infty} n \mathbb P(x \ge n) = c > 0.
-$$
-This means there exists a sequence $a_k \uparrow \infty$ such that
-\begin{equation}\label{XYSMV}
-    \mathbb P(X \ge a_{k}) \ge \frac{c}{a_{k}}.
-\end{equation}
-Thus
-\begin{align}
-    \mathbb E X
-    &
-    = \int_{0}^{\infty} \mathbb P (X \ge x) \; \mathrm d x
-    \\
-    &
-    = 
-    \sum_{k \ge 1} 
-    \int_{a_{k-1}}^{a_k} \mathbb P (X \ge x) \; \mathrm d x
-    \\
-    &
-    \ge
-    \sum_{k \ge 1} 
-    \int_{a_{k-1}}^{a_k} \mathbb P (X \ge a_{k}) \; \mathrm d x
-    \\
-    &
-    \ge
-    \sum_{k \ge 1} 
-    \frac{c}{a_{k}} (a_{k}-a_{k-1})
-    \\
-    &
-    \ge
-    c
-    \sum_{k \ge 2} 
-    1-\frac{a_{k-1}}{a_{k}}
-\end{align}
-Let $x_{k} = 1-\frac{a_{k}}{a_{k+1}}$. Then
-\begin{equation}\label{ILIUG}
-    \prod_{k = 1}^{n} (1-x_{k}) = \frac{a_{1}}{a_{n+1}} \to 0
-\end{equation}
-as $n \to \infty$.
-This imples $\sum_{k \ge i}x_{k} = \infty$, a contradiction.
+* [The One World Probability Seminar (University of Mannheim)](https://www.wim.uni-mannheim.de/doering/one-world/)
+* [The Oxford Probability and Discrete Math Seminar](http://people.maths.ox.ac.uk/scott/dmp.htm)
+* [The Stanford Statistics Seminar](https://statistics.stanford.edu/events/probability-seminar)
+* [CUNY Probability Seminar](https://probability.commons.gc.cuny.edu/)
+* [Extremal and Probabilistic Combinatorics Webinar](https://sites.google.com/view/epcwebinar/)
+* [Combinatorics Lectures Online](https://web.math.princeton.edu/~pds/onlinetalks/talks.html)
+  organized by [Jacob Fox](https://stanford.edu/~jacobfox/) and [Paul Seymour](https://web.math.princeton.edu/~pds/).

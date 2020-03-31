@@ -38,6 +38,7 @@ STATIC_PATHS = [
     'images', 
     'doc', 
     'notebook',
+    'authors',
 #    'extra/robots.txt', 
     'extra/favicon.ico'
 ]
