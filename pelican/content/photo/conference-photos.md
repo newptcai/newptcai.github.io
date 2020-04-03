@@ -5,11 +5,22 @@ category: photo
 status: published
 ---
 
+![Me]({static}/images/conference/RSA2019.jpg)
+<center>
+*Random Structure & Algorithms.* 2019, Zurich, Switzerland.
+</center>
+
+<!-- END_SUMMARY -->
+
+![Me]({static}/images/conference/aofa2019.jpeg)
+<center>
+*Analysis of Algorithms.* June 2019, Marseilles, France.
+</center>
+
 ![Me]({static}/images/conference/aofa2018.jpg)
 <center>
 *Analysis of Algorithms.* June 2018, Uppsala, Sweden.
 </center>
-<!-- END_SUMMARY -->
 
 ![Me]({static}/images/conference/STAR2018.jpg)
 <center>
