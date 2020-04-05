@@ -4,7 +4,7 @@ date: 2017-07-13
 layout: post
 category: travel
 tags: Kullen-2017
-status: draft
+status: published
 ---
 
 ![Walk]({static}/images/2017-07-13/07.jpg)

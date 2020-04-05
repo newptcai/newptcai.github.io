@@ -3,7 +3,7 @@ title: A walk by the sea (part 2) -- Helsingborg & Helsingø
 date: 2017-07-14
 category: travel
 tags: Kullen-2017
-status: draft
+status: published
 ---
 
 ![Walk]({static}/images/2017-07-14/07.jpg)

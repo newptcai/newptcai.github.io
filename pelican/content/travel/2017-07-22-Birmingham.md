@@ -3,7 +3,7 @@ title: Roaming in Birmingham
 date: 2017-07-22
 tags: Britain-2017
 category: travel
-status: draft
+status: published
 ---
 
 ![Birmingham]({static}/images/2017-07-22/00.jpg)

@@ -3,7 +3,7 @@ title: Football fans in Marseille
 date: 2017-10-30
 tags: France-2017
 category: travel
-status: draft
+status: published
 ---
 
 ![Marseilles]({static}/images/2017-10-30/01.jpg)
