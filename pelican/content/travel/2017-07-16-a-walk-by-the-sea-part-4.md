@@ -64,7 +64,7 @@ The wind was so strong there that I had to hold my hat all the time.
 If you look at this picture of the Kullen peninsula, you would be able to see where I started that
 day. It is a little bit to the right end of the picture. I walked from there all the way to the tip
 at the bottom. I did not learn what the meaning of life is. But I did learn that if you keep going,
-the end will come.
+sooner or later you will get to your destiny.
 
 Hope my story may cheer you up a bit in the middle of a pandemic. 😁
 
