@@ -47,9 +47,7 @@ EXTRA_PATH_METADATA = {
     'extra/favicon.ico': {'path': 'favicon.ico'}
 }
 
-#THEME = 'themes/white_glass'
-#THEME = '../pelican-themes/simple-bootstrap'
-THEME = 'themes/minimalX'
+THEME = '../../pelican-themes/minimalX'
 
 SUMMARY_MAX_LENGTH = 20
 
@@ -59,6 +57,10 @@ PLUGIN_PATHS = ['../../pelican-plugins']
 PLUGINS = ['summary', 'render_math', 'assets', 'tag_cloud']
 
 TAG_CLOUD_BADGE = True
+TAG_CLOUD_STEPS = 5
+TAG_CLOUD_MAX_ITEMS = 50
+TAG_CLOUD_BADGE = True
+TAG_CLOUD_SORTING = 'size'
 
 SUMMARY_END_MARKER = '<!-- END_SUMMARY -->'
 
@@ -79,3 +81,5 @@ PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
 SOCIAL = [
          ('github', 'https://github.com/newptcai')
          ]
+
+SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'mail')
