@@ -15,18 +15,49 @@ graphs and random tree, in particular:
 - [Peer-to-peer computer networks](https://link.springer.com/chapter/10.1007%2F978-3-642-45030-3_66)
 - [Graph coloring](https://onlinelibrary.wiley.com/doi/full/10.1002/rsa.20695)
 
-I also like [programming](https://github.com/newptcai) and using computer to [experiment]({tag}experimental-math), [prove]({tag}CAS), and
+I also like [programming]({tag}programming) and using computer to [experiment]({tag}experimental-math), [prove]({tag}CAS), and
 [teach]({tag}teaching) mathematics.
 
 Occasionally I play with [special functions](https://arxiv.org/abs/1806.01122).
 
 ## Publications
 
-Check [Google Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=en)
+You can find all my research papers on [Google
+Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=en), 
 [Zotero](https://www.zotero.org/newptcai), and
 [arXiv](https://arxiv.org/search/math?query=Cai%2C+Xing+Shi&searchtype=author&abstracts=show&order=-announced_date_first&size=50).
 
-## My talks
+I am also the author of the software package
+[`RandomTree.jl`](https://github.com/newptcai/RandomTree.jl) for simulations of various types of
+random trees. It is written in [Julia](https://julialang.org/), a Python-like high performance
+programming language which is becoming popular in the scientific computing community.
+
+Here are some of my other projects on <i class="fab fa-github"></i> [GitHub](https://github.com/newptcai).
+
+## My colleagues
+
+My current colleagues in Uppsala University include
+
+* [Gabriel Berzunza Ojeda](http://www2.math.uu.se/~gabbe533/Gabo26.html)
+* [Fabian Burghart](https://katalog.uu.se/profile/?id=N18-1431)
+* [Colin Desmarais](https://katalog.uu.se/profile/?id=N17-1633)
+* [Cecilia Holmgren](http://katalog.uu.se/profile/?id=N5-824)
+* [Svante Janson](http://www2.math.uu.se/~svante/papers/)
+* [Fiona Skerman](http://www2.math.uu.se/~fiosk856/)
+* [Johanna Strömberg](https://katalog.uu.se/profile/?id=N16-1207)
+* [Stephan Wagner](https://www.researchgate.net/profile/Stephan_Wagner)
+
+Other people whom I have worked with are
+
+- [Luc Devroye](http://luc.devroye.org)
+- [Jose Luis Lopez Garcia](https://www.unavarra.es/pdi?uid=2369)
+- [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395)
+- [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/)
+- [Bruce Reed](https://www.cs.mcgill.ca/~breed/)
+
+## Talks
+
+Here are the slides for my talks:
 
 -  Cutting resilient networks. 
     [[slides]]({static}/doc/cutting-slides.pdf)
@@ -47,14 +78,3 @@ Check [Google Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=
     [RSA 2015](http://rsa2015.amu.edu.pl/program).
     [CanaDAM 2015](https://canadam.math.ca/2015/program/abs/si2#xsc).
     [[slides]]({static}/doc/rand-dfs.pdf)
-
-## My coauthors
-
-- [Luc Devroye](http://luc.devroye.org)
-- [Jose Luis Lopez Garcia](https://www.unavarra.es/pdi?uid=2369)
-- [Cecilia Holmgren](http://katalog.uu.se/profile/?id=N5-824)
-- [Svante Janson](http://www2.math.uu.se/~svante/papers/)
-- [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395)
-- [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/)
-- [Bruce Reed](https://www.cs.mcgill.ca/~breed/)
-- [Fiona Skerman](http://www2.math.uu.se/~fiosk856/)

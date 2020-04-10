@@ -40,7 +40,7 @@ For more information, check my
 
 ## Contact Me
 
-**Visiting Address <i class="fas fa-door-open"></i>**  [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
+**Office <i class="fas fa-door-open"></i>**  [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
 
 **Email <i class="fas fa-envelope"></i>**  [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or
 [newptcai@gmail.com](mailto:newptcai@gmail.com) ([PGP public key](http://keyserver.ubuntu.com/pks/lookup?search=newptcai%40gmail.com&fingerprint=on&op=index))
