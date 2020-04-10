@@ -79,7 +79,13 @@ PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
 
 # Social media
 SOCIAL = [
-         ('github', 'https://github.com/newptcai')
+         ('github', 'https://github.com/newptcai'), 
+         ('orcid', 'https://orcid.org/0000-0002-3768-8078'),
+         ('skype', 'https://join.skype.com/invite/h4i4wxzWD3i6'),
+         ('researchgate', 'https://www.researchgate.net/profile/Xing_Shi_Cai'),
+         ('meetup', 'https://www.meetup.com/members/55719622/')
          ]
+
+SHOW_FOOTER = False
 
 SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'mail')

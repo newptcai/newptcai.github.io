@@ -13,9 +13,9 @@ When I teach, I always try to remind myself what [Doron
 Zeilberger](https://sites.math.rutgers.edu/~zeilberg/Opinion128.html) (a pioneer in
 computer-assisted proofs) wrote -- 
 
-> *Premature optimization is the root of all evil.*
+> *Premature Abstraction, and Unrealistic Expectations, are the Root of All Evil.*
     
-If I can, I always prefer concrete examples than doing a proof.
+If I can, I always prefer concrete examples than doing an abstract proof.
 
 I like to use computer to create [teaching resources]({tag}teaching). Here are some material I
 created for courses that I taught. Feel free to use any of them in your own teaching. You can also

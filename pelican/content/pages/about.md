@@ -40,9 +40,9 @@ For more information, check my
 
 ## Contact Me
 
-📮 **Mail Address :** Department of Mathematics, Uppsala University, Box 480, 751 06 Uppsala, Sweden
+**Visiting Address <i class="fas fa-door-open"></i>**  [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
 
-🏢 **Visiting Address :** [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
-
-📧 **Email:** [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or
+**Email <i class="fas fa-envelope"></i>**  [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or
 [newptcai@gmail.com](mailto:newptcai@gmail.com) ([PGP public key](http://keyserver.ubuntu.com/pks/lookup?search=newptcai%40gmail.com&fingerprint=on&op=index))
+
+**Video Conference <i class="fas fa-video"></i>** [Zoom](https://us04web.zoom.us/j/3355863452) <i class="fab fa-skype"></i> [Skype](https://us04web.zoom.us/j/3355863452)

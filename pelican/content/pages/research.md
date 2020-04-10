@@ -15,14 +15,16 @@ graphs and random tree, in particular:
 - [Peer-to-peer computer networks](https://link.springer.com/chapter/10.1007%2F978-3-642-45030-3_66)
 - [Graph coloring](https://onlinelibrary.wiley.com/doi/full/10.1002/rsa.20695)
 
-I also like [programming]({tag}programming) and using computer to [experiment]({tag}experimental-math), [prove]({tag}CAS), and
+I also like [programming](https://github.com/newptcai) and using computer to [experiment]({tag}experimental-math), [prove]({tag}CAS), and
 [teach]({tag}teaching) mathematics.
 
 Occasionally I play with [special functions](https://arxiv.org/abs/1806.01122).
 
 ## Publications
 
-See [Google Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=en) and [Zotero](https://www.zotero.org/newptcai).
+Check [Google Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=en)
+[Zotero](https://www.zotero.org/newptcai), and
+[arXiv](https://arxiv.org/search/math?query=Cai%2C+Xing+Shi&searchtype=author&abstracts=show&order=-announced_date_first&size=50).
 
 ## My talks
 
