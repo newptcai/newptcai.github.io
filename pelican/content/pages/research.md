@@ -22,10 +22,11 @@ Occasionally I play with [special functions](https://arxiv.org/abs/1806.01122).
 
 ## Publications
 
-You can find all my research papers on [Google
-Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=en), 
-[Zotero](https://www.zotero.org/newptcai), and
-[arXiv](https://arxiv.org/search/math?query=Cai%2C+Xing+Shi&searchtype=author&abstracts=show&order=-announced_date_first&size=50).
+You can find all my research papers on 
+[Zotero](https://www.zotero.org/newptcai) (most up-to-date),
+[Google Scholar](https://scholar.google.ca/citations?user=Zqh1PIEAAAAJ&hl=en) (slightly delayed), 
+and
+[arXiv](https://arxiv.org/search/math?query=Cai%2C+Xing+Shi&searchtype=author&abstracts=show&order=-announced_date_first&size=50) (free access).
 
 I am also the author of the software package
 [`RandomTree.jl`](https://github.com/newptcai/RandomTree.jl) for simulations of various types of
