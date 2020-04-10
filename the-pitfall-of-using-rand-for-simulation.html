@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/w3.css">
     <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/jqcloud.css">
-    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/shariff.min.css">
     <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/pygments-highlight-github.css">
 
@@ -24,13 +24,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="Today I was doing some simulation and I need a uniform random bits stream. What I tried first is to …" /> 
-    <meta name="keywords" content=""> 
+    <meta name="description" content="This was probably the first simulation I did. How naive I was!" /> 
+    <meta name="keywords" content="programming, experimental-math"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="Xing Shi Cai/蔡醒诗">
     <meta property="og:title" content="The pitfall of using rand() for simulation - Xing Shi Cai/蔡醒诗" />
-    <meta property="og:description" content="Today I was doing some simulation and I need a uniform random bits stream. What I tried first is to …" />
+    <meta property="og:description" content="This was probably the first simulation I did. How naive I was!" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/the-pitfall-of-using-rand-for-simulation.html" />
@@ -40,7 +40,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The pitfall of using rand() for simulation - Xing Shi Cai/蔡醒诗">
-    <meta name="twitter:description" content="Today I was doing some simulation and I need a uniform random bits stream. What I tried first is to …">
+    <meta name="twitter:description" content="This was probably the first simulation I did. How naive I was!">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -52,9 +52,8 @@
         <ul>
           <li><a href="https://newptcai.github.io/pages/research.html">Research</a></li>
           <li><a href="https://newptcai.github.io/pages/teaching.html">Teaching</a></li>
-          <li ><a href="https://newptcai.github.io/category/math.html">math</a></li>
+          <li class="active"><a href="https://newptcai.github.io/category/math.html">math</a></li>
           <li ><a href="https://newptcai.github.io/category/photo.html">photo</a></li>
-          <li style="font-weight: bold;"><a href="https://newptcai.github.io/category/programming.html">programming</a></li>
           <li ><a href="https://newptcai.github.io/category/travel.html">travel</a></li>
         </ul>
       </nav>
@@ -66,8 +65,18 @@
     <h1>The pitfall of using rand() for simulation</h1>
     <div class="post-info">
       <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
-        <span>  Posted on Sat 22 January 2011 in <a href="https://newptcai.github.io/category/programming.html" style="font-style: italic">programming</a>
+        <span>  Posted on Sat 22 January 2011 in <a href="https://newptcai.github.io/category/math.html" style="font-style: italic">math</a>
 
+        </span>
+      </div>
+      <div id="article-tags">
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/programming.html" title="  All posts about Programming
+">#programming</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/experimental-math.html" title="  All posts about Experimental-Math
+">#experimental-math</a>
         </span>
       </div>
     </div>
@@ -75,7 +84,10 @@
   <br>
   <div class="col-main w3-container">
     <main id="article-content">
-      <p>Today I was doing some simulation and I need a uniform random bits stream.
+      <p><em>This was probably the first simulation I did. How naive I was!</em></p>
+
+
+<p>Today I was doing some simulation and I need a uniform random bits stream.
 What I tried first is to use the standard C function <a href="http://en.cppreference.com/w/c/numeric/random/rand"><code>rand()</code></a>, which should return a uniform integer
 between <code>1</code> and <code>2^32</code>. So I thought I could just use <code>rand()</code> to generate an integer and use it as
 32 uniform random bits. But then I noticed the behavior of my simulation is a bit off my
@@ -150,6 +162,14 @@ Works much better!</p>
                 </div>
             </div>
         </div>
+      </div>
+      <br>
+      
+      <p style="font-size:10pt; font-style: italic;">  Did you like this article? Share it with your friends!
+</p>
+      <div class="shariff" data-lang="en" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;whatsapp&quot;,&quot;mail&quot;]" data-title="The pitfall of using rand() for simulation - Xing Shi Cai/蔡醒诗" data-mail-url="mailto:" data-mail-subject="  Interesting post on Xing Shi Cai/蔡醒诗
+" data-mail-body="  Hey, I just read this article and really enjoyed it. I'm sure you also like it ;) https://newptcai.github.io/the-pitfall-of-using-rand-for-simulation.html
+" >
       </div>
       <br>
     </footer>

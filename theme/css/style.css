@@ -81,6 +81,10 @@ nav ul li:hover {
   font-weight: bold;
 }
 
+nav ul li.active {
+  font-weight: bold;
+}
+
 img.avatar {
   width: 150px;
   max-width: 60%;
@@ -360,7 +364,7 @@ div#contact ul li {
   }
 
   article {
-    font-size: 15pt;
+    font-size: 13pt;
   }
 
   h1 {
