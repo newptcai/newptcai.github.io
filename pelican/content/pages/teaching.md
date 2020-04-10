@@ -26,8 +26,8 @@ contact me if you need the source code.
 
 ## Do you need a supervisor?
 
-If you are a bachelor or master student at Uppsala University, I am happy to supervise you. My
-previous students include
+If you are a bachelor or master student at Uppsala University, I am happy to supervise you. You can
+contact my previous students if you want to be sure if I am a good supervisor! 😊
 
 * [Anton Falk](https://se.linkedin.com/in/anton-falk-40b463174) (2019)
 * [Alfred Lindström](http://www.nischmanagement.se/alfred-lindstrom) (2019)
