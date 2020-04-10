@@ -3,8 +3,11 @@
 from __future__ import unicode_literals
 
 AUTHOR = u'Xing Shi Cai'
-SITENAME = u'Xing Shi Cai/蔡醒诗'
+SITENAME = u"You don't need to prove this"
 SITEURL = 'http://localhost:8000'
+AUTHOR_INFO = { 
+        'Xing Shi Cai' : "Mathematical, computer scientist, software engineer, reader, walker. Spend too much time on the computer.",
+        }
 
 PATH = 'content'
 
@@ -80,10 +83,11 @@ PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
 # Social media
 SOCIAL = [
          ('github', 'https://github.com/newptcai'), 
-         ('orcid', 'https://orcid.org/0000-0002-3768-8078'),
+         ('goodreads', 'https://www.goodreads.com/review/list/4410353-xing-shi?order=d&shelf=read'), 
+         ('meetup', 'https://www.meetup.com/members/55719622/'),
          ('skype', 'https://join.skype.com/invite/h4i4wxzWD3i6'),
+         ('orcid', 'https://orcid.org/0000-0002-3768-8078'),
          ('researchgate', 'https://www.researchgate.net/profile/Xing_Shi_Cai'),
-         ('meetup', 'https://www.meetup.com/members/55719622/')
          ]
 
 SHOW_FOOTER = False

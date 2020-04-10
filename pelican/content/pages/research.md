@@ -39,47 +39,46 @@ programming language which is becoming popular in the scientific computing commu
 
 Here are some of my other projects on <i class="fab fa-github"></i> [GitHub](https://github.com/newptcai).
 
-## My colleagues
+## My colleagues and friends
 
-My current colleagues in Uppsala University include
+We have a big group in probability and combinatorics here in Uppsala:
 
-* [Gabriel Berzunza Ojeda](http://www2.math.uu.se/~gabbe533/Gabo26.html)
-* [Fabian Burghart](https://katalog.uu.se/profile/?id=N18-1431)
-* [Colin Desmarais](https://katalog.uu.se/profile/?id=N17-1633)
-* [Cecilia Holmgren](http://katalog.uu.se/profile/?id=N5-824)
-* [Svante Janson](http://www2.math.uu.se/~svante/papers/)
-* [Fiona Skerman](http://www2.math.uu.se/~fiosk856/)
-* [Johanna Strömberg](https://katalog.uu.se/profile/?id=N16-1207)
-* [Stephan Wagner](https://www.researchgate.net/profile/Stephan_Wagner)
+* [Gabriel Berzunza Ojeda](http://www2.math.uu.se/~gabbe533/Gabo26.html) <i class="fas fa-dumbbell"></i>
+* [Fabian Burghart](https://katalog.uu.se/profile/?id=N18-1431) <i class="fas fa-music"></i>
+* [Colin Desmarais](https://katalog.uu.se/profile/?id=N17-1633) <i class="fab fa-canadian-maple-leaf"></i>
+* [Cecilia Holmgren](http://katalog.uu.se/profile/?id=N5-824) <i class="fas fa-camera-retro"></i> <i class="fas fa-horse"></i>
+* [Svante Janson](http://www2.math.uu.se/~svante/papers/) <i class="fas fa-skiing-nordic"></i>
+* [Fiona Skerman](http://www2.math.uu.se/~fiosk856/) <i class="fas fa-snowboarding"></i>
+* [Johanna Strömberg](https://katalog.uu.se/profile/?id=N16-1207) <i class="fas fa-glasses"></i>
+* [Stephan Wagner](https://www.researchgate.net/profile/Stephan_Wagner) <i class="fas fa-chess-king"></i>
+* [Raazesh Sainudiin](https://lamastex.github.io/) <i class="fab fa-reddit-alien"></i>
 
-Other people whom I have worked with are
+Other mathematicians whom I have wrote paper with or did homework together include
 
-- [Luc Devroye](http://luc.devroye.org)
+- [Luc Devroye](http://luc.devroye.org) <i class="fas fa-bicycle"></i>
 - [Jose Luis Lopez Garcia](https://www.unavarra.es/pdi?uid=2369)
-- [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395)
-- [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/)
-- [Bruce Reed](https://www.cs.mcgill.ca/~breed/)
+- [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395) <i class="fas fa-theater-masks"></i>
+- [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/) <i class="far fa-laugh"></i>
+- [Bruce Reed](https://www.cs.mcgill.ca/~breed/) <i class="fas fa-beer"></i>
+- [Yelena Yuditsky](https://sites.google.com/view/yuditsky) <i class="fas fa-cookie"></i>
+- [Laura Eslava](http://sigma.iimas.unam.mx/laura/) <i class="fas fa-hand-rock"></i>
+
 
 ## Talks
 
-Here are the slides for my talks:
+Here are the slides for some of my talks:
 
--  Cutting resilient networks. 
-    [[slides]]({static}/doc/cutting-slides.pdf)
-
-
--  Inversions in split trees and conditional Galton–Watson trees. 
-    [Analysis of Algorithms 2018](http://math.uu.se/aofa2018),
-    [STAR Workshop on Random Graphs 2018](http://www.math.ru.nl/~rkang/SWRG2018/).
-    [[slides]]({static}/doc/inversion-talk.pdf)
-
--  A study of large fringe and non-fringe subtrees in conditional Galton-Watson trees. 
-    [Sweden Probabilistic Midwinter Meeting 2017](http://www.math.umu.se/english/research/discrete-mathematics/workshop),
-    [Meeting of the Catalan, Spanish, Swedish Math Societies](https://old.liu.se/mai/catspsw.math/abstracts/9-graphs-hypergraphs-and-set-systems/1.720559/9-Graphs-Hypergraphs-and-Set-Systems.pdf),
-    [RS&A 2017](http://rsa2017.amu.edu.pl/abs/Cai.pdf).
-    [[slides]]({static}/doc/fringe-subtree-slides.pdf)
-
--  The graph structure of a deterministic automaton chosen at random. 
-    [RSA 2015](http://rsa2015.amu.edu.pl/program).
-    [CanaDAM 2015](https://canadam.math.ca/2015/program/abs/si2#xsc).
-    [[slides]]({static}/doc/rand-dfs.pdf)
+-  Cutting resilient networks.  [[slides]]({static}/doc/cutting-slides.pdf)
+-  Inversions in split trees and conditional Galton–Watson trees.  [Analysis of Algorithms
+   2018](http://math.uu.se/aofa2018), [STAR Workshop on Random Graphs
+   2018](http://www.math.ru.nl/~rkang/SWRG2018/).  [[slides]]({static}/doc/inversion-talk.pdf)
+-  A study of large fringe and non-fringe subtrees in conditional Galton-Watson trees.  [Sweden
+   Probabilistic Midwinter Meeting
+   2017](http://www.math.umu.se/english/research/discrete-mathematics/workshop), [Meeting of the
+   Catalan, Spanish, Swedish Math
+   Societies](https://old.liu.se/mai/catspsw.math/abstracts/9-graphs-hypergraphs-and-set-systems/1.720559/9-Graphs-Hypergraphs-and-Set-Systems.pdf),
+   [RS&A 2017](http://rsa2017.amu.edu.pl/abs/Cai.pdf).
+   [[slides]]({static}/doc/fringe-subtree-slides.pdf)
+-  The graph structure of a deterministic automaton chosen at random.  [RSA
+   2015](http://rsa2015.amu.edu.pl/program).  [CanaDAM
+   2015](https://canadam.math.ca/2015/program/abs/si2#xsc).  [[slides]]({static}/doc/rand-dfs.pdf)
