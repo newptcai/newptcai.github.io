@@ -4,13 +4,15 @@ status: published
 page-order: 3
 ---
 
-## Courses taught before
+I like to use computer to create [teaching resources]({tag}teaching). Here are some material I
+created for courses that I taught. Feel free to use any of them in your own teaching. You can also
+contact me if you need the source code.
 
 * [Several Variable Calculus 1MA017, Autumn 2019]({filename}/math/2019-11-19-calculus.md)
 * [Combinatorics 1MA020, Spring 2019]({filename}/math/2019-03-21-combinatorics.md)
 
-## Looking for students
+If you are a bachelor or master student at Uppsala University, I am happy to supervise you. My
+previous students include
 
-If you are a master student at Uppsala University and you wish to do your thesis in probability,
-combinatorics or randomized algorithms, you can have a look of [my research](./research.html) and
-see if you would like to have me to supervise your thesis.
+* [Anton Falk](https://se.linkedin.com/in/anton-falk-40b463174) (2019)
+* [Alfred Lindström](http://www.nischmanagement.se/alfred-lindstrom) (2019)

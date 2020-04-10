@@ -1,7 +1,7 @@
 title: The Nested Radical Constant
 date: 2019-11-19
 layout: post
-tags: real-analysis, puzzle, Sagemath, CAS
+tags: CAS, experimental-math
 status: published
 
 My colleagues at Uppsala University regularly give some puzzles to everyone.  We got the following

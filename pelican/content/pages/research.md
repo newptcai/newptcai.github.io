@@ -6,7 +6,7 @@ page-order: 1
 
 ## Research Interest
 
-I am mostly interested in probabilistic combinatorics, including randomized algorithms, random
+I am interested in [probability]({tag}probability) and [combinatorics]({tag}combinatorics), including randomized algorithms, random
 graphs and random tree, in particular:
 
 - [Galton-Watson trees](http://www.combinatorics.org/ojs/index.php/eljc/article/view/v25i3p40)
@@ -15,7 +15,10 @@ graphs and random tree, in particular:
 - [Peer-to-peer computer networks](https://link.springer.com/chapter/10.1007%2F978-3-642-45030-3_66)
 - [Graph coloring](https://onlinelibrary.wiley.com/doi/full/10.1002/rsa.20695)
 
-Occasionally I also play with [special functions](https://arxiv.org/abs/1806.01122).
+I also like [programming]({tag}programming) and using computer to [experiment]({tag}experimental-math), [prove]({tag}CAS), and
+[teach]({tag}teaching) mathematics.
+
+Occasionally I play with [special functions](https://arxiv.org/abs/1806.01122).
 
 ## Publications
 

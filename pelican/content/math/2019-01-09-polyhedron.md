@@ -2,7 +2,7 @@
 title: The sum of n uniform [0,1] random variables
 date: 2019-01-09
 layout: post
-tags: real-analysis, probability, integration
+tags: probability
 status: published
 ---
 
