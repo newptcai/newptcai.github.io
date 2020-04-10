@@ -6,6 +6,10 @@ page-order: 1
 
 ## Research Interest
 
+<a style="color: black" href="https://doi.org/10/ggmxmf">
+<img src="{static}/images/research/kademlia-digraph.png" class="heading"></img>
+</a>
+
 I am interested in [probability]({tag}probability) and [combinatorics]({tag}combinatorics), including randomized algorithms, random
 graphs and random tree, in particular:
 
