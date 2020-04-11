@@ -409,3 +409,13 @@ div#contact ul li {
 main#article-content img {
     max-width: 100%;
 }
+
+.heading {
+    float: right;
+    margin: 10px 0px 15px 40px;
+    padding: 5px;
+    -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75);
+    max-width: 200px;
+}
