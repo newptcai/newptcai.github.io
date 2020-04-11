@@ -60,7 +60,7 @@ Other mathematicians whom I have wrote paper with or did homework together inclu
 - [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395) <i class="fas fa-theater-masks"></i>
 - [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/) <i class="far fa-laugh"></i>
 - [Bruce Reed](https://www.cs.mcgill.ca/~breed/) <i class="fas fa-beer"></i>
-- [Yelena Yuditsky](https://sites.google.com/view/yuditsky) <i class="fas fa-cookie"></i>
+- [Yelena Yuditsky](https://sites.google.com/view/yuditsky) <i class="fas fa-dragon"></i>
 - [Laura Eslava](http://sigma.iimas.unam.mx/laura/) <i class="fas fa-hand-rock"></i>
 
 
