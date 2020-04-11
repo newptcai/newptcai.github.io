@@ -42,7 +42,7 @@ Here are some of my other projects on <i class="fab fa-github"></i> [GitHub](htt
 ## My colleagues and friends
 
 <a style="color: black" href="{filename}../photo/friend.md">
-<img src="{static}/images/colleague/04.jpg" class="heading"></img>
+<img src="{static}/images/colleague/01.jpg" class="heading"></img>
 </a>
 
 We have a big group in probability and combinatorics here in Uppsala:
