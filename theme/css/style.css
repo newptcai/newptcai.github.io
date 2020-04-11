@@ -419,3 +419,23 @@ main#article-content img {
     box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.75);
     max-width: 200px;
 }
+
+/* For notebooks */
+main div.highlight {
+    overflow: auto;
+}
+
+div.text_cell_render.border-box-sizing {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+div.text_cell_render.border-box-sizing p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+div.prompt.input_prompt {
+    padding: 0;
+    border: 0;
+}

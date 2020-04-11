@@ -1216,16 +1216,20 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When writing a paper, especially a paper on probability theory, you may often need to prove an inequality like this
+<p>How would you prove that
 $$
 f(x) = \sinh(x) - \frac{1}{2}\left(\frac{\cosh(x)}{\cosh(x-a)}\right)^{x/a} \ge 0
 $$
 for $a = \log(2)/2$ and all $x > 0$.</p>
-<p>This one above is not difficult to prove with Mathematica.
-You can do the same thing with with pencil and paper, but it will take you a bit longer 😌.</p>
-<p>However, there is a third way. You can use <a href="https://en.wikipedia.org/wiki/Validated_numerics">interval arithmetic</a>. These are computer algorithms and softwares that compute numeric values of mathematical function with guaranteed error bounds.</p>
-<p>I repeat, the error bounds given by these method can be <strong>proved</strong> to be correct 😮! It is just the computer does it for you automatically.</p>
-<p>In this post, I will show how this can be done using <a href="https://en.wikipedia.org/wiki/Julia_(programming_language">Julia</a>), a high-efficiency programming language that looks like Python but faster. It is my current top choice for simulations.</p>
+<p>If you have Mathematica, this is not hard. You can also do the same thing with pencil and paper, but it will take you a bit longer 😌.</p>
+<p>However, there is a third way. 
+You can use <a href="https://en.wikipedia.org/wiki/Validated_numerics">interval arithmetic</a>. 
+These are computer algorithms and softwares that compute numeric values of mathematical function with <strong>guaranteed</strong> error bounds.</p>
+<p>In other words, these algorithms will not only give you an upper and lower bounds of $f(x)$,
+but also also <strong>prove</strong> these bounds are correct. 😮!</p>
+<p>In this post, I will show you how this can be done using <a href="https://en.wikipedia.org/wiki/Julia_(programming_language">Julia</a>), 
+a high-efficiency programming language that looks like Python but faster. 
+It is my current favourite choice of programming.</p>
 </div>
 </div>
 </div>
@@ -1245,45 +1249,16 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span><span class="p">;</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"IntervalArithmetic"</span><span class="p">);</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"IntervalRootFinding"</span><span class="p">);</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"IntervalOptimisation"</span><span class="p">);</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"ForwardDiff"</span><span class="p">)</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"GR"</span><span class="p">);</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre><span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -1305,7 +1280,7 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [17]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">IntervalArithmetic</span>
@@ -1318,7 +1293,7 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[17]:</div>
+<div class="prompt output_prompt">Out[2]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>[0.346573, 0.346574]</pre>
 </div>
@@ -1336,7 +1311,7 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [18]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">))</span><span class="o">^</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">a</span><span class="p">);</span>
@@ -1354,7 +1329,7 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [19]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -1365,7 +1340,7 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[19]:</div>
+<div class="prompt output_prompt">Out[4]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>[0.193128, 0.193129]</pre>
 </div>
@@ -1376,23 +1351,15 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Because we have defined $a$ to be an interval, when we compute $f(1)$, we also get an interval. (If we have defined $a$ to be of type <code>Float64</code>, we will get a <code>Float64</code> instead.)</p>
+<p>Because we have defined $a$ to be an interval, when we compute $f(1)$, we also get an interval. If we have defined $a$ to be of type <code>Float64</code>, we will get a <code>Float64</code> instead.</p>
 <p>So this computation tells you that, the true value of $f(1)$ is guranteed to be between these two numbers. We do not see the proof. But in theory we can follow what the computer does line by line and get human proof.</p>
-<p>Now the picture.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So this tells you that, the true value of $f(1)$ is guranteed to be between these two numbers. We do not see the proof. But in theory we can follow what the computer does line by line and get human proof.</p>
 <p>Now the picture.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [20]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
@@ -1405,152 +1372,152 @@ You can do the same thing with with pencil and paper, but it will take you a bit
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[20]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 <div class="output_svg output_subarea output_execute_result">
 <?xml version="1.0" encoding="utf-8"?>
 <svg height="400" viewbox="0 0 2400 1600" width="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
-<clippath id="clip8900">
+<clippath id="clip8600">
 <rect height="1600" width="2400" x="0" y="0"></rect>
 </clippath>
 </defs>
-<path clip-path="url(#clip8900)" d="
+<path clip-path="url(#clip8600)" d="
 M0 1600 L2400 1600 L2400 0 L0 0  Z
   " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
 <defs>
-<clippath id="clip8901">
+<clippath id="clip8601">
 <rect height="1600" width="1681" x="480" y="0"></rect>
 </clippath>
 </defs>
-<path clip-path="url(#clip8900)" d="
+<path clip-path="url(#clip8600)" d="
 M208.77 1487.47 L2352.76 1487.47 L2352.76 47.2441 L208.77 47.2441  Z
   " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
 <defs>
-<clippath id="clip8902">
+<clippath id="clip8602">
 <rect height="1441" width="2145" x="208" y="47"></rect>
 </clippath>
 </defs>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   365.765,1487.47 365.765,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   847.343,1487.47 847.343,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   1328.92,1487.47 1328.92,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   1810.5,1487.47 1810.5,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   2292.08,1487.47 2292.08,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   208.77,1273.31 2352.76,1273.31 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   208.77,1045.66 2352.76,1045.66 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   208.77,817.998 2352.76,817.998 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   208.77,590.34 2352.76,590.34 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   208.77,362.682 2352.76,362.682 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   208.77,135.023 2352.76,135.023 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,1487.47 2352.76,1487.47 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,1487.47 208.77,47.2441 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   365.765,1487.47 365.765,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   847.343,1487.47 847.343,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   1328.92,1487.47 1328.92,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   1810.5,1487.47 1810.5,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   2292.08,1487.47 2292.08,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,1273.31 240.93,1273.31 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,1045.66 240.93,1045.66 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,817.998 240.93,817.998 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,590.34 240.93,590.34 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,362.682 240.93,362.682 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   208.77,135.023 240.93,135.023 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 365.765, 1541.47)" x="365.765" y="1541.47">0.0</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 847.343, 1541.47)" x="847.343" y="1541.47">2.5</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1328.92, 1541.47)" x="1328.92" y="1541.47">5.0</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1810.5, 1541.47)" x="1810.5" y="1541.47">7.5</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 2292.08, 1541.47)" x="2292.08" y="1541.47">10.0</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 184.77, 1290.81)" x="184.77" y="1290.81">-1.00</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 184.77, 1063.16)" x="184.77" y="1063.16">-0.75</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 184.77, 835.498)" x="184.77" y="835.498">-0.50</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 184.77, 607.84)" x="184.77" y="607.84">-0.25</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 184.77, 380.182)" x="184.77" y="380.182">0.00</text>
 </g>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 184.77, 152.523)" x="184.77" y="152.523">0.25</text>
 </g>
-<polyline clip-path="url(#clip8902)" points="
+<polyline clip-path="url(#clip8602)" points="
   269.449,1446.71 274.387,1406.66 279.326,1367.6 284.264,1329.5 289.202,1292.33 312.032,1131.95 334.862,988.62 357.692,860.194 380.523,744.848 403.353,641.103 
   426.183,547.829 449.013,464.236 471.843,389.816 499.283,312.1 526.723,246.903 554.163,193.924 581.603,152.681 604.803,126.415 628.004,107.384 651.204,94.851 
   674.404,88.0053 724.808,88.724 775.211,104.243 821.679,125.936 868.147,150.819 967.784,204.399 1083.22,256.091 1185.81,290.038 1275.77,311.656 1373.85,328.434 
   1472.52,340.006 1581.6,348.459 1685.4,353.634 1793.32,357.07 1884.16,358.946 1995.08,360.421 2099.34,361.278 2266.37,362.033 2292.08,362.106 
   " style="stroke:#009af9; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<path clip-path="url(#clip8900)" d="
+<path clip-path="url(#clip8600)" d="
 M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
   " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   1989.93,251.724 2280.76,251.724 2280.76,130.764 1989.93,130.764 1989.93,251.724 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip8900)" points="
+<polyline clip-path="url(#clip8600)" points="
   2013.93,191.244 2157.93,191.244 
   " style="stroke:#009af9; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<g clip-path="url(#clip8900)">
+<g clip-path="url(#clip8600)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 2181.93, 208.744)" x="2181.93" y="208.744">y1</text>
 </g>
 </svg>
@@ -1562,7 +1529,7 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So I lied to you earlier. The function has a root on $(0,\infty)$. It looks like to be somewhere between $0$ and $1$. Let's see if this is true. And above this root, $f(x)$ seems to remain positve. Can we show this?</p>
+<p>So I lied to you earlier 😑️. The function has a root on $(0,\infty)$. It looks like to be somewhere between $0$ and $1$. Let's see if this is true. And above this root, $f(x)$ seems to remain positve. Can we show this?</p>
 </div>
 </div>
 </div>
@@ -1583,7 +1550,7 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [21]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">IntervalRootFinding</span>
@@ -1595,7 +1562,7 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[21]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>1-element Array{Root{Interval{Float64}},1}:
  Root([0.597845, 0.597846], :unique)</pre>
@@ -1607,8 +1574,9 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Yes! There is one root of $f(x)$ in $[0,1]$. The algorithm even tells you that it's unique.
-We get a very real <strong>proof</strong>  for this fact without break a sweat. We do not even need to know the defition of $\sinh$ and $\cosh$!</p>
+<p>Yes! 
+There is one root of $f(x)$ in $[0,1]$. The algorithm even tells you that it's unique.
+We get a <strong>true proof</strong>  for this fact without breaking a sweat 😀️.</p>
 </div>
 </div>
 </div>
@@ -1621,7 +1589,7 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [22]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">roots</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nd">@interval</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -1632,7 +1600,7 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[7]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>0-element Array{Root{Interval{Float64}},1}</pre>
 </div>
@@ -1643,13 +1611,13 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There is nothing. Let's try $[2,10]$</p>
+<p>There is nothing. Let's try $[2,4]$</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [23]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">roots</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nd">@interval</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -1660,7 +1628,7 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[23]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>0-element Array{Root{Interval{Float64}},1}</pre>
 </div>
@@ -1671,14 +1639,23 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Again, no roots. But there are two problems here. First, it gets rather slow when you try bigger numbers, say $[10,11]$. Two, if the aim is to <em>prove</em> there are no roots on $[1, \infty]$, we will be able to check all intervals.</p>
-<p>For some very simple functions, like $x$, $e^2x$, the algorithm can actually do it. But not ours</p>
+<p>Again, no roots. 
+But there are two problems here. 
+First, it gets rather slow when you try larger interval, say $[4,8]$. 
+Two, if the aim is to <em>prove</em> there are no roots on $[1, \infty]$, we will be able to do this by checking finite many intervals.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For some very simple functions, like $x$, $e^{2x}$, the algorithm can actually do it. But not our $f(x)$.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">roots</span><span class="p">(</span><span class="n">x</span> <span class="o">-></span> <span class="n">x</span><span class="p">,</span> <span class="mf">1.</span><span class="o">.</span><span class="n">∞</span><span class="p">)</span>
@@ -1689,7 +1666,7 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[24]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>0-element Array{Root{Interval{Float64}},1}</pre>
 </div>
@@ -1699,7 +1676,7 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [25]:</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">roots</span><span class="p">(</span><span class="n">x</span> <span class="o">-></span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">),</span> <span class="mf">1.</span><span class="o">.</span><span class="n">∞</span><span class="p">)</span>
@@ -1710,7 +1687,7 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[25]:</div>
+<div class="prompt output_prompt">Out[10]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>0-element Array{Root{Interval{Float64}},1}</pre>
 </div>
@@ -1721,20 +1698,22 @@ We get a very real <strong>proof</strong>  for this fact without break a sweat. 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Simplified-problem">Simplified problem<a class="anchor-link" href="#Simplified-problem">¶</a></h2><p>So here's the truth about numeric methods. You can rarely avoid doing some symbolic computation. You have to combine both approach.</p>
+<h2 id="Simplified-problem">Simplified problem<a class="anchor-link" href="#Simplified-problem">¶</a></h2><p>So here's the truth about numeric methods. 
+You can rarely avoid doing some symbolic computation.
+You should combine both the strength of numeric and symbloic.</p>
 <p>I massaged the problem a bit in Mathematica and found it is equivalent to show that
 $$
 \log (1-s)+\frac{\log \left(\frac{1}{2 e^2}\right) (\log (s+1)-\log (2 s+1))}{\log (2)} \ge 0 
 $$
-on $[0,e^{-2}]$.
-Let's not to worry how I got it. That's not the point of today.</p>
-<p>Let's define another function $g(s)$ to the left-hand-side.</p>
+on $s \in [0,e^{-2}]$.
+(Let's not to worry how I got it. That's not the point for today.)</p>
+<p>Let's define another function $g(s)$ for the left-hand-side.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [26]:</div>
+<div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">=</span>  <span class="n">log</span><span class="p">(</span><span class="o">-</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">log</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -1745,7 +1724,7 @@ Let's not to worry how I got it. That's not the point of today.</p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[26]:</div>
+<div class="prompt output_prompt">Out[11]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>g (generic function with 1 method)</pre>
 </div>
@@ -1762,10 +1741,11 @@ Let's not to worry how I got it. That's not the point of today.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [27]:</div>
+<div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-julia"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="o">-</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">box</span> <span class="o">=</span> <span class="nd">@interval</span> <span class="o">-</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">lo</span><span class="p">,</span> <span class="n">box</span><span class="o">.</span><span class="n">hi</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1773,133 +1753,133 @@ Let's not to worry how I got it. That's not the point of today.</p>
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[12]:</div>
 <div class="output_svg output_subarea output_execute_result">
 <?xml version="1.0" encoding="utf-8"?>
 <svg height="400" viewbox="0 0 2400 1600" width="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
-<clippath id="clip9300">
+<clippath id="clip9000">
 <rect height="1600" width="2400" x="0" y="0"></rect>
 </clippath>
 </defs>
-<path clip-path="url(#clip9300)" d="
+<path clip-path="url(#clip9000)" d="
 M0 1600 L2400 1600 L2400 0 L0 0  Z
   " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
 <defs>
-<clippath id="clip9301">
+<clippath id="clip9001">
 <rect height="1600" width="1681" x="480" y="0"></rect>
 </clippath>
 </defs>
-<path clip-path="url(#clip9300)" d="
+<path clip-path="url(#clip9000)" d="
 M182.008 1487.47 L2352.76 1487.47 L2352.76 47.2441 L182.008 47.2441  Z
   " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
 <defs>
-<clippath id="clip9302">
+<clippath id="clip9002">
 <rect height="1441" width="2172" x="182" y="47"></rect>
 </clippath>
 </defs>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   510.789,1487.47 510.789,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   889.085,1487.47 889.085,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   1267.38,1487.47 1267.38,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   1645.68,1487.47 1645.68,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   2023.98,1487.47 2023.98,47.2441 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   182.008,1225.74 2352.76,1225.74 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   182.008,896.986 2352.76,896.986 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   182.008,568.23 2352.76,568.23 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   182.008,239.474 2352.76,239.474 
   " style="stroke:#000000; stroke-width:1.6; stroke-opacity:0.1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   182.008,1487.47 2352.76,1487.47 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   182.008,1487.47 182.008,47.2441 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   510.789,1487.47 510.789,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   889.085,1487.47 889.085,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   1267.38,1487.47 1267.38,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   1645.68,1487.47 1645.68,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   2023.98,1487.47 2023.98,1465.87 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   182.008,1225.74 214.569,1225.74 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   182.008,896.986 214.569,896.986 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   182.008,568.23 214.569,568.23 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   182.008,239.474 214.569,239.474 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 510.789, 1541.47)" x="510.789" y="1541.47">-0.10</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 889.085, 1541.47)" x="889.085" y="1541.47">-0.05</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1267.38, 1541.47)" x="1267.38" y="1541.47">0.00</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1645.68, 1541.47)" x="1645.68" y="1541.47">0.05</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 2023.98, 1541.47)" x="2023.98" y="1541.47">0.10</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 158.008, 1243.24)" x="158.008" y="1243.24">-0.4</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 158.008, 914.486)" x="158.008" y="914.486">-0.2</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 158.008, 585.73)" x="158.008" y="585.73">0.0</text>
 </g>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 158.008, 256.974)" x="158.008" y="256.974">0.2</text>
 </g>
-<polyline clip-path="url(#clip9302)" points="
+<polyline clip-path="url(#clip9002)" points="
   243.444,1446.71 263.443,1423.91 448.365,1225.82 559.495,1117.01 653.454,1030.47 755.52,941.736 849.615,864.5 950.496,786.263 1067.38,701.157 1171.24,630.206 
   1262.33,571.403 1361.63,510.732 1461.53,453.139 1571.98,393.267 1677.07,339.819 1786.33,287.7 1878.31,246.431 1990.61,199.126 2096.17,157.613 2265.29,96.7725 
   2291.32,88.0053 
   " style="stroke:#009af9; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<path clip-path="url(#clip9300)" d="
+<path clip-path="url(#clip9000)" d="
 M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
   " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   1989.93,251.724 2280.76,251.724 2280.76,130.764 1989.93,130.764 1989.93,251.724 
   " style="stroke:#000000; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<polyline clip-path="url(#clip9300)" points="
+<polyline clip-path="url(#clip9000)" points="
   2013.93,191.244 2157.93,191.244 
   " style="stroke:#009af9; stroke-width:3.2; stroke-opacity:1; fill:none"></polyline>
-<g clip-path="url(#clip9300)">
+<g clip-path="url(#clip9000)">
 <text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 2181.93, 208.744)" x="2181.93" y="208.744">y1</text>
 </g>
 </svg>
@@ -1917,10 +1897,10 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [28]:</div>
+<div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-julia"><pre><span></span><span class="n">roots</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="o">-</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">..</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">roots</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">box</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1928,7 +1908,7 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[28]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>1-element Array{Root{Interval{Float64}},1}:
  Root([-6.00462e-09, 5.1049e-09], :unique)</pre>
@@ -1946,10 +1926,10 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [29]:</div>
+<div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-julia"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="nd">@interval</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight hl-julia"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="nd">@interval</span> <span class="n">box</span><span class="o">.</span><span class="n">hi</span>
 <span class="n">g</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">>=</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -1958,7 +1938,7 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 <div class="output_wrapper">
 <div class="output">
 <div class="output_area">
-<div class="prompt output_prompt">Out[29]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 <div class="output_text output_subarea output_execute_result">
 <pre>true</pre>
 </div>
@@ -1970,19 +1950,45 @@ M1989.93 251.724 L2280.76 251.724 L2280.76 130.764 L1989.93 130.764  Z
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So we are done!</p>
+<p>Alternatively, you can use <a href="https://github.com/JuliaDiff/ForwardDiff.jl"><code>ForwardDiff.jl</code></a> to show that the derivative of $g(s)$ is positive on the interval. Because then $g(s)$ must have only one root at $0$.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">ForwardDiff</span><span class="p">;</span>
+
+<span class="n">ForwardDiff</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">box</span><span class="p">)</span> <span class="o">></span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>true</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Final-thoughts">Final thoughts<a class="anchor-link" href="#Final-thoughts">¶</a></h2><p>Let's recap what we have learned</p>
-<ul>
+<h2 id="Final-thoughts">Final thoughts<a class="anchor-link" href="#Final-thoughts">¶</a></h2><p>Let's recap what we have learned --</p>
+<ol>
 <li>We can get guaranteed lower and upper numeric bounds for a function at fixed points, or on bounded interval.</li>
-<li>If we want to prove something on unbounded interval, we shoud simplify the problem with symbolic computation. Try to convert the problem to bounded domain.</li>
-<li>Then often the last bit of the proof can be shown with interval arithmetic easily.</li>
-</ul>
-<p>Although is it truly necessary that we went through all these troubles? Isn't a picture is enough for any reasonable person? 😁</p>
+<li>If we want to prove something on unbounded interval, we shoud simplify the problem with symbolic computation. And try to convert the problem to bounded domain.</li>
+<li>To show that a function has only one root on a bounded domain, you can either use <code>IntervalRootFinding.jl</code> directly, or use <code>ForwardDiff.jl</code> to show that the derivative is positive or negative.</li>
+</ol>
+<p>Although is it truly necessary that we went through all these troubles?
+Why cannot we believe the picture and move on with our life?
+Isn't a picture is enough for most person to fall in love on Tinder?  😁</p>
 </div>
 </div>
 </div>
