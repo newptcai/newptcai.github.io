@@ -5,9 +5,7 @@ category: photo
 status: published
 ---
 
-<center>
 <img src="{static}/images/me/14.png" style="max-width:450px"/>
-</center>
 <center>
 *At home. 2020, Uppsala, Sweden.*
 </center>
@@ -29,25 +27,30 @@ status: published
 *2016, Stockholm, Sweden.*
 </center>
 
-<center>
 ![Me]({static}/images/me/10.jpg)
-*Hiking in New York State, USA.*
-
 <center>
+*Hiking in New York State, USA.*
+</center>
+
 ![Me]({static}/images/me/09.jpg)
+<center>
 *With friends in Montreal, Canada.*
+</center>
 
 ![Me]({static}/images/me/07.jpg)
 <center>
 *Rock climbing in Quebec, Canada.*
+</center>
 
 ![Me]({static}/images/me/06.jpg)
 <center>
 *Hiking in Quebec, Canada.*
+</center>
 
 ![Me]({static}/images/me/02.jpg)
 <center>
 *When I got my master's degree at McGill University.*
+</center>
 
 ![Me]({static}/images/me/00.jpg)
 <center>
