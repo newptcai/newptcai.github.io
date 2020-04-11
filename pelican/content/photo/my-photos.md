@@ -49,12 +49,6 @@ status: published
 <center>
 *When I got my master's degree at McGill University.*
 
-</center>
-![Me]({static}/images/me/01.jpg)
-<center>
-*With [Luc](luc.devroye.org). 2011, Montreal, Canada*
-</center>
-
 ![Me]({static}/images/me/00.jpg)
 <center>
 *When I was young.*

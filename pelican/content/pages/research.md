@@ -41,6 +41,10 @@ Here are some of my other projects on <i class="fab fa-github"></i> [GitHub](htt
 
 ## My colleagues and friends
 
+<a style="color: black" href="{filename}../photo/friend.md">
+<img src="{static}/images/colleague/04.jpg" class="heading"></img>
+</a>
+
 We have a big group in probability and combinatorics here in Uppsala:
 
 * [Gabriel Berzunza Ojeda](http://www2.math.uu.se/~gabbe533/Gabo26.html) <i class="fas fa-dumbbell"></i>
@@ -53,15 +57,20 @@ We have a big group in probability and combinatorics here in Uppsala:
 * [Stephan Wagner](https://www.researchgate.net/profile/Stephan_Wagner) <i class="fas fa-chess-king"></i>
 * [Raazesh Sainudiin](https://lamastex.github.io/) <i class="fab fa-reddit-alien"></i>
 
+<a style="color: black" href="{filename}../photo/friend.md">
+<img src="{static}/images/me/01.jpg" class="heading"></img>
+</a>
+
 Other mathematicians whom I have wrote paper with or did homework together include
 
+- [Laura Eslava](http://sigma.iimas.unam.mx/laura/) <i class="fas fa-hand-rock"></i>
 - [Luc Devroye](http://luc.devroye.org) <i class="fas fa-bicycle"></i>
 - [Jose Luis Lopez Garcia](https://www.unavarra.es/pdi?uid=2369)
 - [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395) <i class="fas fa-theater-masks"></i>
 - [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/) <i class="far fa-laugh"></i>
 - [Bruce Reed](https://www.cs.mcgill.ca/~breed/) <i class="fas fa-beer"></i>
+- [Debleena Thacker](http://www2.math.uu.se/~debth221/) <i class="fas fa-rupee-sign"></i>
 - [Yelena Yuditsky](https://sites.google.com/view/yuditsky) <i class="fas fa-dragon"></i>
-- [Laura Eslava](http://sigma.iimas.unam.mx/laura/) <i class="fas fa-hand-rock"></i>
 
 
 ## Talks
