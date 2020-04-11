@@ -92,9 +92,12 @@
   <br>
   <div class="col-main w3-container">
     <main id="article-content">
-      <p><em>This post is written a s Jupyter notebook with Julia kernel</em>. You can download the
+      <p><em>This post is written a s Jupyter notebook with Julia kernel. You can download the
 <a href="https://newptcai.github.io/notebook/2019-04-01-julia-interal-arithmetic.ipynb">notebook</a> and
-try to run it yourself.</p>
+try to run it yourself.</em></p>
+<p><em>I want thank <a href="https://github.com/dpsanders">David P. Sanders</a>  <i class="fab fa-github"></i>
+and <a href="https://github.com/Kolaru">Benoît Richard</a> <i class="fab fa-github"></i> for helping me go
+through the problems I met while writing this post.</em></p>
 <hr>
 <style type="text/css">/*!
 *
@@ -1247,7 +1250,7 @@ but also also <strong>prove</strong> these bounds are correct. 😮!</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span><span class="p">;</span>
@@ -1257,67 +1260,6 @@ but also also <strong>prove</strong> these bounds are correct. 😮!</p>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"ForwardDiff"</span><span class="p">)</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"GR"</span><span class="p">);</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre><span class="ansi-green-intense-fg ansi-bold">   Updating</span> registry at `~/.julia/registries/General`
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>    </pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre><span class="ansi-green-intense-fg ansi-bold">   Updating</span> git-repo `https://github.com/JuliaRegistries/General.git`
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre></pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre><span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">  Resolving</span> package versions...
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Project.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-<span class="ansi-green-intense-fg ansi-bold">   Updating</span> `~/.julia/environments/v1.4/Manifest.toml`
-<span class="ansi-black-intense-fg"> [no changes]</span>
-</pre>
-</div>
 </div>
 </div>
 </div>
