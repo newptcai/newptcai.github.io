@@ -87,11 +87,7 @@
       <p><em>This post is converted to Markdown from <a href="https://newptcai.github.io/notebook/2020-04-12-triangle.nb">this Mathematica notebook</a> thanks to the <a href="https://github.com/kubaPod/M2MD">M2MD</a> package by
 <a href="https://github.com/kubaPod">Kuba Podkalicki</a>.</em></p>
 <hr>
-<p>I came across a paper <a href="https://arxiv.org/abs/1812.04289v1">Counting triangles in power-law uniform random
-graphs</a><em> </em>by <em>Pu Gao, Remco van der Hofstad, Angus Southwell,
-Clara Stegehuis  </em>on ArXiv today. Then I spotted two integrals, equation (2.1) and (2.2). These two
-are left as unevaluated integrals. But they don’t look too intimidating so I gave them a try and
-voilà they have closed form as below:</p>
+<p>I came across in a paper <a href="https://arxiv.org/abs/1812.04289v1">Counting triangles in power-law uniform random graphs</a><em> </em>by <em>Pu Gao, Remco van der Hofstad, Angus Southwell, Clara Stegehuis  </em>on ArXiv today. Then I spotted two integrals, equation (2.1) and (2.2). These two are left as unevaluated integrals. But they don’t look too intimidating so I gave them a try and voila they have closed form as below:</p>
 <p><img alt="1wagzewezpxds" src="https://newptcai.github.io/images/2020-04-12-triangle/1wagzewezpxds.png"></p>
 <p>for <span class="math">\(2\leq t\leq 3\)</span>.</p>
 <p>There is probably a book somewhere that has these formulas. But here I will show you how to use Mathematica to get them.</p>
@@ -103,29 +99,27 @@ voilà they have closed form as below:</p>
 </pre></div>
 
 
-<p><img alt="1lvcxr0y375di" src="https://newptcai.github.io/images/2020-04-12-triangle/1lvcxr0y375di.png"></p>
+<p><img alt="1xsifd80yq55x" src="https://newptcai.github.io/images/2020-04-12-triangle/1xsifd80yq55x.png"></p>
 <p>With the assumption</p>
 <div class="highlight"><pre><span></span><span class="n">assume</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 
 <p>we can compute this integral symbolically </p>
-<div class="highlight"><pre><span></span><span class="n">intSym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Assuming</span><span class="p">[</span><span class="n">assume</span><span class="p">,</span><span class="w"> </span><span class="n">ex</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Activate</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FullSimplify</span><span class="p">]</span><span class="w"></span>
-
-<span class="c">(*ex[1]*)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">intSym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Assuming</span><span class="p">[</span><span class="n">assume</span><span class="p">,</span><span class="w"> </span><span class="n">int</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Activate</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FullSimplify</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 
 
+<p><img alt="1kks0ws4cmmqe" src="https://newptcai.github.io/images/2020-04-12-triangle/1kks0ws4cmmqe.png"></p>
 <p>To be sure let’s do some numeric verification.</p>
-<div class="highlight"><pre><span></span><span class="n">intN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ex</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="p">{</span><span class="n">Integrate</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">NIntegrate</span><span class="p">}</span><span class="w"></span>
-
-<span class="c">(*ex[1]*)</span><span class="w"></span>
+<div class="highlight"><pre><span></span><span class="n">intN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">int</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="p">{</span><span class="n">Integrate</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">NIntegrate</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 
 
+<p><img alt="0u75bz5atgxpe" src="https://newptcai.github.io/images/2020-04-12-triangle/0u75bz5atgxpe.png"></p>
 <div class="highlight"><pre><span></span><span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">intN</span><span class="o">/</span><span class="n">intSym</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Activate</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Quiet</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">}]</span><span class="w"></span>
 
-<span class="c">(*{0, 0, 0, 0}*)</span><span class="w"></span>
+<span class="c">(*{-9.28939*10^-10, 5.05751*10^-8, 1.48692*10^-7, 0.000287941}*)</span><span class="w"></span>
 </pre></div>
 
 
@@ -143,7 +137,7 @@ voilà they have closed form as below:</p>
 </pre></div>
 
 
-<p><img alt="1isrpmk5f06g1" src="https://newptcai.github.io/images/2020-04-12-triangle/1isrpmk5f06g1.png"></p>
+<p><img alt="11biy0j76yav1" src="https://newptcai.github.io/images/2020-04-12-triangle/11biy0j76yav1.png"></p>
 <p>Mathematica cannot do this directly. But we can do a change of variable by integrating <span class="math">\(f(g(a,b,c))\)</span> with</p>
 <div class="highlight"><pre><span></span><span class="n">g</span><span class="p">[</span><span class="nv">a_</span><span class="p">,</span><span class="w"> </span><span class="nv">b_</span><span class="p">,</span><span class="w"> </span><span class="nv">c_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{(</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">*</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">c</span><span class="p">])</span><span class="o">/</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">b</span><span class="p">],</span><span class="w"> </span>
 <span class="w">     </span><span class="p">(</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">*</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">b</span><span class="p">])</span><span class="o">/</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">c</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">c</span><span class="p">])</span><span class="o">/</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">a</span><span class="p">]}</span><span class="w"></span>
@@ -155,13 +149,13 @@ voilà they have closed form as below:</p>
 </pre></div>
 
 
-<p><img alt="0zopnnmwj7eeo" src="https://newptcai.github.io/images/2020-04-12-triangle/0zopnnmwj7eeo.png"></p>
+<p><img alt="0b381hwjsspqh" src="https://newptcai.github.io/images/2020-04-12-triangle/0b381hwjsspqh.png"></p>
 <p>We can use the chain rule. First let’s get the Jacobian.</p>
 <div class="highlight"><pre><span></span><span class="n">jacob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D</span><span class="p">[</span><span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">],</span><span class="w"> </span><span class="p">{{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">}}]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Simplify</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Det</span><span class="w"></span>
 </pre></div>
 
 
-<p><img alt="0op60u4mzxejt" src="https://newptcai.github.io/images/2020-04-12-triangle/0op60u4mzxejt.png"></p>
+<p><img alt="0ynxkrwonsm8d" src="https://newptcai.github.io/images/2020-04-12-triangle/0ynxkrwonsm8d.png"></p>
 <p>So we can instead integrate.</p>
 <div class="highlight"><pre><span></span><span class="n">int2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
 <span class="w"> </span><span class="n">int2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">]</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">f</span><span class="w"> </span><span class="o">@@</span><span class="w"> </span><span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">])</span><span class="o">*</span><span class="n">jacob</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span>
@@ -169,13 +163,13 @@ voilà they have closed form as below:</p>
 </pre></div>
 
 
-<p><img alt="04ul3copum1p7" src="https://newptcai.github.io/images/2020-04-12-triangle/04ul3copum1p7.png"></p>
+<p><img alt="1juhwz0w4mruv" src="https://newptcai.github.io/images/2020-04-12-triangle/1juhwz0w4mruv.png"></p>
 <p>This Mathematica knows how to do</p>
 <div class="highlight"><pre><span></span><span class="n">int2Sym</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Assuming</span><span class="p">[</span><span class="n">assume</span><span class="p">,</span><span class="w"> </span><span class="n">int2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Activate</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FullSimplify</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 
 
-<p><img alt="1r7ga4931ftg4" src="https://newptcai.github.io/images/2020-04-12-triangle/1r7ga4931ftg4.png"></p>
+<p><img alt="1jojn10ymknx9" src="https://newptcai.github.io/images/2020-04-12-triangle/1jojn10ymknx9.png"></p>
 <p>Again let’s check numerically. This time it’s a bit bit challenging and you have to play a bit with the strategy of the integration.</p>
 <p>Before change of variable.</p>
 <div class="highlight"><pre><span></span><span class="n">int2N</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Inactive</span><span class="p">[</span><span class="n">NIntegrate</span><span class="p">][</span><span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Infinity</span><span class="p">},</span><span class="w"> </span>
@@ -183,14 +177,14 @@ voilà they have closed form as below:</p>
 </pre></div>
 
 
-<p><img alt="1d6ysd0acvxnp" src="https://newptcai.github.io/images/2020-04-12-triangle/1d6ysd0acvxnp.png"></p>
+<p><img alt="0m6oy6vafgz4w" src="https://newptcai.github.io/images/2020-04-12-triangle/0m6oy6vafgz4w.png"></p>
 <p>After change of variable.</p>
 <div class="highlight"><pre><span></span><span class="n">int2N</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Inactive</span><span class="p">[</span><span class="n">NIntegrate</span><span class="p">][</span><span class="n">f</span><span class="w"> </span><span class="o">@@</span><span class="w"> </span><span class="n">g</span><span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">jacob</span><span class="p">,</span><span class="w"> </span>
 <span class="w">      </span><span class="p">{</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Infinity</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Infinity</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Infinity</span><span class="p">}]</span><span class="w"></span>
 </pre></div>
 
 
-<p><img alt="1cvsb75b9nx34" src="https://newptcai.github.io/images/2020-04-12-triangle/1cvsb75b9nx34.png"></p>
+<p><img alt="12z7i6ur87u1w" src="https://newptcai.github.io/images/2020-04-12-triangle/12z7i6ur87u1w.png"></p>
 <p>The differences comparing to the closed form are</p>
 <div class="highlight"><pre><span></span><span class="n">Table</span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">{</span><span class="n">int2N</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">int2N</span><span class="p">[</span><span class="mi">2</span><span class="p">]}</span><span class="o">/</span><span class="n">int2Sym</span><span class="w"> </span><span class="o">/.</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Activate</span><span class="w"> </span><span class="o">//</span><span class="w"> </span>
 <span class="w">  </span><span class="n">Quiet</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">}]</span><span class="w"></span>
