@@ -2,8 +2,8 @@
 title: A walk by the sea (part 1) -- Malmö
 date: 2017-07-13
 layout: post
-category: travel
-tags: Kullen-2017
+category: mumble
+tags: travel Kullen-2017
 status: published
 ---
 

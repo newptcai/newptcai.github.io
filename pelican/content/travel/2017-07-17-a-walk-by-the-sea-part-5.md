@@ -1,8 +1,8 @@
 ---
 title: A walk by the sea (part 5) -- The end
 date: 2017-07-17
-category: travel
-tags: Kullen-2017
+category: mumble
+tags: travel Kullen-2017
 status: draft
 ---
 

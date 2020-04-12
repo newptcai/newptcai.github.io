@@ -1,8 +1,8 @@
 ---
 title: A walk by the sea (part 4) -- Kullen fry (Kullen lighthouse)
 date: 2020-04-05
-category: travel
-tags: Kullen-2017
+category: mumble
+tags: travel Kullen-2017
 status: published
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: A walk by the sea (part 3) -- Helsingborg to Höganäs
 date: 2017-07-15
-category: travel
-tags: Kullen-2017
+category: mumble
+tags: travel Kullen-2017
 status: published
 ---
 

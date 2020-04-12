@@ -1,8 +1,8 @@
 ---
 title: Football fans in Marseille
 date: 2017-10-30
-tags: France-2017
-category: travel
+tags: France-2017, travel
+category: mumble
 status: published
 ---
 
