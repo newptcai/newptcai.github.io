@@ -92,4 +92,4 @@ SOCIAL = [
 
 SHOW_FOOTER = False
 
-SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'mail')
+SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'reddit', 'mail')

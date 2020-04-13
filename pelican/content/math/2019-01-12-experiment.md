@@ -2,7 +2,7 @@
 title: The joy of experimental mathematics
 date: 2019-01-12
 layout: post
-tags: probability, CAS, experimental-math
+tags: analysis, Mathematica, CAS, experimental-math
 status: published
 ---
 

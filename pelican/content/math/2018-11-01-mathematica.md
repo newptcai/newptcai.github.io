@@ -2,7 +2,7 @@
 title: Notes about Mathematica
 date: 2018-09-25
 layout: post
-tags: CAS
+tags: Mathematica, CAS
 status: published
 ---
 
