@@ -1241,7 +1241,7 @@ but also also <strong>prove</strong> these bounds are correct. 😮!</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's install all the interval arithmetic packages that we will need.</p>
+<p>Let's install all the interval arithmetic packages that we will need if you don't already have them.</p>
 </div>
 </div>
 </div>
@@ -1255,6 +1255,7 @@ but also also <strong>prove</strong> these bounds are correct. 😮!</p>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"IntervalRootFinding"</span><span class="p">);</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"IntervalOptimisation"</span><span class="p">);</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"ForwardDiff"</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"Plots"</span><span class="p">)</span>
 <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">"GR"</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1698,7 +1699,7 @@ Two, if the aim is to <em>prove</em> there are no roots on $[1, \infty]$, we wil
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Simplified-problem">Simplified problem<a class="anchor-link" href="#Simplified-problem">¶</a></h2><p>So here's the truth about numeric methods. 
 You can rarely avoid doing some symbolic computation.
-You should combine both the strength of numeric and symbloic.</p>
+You should combine both the strength of numeric and symbolic.</p>
 <p>I massaged the problem a bit in Mathematica and found it is equivalent to show that
 $$
 \log (1-s)+\frac{\log \left(\frac{1}{2 e^2}\right) (\log (s+1)-\log (2 s+1))}{\log (2)} \ge 0 
