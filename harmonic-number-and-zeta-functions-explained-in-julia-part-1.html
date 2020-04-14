@@ -1249,7 +1249,7 @@ It allows us to use <a href="https://www.sympy.org/en/index.html"><code>SymPy</c
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Of course you will need to install Pythona and <code>SymPy</code> itself first. And to run this notebook, you also need to add the following Julia package if you have already installed them.</p>
+<p>Of course you will need to install Python and <code>SymPy</code> itself first. And to run this notebook, you also need to add the following Julia packages.</p>
 </div>
 </div>
 </div>
@@ -1294,7 +1294,7 @@ It allows us to use <a href="https://www.sympy.org/en/index.html"><code>SymPy</c
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>What we get here is a symoblic object (representing a math symbol) of type <code>Sym</code></p>
+<p>What we get here is a symbolic object (representing a math symbol) of type <code>Sym</code></p>
 </div>
 </div>
 </div>
@@ -1414,7 +1414,7 @@ It allows us to use <a href="https://www.sympy.org/en/index.html"><code>SymPy</c
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How fast can <code>SymPy</code> compute the Harmonic numbers? We can find out with <a href="https://github.com/JuliaCI/BenchmarkTools.jl">BenchmarkTools.jl</a>. 
-We load it and use the marco <code>@benchmark</code> test how faster can we compute <code>harmonic(10000)</code>. The macro runs the comuptation many times to get an average performance. 
+We load it and use the marco <code>@benchmark</code> test how faster can we compute <code>harmonic(10000)</code>. The macro runs the computation many times to get an average performance. 
 It will take a while. Make a tea 🍵️ for your self.</p>
 </div>
 </div>
@@ -1464,7 +1464,7 @@ It will take a while. Make a tea 🍵️ for your self.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As you can see, the longest time it take to compute <code>harmonic(10^4)</code> is about 270 times slower than the median time. I suspected <code>SymPy</code> does some <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> here -- After the first time <code>H_m</code> is computed, <code>SymPy</code> perhaps just remembers it. We can verify this by computing <code>harmonic(10^4-1)</code>. It is much faster because to compute <code>harmonic(10^4)</code>, <code>SymPy</code> alreadyed computed <code>harmonic(m)</code> for all $m \le 10^4$.</p>
+<p>As you can see, the longest time it take to compute <code>harmonic(10^4)</code> is about 270 times slower than the median time. I suspected <code>SymPy</code> does some <a href="https://en.wikipedia.org/wiki/Memoization">memoization</a> here -- After the first time <code>H_m</code> is computed, <code>SymPy</code> perhaps just remembers it. We can verify this by computing <code>harmonic(10^4-1)</code>. It is much faster because to compute <code>harmonic(10^4)</code>, <code>SymPy</code> already computed <code>harmonic(m)</code> for all $m \le 10^4$.</p>
 </div>
 </div>
 </div>
@@ -1509,8 +1509,8 @@ It will take a while. Make a tea 🍵️ for your self.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>But for any practical purpse, e.g., you want to buy coupons, we don't really need the exact value of harmonic number. A good approximation is enough.</p>
-<p>You probably remmber that $H_m \sim \log m$. This is to say that when $m$ is really large, the two numbers are quite close. Let's draw a picture.</p>
+<p>But for any practical purpose, e.g., you want to buy coupons, we don't really need the exact value of harmonic number. A good approximation is enough.</p>
+<p>You probably remember that $H_m \sim \log m$. This is to say that when $m$ is really large, the two numbers are quite close. Let's draw a picture.</p>
 </div>
 </div>
 </div>
@@ -3028,7 +3028,7 @@ KXXu/wAMiGmOUKJV2wAAAABJRU5ErkJggg==
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As you can see the relative error of the second approximation is quite good. So for large $m$ we can saftely use it instead of computing the exact value of harmonic numbers. This is much faster! For example, it takes ages to compute</p>
+<p>As you can see the relative error of the second approximation is quite good. So for large $m$ we can safely use it instead of computing the exact value of harmonic numbers. This is much faster! For example, it takes ages to compute</p>
 </div>
 </div>
 </div>
