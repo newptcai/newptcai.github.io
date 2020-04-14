@@ -80,6 +80,8 @@ MARKUP = ('md')
 
 PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
 
+IGNORE_FILES = [".ipynb_checkpoints"] 
+
 # Social media
 SOCIAL = [
          ('github', 'https://github.com/newptcai'), 
