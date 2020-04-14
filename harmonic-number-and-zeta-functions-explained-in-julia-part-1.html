@@ -1,0 +1,2690 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Harmonic number and Zeta functions explained in Julia (part 1) - You don't need to prove this</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/shariff.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/pygments-highlight-github.css">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://newptcai.github.io/theme/js/jqcloud.min.js"></script>
+
+     <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <meta name="author" content="Xing Shi Cai" />
+    <meta name="description" content="This is part of a series in which I explain what is Harmonic number and it's connection with Zeta functions …" /> 
+    <meta name="keywords" content="analysis, Julia, CAS"> 
+
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="You don't need to prove this">
+    <meta property="og:title" content="Harmonic number and Zeta functions explained in Julia (part 1) - You don't need to prove this" />
+    <meta property="og:description" content="This is part of a series in which I explain what is Harmonic number and it's connection with Zeta functions …" />
+    <meta property="og:image" content="https://newptcai.github.io">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://newptcai.github.io/harmonic-number-and-zeta-functions-explained-in-julia-part-1.html" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harmonic number and Zeta functions explained in Julia (part 1) - You don't need to prove this">
+    <meta name="twitter:description" content="This is part of a series in which I explain what is Harmonic number and it's connection with Zeta functions …">
+    <meta name="twitter:image" content="https://newptcai.github.io">
+</head>
+<body>
+  <div class="w3-row w3-card w3-white">
+    <header id=banner>
+       <!-- AUTHOR INITIALS-->
+      <a href="https://newptcai.github.io" id=logo title="Home">XS</a>
+      <nav id="menu">
+        <ul>
+          <li><a href="https://newptcai.github.io/pages/research.html">Research</a></li>
+          <li><a href="https://newptcai.github.io/pages/teaching.html">Teaching</a></li>
+          <li class="active"><a href="https://newptcai.github.io/category/math.html">math</a></li>
+          <li ><a href="https://newptcai.github.io/category/mumble.html">mumble</a></li>
+          <li ><a href="https://newptcai.github.io/category/photo.html">photo</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+<br>
+<article>
+  <header class="w3-container col-main">
+    <h1>Harmonic number and Zeta functions explained in Julia (part 1)</h1>
+    <div class="post-info">
+      <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+        <span>  Posted on Tue 14 April 2020 in <a href="https://newptcai.github.io/category/math.html" style="font-style: italic">math</a>
+
+        </span>
+      </div>
+      <div id="article-tags">
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/analysis.html" title="  All posts about Analysis
+">#analysis</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/julia.html" title="  All posts about Julia
+">#Julia</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/cas.html" title="  All posts about Cas
+">#CAS</a>
+        </span>
+      </div>
+    </div>
+  </header>
+  <br>
+  <div class="col-main w3-container">
+    <main id="article-content">
+      <p><em>This is part of a series in which I explain what is Harmonic number and it's connection with Zeta
+functions. The post is written as a Jupyter notebook with Julia kernel. You can download it
+<a href="https://newptcai.github.io/notebook/2020-04-14-harmonic.ipynb">here</a>.</em></p>
+<hr>
+<style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><style type="text/css">
+.prompt {
+    min-width: 8ex;
+    font-size: 13px;
+}
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you took some discrete math courses, you have probably seen this sum
+$$
+\newcommand{\Bold}[1]{\mathbf{#1}}{\sum_{i=1}^{m} \frac{1}{i}}
+$$
+Let's try to compute it with <a href="https://github.com/JuliaPy/SymPy.jl"><code>SymPy.jl</code></a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SymPy</span>
+<span class="nd">@vars</span> <span class="n">i</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">harmonic</span> <span class="o">=</span> <span class="n">summation</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
+<div class="output_latex output_subarea output_execute_result">
+\begin{equation*}\operatorname{harmonic}{\left(m \right)}\end{equation*}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is just to say, the sum is called the $m$-th <a href="https://en.wikipedia.org/wiki/Harmonic_number">harmonic number</a>, often written as $H_m$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The first ten harmonic numbers are</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">map</span><span class="p">(</span><span class="n">harmonic</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[2]:</div>
+<div class="output_latex output_subarea output_execute_result">
+\[\left[ \begin{array}{rrrrrrrrrr}1&\frac{3}{2}&\frac{11}{6}&\frac{25}{12}&\frac{137}{60}&\frac{49}{20}&\frac{363}{140}&\frac{761}{280}&\frac{7129}{2520}&\frac{7381}{2520}\end{array}\right]\]
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You probably remmber that $H_m \sim \log m$. This is to say that when $m$ is really large, the two numbers are quite close. Let's draw a picture.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Plots</span><span class="p">;</span> <span class="n">gr</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We load <code>LatexString</code> so we can use LaTeX in the plots.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">LaTeXStrings</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">xpos</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">30</span><span class="o">:</span><span class="mi">1001</span><span class="p">;</span>
+<span class="n">harmonic_values</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">harmonic</span><span class="p">,</span> <span class="n">xpos</span><span class="p">);</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">harmonic_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="s">"H_m"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=:</span><span class="n">bottomright</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">1001</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="s">"\log(m)"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[5]:</div>
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="utf-8"?>
+<svg height="400" viewbox="0 0 2400 1600" width="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<clippath id="clip1700">
+<rect height="1600" width="2400" x="0" y="0"></rect>
+</clippath>
+</defs>
+<path clip-path="url(#clip1700)" d="
+M0 1600 L2400 1600 L2400 0 L0 0  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<defs>
+<clippath id="clip1701">
+<rect height="1600" width="1681" x="480" y="0"></rect>
+</clippath>
+</defs>
+<path clip-path="url(#clip1700)" d="
+M113.754 1487.47 L2352.76 1487.47 L2352.76 47.2441 L113.754 47.2441  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<defs>
+<clippath id="clip1702">
+<rect height="1441" width="2240" x="113" y="47"></rect>
+</clippath>
+</defs>
+<polyline clip-path="url(#clip1702)" points="
+  175.01,1487.47 175.01,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  703.077,1487.47 703.077,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  1231.14,1487.47 1231.14,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  1759.21,1487.47 1759.21,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  2287.28,1487.47 2287.28,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  113.754,1446.71 2352.76,1446.71 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  113.754,1083.25 2352.76,1083.25 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  113.754,719.785 2352.76,719.785 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1702)" points="
+  113.754,356.321 2352.76,356.321 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  113.754,1487.47 2352.76,1487.47 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  113.754,1487.47 113.754,47.2441 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  175.01,1487.47 175.01,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  703.077,1487.47 703.077,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  1231.14,1487.47 1231.14,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  1759.21,1487.47 1759.21,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  2287.28,1487.47 2287.28,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  113.754,1446.71 140.622,1446.71 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  113.754,1083.25 140.622,1083.25 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  113.754,719.785 140.622,719.785 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip1700)" points="
+  113.754,356.321 140.622,356.321 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 175.01, 1541.47)" x="175.01" y="1541.47">0</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 703.077, 1541.47)" x="703.077" y="1541.47">250</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1231.14, 1541.47)" x="1231.14" y="1541.47">500</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1759.21, 1541.47)" x="1759.21" y="1541.47">750</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 2287.28, 1541.47)" x="2287.28" y="1541.47">1000</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 1464.21)" x="89.7545" y="1464.21">0</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 1100.75)" x="89.7545" y="1100.75">2</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 737.285)" x="89.7545" y="737.285">4</text>
+</g>
+<g clip-path="url(#clip1700)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 373.821)" x="89.7545" y="373.821">6</text>
+</g>
+<circle clip-path="url(#clip1702)" cx="177.122" cy="1264.98" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="240.49" cy="714.834" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="303.858" cy="593.252" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="367.226" cy="521.05" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="430.594" cy="469.516" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="493.962" cy="429.413" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="557.33" cy="396.58" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="620.698" cy="368.78" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="684.066" cy="344.674" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="747.434" cy="323.395" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="810.802" cy="304.348" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="874.17" cy="287.109" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="937.538" cy="271.365" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1000.91" cy="256.877" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1064.27" cy="243.459" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1127.64" cy="230.964" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1191.01" cy="219.273" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1254.38" cy="208.289" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1317.75" cy="197.931" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1381.11" cy="188.131" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1444.48" cy="178.834" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1507.85" cy="169.988" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1571.22" cy="161.554" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1634.59" cy="153.494" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1697.95" cy="145.776" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1761.32" cy="138.372" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1824.69" cy="131.258" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1888.06" cy="124.413" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="1951.43" cy="117.815" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="2014.79" cy="111.449" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="2078.16" cy="105.299" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="2141.53" cy="99.3496" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="2204.9" cy="93.5889" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip1702)" cx="2268.27" cy="88.0053" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<polyline clip-path="url(#clip1702)" points="
+  177.122,1446.71 179.235,1320.75 181.347,1247.06 183.459,1194.78 185.571,1154.23 187.684,1121.09 189.796,1093.08 191.908,1068.81 194.021,1047.41 196.133,1028.26 
+  198.245,1010.94 200.357,995.126 202.47,980.58 204.582,967.112 206.694,954.574 208.806,942.845 210.919,931.828 213.031,921.44 215.143,911.614 217.255,902.293 
+  219.368,893.426 221.48,884.972 223.592,876.894 225.705,869.159 227.817,861.74 229.929,854.613 232.041,847.754 234.154,841.145 236.266,834.768 238.378,828.607 
+  240.49,822.648 242.603,816.878 244.715,811.286 246.827,805.861 248.939,800.593 251.052,795.473 253.164,790.494 255.276,785.647 257.389,780.927 259.501,776.326 
+  261.613,771.838 263.725,767.459 265.838,763.183 267.95,759.005 270.062,754.921 272.174,750.926 274.287,747.018 276.399,743.192 278.511,739.445 280.623,735.773 
+  282.736,732.175 284.848,728.646 286.96,725.184 289.073,721.787 291.185,718.452 293.297,715.178 295.409,711.961 297.522,708.801 299.634,705.694 301.746,702.64 
+  303.858,699.636 305.971,696.681 308.083,693.773 310.195,690.911 312.307,688.093 314.42,685.319 316.532,682.586 318.644,679.894 320.756,677.24 322.869,674.626 
+  324.981,672.048 327.093,669.506 329.206,666.999 331.318,664.527 333.43,662.087 335.542,659.68 337.655,657.305 339.767,654.96 341.879,652.645 343.991,650.359 
+  346.104,648.101 348.216,645.871 350.328,643.668 352.44,641.492 354.553,639.341 356.665,637.216 358.777,635.115 360.89,633.038 363.002,630.984 365.114,628.954 
+  367.226,626.946 369.339,624.959 371.451,622.995 373.563,621.051 375.675,619.128 377.788,617.225 379.9,615.342 382.012,613.478 384.124,611.633 386.237,609.806 
+  388.349,607.998 390.461,606.207 392.574,604.434 394.686,602.679 396.798,600.94 398.91,599.217 401.023,597.511 403.135,595.82 405.247,594.145 407.359,592.485 
+  409.472,590.841 411.584,589.211 413.696,587.595 415.808,585.994 417.921,584.407 420.033,582.834 422.145,581.274 424.257,579.727 426.37,578.193 428.482,576.673 
+  430.594,575.164 432.707,573.669 434.819,572.185 436.931,570.714 439.043,569.254 441.156,567.806 443.268,566.369 445.38,564.944 447.492,563.53 449.605,562.126 
+  451.717,560.734 453.829,559.352 455.941,557.98 458.054,556.619 460.166,555.268 462.278,553.926 464.391,552.595 466.503,551.273 468.615,549.961 470.727,548.658 
+  472.84,547.365 474.952,546.081 477.064,544.805 479.176,543.539 481.289,542.281 483.401,541.032 485.513,539.792 487.625,538.56 489.738,537.336 491.85,536.12 
+  493.962,534.913 496.075,533.713 498.187,532.521 500.299,531.338 502.411,530.161 504.524,528.993 506.636,527.831 508.748,526.677 510.86,525.531 512.973,524.392 
+  515.085,523.259 517.197,522.134 519.309,521.016 521.422,519.904 523.534,518.799 525.646,517.701 527.759,516.61 529.871,515.525 531.983,514.446 534.095,513.374 
+  536.208,512.308 538.32,511.249 540.432,510.195 542.544,509.148 544.657,508.106 546.769,507.071 548.881,506.041 550.993,505.017 553.106,503.999 555.218,502.987 
+  557.33,501.98 559.442,500.978 561.555,499.983 563.667,498.992 565.779,498.007 567.892,497.028 570.004,496.053 572.116,495.084 574.228,494.12 576.341,493.161 
+  578.453,492.207 580.565,491.258 582.677,490.314 584.79,489.375 586.902,488.44 589.014,487.511 591.126,486.586 593.239,485.666 595.351,484.75 597.463,483.839 
+  599.576,482.933 601.688,482.031 603.8,481.133 605.912,480.24 608.025,479.352 610.137,478.467 612.249,477.587 614.361,476.711 616.474,475.84 618.586,474.972 
+  620.698,474.109 622.81,473.25 624.923,472.395 627.035,471.543 629.147,470.696 631.26,469.853 633.372,469.013 635.484,468.178 637.596,467.346 639.709,466.518 
+  641.821,465.694 643.933,464.874 646.045,464.057 648.158,463.244 650.27,462.434 652.382,461.628 654.494,460.826 656.607,460.027 658.719,459.232 660.831,458.44 
+  662.943,457.652 665.056,456.866 667.168,456.085 669.28,455.307 671.393,454.532 673.505,453.76 675.617,452.991 677.729,452.226 679.842,451.464 681.954,450.705 
+  684.066,449.95 686.178,449.197 688.291,448.448 690.403,447.702 692.515,446.958 694.627,446.218 696.74,445.481 698.852,444.747 700.964,444.015 703.077,443.287 
+  705.189,442.561 707.301,441.839 709.413,441.119 711.526,440.402 713.638,439.688 715.75,438.977 717.862,438.268 719.975,437.562 722.087,436.859 724.199,436.159 
+  726.311,435.462 728.424,434.767 730.536,434.074 732.648,433.385 734.761,432.697 736.873,432.013 738.985,431.331 741.097,430.652 743.21,429.975 745.322,429.301 
+  747.434,428.629 749.546,427.959 751.659,427.292 753.771,426.628 755.883,425.966 757.995,425.306 760.108,424.649 762.22,423.994 764.332,423.342 766.445,422.691 
+  768.557,422.043 770.669,421.398 772.781,420.755 774.894,420.114 777.006,419.475 779.118,418.838 781.23,418.204 783.343,417.572 785.455,416.942 787.567,416.314 
+  789.679,415.689 791.792,415.065 793.904,414.444 796.016,413.825 798.128,413.208 800.241,412.593 802.353,411.98 804.465,411.369 806.578,410.76 808.69,410.153 
+  810.802,409.548 812.914,408.946 815.027,408.345 817.139,407.746 819.251,407.149 821.363,406.554 823.476,405.961 825.588,405.37 827.7,404.781 829.812,404.194 
+  831.925,403.609 834.037,403.025 836.149,402.444 838.262,401.864 840.374,401.286 842.486,400.71 844.598,400.136 846.711,399.564 848.823,398.993 850.935,398.424 
+  853.047,397.857 855.16,397.292 857.272,396.729 859.384,396.167 861.496,395.607 863.609,395.048 865.721,394.492 867.833,393.937 869.946,393.384 872.058,392.832 
+  874.17,392.282 876.282,391.734 878.395,391.188 880.507,390.643 882.619,390.099 884.731,389.558 886.844,389.018 888.956,388.479 891.068,387.942 893.18,387.407 
+  895.293,386.873 897.405,386.341 899.517,385.81 901.63,385.281 903.742,384.754 905.854,384.228 907.966,383.703 910.079,383.18 912.191,382.659 914.303,382.139 
+  916.415,381.621 918.528,381.103 920.64,380.588 922.752,380.074 924.864,379.561 926.977,379.05 929.089,378.54 931.201,378.032 933.313,377.525 935.426,377.019 
+  937.538,376.515 939.65,376.013 941.763,375.511 943.875,375.011 945.987,374.513 948.099,374.016 950.212,373.52 952.324,373.025 954.436,372.532 956.548,372.04 
+  958.661,371.55 960.773,371.06 962.885,370.573 964.997,370.086 967.11,369.601 969.222,369.117 971.334,368.634 973.447,368.153 975.559,367.673 977.671,367.194 
+  979.783,366.716 981.896,366.24 984.008,365.765 986.12,365.291 988.232,364.818 990.345,364.347 992.457,363.876 994.569,363.407 996.681,362.94 998.794,362.473 
+  1000.91,362.008 1003.02,361.544 1005.13,361.081 1007.24,360.619 1009.36,360.158 1011.47,359.699 1013.58,359.24 1015.69,358.783 1017.8,358.327 1019.92,357.872 
+  1022.03,357.418 1024.14,356.966 1026.25,356.514 1028.37,356.064 1030.48,355.614 1032.59,355.166 1034.7,354.719 1036.81,354.273 1038.93,353.828 1041.04,353.385 
+  1043.15,352.942 1045.26,352.5 1047.38,352.06 1049.49,351.62 1051.6,351.182 1053.71,350.744 1055.82,350.308 1057.94,349.873 1060.05,349.439 1062.16,349.005 
+  1064.27,348.573 1066.39,348.142 1068.5,347.712 1070.61,347.283 1072.72,346.855 1074.84,346.428 1076.95,346.001 1079.06,345.576 1081.17,345.152 1083.28,344.729 
+  1085.4,344.307 1087.51,343.886 1089.62,343.466 1091.73,343.046 1093.85,342.628 1095.96,342.211 1098.07,341.794 1100.18,341.379 1102.29,340.965 1104.41,340.551 
+  1106.52,340.139 1108.63,339.727 1110.74,339.316 1112.86,338.907 1114.97,338.498 1117.08,338.09 1119.19,337.683 1121.31,337.277 1123.42,336.871 1125.53,336.467 
+  1127.64,336.064 1129.75,335.661 1131.87,335.26 1133.98,334.859 1136.09,334.459 1138.2,334.06 1140.32,333.662 1142.43,333.265 1144.54,332.868 1146.65,332.473 
+  1148.76,332.078 1150.88,331.684 1152.99,331.291 1155.1,330.899 1157.21,330.508 1159.33,330.118 1161.44,329.728 1163.55,329.339 1165.66,328.952 1167.77,328.564 
+  1169.89,328.178 1172,327.793 1174.11,327.408 1176.22,327.024 1178.34,326.641 1180.45,326.259 1182.56,325.878 1184.67,325.497 1186.79,325.117 1188.9,324.738 
+  1191.01,324.36 1193.12,323.983 1195.23,323.606 1197.35,323.23 1199.46,322.855 1201.57,322.481 1203.68,322.107 1205.8,321.734 1207.91,321.362 1210.02,320.991 
+  1212.13,320.621 1214.24,320.251 1216.36,319.882 1218.47,319.514 1220.58,319.146 1222.69,318.779 1224.81,318.413 1226.92,318.048 1229.03,317.684 1231.14,317.32 
+  1233.26,316.957 1235.37,316.594 1237.48,316.233 1239.59,315.872 1241.7,315.511 1243.82,315.152 1245.93,314.793 1248.04,314.435 1250.15,314.078 1252.27,313.721 
+  1254.38,313.365 1256.49,313.01 1258.6,312.655 1260.71,312.301 1262.83,311.948 1264.94,311.595 1267.05,311.244 1269.16,310.892 1271.28,310.542 1273.39,310.192 
+  1275.5,309.843 1277.61,309.494 1279.73,309.147 1281.84,308.799 1283.95,308.453 1286.06,308.107 1288.17,307.762 1290.29,307.417 1292.4,307.074 1294.51,306.73 
+  1296.62,306.388 1298.74,306.046 1300.85,305.705 1302.96,305.364 1305.07,305.024 1307.18,304.685 1309.3,304.346 1311.41,304.008 1313.52,303.67 1315.63,303.333 
+  1317.75,302.997 1319.86,302.662 1321.97,302.327 1324.08,301.992 1326.19,301.658 1328.31,301.325 1330.42,300.993 1332.53,300.661 1334.64,300.33 1336.76,299.999 
+  1338.87,299.669 1340.98,299.339 1343.09,299.01 1345.21,298.682 1347.32,298.354 1349.43,298.027 1351.54,297.7 1353.65,297.374 1355.77,297.049 1357.88,296.724 
+  1359.99,296.4 1362.1,296.076 1364.22,295.753 1366.33,295.431 1368.44,295.109 1370.55,294.787 1372.66,294.467 1374.78,294.146 1376.89,293.827 1379,293.508 
+  1381.11,293.189 1383.23,292.871 1385.34,292.554 1387.45,292.237 1389.56,291.92 1391.68,291.605 1393.79,291.289 1395.9,290.975 1398.01,290.661 1400.12,290.347 
+  1402.24,290.034 1404.35,289.721 1406.46,289.409 1408.57,289.098 1410.69,288.787 1412.8,288.477 1414.91,288.167 1417.02,287.858 1419.13,287.549 1421.25,287.24 
+  1423.36,286.933 1425.47,286.625 1427.58,286.319 1429.7,286.013 1431.81,285.707 1433.92,285.402 1436.03,285.097 1438.14,284.793 1440.26,284.489 1442.37,284.186 
+  1444.48,283.883 1446.59,283.581 1448.71,283.28 1450.82,282.979 1452.93,282.678 1455.04,282.378 1457.16,282.078 1459.27,281.779 1461.38,281.48 1463.49,281.182 
+  1465.6,280.884 1467.72,280.587 1469.83,280.291 1471.94,279.994 1474.05,279.699 1476.17,279.403 1478.28,279.109 1480.39,278.814 1482.5,278.52 1484.61,278.227 
+  1486.73,277.934 1488.84,277.642 1490.95,277.35 1493.06,277.058 1495.18,276.767 1497.29,276.477 1499.4,276.187 1501.51,275.897 1503.63,275.608 1505.74,275.319 
+  1507.85,275.031 1509.96,274.743 1512.07,274.456 1514.19,274.169 1516.3,273.883 1518.41,273.597 1520.52,273.311 1522.64,273.026 1524.75,272.742 1526.86,272.457 
+  1528.97,272.174 1531.08,271.89 1533.2,271.607 1535.31,271.325 1537.42,271.043 1539.53,270.762 1541.65,270.48 1543.76,270.2 1545.87,269.92 1547.98,269.64 
+  1550.1,269.36 1552.21,269.081 1554.32,268.803 1556.43,268.525 1558.54,268.247 1560.66,267.97 1562.77,267.693 1564.88,267.417 1566.99,267.141 1569.11,266.865 
+  1571.22,266.59 1573.33,266.315 1575.44,266.041 1577.55,265.767 1579.67,265.494 1581.78,265.22 1583.89,264.948 1586,264.676 1588.12,264.404 1590.23,264.132 
+  1592.34,263.861 1594.45,263.591 1596.56,263.32 1598.68,263.051 1600.79,262.781 1602.9,262.512 1605.01,262.243 1607.13,261.975 1609.24,261.707 1611.35,261.44 
+  1613.46,261.173 1615.58,260.906 1617.69,260.64 1619.8,260.374 1621.91,260.109 1624.02,259.843 1626.14,259.579 1628.25,259.314 1630.36,259.05 1632.47,258.787 
+  1634.59,258.524 1636.7,258.261 1638.81,257.998 1640.92,257.736 1643.03,257.475 1645.15,257.213 1647.26,256.952 1649.37,256.692 1651.48,256.432 1653.6,256.172 
+  1655.71,255.912 1657.82,255.653 1659.93,255.395 1662.05,255.136 1664.16,254.878 1666.27,254.621 1668.38,254.364 1670.49,254.107 1672.61,253.85 1674.72,253.594 
+  1676.83,253.338 1678.94,253.083 1681.06,252.828 1683.17,252.573 1685.28,252.319 1687.39,252.065 1689.5,251.811 1691.62,251.558 1693.73,251.305 1695.84,251.052 
+  1697.95,250.8 1700.07,250.548 1702.18,250.297 1704.29,250.046 1706.4,249.795 1708.51,249.544 1710.63,249.294 1712.74,249.044 1714.85,248.795 1716.96,248.546 
+  1719.08,248.297 1721.19,248.048 1723.3,247.8 1725.41,247.553 1727.53,247.305 1729.64,247.058 1731.75,246.811 1733.86,246.565 1735.97,246.319 1738.09,246.073 
+  1740.2,245.828 1742.31,245.583 1744.42,245.338 1746.54,245.093 1748.65,244.849 1750.76,244.606 1752.87,244.362 1754.98,244.119 1757.1,243.876 1759.21,243.634 
+  1761.32,243.392 1763.43,243.15 1765.55,242.908 1767.66,242.667 1769.77,242.426 1771.88,242.186 1774,241.945 1776.11,241.705 1778.22,241.466 1780.33,241.227 
+  1782.44,240.988 1784.56,240.749 1786.67,240.511 1788.78,240.273 1790.89,240.035 1793.01,239.798 1795.12,239.56 1797.23,239.324 1799.34,239.087 1801.45,238.851 
+  1803.57,238.615 1805.68,238.38 1807.79,238.144 1809.9,237.909 1812.02,237.675 1814.13,237.44 1816.24,237.206 1818.35,236.973 1820.46,236.739 1822.58,236.506 
+  1824.69,236.273 1826.8,236.041 1828.91,235.808 1831.03,235.576 1833.14,235.345 1835.25,235.113 1837.36,234.882 1839.48,234.652 1841.59,234.421 1843.7,234.191 
+  1845.81,233.961 1847.92,233.731 1850.04,233.502 1852.15,233.273 1854.26,233.044 1856.37,232.816 1858.49,232.588 1860.6,232.36 1862.71,232.132 1864.82,231.905 
+  1866.93,231.678 1869.05,231.451 1871.16,231.225 1873.27,230.999 1875.38,230.773 1877.5,230.547 1879.61,230.322 1881.72,230.097 1883.83,229.872 1885.95,229.647 
+  1888.06,229.423 1890.17,229.199 1892.28,228.976 1894.39,228.752 1896.51,228.529 1898.62,228.306 1900.73,228.084 1902.84,227.861 1904.96,227.639 1907.07,227.418 
+  1909.18,227.196 1911.29,226.975 1913.4,226.754 1915.52,226.533 1917.63,226.313 1919.74,226.093 1921.85,225.873 1923.97,225.653 1926.08,225.434 1928.19,225.215 
+  1930.3,224.996 1932.42,224.777 1934.53,224.559 1936.64,224.341 1938.75,224.123 1940.86,223.906 1942.98,223.688 1945.09,223.471 1947.2,223.255 1949.31,223.038 
+  1951.43,222.822 1953.54,222.606 1955.65,222.39 1957.76,222.175 1959.87,221.96 1961.99,221.745 1964.1,221.53 1966.21,221.316 1968.32,221.101 1970.44,220.888 
+  1972.55,220.674 1974.66,220.46 1976.77,220.247 1978.88,220.034 1981,219.822 1983.11,219.609 1985.22,219.397 1987.33,219.185 1989.45,218.973 1991.56,218.762 
+  1993.67,218.551 1995.78,218.34 1997.9,218.129 2000.01,217.919 2002.12,217.708 2004.23,217.498 2006.34,217.289 2008.46,217.079 2010.57,216.87 2012.68,216.661 
+  2014.79,216.452 2016.91,216.244 2019.02,216.035 2021.13,215.827 2023.24,215.62 2025.35,215.412 2027.47,215.205 2029.58,214.998 2031.69,214.791 2033.8,214.584 
+  2035.92,214.378 2038.03,214.172 2040.14,213.966 2042.25,213.76 2044.37,213.554 2046.48,213.349 2048.59,213.144 2050.7,212.939 2052.81,212.735 2054.93,212.531 
+  2057.04,212.326 2059.15,212.123 2061.26,211.919 2063.38,211.716 2065.49,211.512 2067.6,211.31 2069.71,211.107 2071.82,210.904 2073.94,210.702 2076.05,210.5 
+  2078.16,210.298 2080.27,210.097 2082.39,209.895 2084.5,209.694 2086.61,209.493 2088.72,209.292 2090.83,209.092 2092.95,208.892 2095.06,208.692 2097.17,208.492 
+  2099.28,208.292 2101.4,208.093 2103.51,207.894 2105.62,207.695 2107.73,207.496 2109.85,207.298 2111.96,207.099 2114.07,206.901 2116.18,206.703 2118.29,206.506 
+  2120.41,206.308 2122.52,206.111 2124.63,205.914 2126.74,205.717 2128.86,205.521 2130.97,205.324 2133.08,205.128 2135.19,204.932 2137.3,204.737 2139.42,204.541 
+  2141.53,204.346 2143.64,204.151 2145.75,203.956 2147.87,203.761 2149.98,203.567 2152.09,203.372 2154.2,203.178 2156.32,202.984 2158.43,202.791 2160.54,202.597 
+  2162.65,202.404 2164.76,202.211 2166.88,202.018 2168.99,201.826 2171.1,201.633 2173.21,201.441 2175.33,201.249 2177.44,201.057 2179.55,200.866 2181.66,200.674 
+  2183.77,200.483 2185.89,200.292 2188,200.101 2190.11,199.911 2192.22,199.72 2194.34,199.53 2196.45,199.34 2198.56,199.15 2200.67,198.961 2202.79,198.771 
+  2204.9,198.582 2207.01,198.393 2209.12,198.204 2211.23,198.016 2213.35,197.827 2215.46,197.639 2217.57,197.451 2219.68,197.263 2221.8,197.075 2223.91,196.888 
+  2226.02,196.701 2228.13,196.514 2230.24,196.327 2232.36,196.14 2234.47,195.954 2236.58,195.767 2238.69,195.581 2240.81,195.395 2242.92,195.21 2245.03,195.024 
+  2247.14,194.839 2249.25,194.654 2251.37,194.469 2253.48,194.284 2255.59,194.099 2257.7,193.915 2259.82,193.731 2261.93,193.547 2264.04,193.363 2266.15,193.179 
+  2268.27,192.996 2270.38,192.812 2272.49,192.629 2274.6,192.446 2276.71,192.264 2278.83,192.081 2280.94,191.899 2283.05,191.716 2285.16,191.534 2287.28,191.353 
+  2289.39,191.171 
+  " style="stroke:#e26f46; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<path clip-path="url(#clip1700)" d="
+M1907.76 1343.47 L2280.76 1343.47 L2280.76 1162.03 L1907.76 1162.03  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<polyline clip-path="url(#clip1700)" points="
+  1907.76,1343.47 2280.76,1343.47 2280.76,1162.03 1907.76,1162.03 1907.76,1343.47 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<circle clip-path="url(#clip1700)" cx="2015.76" cy="1222.51" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="21" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<g clip-path="url(#clip1700)">
+<image height="39" transform="translate(2100, 1203)" width="70" xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAEYAAAAnCAYAAACyhj57AAADz0lEQVRoge1a63GjMBBe31wBghJE
+B3JKUDoQlEA68KQEpQPiEkgHmBLAFWBKEHSw9yMnnYTBPJIc5LEz+0PMskgfu59Wjx0iwi15eXnB
+KIpMmxACAAC+75tnSikAAGjb1jxDxJ3tp2katN+Z6ifLMri/v3d8/Q/5PWbAGAMpJSiloG1byPMc
+6rp2Ok8IgSiKgBACvu8DpfTKj+d5uyRJsG1bUErB+XyGPM8dPwAAQgiglILv+0AIgbu7u3cY5gJB
+xFlaFAUCgFFCCCqlcK4fRARCiOMry7JFfj5Cf80FsigKpx1FEXieNzvUL5cLdqNujZQZktnA5Hnu
+tDnniz58Pp+dts1jW5DVgHkvPx8mc/KuqiqHEyilizmBUur4WspTm+CY9/rLTdNgXdemTSldxFMf
+KasAs/k0gh9ghuWHX97IMd+JXwBmpFIXGCHEog9+ijSCNwCzdA3zWYAZXUQC9Jfvx+MR4JUjZkma
+pk57q8BMIqIkSRyyfC99C4Fvgny74Z9lGSDibq4mSeL42Wy0wESO6QKzdBXcXThuGZjZ9Qtj7EvX
+L5NT6bvVL1r+GzCfZZrWMhuYr16/GPnhlwUc8135BWAklb4rvwDMBGYtfinLEoMgQM/zcL/f4+l0
+cpYip9MJwzDEIAhwt9uh53n48PCATdNg14+28zwPgyDAMAzxcrlcL22m8sta+y9VVSGlFIuiQMR/
+Z1H6DEoIgYwx50wqTdOrM684jpFSimmammdZlpk+VVXl9GmwQ931URzHi4BRSr0JYCEESinNO5xz
+BADknCNjDA+HQ68/DaCUEoUQg/1njCEAoBBiGjBCCGdAaZouAkb/vSUAa1DtCLNPL2/5sqO0O2hb
+NdDdGXfSX+4LtamqP6w1SZLJftI0Rc459vVrLPK0HSHkpp0Gugveb4DXGw11XZuD++6eCcDrSSHn
+HPVhe9/RbFmWmOe58VMUxdXC8fHxEeq6NjcfOOew3+97p+4wDHdhGJq2TeLdlbotNjlLKQft7H2m
+q4nFRhf+IqyVUuq0bbu+A3idr31+hnwNcUSfxnFs3rtlJ6WcRPS23WTy3aJq3rjFGXb6jqWb/pF9
+dqsPdqra5cMYT02JRvs6S9efUgon7fluQWx+uVUg2vxyy+7vnjUAuDctnp6esCiKzxMxunwYm2UO
+h8MkHhqajSilmGXZ+gOeqnogY3WQ5o2xnQANnl2fSSnNe7Pvx6whZVmaafVWejRNg7o8GLuIpP3o
+C5HPz894PB7/pezakTBFlVJICHGKvSGllCJjbHQ9ppRCIYQpH4QQzjt/AIwxJc+grQ3fAAAAAElF
+TkSuQmCC
+"/>
+</g>
+<polyline clip-path="url(#clip1700)" points="
+  1931.76,1282.99 2075.76,1282.99 
+  " style="stroke:#e26f46; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip1700)">
+<image height="47" transform="translate(2100, 1259)" width="133" xlink:href="data:image/png;base64,
+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
+A5mL6BT+gT8EAAAAAElFTkSuQmCC
+"/>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It looks like that $\log(m)$ is indeed close to $H_m$, but there seems to be a gap.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In fact, we can do much better. We know that
+$$
+H_m \sim \log m + \gamma + \frac{1}{2 m} - \sum_{k=1}^\infty \frac{B_{2 k}}{2 k m^{2 k}}
+$$
+where $\gamma$ is <a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant">Euler's constant</a> and $B_{k}$ are <a href="https://en.wikipedia.org/wiki/Bernoulli_number">Bernoulli numbers</a>. (One simple way to become immortal is to name a constant after yourself. 😅)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So if you want to be more precise, you just need to keep a few more terms in the above sum. Let's try this.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="k">function</span> <span class="n">harmonic_number_approx</span><span class="p">(</span><span class="n">m0</span><span class="p">,</span> <span class="n">k0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">log</span><span class="p">(</span><span class="n">m0</span><span class="p">)</span> <span class="o">+</span> <span class="n">sympy</span><span class="o">.</span><span class="n">EulerGamma</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m0</span><span class="p">)</span> <span class="o">-</span> <span class="n">sum</span><span class="p">([</span><span class="n">sympy</span><span class="o">.</span><span class="n">bernoulli</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="n">m</span><span class="o">^</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="kp">in</span>  <span class="mi">1</span><span class="o">:</span><span class="n">k0</span><span class="p">])</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[6]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>harmonic_number_approx (generic function with 1 method)</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we keep just one term, we get</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">h1</span> <span class="o">=</span> <span class="n">harmonic_number_approx</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">h1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[7]:</div>
+<div class="output_latex output_subarea output_execute_result">
+\begin{equation*}\log{\left(m \right)} + \gamma + \frac{1}{2 m} - \frac{1}{12 m^{2}}\end{equation*}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we keep just two terms, we get</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">h2</span> <span class="o">=</span> <span class="n">harmonic_number_approx</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">h2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+<div class="output_latex output_subarea output_execute_result">
+\begin{equation*}\log{\left(m \right)} + \gamma + \frac{1}{2 m} - \frac{1}{12 m^{2}} + \frac{1}{120 m^{4}}\end{equation*}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's see how this works.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">h1_values</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">xpos</span><span class="p">);</span>
+<span class="n">h2_values</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">h2</span><span class="p">,</span> <span class="n">xpos</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">harmonic_values</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="s">"H_m"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=:</span><span class="n">bottomright</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">1001</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="s">"\log(m)"</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">h1_values</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">1001</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">latexstring</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">h1</span><span class="p">)))</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">h2_values</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">1001</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">latexstring</span><span class="p">(</span><span class="n">sympy</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">h2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[11]:</div>
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="utf-8"?>
+<svg height="400" viewbox="0 0 2400 1600" width="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<clippath id="clip2100">
+<rect height="1600" width="2400" x="0" y="0"></rect>
+</clippath>
+</defs>
+<path clip-path="url(#clip2100)" d="
+M0 1600 L2400 1600 L2400 0 L0 0  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<defs>
+<clippath id="clip2101">
+<rect height="1600" width="1681" x="480" y="0"></rect>
+</clippath>
+</defs>
+<path clip-path="url(#clip2100)" d="
+M113.754 1487.47 L2352.76 1487.47 L2352.76 47.2441 L113.754 47.2441  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<defs>
+<clippath id="clip2102">
+<rect height="1441" width="2240" x="113" y="47"></rect>
+</clippath>
+</defs>
+<polyline clip-path="url(#clip2102)" points="
+  175.01,1487.47 175.01,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  703.077,1487.47 703.077,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  1231.14,1487.47 1231.14,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  1759.21,1487.47 1759.21,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  2287.28,1487.47 2287.28,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  113.754,1446.71 2352.76,1446.71 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  113.754,1083.25 2352.76,1083.25 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  113.754,719.785 2352.76,719.785 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  113.754,356.321 2352.76,356.321 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  113.754,1487.47 2352.76,1487.47 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  113.754,1487.47 113.754,47.2441 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  175.01,1487.47 175.01,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  703.077,1487.47 703.077,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  1231.14,1487.47 1231.14,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  1759.21,1487.47 1759.21,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  2287.28,1487.47 2287.28,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  113.754,1446.71 140.622,1446.71 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  113.754,1083.25 140.622,1083.25 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  113.754,719.785 140.622,719.785 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2100)" points="
+  113.754,356.321 140.622,356.321 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 175.01, 1541.47)" x="175.01" y="1541.47">0</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 703.077, 1541.47)" x="703.077" y="1541.47">250</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1231.14, 1541.47)" x="1231.14" y="1541.47">500</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1759.21, 1541.47)" x="1759.21" y="1541.47">750</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 2287.28, 1541.47)" x="2287.28" y="1541.47">1000</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 1464.21)" x="89.7545" y="1464.21">0</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 1100.75)" x="89.7545" y="1100.75">2</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 737.285)" x="89.7545" y="737.285">4</text>
+</g>
+<g clip-path="url(#clip2100)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:end;" transform="rotate(0, 89.7545, 373.821)" x="89.7545" y="373.821">6</text>
+</g>
+<circle clip-path="url(#clip2102)" cx="177.122" cy="1264.98" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="240.49" cy="714.834" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="303.858" cy="593.252" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="367.226" cy="521.05" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="430.594" cy="469.516" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="493.962" cy="429.413" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="557.33" cy="396.58" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="620.698" cy="368.78" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="684.066" cy="344.674" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="747.434" cy="323.395" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="810.802" cy="304.348" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="874.17" cy="287.109" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="937.538" cy="271.365" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1000.91" cy="256.877" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1064.27" cy="243.459" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1127.64" cy="230.964" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1191.01" cy="219.273" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1254.38" cy="208.289" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1317.75" cy="197.931" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1381.11" cy="188.131" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1444.48" cy="178.834" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1507.85" cy="169.988" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1571.22" cy="161.554" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1634.59" cy="153.494" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1697.95" cy="145.776" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1761.32" cy="138.372" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1824.69" cy="131.258" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1888.06" cy="124.413" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="1951.43" cy="117.815" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="2014.79" cy="111.449" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="2078.16" cy="105.299" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="2141.53" cy="99.3496" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="2204.9" cy="93.5889" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2102)" cx="2268.27" cy="88.0053" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<polyline clip-path="url(#clip2102)" points="
+  177.122,1446.71 179.235,1320.75 181.347,1247.06 183.459,1194.78 185.571,1154.23 187.684,1121.09 189.796,1093.08 191.908,1068.81 194.021,1047.41 196.133,1028.26 
+  198.245,1010.94 200.357,995.126 202.47,980.58 204.582,967.112 206.694,954.574 208.806,942.845 210.919,931.828 213.031,921.44 215.143,911.614 217.255,902.293 
+  219.368,893.426 221.48,884.972 223.592,876.894 225.705,869.159 227.817,861.74 229.929,854.613 232.041,847.754 234.154,841.145 236.266,834.768 238.378,828.607 
+  240.49,822.648 242.603,816.878 244.715,811.286 246.827,805.861 248.939,800.593 251.052,795.473 253.164,790.494 255.276,785.647 257.389,780.927 259.501,776.326 
+  261.613,771.838 263.725,767.459 265.838,763.183 267.95,759.005 270.062,754.921 272.174,750.926 274.287,747.018 276.399,743.192 278.511,739.445 280.623,735.773 
+  282.736,732.175 284.848,728.646 286.96,725.184 289.073,721.787 291.185,718.452 293.297,715.178 295.409,711.961 297.522,708.801 299.634,705.694 301.746,702.64 
+  303.858,699.636 305.971,696.681 308.083,693.773 310.195,690.911 312.307,688.093 314.42,685.319 316.532,682.586 318.644,679.894 320.756,677.24 322.869,674.626 
+  324.981,672.048 327.093,669.506 329.206,666.999 331.318,664.527 333.43,662.087 335.542,659.68 337.655,657.305 339.767,654.96 341.879,652.645 343.991,650.359 
+  346.104,648.101 348.216,645.871 350.328,643.668 352.44,641.492 354.553,639.341 356.665,637.216 358.777,635.115 360.89,633.038 363.002,630.984 365.114,628.954 
+  367.226,626.946 369.339,624.959 371.451,622.995 373.563,621.051 375.675,619.128 377.788,617.225 379.9,615.342 382.012,613.478 384.124,611.633 386.237,609.806 
+  388.349,607.998 390.461,606.207 392.574,604.434 394.686,602.679 396.798,600.94 398.91,599.217 401.023,597.511 403.135,595.82 405.247,594.145 407.359,592.485 
+  409.472,590.841 411.584,589.211 413.696,587.595 415.808,585.994 417.921,584.407 420.033,582.834 422.145,581.274 424.257,579.727 426.37,578.193 428.482,576.673 
+  430.594,575.164 432.707,573.669 434.819,572.185 436.931,570.714 439.043,569.254 441.156,567.806 443.268,566.369 445.38,564.944 447.492,563.53 449.605,562.126 
+  451.717,560.734 453.829,559.352 455.941,557.98 458.054,556.619 460.166,555.268 462.278,553.926 464.391,552.595 466.503,551.273 468.615,549.961 470.727,548.658 
+  472.84,547.365 474.952,546.081 477.064,544.805 479.176,543.539 481.289,542.281 483.401,541.032 485.513,539.792 487.625,538.56 489.738,537.336 491.85,536.12 
+  493.962,534.913 496.075,533.713 498.187,532.521 500.299,531.338 502.411,530.161 504.524,528.993 506.636,527.831 508.748,526.677 510.86,525.531 512.973,524.392 
+  515.085,523.259 517.197,522.134 519.309,521.016 521.422,519.904 523.534,518.799 525.646,517.701 527.759,516.61 529.871,515.525 531.983,514.446 534.095,513.374 
+  536.208,512.308 538.32,511.249 540.432,510.195 542.544,509.148 544.657,508.106 546.769,507.071 548.881,506.041 550.993,505.017 553.106,503.999 555.218,502.987 
+  557.33,501.98 559.442,500.978 561.555,499.983 563.667,498.992 565.779,498.007 567.892,497.028 570.004,496.053 572.116,495.084 574.228,494.12 576.341,493.161 
+  578.453,492.207 580.565,491.258 582.677,490.314 584.79,489.375 586.902,488.44 589.014,487.511 591.126,486.586 593.239,485.666 595.351,484.75 597.463,483.839 
+  599.576,482.933 601.688,482.031 603.8,481.133 605.912,480.24 608.025,479.352 610.137,478.467 612.249,477.587 614.361,476.711 616.474,475.84 618.586,474.972 
+  620.698,474.109 622.81,473.25 624.923,472.395 627.035,471.543 629.147,470.696 631.26,469.853 633.372,469.013 635.484,468.178 637.596,467.346 639.709,466.518 
+  641.821,465.694 643.933,464.874 646.045,464.057 648.158,463.244 650.27,462.434 652.382,461.628 654.494,460.826 656.607,460.027 658.719,459.232 660.831,458.44 
+  662.943,457.652 665.056,456.866 667.168,456.085 669.28,455.307 671.393,454.532 673.505,453.76 675.617,452.991 677.729,452.226 679.842,451.464 681.954,450.705 
+  684.066,449.95 686.178,449.197 688.291,448.448 690.403,447.702 692.515,446.958 694.627,446.218 696.74,445.481 698.852,444.747 700.964,444.015 703.077,443.287 
+  705.189,442.561 707.301,441.839 709.413,441.119 711.526,440.402 713.638,439.688 715.75,438.977 717.862,438.268 719.975,437.562 722.087,436.859 724.199,436.159 
+  726.311,435.462 728.424,434.767 730.536,434.074 732.648,433.385 734.761,432.697 736.873,432.013 738.985,431.331 741.097,430.652 743.21,429.975 745.322,429.301 
+  747.434,428.629 749.546,427.959 751.659,427.292 753.771,426.628 755.883,425.966 757.995,425.306 760.108,424.649 762.22,423.994 764.332,423.342 766.445,422.691 
+  768.557,422.043 770.669,421.398 772.781,420.755 774.894,420.114 777.006,419.475 779.118,418.838 781.23,418.204 783.343,417.572 785.455,416.942 787.567,416.314 
+  789.679,415.689 791.792,415.065 793.904,414.444 796.016,413.825 798.128,413.208 800.241,412.593 802.353,411.98 804.465,411.369 806.578,410.76 808.69,410.153 
+  810.802,409.548 812.914,408.946 815.027,408.345 817.139,407.746 819.251,407.149 821.363,406.554 823.476,405.961 825.588,405.37 827.7,404.781 829.812,404.194 
+  831.925,403.609 834.037,403.025 836.149,402.444 838.262,401.864 840.374,401.286 842.486,400.71 844.598,400.136 846.711,399.564 848.823,398.993 850.935,398.424 
+  853.047,397.857 855.16,397.292 857.272,396.729 859.384,396.167 861.496,395.607 863.609,395.048 865.721,394.492 867.833,393.937 869.946,393.384 872.058,392.832 
+  874.17,392.282 876.282,391.734 878.395,391.188 880.507,390.643 882.619,390.099 884.731,389.558 886.844,389.018 888.956,388.479 891.068,387.942 893.18,387.407 
+  895.293,386.873 897.405,386.341 899.517,385.81 901.63,385.281 903.742,384.754 905.854,384.228 907.966,383.703 910.079,383.18 912.191,382.659 914.303,382.139 
+  916.415,381.621 918.528,381.103 920.64,380.588 922.752,380.074 924.864,379.561 926.977,379.05 929.089,378.54 931.201,378.032 933.313,377.525 935.426,377.019 
+  937.538,376.515 939.65,376.013 941.763,375.511 943.875,375.011 945.987,374.513 948.099,374.016 950.212,373.52 952.324,373.025 954.436,372.532 956.548,372.04 
+  958.661,371.55 960.773,371.06 962.885,370.573 964.997,370.086 967.11,369.601 969.222,369.117 971.334,368.634 973.447,368.153 975.559,367.673 977.671,367.194 
+  979.783,366.716 981.896,366.24 984.008,365.765 986.12,365.291 988.232,364.818 990.345,364.347 992.457,363.876 994.569,363.407 996.681,362.94 998.794,362.473 
+  1000.91,362.008 1003.02,361.544 1005.13,361.081 1007.24,360.619 1009.36,360.158 1011.47,359.699 1013.58,359.24 1015.69,358.783 1017.8,358.327 1019.92,357.872 
+  1022.03,357.418 1024.14,356.966 1026.25,356.514 1028.37,356.064 1030.48,355.614 1032.59,355.166 1034.7,354.719 1036.81,354.273 1038.93,353.828 1041.04,353.385 
+  1043.15,352.942 1045.26,352.5 1047.38,352.06 1049.49,351.62 1051.6,351.182 1053.71,350.744 1055.82,350.308 1057.94,349.873 1060.05,349.439 1062.16,349.005 
+  1064.27,348.573 1066.39,348.142 1068.5,347.712 1070.61,347.283 1072.72,346.855 1074.84,346.428 1076.95,346.001 1079.06,345.576 1081.17,345.152 1083.28,344.729 
+  1085.4,344.307 1087.51,343.886 1089.62,343.466 1091.73,343.046 1093.85,342.628 1095.96,342.211 1098.07,341.794 1100.18,341.379 1102.29,340.965 1104.41,340.551 
+  1106.52,340.139 1108.63,339.727 1110.74,339.316 1112.86,338.907 1114.97,338.498 1117.08,338.09 1119.19,337.683 1121.31,337.277 1123.42,336.871 1125.53,336.467 
+  1127.64,336.064 1129.75,335.661 1131.87,335.26 1133.98,334.859 1136.09,334.459 1138.2,334.06 1140.32,333.662 1142.43,333.265 1144.54,332.868 1146.65,332.473 
+  1148.76,332.078 1150.88,331.684 1152.99,331.291 1155.1,330.899 1157.21,330.508 1159.33,330.118 1161.44,329.728 1163.55,329.339 1165.66,328.952 1167.77,328.564 
+  1169.89,328.178 1172,327.793 1174.11,327.408 1176.22,327.024 1178.34,326.641 1180.45,326.259 1182.56,325.878 1184.67,325.497 1186.79,325.117 1188.9,324.738 
+  1191.01,324.36 1193.12,323.983 1195.23,323.606 1197.35,323.23 1199.46,322.855 1201.57,322.481 1203.68,322.107 1205.8,321.734 1207.91,321.362 1210.02,320.991 
+  1212.13,320.621 1214.24,320.251 1216.36,319.882 1218.47,319.514 1220.58,319.146 1222.69,318.779 1224.81,318.413 1226.92,318.048 1229.03,317.684 1231.14,317.32 
+  1233.26,316.957 1235.37,316.594 1237.48,316.233 1239.59,315.872 1241.7,315.511 1243.82,315.152 1245.93,314.793 1248.04,314.435 1250.15,314.078 1252.27,313.721 
+  1254.38,313.365 1256.49,313.01 1258.6,312.655 1260.71,312.301 1262.83,311.948 1264.94,311.595 1267.05,311.244 1269.16,310.892 1271.28,310.542 1273.39,310.192 
+  1275.5,309.843 1277.61,309.494 1279.73,309.147 1281.84,308.799 1283.95,308.453 1286.06,308.107 1288.17,307.762 1290.29,307.417 1292.4,307.074 1294.51,306.73 
+  1296.62,306.388 1298.74,306.046 1300.85,305.705 1302.96,305.364 1305.07,305.024 1307.18,304.685 1309.3,304.346 1311.41,304.008 1313.52,303.67 1315.63,303.333 
+  1317.75,302.997 1319.86,302.662 1321.97,302.327 1324.08,301.992 1326.19,301.658 1328.31,301.325 1330.42,300.993 1332.53,300.661 1334.64,300.33 1336.76,299.999 
+  1338.87,299.669 1340.98,299.339 1343.09,299.01 1345.21,298.682 1347.32,298.354 1349.43,298.027 1351.54,297.7 1353.65,297.374 1355.77,297.049 1357.88,296.724 
+  1359.99,296.4 1362.1,296.076 1364.22,295.753 1366.33,295.431 1368.44,295.109 1370.55,294.787 1372.66,294.467 1374.78,294.146 1376.89,293.827 1379,293.508 
+  1381.11,293.189 1383.23,292.871 1385.34,292.554 1387.45,292.237 1389.56,291.92 1391.68,291.605 1393.79,291.289 1395.9,290.975 1398.01,290.661 1400.12,290.347 
+  1402.24,290.034 1404.35,289.721 1406.46,289.409 1408.57,289.098 1410.69,288.787 1412.8,288.477 1414.91,288.167 1417.02,287.858 1419.13,287.549 1421.25,287.24 
+  1423.36,286.933 1425.47,286.625 1427.58,286.319 1429.7,286.013 1431.81,285.707 1433.92,285.402 1436.03,285.097 1438.14,284.793 1440.26,284.489 1442.37,284.186 
+  1444.48,283.883 1446.59,283.581 1448.71,283.28 1450.82,282.979 1452.93,282.678 1455.04,282.378 1457.16,282.078 1459.27,281.779 1461.38,281.48 1463.49,281.182 
+  1465.6,280.884 1467.72,280.587 1469.83,280.291 1471.94,279.994 1474.05,279.699 1476.17,279.403 1478.28,279.109 1480.39,278.814 1482.5,278.52 1484.61,278.227 
+  1486.73,277.934 1488.84,277.642 1490.95,277.35 1493.06,277.058 1495.18,276.767 1497.29,276.477 1499.4,276.187 1501.51,275.897 1503.63,275.608 1505.74,275.319 
+  1507.85,275.031 1509.96,274.743 1512.07,274.456 1514.19,274.169 1516.3,273.883 1518.41,273.597 1520.52,273.311 1522.64,273.026 1524.75,272.742 1526.86,272.457 
+  1528.97,272.174 1531.08,271.89 1533.2,271.607 1535.31,271.325 1537.42,271.043 1539.53,270.762 1541.65,270.48 1543.76,270.2 1545.87,269.92 1547.98,269.64 
+  1550.1,269.36 1552.21,269.081 1554.32,268.803 1556.43,268.525 1558.54,268.247 1560.66,267.97 1562.77,267.693 1564.88,267.417 1566.99,267.141 1569.11,266.865 
+  1571.22,266.59 1573.33,266.315 1575.44,266.041 1577.55,265.767 1579.67,265.494 1581.78,265.22 1583.89,264.948 1586,264.676 1588.12,264.404 1590.23,264.132 
+  1592.34,263.861 1594.45,263.591 1596.56,263.32 1598.68,263.051 1600.79,262.781 1602.9,262.512 1605.01,262.243 1607.13,261.975 1609.24,261.707 1611.35,261.44 
+  1613.46,261.173 1615.58,260.906 1617.69,260.64 1619.8,260.374 1621.91,260.109 1624.02,259.843 1626.14,259.579 1628.25,259.314 1630.36,259.05 1632.47,258.787 
+  1634.59,258.524 1636.7,258.261 1638.81,257.998 1640.92,257.736 1643.03,257.475 1645.15,257.213 1647.26,256.952 1649.37,256.692 1651.48,256.432 1653.6,256.172 
+  1655.71,255.912 1657.82,255.653 1659.93,255.395 1662.05,255.136 1664.16,254.878 1666.27,254.621 1668.38,254.364 1670.49,254.107 1672.61,253.85 1674.72,253.594 
+  1676.83,253.338 1678.94,253.083 1681.06,252.828 1683.17,252.573 1685.28,252.319 1687.39,252.065 1689.5,251.811 1691.62,251.558 1693.73,251.305 1695.84,251.052 
+  1697.95,250.8 1700.07,250.548 1702.18,250.297 1704.29,250.046 1706.4,249.795 1708.51,249.544 1710.63,249.294 1712.74,249.044 1714.85,248.795 1716.96,248.546 
+  1719.08,248.297 1721.19,248.048 1723.3,247.8 1725.41,247.553 1727.53,247.305 1729.64,247.058 1731.75,246.811 1733.86,246.565 1735.97,246.319 1738.09,246.073 
+  1740.2,245.828 1742.31,245.583 1744.42,245.338 1746.54,245.093 1748.65,244.849 1750.76,244.606 1752.87,244.362 1754.98,244.119 1757.1,243.876 1759.21,243.634 
+  1761.32,243.392 1763.43,243.15 1765.55,242.908 1767.66,242.667 1769.77,242.426 1771.88,242.186 1774,241.945 1776.11,241.705 1778.22,241.466 1780.33,241.227 
+  1782.44,240.988 1784.56,240.749 1786.67,240.511 1788.78,240.273 1790.89,240.035 1793.01,239.798 1795.12,239.56 1797.23,239.324 1799.34,239.087 1801.45,238.851 
+  1803.57,238.615 1805.68,238.38 1807.79,238.144 1809.9,237.909 1812.02,237.675 1814.13,237.44 1816.24,237.206 1818.35,236.973 1820.46,236.739 1822.58,236.506 
+  1824.69,236.273 1826.8,236.041 1828.91,235.808 1831.03,235.576 1833.14,235.345 1835.25,235.113 1837.36,234.882 1839.48,234.652 1841.59,234.421 1843.7,234.191 
+  1845.81,233.961 1847.92,233.731 1850.04,233.502 1852.15,233.273 1854.26,233.044 1856.37,232.816 1858.49,232.588 1860.6,232.36 1862.71,232.132 1864.82,231.905 
+  1866.93,231.678 1869.05,231.451 1871.16,231.225 1873.27,230.999 1875.38,230.773 1877.5,230.547 1879.61,230.322 1881.72,230.097 1883.83,229.872 1885.95,229.647 
+  1888.06,229.423 1890.17,229.199 1892.28,228.976 1894.39,228.752 1896.51,228.529 1898.62,228.306 1900.73,228.084 1902.84,227.861 1904.96,227.639 1907.07,227.418 
+  1909.18,227.196 1911.29,226.975 1913.4,226.754 1915.52,226.533 1917.63,226.313 1919.74,226.093 1921.85,225.873 1923.97,225.653 1926.08,225.434 1928.19,225.215 
+  1930.3,224.996 1932.42,224.777 1934.53,224.559 1936.64,224.341 1938.75,224.123 1940.86,223.906 1942.98,223.688 1945.09,223.471 1947.2,223.255 1949.31,223.038 
+  1951.43,222.822 1953.54,222.606 1955.65,222.39 1957.76,222.175 1959.87,221.96 1961.99,221.745 1964.1,221.53 1966.21,221.316 1968.32,221.101 1970.44,220.888 
+  1972.55,220.674 1974.66,220.46 1976.77,220.247 1978.88,220.034 1981,219.822 1983.11,219.609 1985.22,219.397 1987.33,219.185 1989.45,218.973 1991.56,218.762 
+  1993.67,218.551 1995.78,218.34 1997.9,218.129 2000.01,217.919 2002.12,217.708 2004.23,217.498 2006.34,217.289 2008.46,217.079 2010.57,216.87 2012.68,216.661 
+  2014.79,216.452 2016.91,216.244 2019.02,216.035 2021.13,215.827 2023.24,215.62 2025.35,215.412 2027.47,215.205 2029.58,214.998 2031.69,214.791 2033.8,214.584 
+  2035.92,214.378 2038.03,214.172 2040.14,213.966 2042.25,213.76 2044.37,213.554 2046.48,213.349 2048.59,213.144 2050.7,212.939 2052.81,212.735 2054.93,212.531 
+  2057.04,212.326 2059.15,212.123 2061.26,211.919 2063.38,211.716 2065.49,211.512 2067.6,211.31 2069.71,211.107 2071.82,210.904 2073.94,210.702 2076.05,210.5 
+  2078.16,210.298 2080.27,210.097 2082.39,209.895 2084.5,209.694 2086.61,209.493 2088.72,209.292 2090.83,209.092 2092.95,208.892 2095.06,208.692 2097.17,208.492 
+  2099.28,208.292 2101.4,208.093 2103.51,207.894 2105.62,207.695 2107.73,207.496 2109.85,207.298 2111.96,207.099 2114.07,206.901 2116.18,206.703 2118.29,206.506 
+  2120.41,206.308 2122.52,206.111 2124.63,205.914 2126.74,205.717 2128.86,205.521 2130.97,205.324 2133.08,205.128 2135.19,204.932 2137.3,204.737 2139.42,204.541 
+  2141.53,204.346 2143.64,204.151 2145.75,203.956 2147.87,203.761 2149.98,203.567 2152.09,203.372 2154.2,203.178 2156.32,202.984 2158.43,202.791 2160.54,202.597 
+  2162.65,202.404 2164.76,202.211 2166.88,202.018 2168.99,201.826 2171.1,201.633 2173.21,201.441 2175.33,201.249 2177.44,201.057 2179.55,200.866 2181.66,200.674 
+  2183.77,200.483 2185.89,200.292 2188,200.101 2190.11,199.911 2192.22,199.72 2194.34,199.53 2196.45,199.34 2198.56,199.15 2200.67,198.961 2202.79,198.771 
+  2204.9,198.582 2207.01,198.393 2209.12,198.204 2211.23,198.016 2213.35,197.827 2215.46,197.639 2217.57,197.451 2219.68,197.263 2221.8,197.075 2223.91,196.888 
+  2226.02,196.701 2228.13,196.514 2230.24,196.327 2232.36,196.14 2234.47,195.954 2236.58,195.767 2238.69,195.581 2240.81,195.395 2242.92,195.21 2245.03,195.024 
+  2247.14,194.839 2249.25,194.654 2251.37,194.469 2253.48,194.284 2255.59,194.099 2257.7,193.915 2259.82,193.731 2261.93,193.547 2264.04,193.363 2266.15,193.179 
+  2268.27,192.996 2270.38,192.812 2272.49,192.629 2274.6,192.446 2276.71,192.264 2278.83,192.081 2280.94,191.899 2283.05,191.716 2285.16,191.534 2287.28,191.353 
+  2289.39,191.171 
+  " style="stroke:#e26f46; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  177.122,1266.09 240.49,714.834 303.858,593.252 367.226,521.05 430.594,469.516 493.962,429.413 557.33,396.58 620.698,368.78 684.066,344.674 747.434,323.395 
+  810.802,304.348 874.17,287.109 937.538,271.365 1000.91,256.877 1064.27,243.459 1127.64,230.964 1191.01,219.273 1254.38,208.289 1317.75,197.931 1381.11,188.131 
+  1444.48,178.834 1507.85,169.988 1571.22,161.554 1634.59,153.494 1697.95,145.776 1761.32,138.372 1824.69,131.258 1888.06,124.413 1951.43,117.815 2014.79,111.449 
+  2078.16,105.299 2141.53,99.3496 2204.9,93.5889 2268.27,88.0053 
+  " style="stroke:#3da44d; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2102)" points="
+  177.122,1264.58 240.49,714.834 303.858,593.252 367.226,521.05 430.594,469.516 493.962,429.413 557.33,396.58 620.698,368.78 684.066,344.674 747.434,323.395 
+  810.802,304.348 874.17,287.109 937.538,271.365 1000.91,256.877 1064.27,243.459 1127.64,230.964 1191.01,219.273 1254.38,208.289 1317.75,197.931 1381.11,188.131 
+  1444.48,178.834 1507.85,169.988 1571.22,161.554 1634.59,153.494 1697.95,145.776 1761.32,138.372 1824.69,131.258 1888.06,124.413 1951.43,117.815 2014.79,111.449 
+  2078.16,105.299 2141.53,99.3496 2204.9,93.5889 2268.27,88.0053 
+  " style="stroke:#c271d2; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<path clip-path="url(#clip2100)" d="
+M1302.76 1343.47 L2280.76 1343.47 L2280.76 1041.07 L1302.76 1041.07  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<polyline clip-path="url(#clip2100)" points="
+  1302.76,1343.47 2280.76,1343.47 2280.76,1041.07 1302.76,1041.07 1302.76,1343.47 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<circle clip-path="url(#clip2100)" cx="1410.76" cy="1101.55" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="21" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<g clip-path="url(#clip2100)">
+<image height="39" transform="translate(1495, 1082)" width="70" xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAEYAAAAnCAYAAACyhj57AAADz0lEQVRoge1a63GjMBBe31wBghJE
+B3JKUDoQlEA68KQEpQPiEkgHmBLAFWBKEHSw9yMnnYTBPJIc5LEz+0PMskgfu59Wjx0iwi15eXnB
+KIpMmxACAAC+75tnSikAAGjb1jxDxJ3tp2katN+Z6ifLMri/v3d8/Q/5PWbAGAMpJSiloG1byPMc
+6rp2Ok8IgSiKgBACvu8DpfTKj+d5uyRJsG1bUErB+XyGPM8dPwAAQgiglILv+0AIgbu7u3cY5gJB
+xFlaFAUCgFFCCCqlcK4fRARCiOMry7JFfj5Cf80FsigKpx1FEXieNzvUL5cLdqNujZQZktnA5Hnu
+tDnniz58Pp+dts1jW5DVgHkvPx8mc/KuqiqHEyilizmBUur4WspTm+CY9/rLTdNgXdemTSldxFMf
+KasAs/k0gh9ghuWHX97IMd+JXwBmpFIXGCHEog9+ijSCNwCzdA3zWYAZXUQC9Jfvx+MR4JUjZkma
+pk57q8BMIqIkSRyyfC99C4Fvgny74Z9lGSDibq4mSeL42Wy0wESO6QKzdBXcXThuGZjZ9Qtj7EvX
+L5NT6bvVL1r+GzCfZZrWMhuYr16/GPnhlwUc8135BWAklb4rvwDMBGYtfinLEoMgQM/zcL/f4+l0
+cpYip9MJwzDEIAhwt9uh53n48PCATdNg14+28zwPgyDAMAzxcrlcL22m8sta+y9VVSGlFIuiQMR/
+Z1H6DEoIgYwx50wqTdOrM684jpFSimmammdZlpk+VVXl9GmwQ931URzHi4BRSr0JYCEESinNO5xz
+BADknCNjDA+HQ68/DaCUEoUQg/1njCEAoBBiGjBCCGdAaZouAkb/vSUAa1DtCLNPL2/5sqO0O2hb
+NdDdGXfSX+4LtamqP6w1SZLJftI0Rc459vVrLPK0HSHkpp0Gugveb4DXGw11XZuD++6eCcDrSSHn
+HPVhe9/RbFmWmOe58VMUxdXC8fHxEeq6NjcfOOew3+97p+4wDHdhGJq2TeLdlbotNjlLKQft7H2m
+q4nFRhf+IqyVUuq0bbu+A3idr31+hnwNcUSfxnFs3rtlJ6WcRPS23WTy3aJq3rjFGXb6jqWb/pF9
+dqsPdqra5cMYT02JRvs6S9efUgon7fluQWx+uVUg2vxyy+7vnjUAuDctnp6esCiKzxMxunwYm2UO
+h8MkHhqajSilmGXZ+gOeqnogY3WQ5o2xnQANnl2fSSnNe7Pvx6whZVmaafVWejRNg7o8GLuIpP3o
+C5HPz894PB7/pezakTBFlVJICHGKvSGllCJjbHQ9ppRCIYQpH4QQzjt/AIwxJc+grQ3fAAAAAElF
+TkSuQmCC
+"/>
+</g>
+<polyline clip-path="url(#clip2100)" points="
+  1326.76,1162.03 1470.76,1162.03 
+  " style="stroke:#e26f46; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip2100)">
+<image height="47" transform="translate(1495, 1139)" width="133" xlink:href="data:image/png;base64,
+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
+A5mL6BT+gT8EAAAAAElFTkSuQmCC
+"/>
+</g>
+<polyline clip-path="url(#clip2100)" points="
+  1326.76,1222.51 1470.76,1222.51 
+  " style="stroke:#3da44d; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip2100)">
+<image height="96" transform="translate(1495, 1175)" width="536" xlink:href="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAhgAAABgCAYAAABfaguVAAAVB0lEQVR4nO2d7ZWyutfGN/91CoiW
+gB2gJeBdAVoCngrUEnAqQEvAqQAtAa0ALAHoYD8f7hOeiKi8zaB4/da61nIcgiHGZGdnJ9GYmQAA
+ABAlScKmaZKu67Tf77Wu8wP6Td/r2/+6zgAAALwC+/2edV2n8/lMl8ul6+yAnvMJ9e2frjMAAABd
+EEURXy4X+v7+Js/zKE3TrrMEeswn1jcYGACAj2I0GrE6YhRC0Hw+pyAI6Hw+d5gz0Ec+ub7BwAAA
+fBSO41AcxzQcDskwDBqNRhoR0Ww24743+OD3+eT6BgMDAPBRzGaz3gXTgdflk+sbgjwBAAAA0Dow
+MAAAAADQOjAwAAAAANA6MDAAAAAA0DowMAAAAADQOjAwAAAAANA6MDAAAAAA0DowMAAAAADQOjAw
+AAAAANA6MDAAAAAA0DowMAAAAADQOjAwAAAAANA6MDAAAAAA0DowMAAAAADQOjAwAAAAANA6MDAA
+AAAA0DowMAAAAADQOjAwAAAAANA6MDAAAAAA0DowMAAAAADQOjAwAAAAANA6MDAAAICI0jQtfA3A
+T/AJ9Q0GRgvMZjPebrfcdT7qEkURj8djjqLobZ8BgKZcLper10mS4PcAfoxPqG8ac++e6ddIkoRN
+06ThcEiHw0HrOj9N2Gw27DgOHY9HGo/Hb/0sADzidDrx8XgkIqI4jilNUzoej1cNPhGREILm8zkJ
+IWg4HBIRkWEYNJ1O8fsApfnk+qYFQcCe51GapnS5XLICiOOYPM9764f7SZIk4clkQkREURT1oowW
+iwXvdjsKw5BGo1EvngmAPKvVir++vrK/hRDZa9mwx3Gcvae6ry3Lov1+j98GKM0n1zfNcRxer9eF
+//R9HwbGHabTKQdBQJfLhQaDQW/KaDwec5qmFARBr54LAADA7/K/1WqlMbMWxzEtl8uu8/MWrFYr
+Ph6PtNvtetcJe55Hl8uF5vN511kBAADwxmRBnoPBQNtsNprqvgG3HA4H/vr6ItM0aTab9cq4ICIa
+jUaa67p0PB5ps9kgQAcAAEAtboI8R6MRy+ATTJHcIsun73EK8jnjOO6dlwYAAMDPc7NMFR6M+2y3
+W75cLmTbdq+NCyIix3GIiMi27Y5zAgAA4B3BPhglSZIkC4b9hFiV2WymCSHo+/ubDofDS02VbDYb
+HgwG3Md1412A8gQA/AQwMEriOA6laUqmafbeeyGR3gt1idUrEARBtqwaNAflCQD4CWBglGS32xHR
+Z00ZSI/N8Xgk7PIJAACgCjAwSnA4HFhuftLHlSP3GAwGmq7rRPT/BhYAAABQBhgYJZCdq2maHefk
+97Esi4hgYAAAAKhGbw2MKIp4v9/zZrPh0+nUyL3//f1NRJ9pYMhnTtOUmpYjAACAz6FVAyNJEt5u
+tzydTnk0GrGmaTwYDHg8HvNqtWp8Wudms+HpdMqDwYA1TePRaMTT6ZT3+3123yiKeDqd8mQyIc/z
+6Hg80mQyIfWaKqidahMDY7vdZmUyHo/5Xn6iKOLFYnFTfo9Oa5VpxuMxDwaDLE0bG2Wp+6DIA3vA
+NUmS8GazuSr/6XRa+YTd0+mEE20BAP2Bma9kGAYTERMR+77P+f/fk+u6LIRgIQQvl0sOgoDjOOYw
+DNnzPJb3tSyL4zgufV9mJt/3WQiRpfd9n8MwZN/32TRNJiLWdZ0dx2EhBHuel91f13UmIjZNs9Jn
+SjmOk5VHnfRq2ch8yzw5jnN1T9u2b8ovCIKrZ8yXXZ00VSXza1lWo/u0JcuymIg4CILO8+O6blY/
+ilSl3sk68snlCUFQf3TzRh0DQ3ZmhmE87MxkZy2EKN2YeZ6X5ce27cI0soEkoivjQv3fcrks9Xn3
+nk0IUSt9HMc3z6saLWEYchzHbBjGww4832Gpae6VuUzT1DCQZVi3DNrWq3SItm0/NC6qGBmu67Jh
+GJ08z6uUJwRB/dLNG1UNjKoj5eVymd3/WYMWhmF27aPOLY7jq+vy+QjD8Gm+7qkND0g+rTrqdRyH
+DcN4agDJciYijuOYTdO8a3DdS1O3DNTvrKk3pA29QoeolomsH47jsOu6bNs2q2VPROy67sO86rre
+iffiVcoTgqD+6eaNKgaG2shWaRxlp11kDKhSPRPPOlM133W9FYUF1NALYBjGjVelqHN6dh+1LAzD
+KDXaVdM06bxUj8srdEJdd4hBEFwZiPeuC8OQy3jAPM9jXdc7K9euyxOCoH6qdpBnFEUsd3jUdb3S
+oWhyq+00TbPNnIqQqzeIiAzDeHjPyWRSmK4JasDdcDislf58Pt8Eh57P5+y1EII8z3t6L3WXxfP5
+XDmN3MejDnIvjPw9P5X5fE5CCArDkFar1d16PxqNtMPhoJmmSWma3g00Xq/XH7H9PADgs6htYKiG
+QdXVFer1u92Ois5AyEfTP+vg1UPa2uoE1U65ziFwx+ORDMO4OY00CILsteM4pU4rVZ9puVyW2q5c
+TaMaCVX5ibJ9V+SBd8fjsfSW8YfDQbtnSO73e47jmBaLxcds4AYA+AxqGRhJknAV70KefMP8qps4
+xXGcva7jwbhcLjSfz6/ei6KIVcOlTMeST/PI6yNJkuQqTRMDo86z95XdbkfL5ZLG43Elg8BxnELP
+2nq9LvV9AgDAu/FPnUT5/RDqdF5CiMxD4HkerVarq///Z4RkXoxnI+e2OtN796zjwdhsNjedkFp2
+ZQ0zdUpF1/VSHg/1c8qmKYNqdDUhiiKez+e1pm5kXTBNk4bDYeV9IyzLKvxuynA+n2vtB7JYLLR/
+//2X9/s9y+3mT6cTXy6XVs63edfyLELTtI/fC4SZW/VoTadT/k3vo+M4rR6rgDrxntQyMFQXf12G
+w2HWGKodqIplWdmo79lnqj8eub31K6J2TmWnln4rzT1U46pJLIeKPL2zyf3SNG3UodahScNvWRYF
+QUCz2YyI/jbCtm23Yvy9a3mC3+Fyufzq99TWQAS8N7UMjHwjVMeFXsYjoLqVH40akyRh+X8hxEu7
+nH/LWFDn+5saXE09OUWMx2MtSZJaaWezGX9/f1MQBJWnKrpkMplk36WcZgzDsJV796k82x69A6Io
+it66TFEn3pNaMRg/YZ0WBXqORiPNdV0i+tvJ3dv6WnUxe57X2nRA2yP3fCxFmZU3SZJcuTbLGBjq
+6a9lP+cRTWNRwF8Mw8g8cbvdjgzDKB0oCgAA70YtAyPfydQxOPId9j2jYDgckq7rmWdisVjw6XTi
+JEn4cDjwdDrl7+9v0nWdgiBo3JnmP1vShlFVJ/5CnRoqG0uhBhO2MV3U1rTIp6PrelaWu92uldgL
+AAB4VWoZGPnOsU4HpHbYj4Iybdsm13UpSRLNcRwKgkAGo2UrNFzXpSiKtLbdu217MJpOj5Q1StTp
+kTY6sbLfFXiMNFj3+z1fLhcsTQUA9JpaMRj5zrGpB+NeZ3s6nThN08wrsVqttPxqk59EXcnShgdD
+DWb9qfiLZ9Mjp9OJHceh/X5funP7iRU6n8h/3ider9cvHYgMAABtUMuDMRqNNLWjqbpsTz0Cnei+
+G19ODxTFZ/wW8jmbRmDnYynUnUcfUdUoeTY9stvtKsdRwIPRLm0tTQUAgFem9k6ejuNkr6saGKoL
+3zCMu3ETsjPrciMumYd7S2nLUmdfisPhkBlWQohSAYHPpkc8z6vcuUnDSAjRWgDtJyOEaDVWCAAA
+XpEbA0N1hz+KO5jNZpocUT86Z6EI1WB4ZDzIUf56vabNZsNdeDJUr0F++/Iq/Mby1PzunflObLvd
+sq7rlZciSuOq6X4an46sv/BeAAA+gRsDQ3WHP5sW8DwvG+Hbtl2qA14sFlkn6Hnew85uMBhoMrBx
+vV7TcDgkTdNY1WAw4MFgwKPRiMfjMS8WC1ZH/k1RO9UmXozf3iyrKCD06+ur1h4hsh6UndYBxchy
+hIEBAHgHoijixWLBo9Eo62+n02n5fjYIAnYch5fLJatHnpNyTLrjOHePpY7jOEun6/rDI59t287u
+mz/C/J7CMGR5vHsVCSFKf8YzqWXR9B5E9PCI+ntpwjAslUYIUXgEvGVZpY6Fz8v3/Zc6ql0+yyvl
+p6xc12Uierk8v2t5QhD0c3Ich4UQbFkWe57HQRCw53ks2wsiYsMwHvZN5DjOVacshGBd17PXssN6
+1jAul8vsOjVDvu+zzKjs+Ko0ZK7rZgaGYRhsmmYmwzDYMIyHBsg9w6iKTNPMPr9O+iAIsvzoul7q
+HmEYVk7DzOR5XvZdhmHIYRiyZVm18y6/VyFE43JsS+/aIco623U++lKeEAT9jGSffa9NkIMlta8p
+uq7VTMVxzK7rsmmamUEhDRbbtis1YHEcZ4ZDWc9BHMfs+/6VhdVGw6mO4st6H/KShlCVvBiGUcsT
+4/v+lVdpuVzWfn55nzYMtbb0rh1iUy8YyhOCoJ+WHBA/aw9Up8I973jnD3NPVY2LvFSjwLKsWvdQ
+JQ0m13Ub3+tdpHpR6hpWP6F37BDlj/YV6887lWcQBGzbduZllYMY0zTZcZzSU4lQfyWn7dto95k/
+r87JZ/V9/+FzxXH8dCDf+cMUSXW/NOnY1JiPpnmS1lqdOIZ31as+8zt1iPmyfMU8v0N5xnHMcqpS
+13W2LIuXy2XW8KsNnWVZL2UQQ78nz/MyI6DpdOSn1jk1FvOZkaFeW+Tl7vxhiiQNgyqxB0Vqy1Bh
+vrbW+max3pP8ob5axyPnB9/pBy1/iF3n4x3LMwzDbKr1XoPn+/5VvJgQ4mnjCL2/wjBk3/fZtu2r
+77+pgfHJdU41np5NjavhCEWzDZ0/TJF+wsBoI18yIPYV59Hbliy7ttyMnyxpnL6aJ+gdJGOxdF1/
+agDFcXzTybyacQy1o7wHQQjBtm1frYSsa2B8ep2TXiDDMJ4+v/TwvJUHo62lkbKytdmwy4r9qqM9
+POfrSdbnJsG2nyo52ChbD9VBRRuDFOg15Xkeu67LnuddeZTzSyjr3Bt1rrxU46rIe9N5Bu9JWkaP
+lsA8klrR2pzSkJ1Fn0ej0lPzSitH3lmyPPvgPv1NSc9PVcMsP6Jsaz8c6PXV1MBAnSsv1RFwz6jq
+PJNlKosQonT0fRAErBonP+GukgF7faxEcuVInw2o35asx13n490kR4bSXVvWQFOXz6Euf5aaGhio
+c+VVJhi080w+k+/7VwbDcrnMNvGK45hlkI/jOFcRv47j/Kh7X+710beAT7lfB6ZG2pOMQO86H+8m
+dRVYlWDtvMsaxt3nqKmBgTpXTqpB9Wjw/w+9ONPpVJtOp5QkCe92OwqCgI7HI6VpSpfLhYQQpOs6
+DYdD0nWdgiCofJhXHTzPo8lkQn/+/KEgCLgPp4zOZjM+n88UhiFOTW2ZOmfAgFsulwuNx+OH18jz
+kQBoA9S5a/b7PX99fRERkeu6tFgs7vYVL29gSAaDgbZarbrORsZgMND+m46h+XxOh8Oh6yw1YrVa
+8fF4pDAMSx0LD8oTRRHKswZFB/Z9UkMOfh/UucccDgeez+ckhCDP825O7M5zc5oqKM9gMNBOp5Mm
+hKDtdstd56cuURTx8XikIAhgXICXYbFYaLZtZ15K3/dLedaenQKdZ7vdZqdFjsdj3u/3hb/lopMl
+x+MxP/rtyzTj8Tg7+Xk8HvNms3nb9qLPoM7d53A48J8/f7KZgmfGBRG9fgwGBEFQFeXn0R8F3Lmu
+m22QpJ7cnF9BJTdyWi6XWfyXGlBeFLdUJw3UTG0sU0Wdu1Xd1ZOdVwgIgqA2lV8yeC8ITW6SpK40
+U0+XDsOQy5xrke9U1DT3GnOZBsG/7aorA6PPdU6e0P1og0nbtguX9nZeISAIgtqSujZfjtjuXStX
+nqnvqasBHMdhwzCe7omg7mYoz694tttvPk3X5dYXdWFg9LnOSePi2TYRhmEUbtuAGAwAQG+Q0e0S
+z/PuXut5Htm2ffWeOpe+Xq9pOBzSZrN5ONcshMhem6ZJcRzTdrstnSYIgkeXghenr3Vuv9+zbdvk
++/7DlSJRFPH5fC4Mhn2bVSQAAPCI/X7Px+Mx+9t13btL1mWjaJrm1fvn8zl7LSPln6F2EHKZd5U0
+aZo+vR68Jn2tc/v9Plstsl6vab1eFwaIyu0iiKj4ubt2aUEQBLUhdR782Tb3rusWutDVe5TdPVhN
+U3aLaTXNux+O9Ur67SmSPta5ok3DnukttwqHIAgqI7VjKXOGznK5vLlObpMvVeZz82nKzG3L8y6q
+pIGq14OfNjD6WufyAatldG91CaZIAABvzWaz4e/vbyIiWi6XtFqtnq7PL5rjVl3dRRsuFaG6t3Vd
+L7Vngvo5ZdOA16LPdS5JktbqIwwMAMDbst/vWW7D/mzb4meojXB+nrzrNOB1QJ0rDwwMAMBbcjqd
+eD6fE9Hf6PzZbNZo5PVbDbcaxGdZVsncgVcAda4iXc+ZQRAEVZWch85vWtT0flRhLrxOLEV+z4Su
+y7Fv+skYDNS56sI+GACAtyJJEp5MJiSEKHV6cpIkhUvsVOrMhat7CZSdC5fz9kTwXrwTqHP1gIEB
+AHgbZEM/HA5LHc53Op14OBw+vW9TV3XZDkJ1Vec3XAKvCepcfWBgAADeBtkQlz35NwiCUsdtq5H5
+PzUXfjgcWN3gKH8a5el04tls9nTkC34X1Ln6wMAAALwF0+mU0zSlIAhKL+08n89PR3pJkrC6y+Fk
+MimVn6odxDNX9W63ozIjX/B7oM41AwYGAODlmc1mHMdxpYae6K97+Nloss6+FIfDIRv1CSFKjWyf
+uaqLzqkA3YE61xwsUwUAvDSr1Yq/v7/Jsiz6b/+Buy7dOI6J6O+5C5fLhdI0fTo6/I2lgkmSPHRV
+b7db1nX9afAgeIxaxk3OeEGda4mulxVBEATdk+M4lbctzisMQ370GbquZ9cWHTldJMMwKp0foS4v
+LFo+qet66c+Gyn2XVHMbdtS59qQxI6YIAPB6HA4H/vPnT+P7MPPDEZqmaVkjGMdxKXe1miYMw1Lu
+6sFgwGmakmmadDgcsutnsxmnaXr1HnjM6XTKTjGN45jSNKXj8Xh1YijR36kEeSqojDUwDONmNC9B
+nWuZri1OCIKgIqmbJtXVvVMepYIgKH2tlLpBUtk0zEye52UbNYVhyGEYsmVZv3LqZ9+0XC6vvmch
+RCZd11nX9av31Gsty7pb3qhz7arzigJBENSlDMNgXdcr7c5oGAYLISq7mH3fZ+nq1nW99FHbUL/0
+KXXu/wAMiGmOUKJV2wAAAABJRU5ErkJggg==
+"/>
+</g>
+<polyline clip-path="url(#clip2100)" points="
+  1326.76,1282.99 1470.76,1282.99 
+  " style="stroke:#c271d2; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip2100)">
+<image height="96" transform="translate(1495, 1235)" width="738" xlink:href="data:image/png;base64,
+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
+"/>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The two new apprximations looks much better than $\log(m)$.
+But we cannot really tell which of them is better by look at the picture. So let's plot the error instead. To see anything, we have to use log scale plot because the error is so small.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [12]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-julia"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">abs</span><span class="o">.</span><span class="p">((</span><span class="n">h1_values</span><span class="o">./</span><span class="n">harmonic_values</span><span class="p">)</span> <span class="o">.-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">"h1"</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=:</span><span class="n">log10</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">abs</span><span class="o">.</span><span class="p">((</span><span class="n">h2_values</span><span class="o">./</span><span class="n">harmonic_values</span><span class="p">)</span> <span class="o">.-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">"h2"</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=:</span><span class="n">log10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[12]:</div>
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="utf-8"?>
+<svg height="400" viewbox="0 0 2400 1600" width="600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<clippath id="clip2500">
+<rect height="1600" width="2400" x="0" y="0"></rect>
+</clippath>
+</defs>
+<path clip-path="url(#clip2500)" d="
+M0 1600 L2400 1600 L2400 0 L0 0  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<defs>
+<clippath id="clip2501">
+<rect height="1600" width="1681" x="480" y="0"></rect>
+</clippath>
+</defs>
+<path clip-path="url(#clip2500)" d="
+M244.726 1487.47 L2352.76 1487.47 L2352.76 47.2441 L244.726 47.2441  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<defs>
+<clippath id="clip2502">
+<rect height="1441" width="2109" x="244" y="47"></rect>
+</clippath>
+</defs>
+<polyline clip-path="url(#clip2502)" points="
+  302.379,1487.47 302.379,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  804.577,1487.47 804.577,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  1306.78,1487.47 1306.78,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  1808.98,1487.47 1808.98,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  2311.17,1487.47 2311.17,47.2441 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  244.726,1357.39 2352.76,1357.39 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  244.726,1000.56 2352.76,1000.56 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  244.726,643.717 2352.76,643.717 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2502)" points="
+  244.726,286.878 2352.76,286.878 
+  " style="stroke:#000000; stroke-width:2; stroke-opacity:0.1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  244.726,1487.47 2352.76,1487.47 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  244.726,1487.47 244.726,47.2441 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  302.379,1487.47 302.379,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  804.577,1487.47 804.577,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  1306.78,1487.47 1306.78,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  1808.98,1487.47 1808.98,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  2311.17,1487.47 2311.17,1470.19 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  244.726,1357.39 270.023,1357.39 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  244.726,1000.56 270.023,1000.56 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  244.726,643.717 270.023,643.717 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<polyline clip-path="url(#clip2500)" points="
+  244.726,286.878 270.023,286.878 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 302.379, 1541.47)" x="302.379" y="1541.47">0</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 804.577, 1541.47)" x="804.577" y="1541.47">250</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1306.78, 1541.47)" x="1306.78" y="1541.47">500</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 1808.98, 1541.47)" x="1808.98" y="1541.47">750</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:middle;" transform="rotate(0, 2311.17, 1541.47)" x="2311.17" y="1541.47">1000</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 100.873, 1381.12)" x="100.873" y="1381.12">10</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 154.398, 1353.71)" x="154.398" y="1353.71">-</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 177.237, 1353.71)" x="177.237" y="1353.71">20</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 100.873, 1024.28)" x="100.873" y="1024.28">10</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 154.398, 996.872)" x="154.398" y="996.872">-</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 177.237, 996.872)" x="177.237" y="996.872">15</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 100.873, 667.444)" x="100.873" y="667.444">10</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 154.398, 640.034)" x="154.398" y="640.034">-</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 177.237, 640.034)" x="177.237" y="640.034">10</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 122.618, 310.605)" x="122.618" y="310.605">10</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 176.142, 283.195)" x="176.142" y="283.195">-</text>
+</g>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:38px; text-anchor:start;" transform="rotate(0, 198.982, 283.195)" x="198.982" y="283.195">5</text>
+</g>
+<circle clip-path="url(#clip2502)" cx="304.387" cy="88.0053" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="364.651" cy="547.359" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="424.915" cy="636.031" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="485.179" cy="688.135" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="545.443" cy="725.139" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="605.707" cy="753.845" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="665.971" cy="777.297" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="726.234" cy="797.12" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="786.498" cy="814.287" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="846.762" cy="829.425" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="907.026" cy="842.963" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="967.29" cy="855.206" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1027.55" cy="866.38" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1087.82" cy="876.657" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1148.08" cy="886.17" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1208.35" cy="895.024" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1268.61" cy="903.305" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1328.87" cy="911.082" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1389.14" cy="918.413" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1449.4" cy="925.346" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1509.66" cy="931.923" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1569.93" cy="938.177" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1630.19" cy="944.14" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1690.46" cy="949.837" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1750.72" cy="955.29" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1810.98" cy="960.52" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1871.25" cy="965.544" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1931.51" cy="970.378" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1991.78" cy="975.036" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2052.04" cy="979.53" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2112.3" cy="983.87" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2172.57" cy="988.068" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2232.83" cy="992.133" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2293.09" cy="996.071" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="304.387" cy="119.484" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="364.651" cy="783.244" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="424.915" cy="913.862" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="485.179" cy="990.758" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="545.443" cy="1045.42" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="605.707" cy="1087.86" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="665.971" cy="1122.54" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="726.234" cy="1151.87" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="786.498" cy="1177.28" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="846.762" cy="1199.69" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="907.026" cy="1219.74" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="967.29" cy="1237.87" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1027.55" cy="1254.42" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1087.82" cy="1269.65" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1148.08" cy="1283.74" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1208.35" cy="1296.87" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1268.61" cy="1309.14" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1328.87" cy="1320.67" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1389.14" cy="1331.53" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1449.4" cy="1341.81" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1509.66" cy="1351.56" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1569.93" cy="1360.84" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1630.19" cy="1369.68" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1690.46" cy="1378.13" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1750.72" cy="1386.22" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1810.98" cy="1393.97" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1871.25" cy="1401.42" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1931.51" cy="1408.6" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="1991.78" cy="1415.5" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2052.04" cy="1422.17" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2112.3" cy="1428.61" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2172.57" cy="1434.84" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2232.83" cy="1440.87" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<circle clip-path="url(#clip2502)" cx="2293.09" cy="1446.71" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="14" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<path clip-path="url(#clip2500)" d="
+M1987.23 312.204 L2280.76 312.204 L2280.76 130.764 L1987.23 130.764  Z
+  " fill="#ffffff" fill-opacity="1" fill-rule="evenodd"></path>
+<polyline clip-path="url(#clip2500)" points="
+  1987.23,312.204 2280.76,312.204 2280.76,130.764 1987.23,130.764 1987.23,312.204 
+  " style="stroke:#000000; stroke-width:4; stroke-opacity:1; fill:none"></polyline>
+<circle clip-path="url(#clip2500)" cx="2095.23" cy="191.244" fill="#009af9" fill-opacity="1" fill-rule="evenodd" r="21" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 2179.23, 208.744)" x="2179.23" y="208.744">h1</text>
+</g>
+<circle clip-path="url(#clip2500)" cx="2095.23" cy="251.724" fill="#e26f46" fill-opacity="1" fill-rule="evenodd" r="21" stroke="#000000" stroke-opacity="1" stroke-width="3.2"></circle>
+<g clip-path="url(#clip2500)">
+<text style="fill:#000000; fill-opacity:1; font-family:Arial,Helvetica Neue,Helvetica,sans-serif; font-size:48px; text-anchor:start;" transform="rotate(0, 2179.23, 269.224)" x="2179.23" y="269.224">h2</text>
+</g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can see the error of the second approximation is much smaller!</p>
+<p>In the next post, we will talk about geralized Harmonic numbers.</p>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </main>
+    <br>
+    <footer>
+      <div class="adjust-width">
+        <div id="author-block" class="w3-light-grey w3-border">
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="https://newptcai.github.io/theme/images/bookmark-red.png" alt="bookmark"></img>
+            <div id="author-info">
+                <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><img
+                   style="width: 60px; height: 60px;" src="https://newptcai.github.io/authors/xing-shi-cai.png" onerror="this.src='https://newptcai.github.io/theme/images/avatar.png'"></img>
+                </a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><span id="author-name" class="w3-hover-text-dark-grey">Xing Shi Cai</span></a>
+                    <p id="author-story" style="max-width: 500px;"></p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+      
+      <p style="font-size:10pt; font-style: italic;">  Did you like this article? Share it with your friends!
+</p>
+      <div class="shariff" data-lang="en" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;whatsapp&quot;,&quot;reddit&quot;,&quot;mail&quot;]" data-title="Harmonic number and Zeta functions explained in Julia (part 1) - You don't need to prove this" data-mail-url="mailto:" data-mail-subject="  Interesting post on You don't need to prove this
+" data-mail-body="  Hey, I just read this article and really enjoyed it. I'm sure you also like it ;) https://newptcai.github.io/harmonic-number-and-zeta-functions-explained-in-julia-part-1.html
+" >
+      </div>
+      <br>
+    </footer>
+  </div>
+</article>
+<br>
+<script src="https://newptcai.github.io/theme/js/shariff.min.js"></script>
+</body>
+</html>
