@@ -1,0 +1,3 @@
+[submodule "pelican/content/notebook"]
+	path = pelican/content/notebook
+	url = git@github.com:newptcai/math-note.git
