@@ -80,7 +80,7 @@ MARKUP = ('md')
 
 PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
 
-IGNORE_FILES = [".ipynb_checkpoints"] 
+IGNORE_FILES = [".ipynb_checkpoints", ".git", "README.md"] 
 
 # Social media
 SOCIAL = [
