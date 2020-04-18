@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Using BEE and BEE.jl to solve combinatorial problems - You don't need to prove this</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/shariff.min.css">
+    <link rel="stylesheet" type="text/css" href="https://newptcai.github.io/theme/css/pygments-highlight-github.css">
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://newptcai.github.io/theme/js/jqcloud.min.js"></script>
+
+     <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <meta name="author" content="Xing Shi Cai" />
+    <meta name="description" content="This article is about my Julia interface package BEE.jl for using BEE (Ben-Gurion University Equi-propagation Encoder) by Amit Metodi …" /> 
+    <meta name="keywords" content="Julia, programming"> 
+
+    <!-- Facebook OpenGraph -->
+    <meta property="og:site_name" content="You don't need to prove this">
+    <meta property="og:title" content="Using BEE and BEE.jl to solve combinatorial problems - You don't need to prove this" />
+    <meta property="og:description" content="This article is about my Julia interface package BEE.jl for using BEE (Ben-Gurion University Equi-propagation Encoder) by Amit Metodi …" />
+    <meta property="og:image" content="https://newptcai.github.io">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://newptcai.github.io/using-bee-and-beejl-to-solve-combinatorial-problems.html" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Using BEE and BEE.jl to solve combinatorial problems - You don't need to prove this">
+    <meta name="twitter:description" content="This article is about my Julia interface package BEE.jl for using BEE (Ben-Gurion University Equi-propagation Encoder) by Amit Metodi …">
+    <meta name="twitter:image" content="https://newptcai.github.io">
+</head>
+<body>
+  <div class="w3-row w3-card w3-white">
+    <header id=banner>
+       <!-- AUTHOR INITIALS-->
+      <a href="https://newptcai.github.io" id=logo title="Home">XS</a>
+      <nav id="menu">
+        <ul>
+          <li><a href="https://newptcai.github.io/pages/research.html">Research</a></li>
+          <li><a href="https://newptcai.github.io/pages/teaching.html">Teaching</a></li>
+          <li class="active"><a href="https://newptcai.github.io/category/math.html">math</a></li>
+          <li ><a href="https://newptcai.github.io/category/mumble.html">mumble</a></li>
+          <li ><a href="https://newptcai.github.io/category/photo.html">photo</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+<br>
+<article>
+  <header class="w3-container col-main">
+    <h1>Using BEE and BEE.jl to solve combinatorial problems</h1>
+    <div class="post-info">
+      <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+        <span>  Posted on Sat 18 April 2020 in <a href="https://newptcai.github.io/category/math.html" style="font-style: italic">math</a>
+
+        </span>
+      </div>
+      <div id="article-tags">
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/julia.html" title="  All posts about Julia
+">#Julia</a>
+        </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/programming.html" title="  All posts about Programming
+">#programming</a>
+        </span>
+      </div>
+    </div>
+  </header>
+  <br>
+  <div class="col-main w3-container">
+    <main id="article-content">
+      <p><em>This article is about my Julia interface package <a href="https://github.com/newptcai/BEE.jl"><code>BEE.jl</code></a> for
+using <a href="http://amit.metodi.me/research/bee/"><code>BEE</code> (Ben-Gurion University Equi-propagation
+Encoder)</a> by <a href="http://amit.metodi.me/">Amit Metodi</a></em></p>
+<h2>The beauty of brute force 🤜️</h2>
+<p>Modern <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">SAT</a> solver are often capable
+of handling problems with <em>HUGE</em> size. They have been successfully applied to many combinatorics
+problems. Communications ACM has an article titled <a href="https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext">The Science of Brute
+Force</a> on how the
+<a href="https://www.cs.utexas.edu/~marijn/publications/ptn.pdf">Boolean Pythagorean Triples problem</a> was
+solved with an SAT solver.  Another well-known example is <a href="https://www.quantamagazine.org/terence-taos-answer-to-the-erdos-discrepancy-problem-20151001/">Paul Erdős Discrepancy
+Conjecture</a>,
+which was <a href="https://arxiv.org/pdf/1402.2184.pdf">initially attacked with the help of computer</a>.</p>
+<p align="center">
+<img src="https://newptcai.github.io/images/BEE/egg-power.jpg" alt="Brute force" width="450" />
+</p>
+
+<p>Thus it is perhaps beneficial 🥦️ for anyone who is interested in combinatorics 🀄️ to learn how to
+harness the beautiful brute force 🔨 of SAT solvers. Doing experiments with SAT solver can search much
+bigger space than pencil and paper.  New patterns can be spotted 👁️. Conjectures can be proved or
+disapproved 🎉️.</p>
+<p>However, combinatorial problems are often difficult to encode into CNF formulas, which can only
+contain boolean variables. So integers must be represented by such boolean variables with some
+encoding scheme. Doing so manually can be very tedious 😑️.</p>
+<p>Of course you can use solvers which go beyond CNF. For example Microsoft has a
+<a href="https://github.com/Z3Prover/z3"><code>Z3</code></a> theorem proved. You can solve many more types of problems
+with it. But if the size of your problem matters, pure CNF solver is still way much faster 🚀️.</p>
+<h2>What is <code>BEE</code> 🐝️</h2>
+<p>One project that tries to ease using SAT solvers is <a href="http://amit.metodi.me/research/bee/"><code>BEE</code> (Ben-Gurion
+University Equi-propagation Encoder)</a>, which</p>
+<blockquote>
+<p>... is a
+compiler which enables to encode finite domain constraint problems to CNF. During compilation, <code>BEE</code>
+applies optimizations which include equi-propagation (see paper), partial-evaluation, and a careful
+selection of encoding techniques per constraint, depending on various parameters of the constraint.</p>
+</blockquote>
+<p>From my experiments, <code>BEE</code> has a good balance of expressive power and performance.</p>
+<h2>Many ways to use <code>BEE</code> 🤔️</h2>
+<p><code>BEE</code> is written in <code>[Prolog](https://en.wikipedia.org/wiki/Prolog)</code>. So you either have to learn
+<code>Prolog</code>, or you can
+1. encode your problem in a syntax defined by <code>BEE</code>,
+2. use a program <code>BumbleBEE</code> that comes with the package to solve it directly with <code>BEE</code>
+3. or use <code>BumbleBEE</code> to compile your problem to a <a href="https://people.sc.fsu.edu/~jburkardt/data/cnf/cnf.html">DIMACS CNF file</a>, which can be solved by the numerous
+   SAT solvers out there.</p>
+<p>My choice is to use <a href="https://julialang.org/">Julia</a> to convert combinatorics problems into
+<code>BumbleBEE</code> code and this is why I wrote the package <a href="https://github.com/newptcai/BEE.jl"><code>BEE.jl</code></a>.</p>
+<p>Here's my workflow for smaller problems</p>
+<div class="highlight"><pre><span></span>Julia code --<span class="o">(</span>BEE.jl<span class="o">)</span>--&gt; BEE code --<span class="o">(</span>BumbleBEE<span class="o">)</span>--&gt; solution/unsatisfiable
+</pre></div>
+
+
+<p>When the problem is getting bigger, I try</p>
+<div class="highlight"><pre><span></span>Julia code --<span class="o">(</span>BEE.jl<span class="o">)</span>--&gt; BEE code -- <span class="o">(</span>BumbleBEE<span class="o">)</span>--&gt; CNF --<span class="o">(</span>SAT Solver<span class="o">)</span>
+                                                               <span class="p">|</span>
+    +-------------------------+--------------------------------+
+    <span class="p">|</span>                         <span class="p">|</span>
+    v                         v
+unsatisfiable          CNF solution --<span class="o">(</span>BumbleSol<span class="o">)</span>--&gt; BEE solution
+</pre></div>
+
+
+<p>In the rest of this article, I will mostly describe how to use <code>BEE</code> 😀️. You do not need to know any
+Julia to understand this part. I will only briefly mention what <code>BEE.jl</code> does by the
+end.</p>
+<h2><code>BEE</code> and SAT solver for beginners</h2>
+<h3>Compiling and running <code>BEE</code></h3>
+<p>I ran into some difficulties when I tried to compile <a href="http://amit.metodi.me/research/bee/bee20170615.zip">2017 version of
+<code>BEE</code></a>. Here is how to do it correctly on
+Ubuntu. Other Linux system should work in similar ways.</p>
+<p>First install <code>swi-prolog</code>. You can do this in a terminal by</p>
+<div class="highlight"><pre><span></span>sudo apt install swi-prolog
+</pre></div>
+
+
+<p>Download <code>BEE</code> using the link above and unzip it somewhere on your computer.
+In a terminal, change directory to</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> /path-to-downloaded-file/bee20170615/satsolver_src
+</pre></div>
+
+
+<p>Compile sat solvers coming with <code>BEE</code> by</p>
+<div class="highlight"><pre><span></span>env <span class="nv">CPATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib/swi-prolog/include/&quot;</span> make satSolvers
+</pre></div>
+
+
+<p>If compilation is successful, you should be able to excute</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ../satsolver <span class="o">&amp;&amp;</span> ls
+</pre></div>
+
+
+<p>and see the following output</p>
+<div class="highlight"><pre><span></span>pl-glucose4.so  pl-glucose.so  pl-minisat.so  satsolver.pl
+</pre></div>
+
+
+<p>Next we compile <code>BumbleBEE</code> by</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> ../beeSolver/ <span class="o">&amp;&amp;</span> make
+</pre></div>
+
+
+<p>If you succeed, you will be able to find <code>BumbleBEE</code> and <code>BumbleSol</code> one directory above by</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> ls
+</pre></div>
+
+
+<p>And you should see these files</p>
+<div class="highlight"><pre><span></span>bApplications  beeSolver  BumbleSol        pl-satsolver.so  satsolver
+beeCompiler    BumbleBEE  Constraints.pdf  README.txt       satsolver_src
+</pre></div>
+
+
+<h3>Using <code>BumbleBEE</code></h3>
+<p>We can now give <code>BEE</code> a try 😁️.  You can find examples of <code>BumbleBEE</code> problems in the folder
+<code>beeSolver/bExamples</code>. A very simple one is the following
+<code>ex_sat.bee</code>.</p>
+<div class="highlight"><pre><span></span>new_int<span class="o">(</span>x,0,5<span class="o">)</span>
+new_int<span class="o">(</span>y,-4,9<span class="o">)</span>
+new_int<span class="o">(</span>z,-5,10<span class="o">)</span>
+int_plus<span class="o">(</span>x,y,z<span class="o">)</span>
+new_int<span class="o">(</span>w,0,10<span class="o">)</span>
+new_bool<span class="o">(</span>x1<span class="o">)</span>
+new_bool<span class="o">(</span>x2<span class="o">)</span>
+new_bool<span class="o">(</span>x3<span class="o">)</span>
+new_bool<span class="o">(</span>x4<span class="o">)</span>
+bool_eq<span class="o">(</span>x1,-x2<span class="o">)</span>
+bool_eq<span class="o">(</span>x2,true<span class="o">)</span>
+bool_array_sum_eq<span class="o">([</span>-x1,x2,-x3,x4<span class="o">]</span>,w<span class="o">)</span>
+solve satisfy
+</pre></div>
+
+
+<p>It defines 4 integer variables <code>x, y, z, w</code> in various range and 4 boolean variables <code>x1, x2, x3, x4</code>.
+Then it adds various constraints on these variables, for example, <code>x+y==z</code> and <code>x1==x2</code>. For the
+syntax, check the <a href="http://amit.metodi.me/research/bee/Constraints.pdf">document</a>.</p>
+<h3>Solving problem directly</h3>
+<p>We can solve problem directly with <code>BumbleBEE</code> by</p>
+<div class="highlight"><pre><span></span>./BumbleBEE beeSolver/bExamples/ex_sat.bee
+</pre></div>
+
+
+<p>And the solution should be</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> xing@MAT-WL-xinca341:bee20170615$ ./BumbleBEE beeSolver/bExamples/ex_sat.bee
+%  <span class="se">\&#39;</span><span class="s1">&#39;&#39;</span>/ //      BumbleBEE       / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
+% -<span class="o">(||</span><span class="p">|</span><span class="o">)(</span><span class="err">&#39;</span><span class="o">)</span>     <span class="o">(</span><span class="m">15</span>/06/2017<span class="o">)</span>     <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\_</span>/
+%   ^^^        by Amit Metodi    / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
+%
+%  reading BEE file ... <span class="k">done</span>
+%  load pl-satSolver ... % SWI-Prolog interface to Glucose v4.0 ... OK
+%  encoding BEE model ... <span class="k">done</span>
+%  solving CNF <span class="o">(</span>satisfy<span class="o">)</span> ...
+<span class="nv">x</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">y</span> <span class="o">=</span> -4
+<span class="nv">z</span> <span class="o">=</span> -4
+<span class="nv">w</span> <span class="o">=</span> <span class="m">3</span>
+<span class="nv">x1</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nv">x2</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">x3</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nv">x4</span> <span class="o">=</span> <span class="nb">false</span>
+----------
+</pre></div>
+
+
+<p>You can check that all the constraints are satisfied.</p>
+<p><font size="+2">⚠️ </font> But here is a caveat -- you must run <code>BumbleBEE</code> with the current
+directory <code>PWD</code> set to be where the file
+<code>BumbleBEE</code> is. You cannot use any other directory 🤦. For example if you try</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> bee20170615/BumbleBEE bee20170615/beeSolver/bExamples/ex_sat.bee
+</pre></div>
+
+
+<p>You will only get error messages.</p>
+<h3>Convert the problem to CNF</h3>
+<p>As I mentioned earlier, you can also compile your problem into CNF DIMACS format. For example</p>
+<div class="highlight"><pre><span></span>/BumbleBEE beeSolver/bExamples/ex_sat.bee -dimacs ./ex_sat.cnf ./ex_sat.map
+</pre></div>
+
+
+<p>will create two files <code>ex_sat.cnf</code> and <code>ex_sat.map</code>. The top few lines of
+<code>ex_sat.cnf</code> looks like this</p>
+<div class="highlight"><pre><span></span>c DIMACS File generated by BumbleBEE
+p cnf <span class="m">37</span> <span class="m">189</span>
+<span class="m">1</span> <span class="m">0</span>
+-6 <span class="m">5</span> <span class="m">0</span>
+-5 <span class="m">4</span> <span class="m">0</span>
+-4 <span class="m">3</span> <span class="m">0</span>
+-3 <span class="m">2</span> <span class="m">0</span>
+-19 <span class="m">18</span> <span class="m">0</span>
+-18 <span class="m">17</span> <span class="m">0</span>
+-17 <span class="m">16</span> <span class="m">0</span>
+</pre></div>
+
+
+<p>A little bit explanation for the first 4 lines</p>
+<ol>
+<li>A line with <code>c</code> at the beginning is a comment.</li>
+<li>The line with <code>p</code>  says that this is a CNF formula with <code>37</code> variables and <code>189</code> clauses.</li>
+<li><code>1 0</code> is a clause which says that variable <code>1</code> must be true. <code>0</code> is symbol to end a
+  clause.</li>
+<li><code>-6 5</code> means either the negate of variable <code>6</code>  is true or variable <code>5</code> is true ...</li>
+</ol>
+<p>As you can see, with integers are needed, even a toy problem needs a large numbers of
+boolean variables. This is why efficient coding of integers are critical. And this is where <code>BEE</code>
+helps.</p>
+<p>Now you can try your favourite SAT solver on the problem. I often use
+<a href="https://www.msoos.org/cryptominisat5/"><code>CryptoMiniSat</code></a>. Assuming that you have it on your <code>PATH</code>, you
+can now use</p>
+<div class="highlight"><pre><span></span>cryptominisat5 ex_sat.cnf &gt; ex_sat.sol
+</pre></div>
+
+
+<p>to solve the problem and save the solution into a file <code>ex_sat.sol</code>. Most of <code>ex_sat.sol</code> are
+comments except the last 3 lines</p>
+<div class="highlight"><pre><span></span>s SATISFIABLE
+v <span class="m">1</span> -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19 -20 -21 -22
+v -23 -24 -25 -26 -27 -28 -29 -30 -31 -32 -33 <span class="m">34</span> -35 -36 -37 <span class="m">0</span>
+</pre></div>
+
+
+<p>It says the problem is satisfiable and one solution is given. A number in the line starting with an <code>v</code>
+means a variables. Without a <code>-</code> sign in front of it, a variable is assigned the value <code>true</code>
+otherwise it is assigned <code>false</code>.</p>
+<p><font size="+2">⚠️ </font> To get back to a solution to <code>BEE</code> variables, we use <code>BumbleSol</code>, which is
+at the same folder as <code>BumbleBEE</code>. But <code>BumbleSol</code> needs bit help 😑️. Remove the starting <code>s</code> and <code>v</code>
+in the <code>ex_sat.sol</code> to make it like this</p>
+<div class="highlight"><pre><span></span>SATISFIABLE
+<span class="m">1</span> -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19 -20 -21 -22
+-23 -24 -25 -26 -27 -28 -29 -30 -31 -32 -33 <span class="m">34</span> -35 -36 -37 <span class="m">0</span>
+</pre></div>
+
+
+<p>Then we can run</p>
+<div class="highlight"><pre><span></span>./BumbleSol ex_sat.map ex_sat.sol
+</pre></div>
+
+
+<p>and get</p>
+<div class="highlight"><pre><span></span>%  <span class="se">\&#39;</span><span class="s1">&#39;&#39;</span>/ //  BumbleBEE Solution Reader  / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
+% -<span class="o">(||</span><span class="p">|</span><span class="o">)(</span><span class="err">&#39;</span><span class="o">)</span>         <span class="o">(</span><span class="m">04</span>/06/2016<span class="o">)</span>        <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\_</span>/
+%   ^^^            by Amit Metodi       / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
+%
+%  reading Dimacs solution file ... <span class="k">done</span>
+%  reading and decoding BEE map file ...
+<span class="nv">x</span> <span class="o">=</span> <span class="m">0</span>
+<span class="nv">y</span> <span class="o">=</span> -4
+<span class="nv">z</span> <span class="o">=</span> -4
+<span class="nv">w</span> <span class="o">=</span> <span class="m">2</span>
+<span class="nv">x1</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nv">x2</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="nv">x3</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="nv">x4</span> <span class="o">=</span> <span class="nb">false</span>
+----------
+<span class="o">==========</span>
+</pre></div>
+
+
+<p>That's it! Now you know how to use <code>BEE</code> 🐝️! Have fan with your problem 🤣️.</p>
+<h3>Choice of SAT solver</h3>
+<p>Some top-level SAT solvers are</p>
+<ul>
+<li><a href="https://github.com/arminbiere/cadical">CaDical</a> -- Winner of <a href="http://sat-race-2019.ciirc.cvut.cz/">2019 SAT
+  Race</a>. Tends to be
+  fastest in dealing with solvable problems.</li>
+<li><a href="http://fmv.jku.at/lingeling/">Lingeling, Plingeling and Treengeling</a> -- Good at parallelization.</li>
+<li><a href="https://www.lrde.epita.fr/wiki/Painless">Painless</a> -- Uses a divide and conquer strategy for
+  parallelization.</li>
+<li>MapleLCMDiscChronoBT-DL --  Winner of 2019 SAT Race for unsatisfiable problem. But I have not
+  found any documents of it.</li>
+</ul>
+<p>My experience is that all these SAT solvers have similar performance. It is always more important to
+try to encode your problem better.</p>
+<h2>How to use <code>BEE.jl</code></h2>
+<p>When your problems becomes bigger, you don't want to write all BEE code manually. Here's what
+<code>BEE.jl</code> may help. You can write your problem in Julia, and <code>BEE.jl</code> will convert it to <code>BEE</code> syntax.
+Here's how to do the example above with <code>BEE.jl</code></p>
+<p>First install <code>BEE.jl</code> by typing this in <code>Julia REPL</code>.</p>
+<div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span><span class="p">;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;git@github.com:newptcai/BEE.jl.git&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Then run the following code</p>
+<div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">BEE</span>
+
+<span class="nd">@beeint</span> <span class="n">x</span>  <span class="mi">0</span> <span class="mi">5</span>
+<span class="nd">@beeint</span> <span class="n">y</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">9</span>
+<span class="nd">@beeint</span> <span class="n">z</span> <span class="o">-</span><span class="mi">5</span> <span class="mi">10</span>
+
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span>
+
+<span class="nd">@beeint</span> <span class="n">w</span> <span class="mi">0</span> <span class="mi">10</span>
+
+<span class="n">xl</span> <span class="o">=</span> <span class="p">[</span><span class="n">beebool</span><span class="p">(</span><span class="s">&quot;x</span><span class="si">$i</span><span class="s">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="kc">true</span>
+
+<span class="n">sum</span><span class="p">([</span><span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span> <span class="o">==</span> <span class="n">w</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">BEE</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
+</pre></div>
+
+
+<p>You will get output like this</p>
+<div class="highlight"><pre><span></span><span class="n">new_int</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">new_int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">new_int</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">new_int</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">new_bool</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">new_bool</span><span class="p">(</span><span class="n">x4</span><span class="p">)</span>
+<span class="n">new_bool</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">new_bool</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
+<span class="n">int_plus</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">bool_eq</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">-</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">bool_eq</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="n">bool_array_sum_eq</span><span class="p">(([</span><span class="o">-</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="o">-</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">],</span> <span class="n">w</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Exactly as above.</p>
+<h2>Acknowledgement 🙏️</h2>
+<p>I want to thank all the generous ❤️  people who have spend their time to create these amazing SAT
+solvers and made them freely available to everyone.</p>
+<p>By writing this module, I have learn quite a great deal of Julia and its convenient meta-programming
+features.  I want to thank everyone 💁 on GitHub and <a href="https://slackinvite.julialang.org/">Julia Slack channel</a> who has helped me, in
+particular Alex Arslan, <a href="https://github.com/dpsanders">David Sanders</a>, Syx Pek, and <a href="https://github.com/JeffreySarnoff">Jeffrey
+Sarnoff</a>.</p>
+    </main>
+    <br>
+    <footer>
+      <div class="adjust-width">
+        <div id="author-block" class="w3-light-grey w3-border">
+            <img style="width: 35px; height: 56px; margin-left:50px;" src="https://newptcai.github.io/theme/images/bookmark-red.png" alt="bookmark"></img>
+            <div id="author-info">
+                <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><img
+                   style="width: 60px; height: 60px;" src="https://newptcai.github.io/authors/xing-shi-cai.png" onerror="this.src='https://newptcai.github.io/theme/images/avatar.png'"></img>
+                </a>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <a href="https://newptcai.github.io/authors.html#xing-shi-cai"><span id="author-name" class="w3-hover-text-dark-grey">Xing Shi Cai</span></a>
+                    <p id="author-story" style="max-width: 500px;"></p>
+                </div>
+            </div>
+        </div>
+      </div>
+      <br>
+      
+      <p style="font-size:10pt; font-style: italic;">  Did you like this article? Share it with your friends!
+</p>
+      <div class="shariff" data-lang="en" data-services="[&quot;twitter&quot;,&quot;facebook&quot;,&quot;whatsapp&quot;,&quot;reddit&quot;,&quot;mail&quot;]" data-title="Using BEE and BEE.jl to solve combinatorial problems - You don't need to prove this" data-mail-url="mailto:" data-mail-subject="  Interesting post on You don't need to prove this
+" data-mail-body="  Hey, I just read this article and really enjoyed it. I'm sure you also like it ;) https://newptcai.github.io/using-bee-and-beejl-to-solve-combinatorial-problems.html
+" >
+      </div>
+      <br>
+    </footer>
+  </div>
+</article>
+<br>
+<script src="https://newptcai.github.io/theme/js/shariff.min.js"></script>
+</body>
+</html>
