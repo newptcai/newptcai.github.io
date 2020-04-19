@@ -16,6 +16,7 @@ TIMEZONE = 'Europe/Stockholm'
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
+FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
@@ -98,4 +99,4 @@ SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'reddit', 'mail')
 
 # Speed Up
 LOAD_CONTENT_CACHE = True
-CACHE_CONTENT = True
+# CACHE_CONTENT = True
