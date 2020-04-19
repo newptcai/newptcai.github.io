@@ -1,4 +1,5 @@
 pelican/output/*
+pelican/cache/*
 **/sass-cache/*
 *.pyc
 *.pid

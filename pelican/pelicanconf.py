@@ -95,3 +95,7 @@ SOCIAL = [
 SHOW_FOOTER = False
 
 SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'reddit', 'mail')
+
+# Speed Up
+LOAD_CONTENT_CACHE = True
+CACHE_CONTENT = True
