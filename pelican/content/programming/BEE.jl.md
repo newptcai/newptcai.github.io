@@ -2,16 +2,21 @@
 title: Using BEE and BEE.jl to solve combinatorial problems
 date: 2020-04-18
 category: math
-tags: Julia, programming
+tags: Julia, programming, combinatorics
 layout: post
 status: published
 ---
+
 
 *This article is about my Julia interface package [`BEE.jl`](https://github.com/newptcai/BEE.jl) for
 using [`BEE` (Ben-Gurion University Equi-propagation
 Encoder)](http://amit.metodi.me/research/bee/) by [Amit Metodi](http://amit.metodi.me/)*
 
 ## The beauty of brute force 🤜️
+
+<p align="center">
+<img src="{static}/images/BEE/egg-power.jpg" alt="Brute force" width="450" />
+</p>
 
 Modern [SAT](https://en.wikipedia.org/wiki/Boolean_satisfiability_problem) solver are often capable
 of handling problems with *HUGE* size. They have been successfully applied to many combinatorics
@@ -21,10 +26,6 @@ Force](https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/f
 solved with an SAT solver.  Another well-known example is [Paul Erdős Discrepancy
 Conjecture](https://www.quantamagazine.org/terence-taos-answer-to-the-erdos-discrepancy-problem-20151001/),
 which was [initially attacked with the help of computer](https://arxiv.org/pdf/1402.2184.pdf).
-
-<p align="center">
-<img src="{static}/images/BEE/egg-power.jpg" alt="Brute force" width="450" />
-</p>
 
 Thus it is perhaps beneficial 🥦️ for anyone who is interested in combinatorics 🀄️ to learn how to
 harness the beautiful brute force 🔨 of SAT solvers. Doing experiments with SAT solver can search much
@@ -87,15 +88,36 @@ end.
 
 ## `BEE` and SAT solver for beginners
 
+### Docker image
+
+The easiest way to try `BEE` and `BEE.jl` is to use this [docker
+image](https://hub.docker.com/r/newptcai/bee) with everything you need. 
+If you have [docker](https://www.docker.com/) install, simply type in a terminal
+```shell
+docker pull newptcai/bee
+docker run -it newptcai/bee
+```
+This will download and start a bash shell within the image.  You will find `BEE` install in the
+folder `/bee`.  To check it works, run
+```shell
+cd bee && ./BumbleBEE beeSolver/bExamples/ex_sat.bee
+```
+
+The drawback of this method is that the image is quite large (about 600MB). This is unavoidable if we
+use docker. Julia itself needs about 400MB, and Prolog costs another 100MB. 😑️
+
 ### Compiling and running `BEE`
 
 I ran into some difficulties when I tried to compile [2017 version of
 `BEE`](http://amit.metodi.me/research/bee/bee20170615.zip). Here is how to do it correctly on
 Ubuntu. Other Linux system should work in similar ways.
 
-First install `swi-prolog`. You can do this in a terminal by
+First install [SWI-Prolog](https://www.swi-prolog.org/build/PPA.txt). You can do this in a terminal
+by typing
 ```shell
-sudo apt install swi-prolog
+sudo apt-add-repository ppa:swi-prolog/stable
+sudo apt-get update
+sudo apt-get install swi-prolog-nox
 ```
 Download `BEE` using the link above and unzip it somewhere on your computer.
 In a terminal, change directory to
@@ -297,7 +319,7 @@ First install `BEE.jl` by typing this in `Julia REPL`.
 ```Julia
 using Pkg; Pkg.add("git@github.com:newptcai/BEE.jl.git")
 ```
-Then run the following code
+Then run the following code in Julia REPL
 ```Julia
 using BEE
 
@@ -305,18 +327,18 @@ using BEE
 @beeint y -4 9
 @beeint z -5 10
 
-x + y == z
+@constrain x + y == z
 
 @beeint w 0 10
 
-xl = [beebool("x$i") for i=1:4]
+xl = @beebool x[1:4]
 
-xl[1] == -xl[2]
-xl[2] == true
+@constrain xl[1] == -xl[2]
+@constrain xl[2] == true
 
-sum([-xl[1], xl[2], -xl[3], xl[4]]) == w
+@constrain sum([-xl[1], xl[2], -xl[3], xl[4]]) == w
 
-print(BEE.render())
+BEE.render()
 ```
 You will get output like this
 ```Julia
@@ -332,8 +354,41 @@ int_plus(x, y, z)
 bool_eq(x1, -x2)
 bool_eq(x2, true)
 bool_array_sum_eq(([-x1, x2, -x3, x4], w))
+solve satisfy
 ```
 Exactly as above.
+You can solve this into a file and solve it with `BumbleBEE` as I described before.
+Or assuming that `BumbleBEE` can be found through your `PATH` environment variable, then you can run
+`BEE.solve()` directly in Julia and get the solution, like this.
+```Julia
+julia> output = solve();
+% SWI-Prolog interface to Glucose v4.0 ... OK
+%  \'''/ //      BumbleBEE       / \_/ \_/ \
+% -(|||)(')     (15/06/2017)     \_/ \_/ \_/
+%   ^^^        by Amit Metodi    / \_/ \_/ \
+%
+%  reading BEE file ... done
+%  load pl-satSolver ... %  encoding BEE model ... done
+%  solving CNF (satisfy) ...
+w = 2
+x = 0
+z = -4
+y = -4
+x1 = false
+x4 = false
+x2 = true
+x3 = true
+----------
+==========
+```
+And if you check `output`, you will it is a dictionary containing the solution.
+```Julia
+julia> out
+BEE solution:
+* Satisfiable: true
+* Integer variables: Dict("w" => 2,"x" => 0,"z" => -4,"y" => -4)
+* Boolean variables: Dict{String,Bool}("x1" => 0,"x4" => 0,"x2" => 1,"x3" => 1)
+```
 
 ## Acknowledgement 🙏️
 
@@ -343,4 +398,6 @@ solvers and made them freely available to everyone.
 By writing this module, I have learn quite a great deal of Julia and its convenient meta-programming
 features.  I want to thank everyone 💁 on GitHub and [Julia Slack channel](https://slackinvite.julialang.org/) who has helped me, in
 particular Alex Arslan, [David Sanders](https://github.com/dpsanders), Syx Pek, and [Jeffrey
+Sarnoff](https://github.com/JeffreySarnoff).
+
 Sarnoff](https://github.com/JeffreySarnoff).
