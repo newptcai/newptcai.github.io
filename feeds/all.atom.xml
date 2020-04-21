@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="https://newptcai.github.io/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-04-18T00:00:00+02:00</updated><entry><title>Using BEE and BEE.jl to solve combinatorial problems</title><link href="https://newptcai.github.io/using-bee-and-beejl-to-solve-combinatorial-problems.html" rel="alternate"></link><published>2020-04-18T00:00:00+02:00</published><updated>2020-04-18T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-18:/using-bee-and-beejl-to-solve-combinatorial-problems.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This article is about my Julia interface package &lt;a href="https://github.com/newptcai/BEE.jl"&gt;&lt;code&gt;BEE.jl&lt;/code&gt;&lt;/a&gt; for
+<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="http://localhost:8000/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-04-18T00:00:00+02:00</updated><entry><title>Using BEE and BEE.jl to solve combinatorial problems</title><link href="https://newptcai.github.io/using-bee-and-beejl-to-solve-combinatorial-problems.html" rel="alternate"></link><published>2020-04-18T00:00:00+02:00</published><updated>2020-04-18T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-18:/using-bee-and-beejl-to-solve-combinatorial-problems.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This article is about my Julia interface package &lt;a href="https://github.com/newptcai/BEE.jl"&gt;&lt;code&gt;BEE.jl&lt;/code&gt;&lt;/a&gt; for
 using &lt;a href="http://amit.metodi.me/research/bee/"&gt;&lt;code&gt;BEE&lt;/code&gt; (Ben-Gurion University Equi-propagation
 Encoder)&lt;/a&gt; by &lt;a href="http://amit.metodi.me/"&gt;Amit Metodi …&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This article is about my Julia interface package &lt;a href="https://github.com/newptcai/BEE.jl"&gt;&lt;code&gt;BEE.jl&lt;/code&gt;&lt;/a&gt; for
 using &lt;a href="http://amit.metodi.me/research/bee/"&gt;&lt;code&gt;BEE&lt;/code&gt; (Ben-Gurion University Equi-propagation
 Encoder)&lt;/a&gt; by &lt;a href="http://amit.metodi.me/"&gt;Amit Metodi&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h2&gt;The beauty of brute force 🤜️&lt;/h2&gt;
+&lt;p align="center"&gt;
+&lt;img src="https://newptcai.github.io/images/BEE/egg-power.jpg" alt="Brute force" width="450" /&gt;
+&lt;/p&gt;
+
 &lt;p&gt;Modern &lt;a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem"&gt;SAT&lt;/a&gt; solver are often capable
 of handling problems with &lt;em&gt;HUGE&lt;/em&gt; size. They have been successfully applied to many combinatorics
 problems. Communications ACM has an article titled &lt;a href="https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext"&gt;The Science of Brute
@@ -13,10 +17,6 @@ Force&lt;/a&gt; on how the
 solved with an SAT solver.  Another well-known example is &lt;a href="https://www.quantamagazine.org/terence-taos-answer-to-the-erdos-discrepancy-problem-20151001/"&gt;Paul Erdős Discrepancy
 Conjecture&lt;/a&gt;,
 which was &lt;a href="https://arxiv.org/pdf/1402.2184.pdf"&gt;initially attacked with the help of computer&lt;/a&gt;.&lt;/p&gt;
-&lt;p align="center"&gt;
-&lt;img src="https://newptcai.github.io/images/BEE/egg-power.jpg" alt="Brute force" width="450" /&gt;
-&lt;/p&gt;
-
 &lt;p&gt;Thus it is perhaps beneficial 🥦️ for anyone who is interested in combinatorics 🀄️ to learn how to
 harness the beautiful brute force 🔨 of SAT solvers. Doing experiments with SAT solver can search much
 bigger space than pencil and paper.  New patterns can be spotted 👁️. Conjectures can be proved or
@@ -65,12 +65,32 @@ unsatisfiable          CNF solution --&lt;span class="o"&gt;(&lt;/span&gt;Bumble
 Julia to understand this part. I will only briefly mention what &lt;code&gt;BEE.jl&lt;/code&gt; does by the
 end.&lt;/p&gt;
 &lt;h2&gt;&lt;code&gt;BEE&lt;/code&gt; and SAT solver for beginners&lt;/h2&gt;
+&lt;h3&gt;Docker image&lt;/h3&gt;
+&lt;p&gt;The easiest way to try &lt;code&gt;BEE&lt;/code&gt; and &lt;code&gt;BEE.jl&lt;/code&gt; is to use this &lt;a href="https://hub.docker.com/r/newptcai/bee"&gt;docker
+image&lt;/a&gt; with everything you need. 
+If you have &lt;a href="https://www.docker.com/"&gt;docker&lt;/a&gt; install, simply type in a terminal&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker pull newptcai/bee
+docker run -it newptcai/bee
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will download and start a bash shell within the image.  You will find &lt;code&gt;BEE&lt;/code&gt; install in the
+folder &lt;code&gt;/bee&lt;/code&gt;.  To check it works, run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; bee &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; ./BumbleBEE beeSolver/bExamples/ex_sat.bee
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The drawback of this method is that the image is quite large (about 600MB). This is unavoidable if we
+use docker. Julia itself needs about 400MB, and Prolog costs another 100MB. 😑️&lt;/p&gt;
 &lt;h3&gt;Compiling and running &lt;code&gt;BEE&lt;/code&gt;&lt;/h3&gt;
 &lt;p&gt;I ran into some difficulties when I tried to compile &lt;a href="http://amit.metodi.me/research/bee/bee20170615.zip"&gt;2017 version of
 &lt;code&gt;BEE&lt;/code&gt;&lt;/a&gt;. Here is how to do it correctly on
 Ubuntu. Other Linux system should work in similar ways.&lt;/p&gt;
-&lt;p&gt;First install &lt;code&gt;swi-prolog&lt;/code&gt;. You can do this in a terminal by&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt install swi-prolog
+&lt;p&gt;First install &lt;a href="https://www.swi-prolog.org/build/PPA.txt"&gt;SWI-Prolog&lt;/a&gt;. You can do this in a terminal
+by typing&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-add-repository ppa:swi-prolog/stable
+sudo apt-get update
+sudo apt-get install swi-prolog-nox
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -279,25 +299,25 @@ Here's how to do the example above with &lt;code&gt;BEE.jl&lt;/code&gt;&lt;/p&gt
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Then run the following code&lt;/p&gt;
+&lt;p&gt;Then run the following code in Julia REPL&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;BEE&lt;/span&gt;
 
 &lt;span class="nd"&gt;@beeint&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;  &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
 &lt;span class="nd"&gt;@beeint&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;
 &lt;span class="nd"&gt;@beeint&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 
-&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;
+&lt;span class="nd"&gt;@constrain&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;z&lt;/span&gt;
 
 &lt;span class="nd"&gt;@beeint&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
 
-&lt;span class="n"&gt;xl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;beebool&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;x&lt;/span&gt;&lt;span class="si"&gt;$i&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;xl&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nd"&gt;@beebool&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;span class="nd"&gt;@constrain&lt;/span&gt; &lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nd"&gt;@constrain&lt;/span&gt; &lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
 
-&lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;
+&lt;span class="nd"&gt;@constrain&lt;/span&gt; &lt;span class="n"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;xl&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;]])&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;
 
-&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BEE&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="n"&gt;BEE&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -314,17 +334,53 @@ Here's how to do the example above with &lt;code&gt;BEE.jl&lt;/code&gt;&lt;/p&gt
 &lt;span class="n"&gt;bool_eq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;bool_eq&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;bool_array_sum_eq&lt;/span&gt;&lt;span class="p"&gt;(([&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;x4&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;solve&lt;/span&gt; &lt;span class="n"&gt;satisfy&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Exactly as above.&lt;/p&gt;
+&lt;p&gt;Exactly as above.
+You can solve this into a file and solve it with &lt;code&gt;BumbleBEE&lt;/code&gt; as I described before.
+Or assuming that &lt;code&gt;BumbleBEE&lt;/code&gt; can be found through your &lt;code&gt;PATH&lt;/code&gt; environment variable, then you can run
+&lt;code&gt;BEE.solve()&lt;/code&gt; directly in Julia and get the solution, like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;SWI&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Prolog&lt;/span&gt; &lt;span class="n"&gt;interface&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;Glucose&lt;/span&gt; &lt;span class="n"&gt;v4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;OK&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;  &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt;      &lt;span class="n"&gt;BumbleBEE&lt;/span&gt;       &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;|||&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;15&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2017&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;     &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;   &lt;span class="o"&gt;^^^&lt;/span&gt;        &lt;span class="n"&gt;by&lt;/span&gt; &lt;span class="n"&gt;Amit&lt;/span&gt; &lt;span class="n"&gt;Metodi&lt;/span&gt;    &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;\&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;  &lt;span class="n"&gt;reading&lt;/span&gt; &lt;span class="n"&gt;BEE&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;done&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;  &lt;span class="n"&gt;load&lt;/span&gt; &lt;span class="n"&gt;pl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;satSolver&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;  &lt;span class="n"&gt;encoding&lt;/span&gt; &lt;span class="n"&gt;BEE&lt;/span&gt; &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="n"&gt;done&lt;/span&gt;
+&lt;span class="o"&gt;%&lt;/span&gt;  &lt;span class="n"&gt;solving&lt;/span&gt; &lt;span class="n"&gt;CNF&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;satisfy&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;z&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="n"&gt;x1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+&lt;span class="n"&gt;x4&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;
+&lt;span class="n"&gt;x2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;span class="n"&gt;x3&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;span class="o"&gt;----------&lt;/span&gt;
+&lt;span class="o"&gt;==========&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And if you check &lt;code&gt;output&lt;/code&gt;, you will it is a dictionary containing the solution.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;out&lt;/span&gt;
+&lt;span class="n"&gt;BEE&lt;/span&gt; &lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Satisfiable&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="kt"&gt;Integer&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;Dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;w&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;x&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;z&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;y&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Boolean&lt;/span&gt; &lt;span class="n"&gt;variables&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;Dict&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Bool&lt;/span&gt;&lt;span class="p"&gt;}(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;x1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;x4&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;x2&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;x3&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h2&gt;Acknowledgement 🙏️&lt;/h2&gt;
 &lt;p&gt;I want to thank all the generous ❤️  people who have spend their time to create these amazing SAT
 solvers and made them freely available to everyone.&lt;/p&gt;
 &lt;p&gt;By writing this module, I have learn quite a great deal of Julia and its convenient meta-programming
 features.  I want to thank everyone 💁 on GitHub and &lt;a href="https://slackinvite.julialang.org/"&gt;Julia Slack channel&lt;/a&gt; who has helped me, in
 particular Alex Arslan, &lt;a href="https://github.com/dpsanders"&gt;David Sanders&lt;/a&gt;, Syx Pek, and &lt;a href="https://github.com/JeffreySarnoff"&gt;Jeffrey
-Sarnoff&lt;/a&gt;.&lt;/p&gt;</content><category term="math"></category><category term="Julia"></category><category term="programming"></category></entry><entry><title>Harmonic number and Zeta functions explained in Julia (part 2)</title><link href="https://newptcai.github.io/harmonic-number-and-zeta-functions-explained-in-julia-part-2.html" rel="alternate"></link><published>2020-04-15T00:00:00+02:00</published><updated>2020-04-15T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-15:/harmonic-number-and-zeta-functions-explained-in-julia-part-2.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This is part 2 of a series explaining what is Harmonic number and it's connection with Zeta
+Sarnoff&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Sarnoff](https://github.com/JeffreySarnoff).&lt;/p&gt;</content><category term="math"></category><category term="Julia"></category><category term="programming"></category><category term="combinatorics"></category></entry><entry><title>Harmonic number and Zeta functions explained in Julia (part 2)</title><link href="https://newptcai.github.io/harmonic-number-and-zeta-functions-explained-in-julia-part-2.html" rel="alternate"></link><published>2020-04-15T00:00:00+02:00</published><updated>2020-04-15T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-15:/harmonic-number-and-zeta-functions-explained-in-julia-part-2.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This is part 2 of a series explaining what is Harmonic number and it's connection with Zeta
 functions. The post …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This is part 2 of a series explaining what is Harmonic number and it's connection with Zeta
 functions. The post is written as a Jupyter notebook with Julia kernel. You can download it
 &lt;a href="https://newptcai.github.io/notebook/2020-04-14-harmonic-2.ipynb"&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;

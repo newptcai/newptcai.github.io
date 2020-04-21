@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <title>Using BEE and BEE.jl to solve combinatorial problems - You don't need to prove this</title>
-    <link href="https://newptcai.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="You don't need to prove this Full Atom Feed" />
+    <link href="http://localhost:8000/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="You don't need to prove this Full Atom Feed" />
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
@@ -26,7 +26,7 @@
 
     <meta name="author" content="Xing Shi Cai" />
     <meta name="description" content="This article is about my Julia interface package BEE.jl for using BEE (Ben-Gurion University Equi-propagation Encoder) by Amit Metodi …" /> 
-    <meta name="keywords" content="Julia, programming"> 
+    <meta name="keywords" content="Julia, programming, combinatorics"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
@@ -79,6 +79,10 @@
           <a href="https://newptcai.github.io/tag/programming.html" title="  All posts about Programming
 ">#programming</a>
         </span>
+        <span class="w3-tag w3-light-grey w3-text-red w3-hover-red">
+          <a href="https://newptcai.github.io/tag/combinatorics.html" title="  All posts about Combinatorics
+">#combinatorics</a>
+        </span>
       </div>
     </div>
   </header>
@@ -89,6 +93,10 @@
 using <a href="http://amit.metodi.me/research/bee/"><code>BEE</code> (Ben-Gurion University Equi-propagation
 Encoder)</a> by <a href="http://amit.metodi.me/">Amit Metodi</a></em></p>
 <h2>The beauty of brute force 🤜️</h2>
+<p align="center">
+<img src="https://newptcai.github.io/images/BEE/egg-power.jpg" alt="Brute force" width="450" />
+</p>
+
 <p>Modern <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">SAT</a> solver are often capable
 of handling problems with <em>HUGE</em> size. They have been successfully applied to many combinatorics
 problems. Communications ACM has an article titled <a href="https://cacm.acm.org/magazines/2017/8/219606-the-science-of-brute-force/fulltext">The Science of Brute
@@ -97,10 +105,6 @@ Force</a> on how the
 solved with an SAT solver.  Another well-known example is <a href="https://www.quantamagazine.org/terence-taos-answer-to-the-erdos-discrepancy-problem-20151001/">Paul Erdős Discrepancy
 Conjecture</a>,
 which was <a href="https://arxiv.org/pdf/1402.2184.pdf">initially attacked with the help of computer</a>.</p>
-<p align="center">
-<img src="https://newptcai.github.io/images/BEE/egg-power.jpg" alt="Brute force" width="450" />
-</p>
-
 <p>Thus it is perhaps beneficial 🥦️ for anyone who is interested in combinatorics 🀄️ to learn how to
 harness the beautiful brute force 🔨 of SAT solvers. Doing experiments with SAT solver can search much
 bigger space than pencil and paper.  New patterns can be spotted 👁️. Conjectures can be proved or
@@ -149,12 +153,32 @@ unsatisfiable          CNF solution --<span class="o">(</span>BumbleSol<span cla
 Julia to understand this part. I will only briefly mention what <code>BEE.jl</code> does by the
 end.</p>
 <h2><code>BEE</code> and SAT solver for beginners</h2>
+<h3>Docker image</h3>
+<p>The easiest way to try <code>BEE</code> and <code>BEE.jl</code> is to use this <a href="https://hub.docker.com/r/newptcai/bee">docker
+image</a> with everything you need. 
+If you have <a href="https://www.docker.com/">docker</a> install, simply type in a terminal</p>
+<div class="highlight"><pre><span></span>docker pull newptcai/bee
+docker run -it newptcai/bee
+</pre></div>
+
+
+<p>This will download and start a bash shell within the image.  You will find <code>BEE</code> install in the
+folder <code>/bee</code>.  To check it works, run</p>
+<div class="highlight"><pre><span></span><span class="nb">cd</span> bee <span class="o">&amp;&amp;</span> ./BumbleBEE beeSolver/bExamples/ex_sat.bee
+</pre></div>
+
+
+<p>The drawback of this method is that the image is quite large (about 600MB). This is unavoidable if we
+use docker. Julia itself needs about 400MB, and Prolog costs another 100MB. 😑️</p>
 <h3>Compiling and running <code>BEE</code></h3>
 <p>I ran into some difficulties when I tried to compile <a href="http://amit.metodi.me/research/bee/bee20170615.zip">2017 version of
 <code>BEE</code></a>. Here is how to do it correctly on
 Ubuntu. Other Linux system should work in similar ways.</p>
-<p>First install <code>swi-prolog</code>. You can do this in a terminal by</p>
-<div class="highlight"><pre><span></span>sudo apt install swi-prolog
+<p>First install <a href="https://www.swi-prolog.org/build/PPA.txt">SWI-Prolog</a>. You can do this in a terminal
+by typing</p>
+<div class="highlight"><pre><span></span>sudo apt-add-repository ppa:swi-prolog/stable
+sudo apt-get update
+sudo apt-get install swi-prolog-nox
 </pre></div>
 
 
@@ -363,25 +387,25 @@ Here's how to do the example above with <code>BEE.jl</code></p>
 </pre></div>
 
 
-<p>Then run the following code</p>
+<p>Then run the following code in Julia REPL</p>
 <div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">BEE</span>
 
 <span class="nd">@beeint</span> <span class="n">x</span>  <span class="mi">0</span> <span class="mi">5</span>
 <span class="nd">@beeint</span> <span class="n">y</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">9</span>
 <span class="nd">@beeint</span> <span class="n">z</span> <span class="o">-</span><span class="mi">5</span> <span class="mi">10</span>
 
-<span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span>
+<span class="nd">@constrain</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="n">z</span>
 
 <span class="nd">@beeint</span> <span class="n">w</span> <span class="mi">0</span> <span class="mi">10</span>
 
-<span class="n">xl</span> <span class="o">=</span> <span class="p">[</span><span class="n">beebool</span><span class="p">(</span><span class="s">&quot;x</span><span class="si">$i</span><span class="s">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">xl</span> <span class="o">=</span> <span class="nd">@beebool</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">]</span>
 
-<span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="kc">true</span>
+<span class="nd">@constrain</span> <span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="nd">@constrain</span> <span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="kc">true</span>
 
-<span class="n">sum</span><span class="p">([</span><span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span> <span class="o">==</span> <span class="n">w</span>
+<span class="nd">@constrain</span> <span class="n">sum</span><span class="p">([</span><span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span> <span class="o">==</span> <span class="n">w</span>
 
-<span class="n">print</span><span class="p">(</span><span class="n">BEE</span><span class="o">.</span><span class="n">render</span><span class="p">())</span>
+<span class="n">BEE</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
 </pre></div>
 
 
@@ -398,10 +422,45 @@ Here's how to do the example above with <code>BEE.jl</code></p>
 <span class="n">bool_eq</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">-</span><span class="n">x2</span><span class="p">)</span>
 <span class="n">bool_eq</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
 <span class="n">bool_array_sum_eq</span><span class="p">(([</span><span class="o">-</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="o">-</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">],</span> <span class="n">w</span><span class="p">))</span>
+<span class="n">solve</span> <span class="n">satisfy</span>
 </pre></div>
 
 
-<p>Exactly as above.</p>
+<p>Exactly as above.
+You can solve this into a file and solve it with <code>BumbleBEE</code> as I described before.
+Or assuming that <code>BumbleBEE</code> can be found through your <code>PATH</code> environment variable, then you can run
+<code>BEE.solve()</code> directly in Julia and get the solution, like this.</p>
+<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">solve</span><span class="p">();</span>
+<span class="o">%</span> <span class="n">SWI</span><span class="o">-</span><span class="n">Prolog</span> <span class="n">interface</span> <span class="n">to</span> <span class="n">Glucose</span> <span class="n">v4</span><span class="o">.</span><span class="mi">0</span> <span class="o">...</span> <span class="n">OK</span>
+<span class="o">%</span>  <span class="o">\</span><span class="err">&#39;&#39;&#39;</span><span class="o">/</span> <span class="o">//</span>      <span class="n">BumbleBEE</span>       <span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span>
+<span class="o">%</span> <span class="o">-</span><span class="p">(</span><span class="o">|||</span><span class="p">)(</span><span class="err">&#39;</span><span class="p">)</span>     <span class="p">(</span><span class="mi">15</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2017</span><span class="p">)</span>     <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span>
+<span class="o">%</span>   <span class="o">^^^</span>        <span class="n">by</span> <span class="n">Amit</span> <span class="n">Metodi</span>    <span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span>
+<span class="o">%</span>
+<span class="o">%</span>  <span class="n">reading</span> <span class="n">BEE</span> <span class="n">file</span> <span class="o">...</span> <span class="n">done</span>
+<span class="o">%</span>  <span class="n">load</span> <span class="n">pl</span><span class="o">-</span><span class="n">satSolver</span> <span class="o">...</span> <span class="o">%</span>  <span class="n">encoding</span> <span class="n">BEE</span> <span class="n">model</span> <span class="o">...</span> <span class="n">done</span>
+<span class="o">%</span>  <span class="n">solving</span> <span class="n">CNF</span> <span class="p">(</span><span class="n">satisfy</span><span class="p">)</span> <span class="o">...</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">x4</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="o">----------</span>
+<span class="o">==========</span>
+</pre></div>
+
+
+<p>And if you check <code>output</code>, you will it is a dictionary containing the solution.</p>
+<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">out</span>
+<span class="n">BEE</span> <span class="n">solution</span><span class="o">:</span>
+<span class="o">*</span> <span class="n">Satisfiable</span><span class="o">:</span> <span class="kc">true</span>
+<span class="o">*</span> <span class="kt">Integer</span> <span class="n">variables</span><span class="o">:</span> <span class="kt">Dict</span><span class="p">(</span><span class="s">&quot;w&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span><span class="s">&quot;x&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="s">&quot;z&quot;</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="s">&quot;y&quot;</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">*</span> <span class="n">Boolean</span> <span class="n">variables</span><span class="o">:</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">String</span><span class="p">,</span><span class="kt">Bool</span><span class="p">}(</span><span class="s">&quot;x1&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="s">&quot;x4&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="s">&quot;x2&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span><span class="s">&quot;x3&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
 <h2>Acknowledgement 🙏️</h2>
 <p>I want to thank all the generous ❤️  people who have spend their time to create these amazing SAT
 solvers and made them freely available to everyone.</p>
@@ -409,6 +468,7 @@ solvers and made them freely available to everyone.</p>
 features.  I want to thank everyone 💁 on GitHub and <a href="https://slackinvite.julialang.org/">Julia Slack channel</a> who has helped me, in
 particular Alex Arslan, <a href="https://github.com/dpsanders">David Sanders</a>, Syx Pek, and <a href="https://github.com/JeffreySarnoff">Jeffrey
 Sarnoff</a>.</p>
+<p>Sarnoff](https://github.com/JeffreySarnoff).</p>
     </main>
     <br>
     <footer>
