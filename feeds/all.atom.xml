@@ -1202,7 +1202,7 @@ So they and their coworkers have to go home and be replaced by people who (unfor
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;It has been observed for a long time that if $p &gt; 0.36$, then almost all nodes eventual will have fitness $1$. Otherwise we will always have some nodes with fitness $0$. 
 A &lt;a href="https://arxiv.org/abs/2003.00222"&gt;recent paper&lt;/a&gt; by Stanislav Volkov [1] proved the first part for $p &gt; 0.411$. 
-For the second part an &lt;a href="https://www.semanticscholar.org/paper/Non-Triviality-of-a-Discrete-Bak%E2%80%93Sneppen-Evolution-Meester-Znamenski/050d3597f5412ad6c1e9043b2200aab4731fff27"&gt;old paper&lt;/a&gt; [3] show that it is true for $p&lt;p_c$ where $p_c$ is very small but non-zero constant. So the problem now is if this gap can actually be closed.&lt;/p&gt;
+For the second part an &lt;a href="https://www.semanticscholar.org/paper/Non-Triviality-of-a-Discrete-Bak%E2%80%93Sneppen-Evolution-Meester-Znamenski/050d3597f5412ad6c1e9043b2200aab4731fff27"&gt;old paper&lt;/a&gt; [3] show that it is true for $p \leq p_c$ where $p_c$ is unknown but non-zero constant. So the problem now is if this gap can actually be closed.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
