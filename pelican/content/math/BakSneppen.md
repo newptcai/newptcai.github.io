@@ -4,4 +4,8 @@ layout: post
 tags:  programming, probability, Julia, simulation, Covid-19
 status: published
 
-I just did some simulation on Bak-Sneppen model, check it at [GitHub](https://github.com/newptcai/BakSneppenSimulation.jl/blob/master/notebook/Bak-Sneppen-new.ipynb).
+*I just did some simulation on Bak-Sneppen model, you can check it out at [GitHub](https://github.com/newptcai/BakSneppenSimulation.jl).*
+
+----
+
+{% notebook notebook/Bak-Sneppen-new.ipynb %}
