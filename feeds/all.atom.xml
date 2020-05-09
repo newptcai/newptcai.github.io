@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="http://localhost:8000/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-05-09T00:00:00+02:00</updated><entry><title>Euclidean Plane Geometry with Julia</title><link href="https://newptcai.github.io/euclidean-plane-geometry-with-julia.html" rel="alternate"></link><published>2020-05-09T00:00:00+02:00</published><updated>2020-05-09T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-05-09:/euclidean-plane-geometry-with-julia.html</id><summary type="html">&lt;p&gt;&lt;em&gt;The post is generated from a &lt;a href="https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb"&gt;Jupyter
 notebook&lt;/a&gt;. You
 can also run it live on
-&lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/master?urlpath=https%3A%2F%2Fgithub.com%2Fnewptcai%2Fmath-note%2Fblob%2Fmaster%2FNapoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/master?filepath=Napoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;style type="text/css"&gt;/*!
 *
@@ -12,7 +12,7 @@ can also run it live on
 /* CSS font …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;The post is generated from a &lt;a href="https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb"&gt;Jupyter
 notebook&lt;/a&gt;. You
 can also run it live on
-&lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/master?urlpath=https%3A%2F%2Fgithub.com%2Fnewptcai%2Fmath-note%2Fblob%2Fmaster%2FNapoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/master?filepath=Napoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;style type="text/css"&gt;/*!
 *
