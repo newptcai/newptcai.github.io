@@ -3,16 +3,12 @@
 notebook&lt;/a&gt;. You
 can also run it live on
 &lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/v0.1.2?filepath=Napoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;style type="text/css"&gt;/*!
-*
-* IPython notebook
-*
-*/
-/* CSS font …&lt;/style&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;The post is generated from a &lt;a href="https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb"&gt;Jupyter
+&lt;p&gt;&lt;em&gt;Update 2020-05-13: I have …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;The post is generated from a &lt;a href="https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb"&gt;Jupyter
 notebook&lt;/a&gt;. You
 can also run it live on
 &lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/v0.1.2?filepath=Napoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Update 2020-05-13: I have since cleaned up the code and put everything into a package
+&lt;a href="https://github.com/newptcai/PlaneGeometry.jl"&gt;PlaneGeometry.jl&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;style type="text/css"&gt;/*!
 *
