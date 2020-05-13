@@ -7,7 +7,11 @@ status: published
 *The post is generated from a [Jupyter
 notebook](https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb). You
 can also run it live on
-[Binder](https://mybinder.org/v2/gh/newptcai/math-note/master?urlpath=https%3A%2F%2Fgithub.com%2Fnewptcai%2Fmath-note%2Fblob%2Fmaster%2FNapoleon.ipynb).*
+[Binder](https://mybinder.org/v2/gh/newptcai/math-note/v0.1.2?filepath=Napoleon.ipynb).*
+
+*Update 2020-05-13: I have since cleaned up the code and put everything into a package
+[PlaneGeometry.jl](https://github.com/newptcai/PlaneGeometry.jl).*
+
 
 ----
 
