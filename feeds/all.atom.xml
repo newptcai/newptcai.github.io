@@ -1,5 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="http://localhost:8000/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-05-09T00:00:00+02:00</updated><entry><title>Euclidean Plane Geometry with Julia</title><link href="https://newptcai.github.io/euclidean-plane-geometry-with-julia.html" rel="alternate"></link><published>2020-05-09T00:00:00+02:00</published><updated>2020-05-09T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-05-09:/euclidean-plane-geometry-with-julia.html</id><summary type="html">&lt;p&gt;&lt;em&gt;The post is generated from a &lt;a href="https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb"&gt;Jupyter
+<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="http://localhost:8000/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-05-24T00:00:00+02:00</updated><entry><title>Reinstall Julia</title><link href="https://newptcai.github.io/reinstall-julia.html" rel="alternate"></link><published>2020-05-24T00:00:00+02:00</published><updated>2020-05-24T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-05-24:/reinstall-julia.html</id><summary type="html">&lt;p&gt;A couple of days ago, I found that I &lt;a href="https://github.com/JeffreySarnoff/ArbNumerics.jl/issues/41"&gt;could not install and compile
+&lt;code&gt;ArbNumerics.jl&lt;/code&gt;&lt;/a&gt;. The only options is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A couple of days ago, I found that I &lt;a href="https://github.com/JeffreySarnoff/ArbNumerics.jl/issues/41"&gt;could not install and compile
+&lt;code&gt;ArbNumerics.jl&lt;/code&gt;&lt;/a&gt;. The only options is to reinstall Julia. Fortunately, this is quite easy.&lt;/p&gt;
+&lt;p&gt;To be extra cautious, I started with a backup of the whole &lt;code&gt;~/.julia&lt;/code&gt;. Start a terminal by typing&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cp -r ~/.julia/ ~/Downloads/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then I removed &lt;code&gt;~/.julia&lt;/code&gt; without mercy 👿.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;rm -rf ~/.julia/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This means all my previously installed Julia packages are now gone, but Julia itself (the binary and
+core packages) are still there.&lt;/p&gt;
+&lt;p&gt;Most of my project has its own environment. In other words, there are two files &lt;code&gt;Project.toml&lt;/code&gt; and
+&lt;code&gt;Manifest.tomal&lt;/code&gt; in the directory containing an environment. For example, to play with &lt;code&gt;Weave.jl&lt;/code&gt;, I
+have an environment in &lt;code&gt;~/Work/weave&lt;/code&gt;. The content of &lt;code&gt;Project.toml&lt;/code&gt; is quite simple,
+which just indicates that this environment needs three dependencies &lt;code&gt;DSP&lt;/code&gt;, &lt;code&gt;Plots&lt;/code&gt; and &lt;code&gt;Weave&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[deps]&lt;/span&gt;
+&lt;span class="n"&gt;DSP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;717857b8-e6f2-59f4-9121-6e50c889abd2&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;Plots&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;91a5bcdd-55d7-5caf-9e0b-520d859cae80&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;Weave&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;44d3d7a6-8a23-5bf8-98c5-b353f8df5ec9&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The content of &lt;code&gt;Manifest.toml&lt;/code&gt; is a bit more complicated. The first few lines of it are like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# This file is machine-generated - editing it directly is not advised&lt;/span&gt;
+
+&lt;span class="k"&gt;[[AbstractFFTs]]&lt;/span&gt;
+&lt;span class="n"&gt;deps&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;[&amp;quot;LinearAlgebra&amp;quot;]&lt;/span&gt;
+&lt;span class="n"&gt;git-tree-sha1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;051c95d6836228d120f5f4b984dd5aba1624f716&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;uuid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;621f4979-c628-5d54-868e-fcf4e3e8185c&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;0.5.0&amp;quot;&lt;/span&gt;
+
+&lt;span class="k"&gt;[[Base64]]&lt;/span&gt;
+&lt;span class="n"&gt;uuid&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;2a0f44e3-6c83-55bd-87e4-b1978d98bd5f&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;What it does, is to indicate what exact packages are installed the last time I modified the
+environment. &lt;/p&gt;
+&lt;p&gt;These two files allow me to install all the packages needed to run this environment. I can simply to
+launch Julia &lt;code&gt;REPL&lt;/code&gt; in the directly where the environment is, &lt;code&gt;active&lt;/code&gt; the environment, and run the command
+&lt;code&gt;instantiate&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nd"&gt;@v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="c"&gt;# press ] to get the pkg prompt&lt;/span&gt;
+ &lt;span class="n"&gt;Activating&lt;/span&gt; &lt;span class="n"&gt;environment&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="sb"&gt;`~/Work/weave/Project.toml`&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weave&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;st&lt;/span&gt;
+&lt;span class="n"&gt;Status&lt;/span&gt; &lt;span class="sb"&gt;`~/Work/weave/Project.toml`&lt;/span&gt;
+&lt;span class="n"&gt;→&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;717857&lt;/span&gt;&lt;span class="n"&gt;b8&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;DSP&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;6.6&lt;/span&gt;
+  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;91&lt;/span&gt;&lt;span class="n"&gt;a5bcdd&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;Plots&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;2.4&lt;/span&gt;
+&lt;span class="n"&gt;→&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="n"&gt;d3d7a6&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;Weave&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;9.4&lt;/span&gt;
+&lt;span class="n"&gt;┌&lt;/span&gt; &lt;span class="n"&gt;Warning&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Some&lt;/span&gt; &lt;span class="n"&gt;packages&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;indicated&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;red&lt;/span&gt; &lt;span class="n"&gt;arrow&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;downloaded&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt; &lt;span class="sb"&gt;`instantiate`&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;instantiate&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;environment&lt;/span&gt;
+&lt;span class="n"&gt;└&lt;/span&gt; &lt;span class="err"&gt;@&lt;/span&gt; &lt;span class="n"&gt;Pkg&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Display&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;buildworker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;worker&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;package_linux64&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;share&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;stdlib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Pkg&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="kt"&gt;Display&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jl&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;238&lt;/span&gt;
+
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;weave&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pkg&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;instantiate&lt;/span&gt;
+   &lt;span class="n"&gt;Updating&lt;/span&gt; &lt;span class="n"&gt;registry&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="sb"&gt;`~/.julia/registries/General`&lt;/span&gt;
+   &lt;span class="n"&gt;Updating&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt; &lt;span class="sb"&gt;`https://github.com/JuliaRegistries/General.git`&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;AbstractFFTs&lt;/span&gt; &lt;span class="n"&gt;────────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;5.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;Parsers&lt;/span&gt; &lt;span class="n"&gt;─────────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.3&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;Tables&lt;/span&gt; &lt;span class="n"&gt;──────────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.4&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;SpecialFunctions&lt;/span&gt; &lt;span class="n"&gt;────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;10.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;Weave&lt;/span&gt; &lt;span class="n"&gt;───────────────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;9.4&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;DataStructures&lt;/span&gt; &lt;span class="n"&gt;──────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;17.15&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;Plots&lt;/span&gt; &lt;span class="n"&gt;───────────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;2.4&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;DSP&lt;/span&gt; &lt;span class="n"&gt;─────────────────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;6.6&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;IteratorInterfaceExtensions&lt;/span&gt; &lt;span class="n"&gt;─&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;TableTraits&lt;/span&gt; &lt;span class="n"&gt;─────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;PlotUtils&lt;/span&gt; &lt;span class="n"&gt;───────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;Mustache&lt;/span&gt; &lt;span class="n"&gt;────────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;DataValueInterfaces&lt;/span&gt; &lt;span class="n"&gt;─────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;FFTW&lt;/span&gt; &lt;span class="n"&gt;────────────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;2.1&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;IntelOpenMP_jll&lt;/span&gt; &lt;span class="n"&gt;─────────────&lt;/span&gt; &lt;span class="n"&gt;v2018&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.3&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;Polynomials&lt;/span&gt; &lt;span class="n"&gt;─────────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;8.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;IterTools&lt;/span&gt; &lt;span class="n"&gt;───────────────────&lt;/span&gt; &lt;span class="n"&gt;v1&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;3.0&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;FFTW_jll&lt;/span&gt; &lt;span class="n"&gt;────────────────────&lt;/span&gt; &lt;span class="n"&gt;v3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;3.9&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;MKL_jll&lt;/span&gt; &lt;span class="n"&gt;─────────────────────&lt;/span&gt; &lt;span class="n"&gt;v2019&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.117&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+  &lt;span class="n"&gt;Installed&lt;/span&gt; &lt;span class="n"&gt;YAML&lt;/span&gt; &lt;span class="n"&gt;────────────────────────&lt;/span&gt; &lt;span class="n"&gt;v0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;4.0&lt;/span&gt;
+   &lt;span class="n"&gt;Building&lt;/span&gt; &lt;span class="n"&gt;Plots&lt;/span&gt; &lt;span class="n"&gt;→&lt;/span&gt; &lt;span class="sb"&gt;`~/.julia/packages/Plots/zOV0T/deps/build.log`&lt;/span&gt;
+   &lt;span class="n"&gt;Building&lt;/span&gt; &lt;span class="n"&gt;FFTW&lt;/span&gt; &lt;span class="n"&gt;─→&lt;/span&gt; &lt;span class="sb"&gt;`~/.julia/packages/FFTW/5DZuu/deps/build.log`&lt;/span&gt;
+&lt;span class="n"&gt;Downloading&lt;/span&gt; &lt;span class="n"&gt;artifact&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;IntelOpenMP&lt;/span&gt;
+&lt;span class="c"&gt;######################################################################## 100.0%##O=#  #                               Downloading artifact: FFTW&lt;/span&gt;
+&lt;span class="c"&gt;######################################################################## 100.0%##O=#  #                          &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To test, I load &lt;code&gt;Weave&lt;/code&gt; into the &lt;code&gt;REPL&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Weave&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="n"&gt;Info&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Precompiling&lt;/span&gt; &lt;span class="n"&gt;Weave&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt;&lt;span class="n"&gt;d3d7a6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="n"&gt;a23&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="n"&gt;bf8&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;98&lt;/span&gt;&lt;span class="n"&gt;c5&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;b353f8df5ec9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Everything seems to be fine. 😄&lt;/p&gt;
+&lt;p&gt;Now if you check, you will see a &lt;code&gt;~/.julia&lt;/code&gt; has been recreated.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;ls&lt;/span&gt; &lt;span class="o"&gt;~/.&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt; &lt;span class="c"&gt;# Press ; to get shell prompt&lt;/span&gt;
+&lt;span class="n"&gt;artifacts&lt;/span&gt;  &lt;span class="n"&gt;compiled&lt;/span&gt;  &lt;span class="n"&gt;conda&lt;/span&gt;  &lt;span class="n"&gt;environments&lt;/span&gt;  &lt;span class="n"&gt;logs&lt;/span&gt;  &lt;span class="n"&gt;packages&lt;/span&gt;  &lt;span class="n"&gt;prefs&lt;/span&gt;  &lt;span class="n"&gt;registries&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So one last thing is to do is to restore my &lt;code&gt;config&lt;/code&gt; folder by.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;Downloads&lt;/span&gt;&lt;span class="o"&gt;/.&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="o"&gt;~/.&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and remove the backup&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;shell&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;rf&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;Downloads&lt;/span&gt;&lt;span class="o"&gt;/.&lt;/span&gt;&lt;span class="n"&gt;julia&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="math"></category><category term="programming"></category><category term="Julia"></category></entry><entry><title>Euclidean Plane Geometry with Julia</title><link href="https://newptcai.github.io/euclidean-plane-geometry-with-julia.html" rel="alternate"></link><published>2020-05-09T00:00:00+02:00</published><updated>2020-05-09T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-05-09:/euclidean-plane-geometry-with-julia.html</id><summary type="html">&lt;p&gt;&lt;em&gt;The post is generated from a &lt;a href="https://nbviewer.jupyter.org/github/newptcai/math-note/blob/master/Napoleon.ipynb"&gt;Jupyter
 notebook&lt;/a&gt;. You
 can also run it live on
 &lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/v0.1.2?filepath=Napoleon.ipynb"&gt;Binder&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
