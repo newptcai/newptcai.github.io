@@ -47,7 +47,7 @@ In my spare time, I like
 fa-meetup"></i>.
 
 For more information, check my
-[cv](https://drive.google.com/file/d/0B9btgbQECJJWOXJiXzNua0dWU3c/preview) <i class="fas fa-file"></i>.
+[cv]({static}/doc/mycv.pdf) <i class="fas fa-file"></i>.
 
 ## Contact Me
 
