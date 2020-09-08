@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="https://newptcai.github.io/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-05-24T00:00:00+02:00</updated><entry><title>Reinstall Julia</title><link href="https://newptcai.github.io/reinstall-julia.html" rel="alternate"></link><published>2020-05-24T00:00:00+02:00</published><updated>2020-05-24T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-05-24:/reinstall-julia.html</id><summary type="html">&lt;p&gt;A couple of days ago, I found that I &lt;a href="https://github.com/JeffreySarnoff/ArbNumerics.jl/issues/41"&gt;could not install and compile
+<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="https://newptcai.github.io/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-09-08T00:00:00+02:00</updated><entry><title>Several Variable Calculus 1MA017, Sep 2020</title><link href="https://newptcai.github.io/several-variable-calculus-1ma017-sep-2020.html" rel="alternate"></link><published>2020-09-08T00:00:00+02:00</published><updated>2020-09-08T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-08:/several-variable-calculus-1ma017-sep-2020.html</id><summary type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
+2020) at Uppsala University …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
+2020) at Uppsala University. Here are the materials that I prepared for the course.&lt;/p&gt;
+&lt;h2&gt;Mathematica notebooks&lt;/h2&gt;
+&lt;p&gt;In the tutorials, I show students Mathematica notebooks that I created for solving exercises in the
+text book -- &lt;em&gt;Calculus: A Complete Course Book by Robert A. Adams&lt;/em&gt;.  You can click links below to
+read these notebooks and play with the live 3D models. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note&lt;/em&gt; -- These notebook are &lt;strong&gt;not&lt;/strong&gt; written as something which can be read independently. They are
+posted here as reminders of what I talked about in class.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.wolframcloud.com/obj/xingshi.cai/Published/calculus-2020-09-tutorial-01.nb"&gt;Tutorial 1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Online quiz&lt;/h2&gt;
+&lt;p&gt;For each tutorial I also created an online quiz. If you answer the questions given through the links
+below, you will immediately get an grade.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/forms/d/e/1FAIpQLSfpf96YHtT38pTaRy1ABVei6NpuusHEXELAiAnTi_gPEd2e-g/viewform?usp=sf_link"&gt;Tutorial 1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.google.com/forms/d/e/1FAIpQLSc3erp8dsPNthotqPxamBbgXmD89uYm0skZe5BuMFgX6xFsBQ/viewform?usp=sf_link"&gt;Tutorial 2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="math"></category><category term="teaching"></category><category term="analysis"></category></entry><entry><title>Reinstall Julia</title><link href="https://newptcai.github.io/reinstall-julia.html" rel="alternate"></link><published>2020-05-24T00:00:00+02:00</published><updated>2020-05-24T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-05-24:/reinstall-julia.html</id><summary type="html">&lt;p&gt;A couple of days ago, I found that I &lt;a href="https://github.com/JeffreySarnoff/ArbNumerics.jl/issues/41"&gt;could not install and compile
 &lt;code&gt;ArbNumerics.jl&lt;/code&gt;&lt;/a&gt;. The only options is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A couple of days ago, I found that I &lt;a href="https://github.com/JeffreySarnoff/ArbNumerics.jl/issues/41"&gt;could not install and compile
 &lt;code&gt;ArbNumerics.jl&lt;/code&gt;&lt;/a&gt;. The only options is to reinstall Julia. Fortunately, this is quite easy.&lt;/p&gt;
 &lt;p&gt;To be extra cautious, I started with a backup of the whole &lt;code&gt;~/.julia&lt;/code&gt;. Start a terminal by typing&lt;/p&gt;
