@@ -53,7 +53,8 @@ For more information, check my
 
 **Office <i class="fas fa-door-open"></i>**  [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
 
-**Email <i class="fas fa-envelope"></i>**  [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or
-[newptcai@gmail.com](mailto:newptcai@gmail.com) ([PGP public key](http://keyserver.ubuntu.com/pks/lookup?search=newptcai%40gmail.com&fingerprint=on&op=index))
+**Email <i class="fas fa-envelope"></i>**  [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or [newptcai@gmail.com](mailto:newptcai@gmail.com) ([PGP public key](http://keyserver.ubuntu.com/pks/lookup?search=newptcai%40gmail.com&fingerprint=on&op=index))
 
-**Video Conference <i class="fas fa-video"></i>** [Zoom](https://us04web.zoom.us/j/3355863452) <i class="fab fa-skype"></i> [Skype](https://us04web.zoom.us/j/3355863452)
+**Video Conference** <i class="fas fa-video"></i> [Zoom](https://uu-se.zoom.us/my/newptcai) <i class="fab fa-skype"></i> [Skype](https://us04web.zoom.us/j/3355863452) <i class="fab fa-discord"></i> [Discord](https://discord.gg/atMhXCT)
+
+**Phone number <i class="fas fa-phone"></i>** <a href="tel:+460728715277">+46-072-871-5277</a>
