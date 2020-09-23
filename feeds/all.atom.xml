@@ -1,5 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="https://newptcai.github.io/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-09-08T00:00:00+02:00</updated><entry><title>Several Variable Calculus 1MA017, Sep 2020</title><link href="https://newptcai.github.io/several-variable-calculus-1ma017-sep-2020.html" rel="alternate"></link><published>2020-09-08T00:00:00+02:00</published><updated>2020-09-08T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-08:/several-variable-calculus-1ma017-sep-2020.html</id><summary type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
+<feed xmlns="http://www.w3.org/2005/Atom"><title>You don't need to prove this</title><link href="https://newptcai.github.io/" rel="alternate"></link><link href="https://newptcai.github.io/feeds/all.atom.xml" rel="self"></link><id>https://newptcai.github.io/</id><updated>2020-09-23T00:00:00+02:00</updated><entry><title>A random graph model with 2-point-concentrated diameter</title><link href="https://newptcai.github.io/a-random-graph-model-with-2-point-concentrated-diameter.html" rel="alternate"></link><published>2020-09-23T00:00:00+02:00</published><updated>2020-09-23T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-23:/a-random-graph-model-with-2-point-concentrated-diameter.html</id><summary type="html">&lt;p&gt;Consider a random multi-graph process &lt;span class="math"&gt;\(G_{m}(t)\)&lt;/span&gt; constructed with the following procedure. Let
+&lt;span class="math"&gt;\(G_{m}(1)\)&lt;/span&gt; be just a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Consider a random multi-graph process &lt;span class="math"&gt;\(G_{m}(t)\)&lt;/span&gt; constructed with the following procedure. Let
+&lt;span class="math"&gt;\(G_{m}(1)\)&lt;/span&gt; be just a single vertex &lt;span class="math"&gt;\(1\)&lt;/span&gt;. Given &lt;span class="math"&gt;\(G_{m}(t)\)&lt;/span&gt;, we construct &lt;span class="math"&gt;\(G_{m}(t+1)\)&lt;/span&gt; by adding a vertex
+&lt;span class="math"&gt;\(t+1\)&lt;/span&gt; and connect it to &lt;span class="math"&gt;\(m\)&lt;/span&gt; vertices chosen independently and uniformly at random for vertices &lt;span class="math"&gt;\(1,
+\cdots, t\)&lt;/span&gt;. This can be a multi-graph since there maybe more than one edges between two vertices.
+But there can be no self-loops and the graph is always connected.&lt;/p&gt;
+&lt;p&gt;I came up with this model while reading about P2P network. These are computer networks that
+collaborate in a decentralized way to share resource. The most well-known examples include
+BitTorrent and Bitcoin. When a computer join such a network, it chooses a random a few number of
+other computers (neighbours) to connect to. How neighbours are chosen exactly differs from network
+to network. But in general, there is no particular preferences to any one in the network. (This is
+contra to social networks, where the most well-connected are more likely to be connected to others.)&lt;/p&gt;
+&lt;p&gt;I did some simulation on this model and found something rarely intriguing -- the diameter of the
+model seems to concentrates very quickly to two consecutive integers. See the picture below. The
+number above each plot is the number of nodes &lt;span class="math"&gt;\(t\)&lt;/span&gt;. The histogram shows the distribution of the diameters
+of 2000 samples for each &lt;span class="math"&gt;\(t\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-512.png"&gt;
+&lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-1024.png"&gt;
+&lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-2048.png"&gt;
+&lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-4096.png"&gt;&lt;/p&gt;
+&lt;p&gt;It's not difficult to show the diameter is of the order &lt;span class="math"&gt;\(\log n\)&lt;/span&gt; following along the line of &lt;a href="https://doi.org/10.1007/s10955-010-9921-z"&gt;this
+paper&lt;/a&gt;. But can we actually prove the two-point concentration?&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="random-graph"></category><category term="open-problem"></category><category term="probability"></category><category term="experimental-math"></category></entry><entry><title>Several Variable Calculus 1MA017, Sep 2020</title><link href="https://newptcai.github.io/several-variable-calculus-1ma017-sep-2020.html" rel="alternate"></link><published>2020-09-08T00:00:00+02:00</published><updated>2020-09-08T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-08:/several-variable-calculus-1ma017-sep-2020.html</id><summary type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
 2020) at Uppsala University …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
 2020) at Uppsala University. Here are the materials that I prepared for the course.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Polar coordiantes" src="https://newptcai.github.io/images/2020-09-08/polar.png"&gt;&lt;/p&gt;
@@ -8336,7 +8419,7 @@ M1851.73 388.432 L2280.76 388.432 L2280.76 206.992 L1851.73 206.992  Z
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="math"></category><category term="programming"></category><category term="probability"></category><category term="Julia"></category><category term="simulation"></category><category term="Covid-19"></category></entry><entry><title>Using BEE and BEE.jl to solve combinatorial problems</title><link href="https://newptcai.github.io/using-bee-and-beejl-to-solve-combinatorial-problems.html" rel="alternate"></link><published>2020-04-18T00:00:00+02:00</published><updated>2020-04-18T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-18:/using-bee-and-beejl-to-solve-combinatorial-problems.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This article is about my Julia interface package &lt;a href="https://github.com/newptcai/BEE.jl"&gt;&lt;code&gt;BEE.jl&lt;/code&gt;&lt;/a&gt; for
+&lt;/script&gt;</content><category term="math"></category><category term="programming"></category><category term="probability"></category><category term="Julia"></category><category term="experimental-math"></category><category term="Covid-19"></category><category term="open-problem"></category></entry><entry><title>Using BEE and BEE.jl to solve combinatorial problems</title><link href="https://newptcai.github.io/using-bee-and-beejl-to-solve-combinatorial-problems.html" rel="alternate"></link><published>2020-04-18T00:00:00+02:00</published><updated>2020-04-18T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-18:/using-bee-and-beejl-to-solve-combinatorial-problems.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This article is about my Julia interface package &lt;a href="https://github.com/newptcai/BEE.jl"&gt;&lt;code&gt;BEE.jl&lt;/code&gt;&lt;/a&gt; for
 using &lt;a href="http://amit.metodi.me/research/bee/"&gt;&lt;code&gt;BEE&lt;/code&gt; (Ben-Gurion University Equi-propagation
 Encoder)&lt;/a&gt; by &lt;a href="http://amit.metodi.me/"&gt;Amit Metodi …&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This article is about my Julia interface package &lt;a href="https://github.com/newptcai/BEE.jl"&gt;&lt;code&gt;BEE.jl&lt;/code&gt;&lt;/a&gt; for
 using &lt;a href="http://amit.metodi.me/research/bee/"&gt;&lt;code&gt;BEE&lt;/code&gt; (Ben-Gurion University Equi-propagation
@@ -15922,7 +16005,7 @@ know of. I will try to keep it updated.&lt;/p&gt;
 &lt;li&gt;&lt;a href="https://sites.google.com/view/epcwebinar/"&gt;Extremal and Probabilistic Combinatorics Webinar&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://web.math.princeton.edu/~pds/onlinetalks/talks.html"&gt;Combinatorics Lectures Online&lt;/a&gt;
   organized by &lt;a href="https://stanford.edu/~jacobfox/"&gt;Jacob Fox&lt;/a&gt; and &lt;a href="https://web.math.princeton.edu/~pds/"&gt;Paul Seymour&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content><category term="math"></category><category term="probability"></category><category term="combinatorics"></category><category term="seminars"></category></entry><entry><title>Long runs in coin tosses</title><link href="https://newptcai.github.io/long-runs-in-coin-tosses.html" rel="alternate"></link><published>2019-12-03T00:00:00+01:00</published><updated>2019-12-03T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-12-03:/long-runs-in-coin-tosses.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
+&lt;/ul&gt;</content><category term="math"></category><category term="probability"></category><category term="combinatorics"></category><category term="seminar"></category></entry><entry><title>Long runs in coin tosses</title><link href="https://newptcai.github.io/long-runs-in-coin-tosses.html" rel="alternate"></link><published>2019-12-03T00:00:00+01:00</published><updated>2019-12-03T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-12-03:/long-runs-in-coin-tosses.html</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -41451,7 +41534,7 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="programming"></category><category term="random-trees"></category><category term="experimental-math"></category></entry><entry><title>Combinatorics 1MA020, Spring 2019 (Archive)</title><link href="https://newptcai.github.io/combinatorics-1ma020-spring-2019-archive.html" rel="alternate"></link><published>2019-01-12T00:00:00+01:00</published><updated>2019-01-12T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-01-12:/combinatorics-1ma020-spring-2019-archive.html</id><summary type="html">&lt;p&gt;I just finished teaching the course Combinatorics 1MA020 (Spring 2019) at Uppsala University. Here are the
+&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="programming"></category><category term="random-tree"></category><category term="experimental-math"></category></entry><entry><title>Combinatorics 1MA020, Spring 2019 (Archive)</title><link href="https://newptcai.github.io/combinatorics-1ma020-spring-2019-archive.html" rel="alternate"></link><published>2019-01-12T00:00:00+01:00</published><updated>2019-01-12T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-01-12:/combinatorics-1ma020-spring-2019-archive.html</id><summary type="html">&lt;p&gt;I just finished teaching the course Combinatorics 1MA020 (Spring 2019) at Uppsala University. Here are the
 materials that I prepared …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I just finished teaching the course Combinatorics 1MA020 (Spring 2019) at Uppsala University. Here are the
 materials that I prepared for the course. Hope it will be helpful for you in some way (e.g., you
 need to retake the exam. 😀)&lt;/p&gt;
@@ -42066,7 +42149,7 @@ examples!&lt;/p&gt;
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="random-trees"></category><category term="combinatorics"></category></entry><entry><title>The moment of truncated random variables</title><link href="https://newptcai.github.io/the-moment-of-truncated-random-variables.html" rel="alternate"></link><published>2018-12-08T00:00:00+01:00</published><updated>2018-12-08T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-08:/the-moment-of-truncated-random-variables.html</id><summary type="html">&lt;p&gt;Given a random variable &lt;span class="math"&gt;\(Y\)&lt;/span&gt;, sometimes we want to compute the expectation of &lt;span class="math"&gt;\(Y[Y\le a]\)&lt;/span&gt;, where
+&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="random-trees"></category><category term="combinatorics"></category><category term="open-problem"></category></entry><entry><title>The moment of truncated random variables</title><link href="https://newptcai.github.io/the-moment-of-truncated-random-variables.html" rel="alternate"></link><published>2018-12-08T00:00:00+01:00</published><updated>2018-12-08T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-08:/the-moment-of-truncated-random-variables.html</id><summary type="html">&lt;p&gt;Given a random variable &lt;span class="math"&gt;\(Y\)&lt;/span&gt;, sometimes we want to compute the expectation of &lt;span class="math"&gt;\(Y[Y\le a]\)&lt;/span&gt;, where
 &lt;span class="math"&gt;\([P]=1 …&lt;/span&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;Given a random variable &lt;span class="math"&gt;\(Y\)&lt;/span&gt;, sometimes we want to compute the expectation of &lt;span class="math"&gt;\(Y[Y\le a]\)&lt;/span&gt;, where
 &lt;span class="math"&gt;\([P]=1\)&lt;/span&gt; if the &lt;span class="math"&gt;\(P\)&lt;/span&gt; and true and &lt;span class="math"&gt;\([P]=0\)&lt;/span&gt; if &lt;span class="math"&gt;\(P\)&lt;/span&gt; is false. (The notation is called &lt;a href="https://en.wikipedia.org/wiki/Iverson_bracket"&gt;Iverson
 Bracket&lt;/a&gt;.) &lt;/p&gt;
