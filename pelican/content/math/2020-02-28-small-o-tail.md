@@ -1,7 +1,7 @@
 title: Online Probability and Combinatorics Seminars
 date: 2020-03-31
 layout: post
-tags: probability, combinatorics, seminars
+tags: probability, combinatorics, seminar
 status: published
 
 In this time of Covid-19 pandemic, many seminars have been moved to online. Here are some that I

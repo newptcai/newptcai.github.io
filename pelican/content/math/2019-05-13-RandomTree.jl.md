@@ -1,7 +1,7 @@
 title: RandomTree.jl -- Simulation on large random trees with Julia
 date: 2019-05-13
 layout: post
-tags:  probability, programming, random-trees, experimental-math
+tags:  probability, programming, random-tree, experimental-math
 status: published
 
 I have been working on a software package
