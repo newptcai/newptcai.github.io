@@ -26,16 +26,24 @@ My reading list includes
 [The Uninhabitable Earth: Life After Warming by David Wallace-Wells](https://www.goodreads.com/book/show/41552709-the-uninhabitable-earth)
 </center>
 
+(If you want a wake up call, this one should be enough.)
+
 
 ![The Weather Makers]({static}/images/what-have-i-done-2020/weather.jpg)
 <center>
 [The Weather Makers: How Man Is Changing the Climate and What It Means for Life on Earth by Tim Flannery](https://www.goodreads.com/book/show/48463.The_Weather_Makers)
 </center>
 
+(The part on climate science is still sound 13 years after its publication.)
+
+
 ![No One Is Too Small to Make a Difference]({static}/images/what-have-i-done-2020/Greta.jpg)
 <center>
 [No One Is Too Small to Make a Difference by Greta Thunberg](https://www.goodreads.com/book/show/51764686-no-one-is-too-small-to-make-a-difference)
 </center>
+
+(You people voice gives you some hope.)
+
 
 I have also watched a few quite good documentaries on climate change
 
@@ -43,6 +51,9 @@ I have also watched a few quite good documentaries on climate change
 * [BBC -- Extinction -- The Facts](https://www.bbc.co.uk/programmes/m000mn4n)
 * [BBC -- Horizon -- 7.7 Billion People and Counting](https://www.reddit.com/r/overpopulation/comments/eshih9/bbc_two_horizon_2020_chris_packham_77_billion/)
 * [Netflix -- David Attenborough: A Life on Our Planet](https://www.imdb.com/title/tt11989890/)
+* [Endgame 2050](https://www.endgame2050.com/)
+* [BBC -- Horizon -- Should I Eat Meat? - How to Feed the Planet](https://www.bbc.co.uk/programmes/b04fhbrt)
+* [Cowspiracy: The Sustainability Secret](https://www.cowspiracy.com/)
 
 Two podcasts on climate change that I like are
 
