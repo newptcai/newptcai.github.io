@@ -13,9 +13,10 @@ page-order: 0
 </a>
 
 Hello! Welcome! My name is 蔡醒诗 ([how to say it](https://translate.google.com/#view=home&op=translate&sl=auto&tl=en&text=%E8%94%A1%E9%86%92%E8%AF%97))
-or Xing Shi Cai in English.  I am postdoctoral researcher at [the Department of Mathematics of
-Uppsala University](https://www.uu.se/en) in Sweden.  My supervisor is [Cecilia
-Holmgren](http://katalog.uu.se/profile/?id=N5-824) <i class="fas fa-horse"></i>.
+or Xing Shi Cai in English.  I just finished a postdoctoral researcher at [the Department of Mathematics of
+Uppsala University](https://www.uu.se/en) in Sweden.  My supervisor was [Cecilia
+Holmgren](http://katalog.uu.se/profile/?id=N5-824) <i class="fas fa-horse"></i>. Currently I am
+taking a (hopefully) short break from work.
 
 I am interested in probability <i class="fas fa-dice"></i>, combinatorics <i class="fas fa-chess-queen"></i>, and 
 [experimental mathematics](https://en.wikipedia.org/wiki/Experimental_mathematics) <i class="fas fa-flask"></i>.  Check my
@@ -51,10 +52,5 @@ For more information, check my
 
 ## Contact Me
 
-**Office <i class="fas fa-door-open"></i>**  [Room ÅNG 74115 Lägerhyddsvägen 1, Hus 7](http://bit.ly/2UpHJ32)
-
-**Email <i class="fas fa-envelope"></i>**  [xingshi.cai@math.uu.se](mailto:xingshi.cai@math.uu.se) or [newptcai@gmail.com](mailto:newptcai@gmail.com) ([PGP public key](http://keyserver.ubuntu.com/pks/lookup?search=newptcai%40gmail.com&fingerprint=on&op=index))
-
-**Video Conference** <i class="fas fa-video"></i> [Zoom](https://uu-se.zoom.us/my/newptcai) <i class="fab fa-skype"></i> [Skype](https://us04web.zoom.us/j/3355863452) <i class="fab fa-discord"></i> [Discord](https://discord.gg/atMhXCT)
-
-**Phone number <i class="fas fa-phone"></i>** <a href="tel:+460728715277">+46-072-871-5277</a>
+<i class="fas fa-envelope"></i>  [xingshi.cai@tutanota.com](mailto:xingshi.cai@tutanota.com)
+<i class="fas fa-phone"></i> <a href="tel:+15142512855">+1-514-251-2855</a>
