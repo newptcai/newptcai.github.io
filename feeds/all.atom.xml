@@ -222,11 +222,72 @@ quite delicious and diverse.&lt;/p&gt;
 &lt;img alt="Vegan food" src="https://newptcai.github.io/images/what-have-i-done-2020/3.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;On the health side, I did find plant based food is much easier to digest and avoiding milk
 completely stopped my occasional IBS (Irritable bowel syndrome). All in all, becoming vegan is one
-of the best decision which I have made this year, if not this life.&lt;/p&gt;</content><category term="mumble"></category><category term="2020"></category><category term="life"></category><category term="vegan"></category><category term="climate-change"></category></entry><entry><title>A random graph model with 2-point-concentrated diameter</title><link href="https://newptcai.github.io/a-random-graph-model-with-2-point-concentrated-diameter.html" rel="alternate"></link><published>2020-09-23T00:00:00+02:00</published><updated>2020-09-23T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-23:/a-random-graph-model-with-2-point-concentrated-diameter.html</id><summary type="html">&lt;p&gt;Consider a random multi-graph process $G_{m}(t)$ constructed with the following procedure. Let
-$G_{m}(1)$ be just a …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Consider a random multi-graph process $G_{m}(t)$ constructed with the following procedure. Let
-$G_{m}(1)$ be just a single vertex $1$. Given $G_{m}(t)$, we construct $G_{m}(t+1)$ by adding a vertex
-$t+1$ and connect it to $m$ vertices chosen independently and uniformly at random for vertices $1,
-\cdots, t$. This can be a multi-graph since there maybe more than one edges between two vertices.
+of the best decision which I have made this year, if not this life.&lt;/p&gt;</content><category term="mumble"></category><category term="2020"></category><category term="life"></category><category term="vegan"></category><category term="climate-change"></category></entry><entry><title>A random graph model with 2-point-concentrated diameter</title><link href="https://newptcai.github.io/a-random-graph-model-with-2-point-concentrated-diameter.html" rel="alternate"></link><published>2020-09-23T00:00:00+02:00</published><updated>2020-09-23T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-23:/a-random-graph-model-with-2-point-concentrated-diameter.html</id><summary type="html">&lt;p&gt;Consider a random multi-graph process &lt;span class="math"&gt;\(G_{m}(t)\)&lt;/span&gt; constructed with the following procedure. Let
+&lt;span class="math"&gt;\(G_{m}(1)\)&lt;/span&gt; be just a …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;Consider a random multi-graph process &lt;span class="math"&gt;\(G_{m}(t)\)&lt;/span&gt; constructed with the following procedure. Let
+&lt;span class="math"&gt;\(G_{m}(1)\)&lt;/span&gt; be just a single vertex &lt;span class="math"&gt;\(1\)&lt;/span&gt;. Given &lt;span class="math"&gt;\(G_{m}(t)\)&lt;/span&gt;, we construct &lt;span class="math"&gt;\(G_{m}(t+1)\)&lt;/span&gt; by adding a vertex
+&lt;span class="math"&gt;\(t+1\)&lt;/span&gt; and connect it to &lt;span class="math"&gt;\(m\)&lt;/span&gt; vertices chosen independently and uniformly at random for vertices &lt;span class="math"&gt;\(1,
+\cdots, t\)&lt;/span&gt;. This can be a multi-graph since there maybe more than one edges between two vertices.
 But there can be no self-loops and the graph is always connected.&lt;/p&gt;
 &lt;p&gt;I came up with this model while reading about P2P network. These are computer networks that
 collaborate in a decentralized way to share resource. The most well-known examples include
@@ -236,14 +297,76 @@ to network. But in general, there is no particular preferences to any one in the
 contra to social networks, where the most well-connected are more likely to be connected to others.)&lt;/p&gt;
 &lt;p&gt;I did some simulation on this model and found something rarely intriguing -- the diameter of the
 model seems to concentrates very quickly to two consecutive integers. See the picture below. The
-number above each plot is the number of nodes $t$. The histogram shows the distribution of the diameters
-of 2000 samples for each $t$.&lt;/p&gt;
+number above each plot is the number of nodes &lt;span class="math"&gt;\(t\)&lt;/span&gt;. The histogram shows the distribution of the diameters
+of 2000 samples for each &lt;span class="math"&gt;\(t\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-512.png"&gt;
 &lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-1024.png"&gt;
 &lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-2048.png"&gt;
 &lt;img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-4096.png"&gt;&lt;/p&gt;
-&lt;p&gt;It's not difficult to show the diameter is of the order $\log n$ following along the line of &lt;a href="https://doi.org/10.1007/s10955-010-9921-z"&gt;this
-paper&lt;/a&gt;. But can we actually prove the two-point concentration?&lt;/p&gt;</content><category term="math"></category><category term="random-graph"></category><category term="open-problem"></category><category term="probability"></category><category term="experimental-math"></category></entry><entry><title>Several Variable Calculus 1MA017, Sep 2020</title><link href="https://newptcai.github.io/several-variable-calculus-1ma017-sep-2020.html" rel="alternate"></link><published>2020-09-08T00:00:00+02:00</published><updated>2020-09-08T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-08:/several-variable-calculus-1ma017-sep-2020.html</id><summary type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
+&lt;p&gt;It's not difficult to show the diameter is of the order &lt;span class="math"&gt;\(\log n\)&lt;/span&gt; following along the line of &lt;a href="https://doi.org/10.1007/s10955-010-9921-z"&gt;this
+paper&lt;/a&gt;. But can we actually prove the two-point concentration?&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="random-graph"></category><category term="open-problem"></category><category term="probability"></category><category term="experimental-math"></category></entry><entry><title>Several Variable Calculus 1MA017, Sep 2020</title><link href="https://newptcai.github.io/several-variable-calculus-1ma017-sep-2020.html" rel="alternate"></link><published>2020-09-08T00:00:00+02:00</published><updated>2020-09-08T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-09-08:/several-variable-calculus-1ma017-sep-2020.html</id><summary type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
 2020) at Uppsala University …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I give tutorials to group A of students for the course Several Variable Calculus 1MA017 (September
 2020) at Uppsala University. Here are the materials that I prepared for the course.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Polar coordiantes" src="https://newptcai.github.io/images/2020-09-08/polar.png"&gt;&lt;/p&gt;
@@ -10652,13 +10775,18 @@ Photo by Daniel from Pexels
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="math"></category><category term="programming"></category><category term="analysis"></category><category term="Julia"></category><category term="CAS"></category></entry><entry><title>How to fight pandemic? Cooking at home!</title><link href="https://newptcai.github.io/how-to-fight-pandemic-cooking-at-home.html" rel="alternate"></link><published>2020-04-12T00:00:00+02:00</published><updated>2020-04-12T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-12:/how-to-fight-pandemic-cooking-at-home.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Update 2020-04-13: A friend pointed out my comments about working at home is wrong.
-Most people who can do work …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;Update 2020-04-13: A friend pointed out my comments about working at home is wrong.
+Most people who can do work from home now in Sweden. My apology for being part of misinfodemic 🤦!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I have been working from home for about a month now. &lt;del&gt;It is actually not very common here in Sweden
+where universities are still open.&lt;/del&gt;(👮 &lt;strong&gt;fake news!&lt;/strong&gt;) Unfortunately, despite my effort, I still coughed 3 times today
+🤔️. Not sure if it is just the spring or I have got Covid already.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="07" src="https://newptcai.github.io/images/2020-04-12-eggplant/07.jpg"/&gt;&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;em&gt;Update 2020-04-13: A friend pointed out my comments about working at home is wrong.
 Most people who can do work from home now in Sweden. My apology for being part of misinfodemic 🤦!&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;I have been working from home for about a month now. &lt;del&gt;It is actually not very common here in Sweden
 where universities are still open.&lt;/del&gt;(👮 &lt;strong&gt;fake news!&lt;/strong&gt;) Unfortunately, despite my effort, I still coughed 3 times today
 🤔️. Not sure if it is just the spring or I have got Covid already.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="07" src="https://newptcai.github.io/images/2020-04-12-eggplant/07.jpg"&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+
 
 &lt;p&gt;How can we fight pandemic? By staying home. What should we do at home? Cooking, of course! It moves
 your body, drags you away from the computer for 30 minutes, and you have to eat something anyway, right?&lt;/p&gt;
@@ -10704,7 +10832,7 @@ any more! &lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;I came across in a paper &lt;a href="https://arxiv.org/abs/1812.04289v1"&gt;Counting triangles in power-law uniform random graphs&lt;/a&gt;&lt;em&gt; &lt;/em&gt;by &lt;em&gt;Pu Gao, Remco van der Hofstad, Angus Southwell, Clara Stegehuis  &lt;/em&gt;on ArXiv today. Then I spotted two integrals, equation (2.1) and (2.2). These two are left as unevaluated integrals. But they don’t look too intimidating so I gave them a try and voila they have closed form as below:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="1wagzewezpxds" src="https://newptcai.github.io/images/2020-04-12-triangle/1wagzewezpxds.png"&gt;&lt;/p&gt;
-&lt;p&gt;for $2\leq t\leq 3$.&lt;/p&gt;
+&lt;p&gt;for &lt;span class="math"&gt;\(2\leq t\leq 3\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;There is probably a book somewhere that has these formulas. But here I will show you how to use Mathematica to get them.&lt;/p&gt;
 &lt;h2&gt;The first integral&lt;/h2&gt;
 &lt;p&gt;The first one is actually quite easy. You can do it with directly in Mathematica 12.1 without any effort. Let&lt;/p&gt;
@@ -10746,7 +10874,7 @@ any more! &lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img alt="11biy0j76yav1" src="https://newptcai.github.io/images/2020-04-12-triangle/11biy0j76yav1.png"&gt;&lt;/p&gt;
-&lt;p&gt;Mathematica cannot do this directly. But we can do a change of variable by integrating $f(g(a,b,c))$ with&lt;/p&gt;
+&lt;p&gt;Mathematica cannot do this directly. But we can do a change of variable by integrating &lt;span class="math"&gt;\(f(g(a,b,c))\)&lt;/span&gt; with&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nv"&gt;a_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;b_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;c_&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;:=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{(&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
 &lt;span class="w"&gt;     &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Sqrt&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -10797,29 +10925,77 @@ any more! &lt;/p&gt;
 &lt;p&gt;So again, we can be quite sure that we  got the right answer.&lt;/p&gt;
 &lt;h2&gt;Reference&lt;/h2&gt;
 &lt;p&gt;Gao, P., van der Hofstad, R., Southwell, A., &amp;amp; Stegehuis, C.(2018).Counting triangles in power -- law
-uniform random graphs. &lt;a href="http://arxiv.org/abs/1812.04289"&gt;ArXiv:1812.04289&lt;/a&gt; [Math]. &lt;/p&gt;</content><category term="math"></category><category term="analysis"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>Friends and colleagues</title><link href="https://newptcai.github.io/friends-and-colleagues.html" rel="alternate"></link><published>2020-04-11T00:00:00+02:00</published><updated>2020-04-11T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-11:/friends-and-colleagues.html</id><summary type="html">&lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/03.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;2019, Uppsala, Sweden&lt;/em&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+uniform random graphs. &lt;a href="http://arxiv.org/abs/1812.04289"&gt;ArXiv:1812.04289&lt;/a&gt; [Math]. &lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
-&lt;p&gt;&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/02.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;2019, Uppsala, Sweden.&lt;/em&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/01.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;With Laura, Lena, Liana, Jan, and Nima. 2019, Prague, Czech.&lt;/em&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/center&gt;
-&lt;img alt="Luc and Me" src="https://newptcai.github.io/images/me/01.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;With &lt;a href="luc.devroye.org"&gt;Luc&lt;/a&gt;. 2011, Montreal …&lt;/em&gt;&lt;/center&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/03.jpg"&gt;
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="analysis"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>Friends and colleagues</title><link href="https://newptcai.github.io/friends-and-colleagues.html" rel="alternate"></link><published>2020-04-11T00:00:00+02:00</published><updated>2020-04-11T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-11:/friends-and-colleagues.html</id><summary type="html">&lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/03.jpg"/&gt;
 &lt;center&gt;
 &lt;em&gt;2019, Uppsala, Sweden&lt;/em&gt;
 &lt;/center&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/03.jpg"&gt;
+&lt;center&gt;
+&lt;em&gt;2019, Uppsala, Sweden&lt;/em&gt;
+&lt;/center&gt;&lt;/p&gt;
+
 
 &lt;p&gt;&lt;/center&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Friends" src="https://newptcai.github.io/images/colleague/02.jpg"&gt;
@@ -11849,13 +12025,15 @@ Isn't a picture is enough for most person to fall in love on Tinder?  😁&lt;/p
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="math"></category><category term="analysis"></category><category term="Julia"></category><category term="interval-arithmetic"></category><category term="experimental-math"></category></entry><entry><title>A walk by the sea (part 4) -- Kullen fry (Kullen lighthouse)</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-4-kullen-fry-kullen-lighthouse.html" rel="alternate"></link><published>2020-04-05T00:00:00+02:00</published><updated>2020-04-05T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-05:/a-walk-by-the-sea-part-4-kullen-fry-kullen-lighthouse.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-16/01.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is part 4 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;In many …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-16/01.jpg"&gt;&lt;/p&gt;
+&lt;/script&gt;</content><category term="math"></category><category term="analysis"></category><category term="Julia"></category><category term="interval-arithmetic"></category><category term="experimental-math"></category></entry><entry><title>A walk by the sea (part 4) -- Kullen fry (Kullen lighthouse)</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-4-kullen-fry-kullen-lighthouse.html" rel="alternate"></link><published>2020-04-05T00:00:00+02:00</published><updated>2020-04-05T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2020-04-05:/a-walk-by-the-sea-part-4-kullen-fry-kullen-lighthouse.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-16/01.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part 4 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;In many way, this was a memorable day in my life. Yet it took me nearly 3 years to finally spend 30
 minutes to write something about it. Life is not short. It's just we find excuses not to do things.&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-16/01.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part 4 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In many way, this was a memorable day in my life. Yet it took me nearly 3 years to finally spend 30
+minutes to write something about it. Life is not short. It's just we find excuses not to do things.&lt;/p&gt;
+
 
 &lt;h2&gt;Day 4 (2017-07-16) -- Kullen fry (Kullen lighthouse)&lt;/h2&gt;
 &lt;p&gt;When I started walking in the morning, it began to drizzle a bit. But instead of being worried I got
@@ -12718,15 +12896,199 @@ In other words, we take $c_n = e^{2^n}$ and we will still get convergent. This g
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;</content><category term="math"></category><category term="CAS"></category><category term="SageMath"></category><category term="experimental-math"></category></entry><entry><title>Tiling chessboard with L-shaped tiles</title><link href="https://newptcai.github.io/tiling-chessboard-with-l-shaped-tiles.html" rel="alternate"></link><published>2019-05-22T00:00:00+02:00</published><updated>2019-05-22T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-05-22:/tiling-chessboard-with-l-shaped-tiles.html</id><summary type="html">&lt;p&gt;I created a &lt;a href="https://github.com/newptcai/math-note/blob/v0.1.1/2019-05-22-chessboard.ipynb"&gt;Jupyter notebook&lt;/a&gt; for teaching induction in combinatorics to demonstrate that you can
-always tile a $2^n …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I created a &lt;a href="https://github.com/newptcai/math-note/blob/v0.1.1/2019-05-22-chessboard.ipynb"&gt;Jupyter notebook&lt;/a&gt; for teaching induction in combinatorics to demonstrate that you can
-always tile a $2^n \times 2^n$ chessboard which has one tile missing with L-shaped tiles. To see how it works,
+always tile a &lt;span class="math"&gt;\(2^n …&lt;/span&gt;&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;I created a &lt;a href="https://github.com/newptcai/math-note/blob/v0.1.1/2019-05-22-chessboard.ipynb"&gt;Jupyter notebook&lt;/a&gt; for teaching induction in combinatorics to demonstrate that you can
+always tile a &lt;span class="math"&gt;\(2^n \times 2^n\)&lt;/span&gt; chessboard which has one tile missing with L-shaped tiles. To see how it works,
 run it on
 &lt;a href="https://mybinder.org/v2/gh/newptcai/math-note/v0.1.1?filepath=2019-05-22-chessboard.ipynb"&gt;binder&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Tiing chess board with L-shaped tiles" src="https://newptcai.github.io/images/chess/chess-L-tiling.png"&gt;&lt;/p&gt;</content><category term="math"></category><category term="combinatorics"></category><category term="programming"></category><category term="teaching"></category></entry><entry><title>RandomTree.jl -- Simulation on large random trees with Julia</title><link href="https://newptcai.github.io/randomtreejl-simulation-on-large-random-trees-with-julia.html" rel="alternate"></link><published>2019-05-13T00:00:00+02:00</published><updated>2019-05-13T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-05-13:/randomtreejl-simulation-on-large-random-trees-with-julia.html</id><summary type="html">&lt;p&gt;I have been working on a software package
+&lt;p&gt;&lt;img alt="Tiing chess board with L-shaped tiles" src="https://newptcai.github.io/images/chess/chess-L-tiling.png"&gt;&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="combinatorics"></category><category term="programming"></category><category term="teaching"></category></entry><entry><title>RandomTree.jl -- Simulation on large random trees with Julia</title><link href="https://newptcai.github.io/randomtreejl-simulation-on-large-random-trees-with-julia.html" rel="alternate"></link><published>2019-05-13T00:00:00+02:00</published><updated>2019-05-13T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-05-13:/randomtreejl-simulation-on-large-random-trees-with-julia.html</id><summary type="html">&lt;p&gt;I have been working on a software package
 &lt;a href="https://github.com/newptcai/RandomTree.jl"&gt;&lt;code&gt;RandomTree.jl&lt;/code&gt;&lt;/a&gt; that could effectively generate pretty
-large ($10^8$ nodes) random …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have been working on a software package
+large (&lt;span class="math"&gt;\(10^8\)&lt;/span&gt; nodes) random …&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;I have been working on a software package
 &lt;a href="https://github.com/newptcai/RandomTree.jl"&gt;&lt;code&gt;RandomTree.jl&lt;/code&gt;&lt;/a&gt; that could effectively generate pretty
-large ($10^8$ nodes) random trees, in particular Conditional Galton-Watson trees.  The package is
+large (&lt;span class="math"&gt;\(10^8\)&lt;/span&gt; nodes) random trees, in particular Conditional Galton-Watson trees.  The package is
 written in Julia, a language designed for high-performance-computation. It is high-level language
 that is as easy to use as Python, but also has performance in the same order of C (if you use it
 correctly).&lt;/p&gt;
@@ -34478,6 +34840,69 @@ correctly).&lt;/p&gt;
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
+&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
 &lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="programming"></category><category term="random-tree"></category><category term="experimental-math"></category></entry><entry><title>Combinatorics 1MA020, Spring 2019 (Archive)</title><link href="https://newptcai.github.io/combinatorics-1ma020-spring-2019-archive.html" rel="alternate"></link><published>2019-01-12T00:00:00+01:00</published><updated>2019-01-12T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-01-12:/combinatorics-1ma020-spring-2019-archive.html</id><summary type="html">&lt;p&gt;I just finished teaching the course Combinatorics 1MA020 (Spring 2019) at Uppsala University. Here are the
 materials that I prepared …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I just finished teaching the course Combinatorics 1MA020 (Spring 2019) at Uppsala University. Here are the
 materials that I prepared for the course. Hope it will be helpful for you in some way (e.g., you
@@ -34531,68 +34956,76 @@ anything!&lt;/p&gt;
 &lt;p&gt;Address: Room ÅNG 74115, Lägerhyddsvägen 1, Hus 7&lt;/p&gt;
 &lt;p&gt;We can also also attend the office hour through Skype if you cannot come physically. Please &lt;a href="mailto:xingshi.cai@math.uu.se"&gt;email
 me&lt;/a&gt; to arrange it.&lt;/p&gt;</content><category term="math"></category><category term="combinatorics"></category><category term="teaching"></category></entry><entry><title>The joy of experimental mathematics</title><link href="https://newptcai.github.io/the-joy-of-experimental-mathematics.html" rel="alternate"></link><published>2019-01-12T00:00:00+01:00</published><updated>2019-01-12T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-01-12:/the-joy-of-experimental-mathematics.html</id><summary type="html">&lt;p&gt;I came across &lt;a href="https://math.stackexchange.com/q/3070440/1618"&gt;an interesting identity&lt;/a&gt; on math.stackexchange.com.
-&lt;!-- END_SUMMARY --&gt;&lt;/p&gt;
-&lt;p&gt;$$
-\int_{0}^{1}((1-x^r)^{1/r}-x)^{2 n …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I came across &lt;a href="https://math.stackexchange.com/q/3070440/1618"&gt;an interesting identity&lt;/a&gt; on math.stackexchange.com.
-&lt;!-- END_SUMMARY --&gt;&lt;/p&gt;
-&lt;p&gt;$$
+&lt;/p&gt;</summary><content type="html">&lt;p&gt;I came across &lt;a href="https://math.stackexchange.com/q/3070440/1618"&gt;an interesting identity&lt;/a&gt; on math.stackexchange.com.
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \int_{0}^{1}((1-x^r)^{1/r}-x)^{2 n}\,\mathrm dx=\frac{1}{2 n+1}
-$$
-for all $n \in \mathbb N$ and $r &amp;gt; 0$.
+$$&lt;/div&gt;
+&lt;p&gt;
+for all &lt;span class="math"&gt;\(n \in \mathbb N\)&lt;/span&gt; and &lt;span class="math"&gt;\(r &amp;gt; 0\)&lt;/span&gt;.
 Someone has found this &lt;a href="https://math.stackexchange.com/a/3070493/1618"&gt;very smart proof&lt;/a&gt; for it.&lt;/p&gt;
 &lt;p&gt;I will give a much less smart proof, but perhaps equally joyful one. When I see something like this,
 I always try it with a few fix numbers with Mathematica.  Let
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 f(n)=\int \left(\left(1-x^r\right)^{1/r}-x\right)^{2 n} \, \mathrm dx
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 then,
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 f(1)
 =
 x \, _2F_1\left(-\frac{2}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^2 \, _2F_1\left(-\frac{1}{r},\frac{2}{r};1+\frac{2}{r};x^r\right)+\frac{x^3}{3},
-$$
-\begin{align}
+$$&lt;/div&gt;
+&lt;div class="math"&gt;\begin{align}
 f(2)
 =
-&amp;amp; x \, _2F_1\left(-\frac{4}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^4 \, _2F_1\left(-\frac{1}{r},\frac{4}{r};1+\frac{4}{r};x^r\right) \
+&amp;amp; x \, _2F_1\left(-\frac{4}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^4 \, _2F_1\left(-\frac{1}{r},\frac{4}{r};1+\frac{4}{r};x^r\right) \\
 &amp;amp; +2 x^3 \, _2F_1\left(-\frac{2}{r},\frac{3}{r};1+\frac{3}{r};x^r\right)-2 x^2 \, _2F_1\left(-\frac{3}{r},\frac{2}{r};1+\frac{2}{r};x^r\right)+\frac{x^5}{5}
 ,
-\end{align}
+\end{align}&lt;/div&gt;
+&lt;p&gt;
 and
-\begin{align}
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
 f(3)
 =
 &amp;amp;
 x \, _2F_1\left(-\frac{6}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^6 \, _2F_1\left(-\frac{1}{r},\frac{6}{r};1+\frac{6}{r};x^r\right)
-\
+\\
 &amp;amp;
 +3 x^5 \, _2F_1\left(-\frac{2}{r},\frac{5}{r};1+\frac{5}{r};x^r\right)-5 x^4 \, _2F_1\left(-\frac{3}{r},\frac{4}{r};1+\frac{4}{r};x^r\right)
-\
+\\
 &amp;amp;
 +5 x^3 \, _2F_1\left(-\frac{4}{r},\frac{3}{r};1+\frac{3}{r};x^r\right)-3 x^2 \, _2F_1\left(-\frac{5}{r},\frac{2}{r};1+\frac{2}{r};x^r\right)+\frac{x^7}{7}
-\end{align}
-where $_2F_1$ is the hypergeometric function.&lt;/p&gt;
+\end{align}&lt;/div&gt;
+&lt;p&gt;
+where &lt;span class="math"&gt;\(_2F_1\)&lt;/span&gt; is the hypergeometric function.&lt;/p&gt;
 &lt;p&gt;Do you see the patterns? Looks like a binomial expansion, right? It turns out, if we do a binomail
 expansion
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \left(\left(1-x^r\right)^{1/r}-x\right)^{2 n}
 =
 \underset{j=1}{\overset{2 n+1}{\sum }} 
 \left(
 \begin{array}{c}
- 2 n \
- j-1 \
+ 2 n \\
+ j-1 \\
 \end{array}
 \right) 
 (-x)^{j-1}
 \left(\left(1-x^r\right)^{1/r}\right)^{-j+2 n+1}
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 Then it is easy to verify with Mathematica that
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \left(
 \begin{array}{c}
- 2 n \
- j-1 \
+ 2 n \\
+ j-1 \\
 \end{array}
 \right) 
 (-x)^{j-1}
@@ -34600,67 +35033,139 @@ $$
 =
 \frac{\mathrm d}{\mathrm d x}\left(
 \frac{1}{2 n+1}
-(-1)^{j+1} x^j \binom{2 n+1}{j} \, &lt;em j="1"&gt;2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right)
+(-1)^{j+1} x^j \binom{2 n+1}{j} \, _2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right)
 \right)
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 Therefore, we have
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \int((1-x^r)^{1/r}-x)^{2 n} \mathrm dx
 =
-\sum &lt;/em&gt;^{2 n+1} \frac{1}{2 n+1} (-1)^{j+1} x^j \binom{2 n+1}{j} \, _2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right).
-$$
-When $j=2n+1$, the summand in the right hand equals $\frac{x^{2 n+1}}{2 n+1}$. This is the term
-which gives us $\frac 1 {2n+1}$. Everything else vanishes in the original definite integral.&lt;/p&gt;
+\sum _{j=1}^{2 n+1} \frac{1}{2 n+1} (-1)^{j+1} x^j \binom{2 n+1}{j} \, _2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right).
+$$&lt;/div&gt;
+&lt;p&gt;
+When &lt;span class="math"&gt;\(j=2n+1\)&lt;/span&gt;, the summand in the right hand equals &lt;span class="math"&gt;\(\frac{x^{2 n+1}}{2 n+1}\)&lt;/span&gt;. This is the term
+which gives us &lt;span class="math"&gt;\(\frac 1 {2n+1}\)&lt;/span&gt;. Everything else vanishes in the original definite integral.&lt;/p&gt;
 &lt;p&gt;The moral of this story is perhaps with the help of computers, it is much easier to find patterns
 and often seeing the pattern is enough to give the proof. Moreover, the moment when you see the
-pattern is quite joyful, as much as the moment that you come up with a proof.&lt;/p&gt;</content><category term="math"></category><category term="analysis"></category><category term="Mathematica"></category><category term="CAS"></category><category term="experimental-math"></category></entry><entry><title>The sum of n uniform [0,1] random variables</title><link href="https://newptcai.github.io/the-sum-of-n-uniform-01-random-variables.html" rel="alternate"></link><published>2019-01-09T00:00:00+01:00</published><updated>2019-01-09T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-01-09:/the-sum-of-n-uniform-01-random-variables.html</id><summary type="html">&lt;p&gt;Update: Svante Janson told me yesterday that the integral I had at the end of this post is
+pattern is quite joyful, as much as the moment that you come up with a proof.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="analysis"></category><category term="Mathematica"></category><category term="CAS"></category><category term="experimental-math"></category></entry><entry><title>The sum of n uniform [0,1] random variables</title><link href="https://newptcai.github.io/the-sum-of-n-uniform-01-random-variables.html" rel="alternate"></link><published>2019-01-09T00:00:00+01:00</published><updated>2019-01-09T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2019-01-09:/the-sum-of-n-uniform-01-random-variables.html</id><summary type="html">&lt;p&gt;Update: Svante Janson told me yesterday that the integral I had at the end of this post is
 known as …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Update: Svante Janson told me yesterday that the integral I had at the end of this post is
 known as the beta integral, see 5.14.1 of &lt;em&gt;NIST Handbook of Mathematical Functions, 2019 ed&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;What is the size of the green triangle in the following picture? Of course it is $1/2$. Everybody
+&lt;p&gt;What is the size of the green triangle in the following picture? Of course it is &lt;span class="math"&gt;\(1/2\)&lt;/span&gt;. Everybody
 knows.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Two dimensional polyhedron $S_2$" src="https://newptcai.github.io/images/2019-01-09-polyhedron/2d.png"&gt;
+&lt;p&gt;&lt;img alt="Two dimensional polyhedron \(S_2\)" src="https://newptcai.github.io/images/2019-01-09-polyhedron/2d.png"&gt;
 What about this polyhedron? 
-&lt;img alt="Three dimensional polyhedron $S_3$" src="https://newptcai.github.io/images/2019-01-09-polyhedron/3d.png"&gt;
+&lt;img alt="Three dimensional polyhedron \(S_3\)" src="https://newptcai.github.io/images/2019-01-09-polyhedron/3d.png"&gt;
 If you still remember a bit Euclidean geometry, then you will see this is
-$\frac{1}{6}=\frac{1}{2}\frac{1}{3}$. Do you see where I am going?&lt;/p&gt;
-&lt;p&gt;Let's define an $n$-dimension polyhedron
-$$
-S_n = {(x_1,\dots,x_n) \in \mathbb R^n:1&amp;gt;x_1&amp;gt;0,\dots, 1&amp;gt;x_n&amp;gt;0, 1&amp;gt;x_1+\dots+x_n}.
-$$
-Then the previous two pictures are just $S_2$ and $S_3$.
-If you compute the volume of $S_n$, you will see
-$$
+&lt;span class="math"&gt;\(\frac{1}{6}=\frac{1}{2}\frac{1}{3}\)&lt;/span&gt;. Do you see where I am going?&lt;/p&gt;
+&lt;p&gt;Let's define an &lt;span class="math"&gt;\(n\)&lt;/span&gt;-dimension polyhedron
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
+S_n = \{(x_1,\dots,x_n) \in \mathbb R^n:1&amp;gt;x_1&amp;gt;0,\dots, 1&amp;gt;x_n&amp;gt;0, 1&amp;gt;x_1+\dots+x_n\}.
+$$&lt;/div&gt;
+&lt;p&gt;
+Then the previous two pictures are just &lt;span class="math"&gt;\(S_2\)&lt;/span&gt; and &lt;span class="math"&gt;\(S_3\)&lt;/span&gt;.
+If you compute the volume of &lt;span class="math"&gt;\(S_n\)&lt;/span&gt;, you will see
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathrm{vol}(S_n)=
 \int_{(x_1,\dots,x_n) \in S_n} \mathrm{d}(x_1,\dots,x_n)
 =\frac{1}{n!}
 .
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;There is another way to view this.
-Let $U_1,\dots,U_n$ be $n$ independent uniform random variables on $[0,1]$, what is the probability
-that $U_1+U_2 \dots U_n \le 1$? It is precise the volume of $S_n$ and is thus $1/n!$.&lt;/p&gt;
+Let &lt;span class="math"&gt;\(U_1,\dots,U_n\)&lt;/span&gt; be &lt;span class="math"&gt;\(n\)&lt;/span&gt; independent uniform random variables on &lt;span class="math"&gt;\([0,1]\)&lt;/span&gt;, what is the probability
+that &lt;span class="math"&gt;\(U_1+U_2 \dots U_n \le 1\)&lt;/span&gt;? It is precise the volume of &lt;span class="math"&gt;\(S_n\)&lt;/span&gt; and is thus &lt;span class="math"&gt;\(1/n!\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;Can we get this without doing the integral? Yes.  We have
-$$
-\mathbb P{U_1+U_2 \dots U_n \le 1}
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\mathbb P\{U_1+U_2 \dots U_n \le 1\}
 =
-\mathbb P{U_1+U_2 \dots U_{n-1} \le 1-U_n}
+\mathbb P\{U_1+U_2 \dots U_{n-1} \le 1-U_n\}
 =
-\mathbb P{U_1+U_2 \dots U_{n-1} \le U_n'}
-$$
-where $U_n'$ is again an independent uniform $[0,1]$ random variable.
-For the event $U_1+U_2 \dots U_{n-1} \le U_n'$ to happen, we need that $U_n'$ is the maximum one
-among the $n$ variables, which has probability $1/n$. Conditioning on this, $U_1,\dots,U_{n-1}$ are
-independent and uniformly distributed on $[1,U_n']$. So the conditional probably of $U_1+U_2 \dots
-U_{n-1} \le U_n'$ is $1/(n-1)!$ by induction. Put it together, we have
-$$
-\mathbb P{U_1+U_2 \dots U_n \le 1}
+\mathbb P\{U_1+U_2 \dots U_{n-1} \le U_n'\}
+$$&lt;/div&gt;
+&lt;p&gt;
+where &lt;span class="math"&gt;\(U_n'\)&lt;/span&gt; is again an independent uniform &lt;span class="math"&gt;\([0,1]\)&lt;/span&gt; random variable.
+For the event &lt;span class="math"&gt;\(U_1+U_2 \dots U_{n-1} \le U_n'\)&lt;/span&gt; to happen, we need that &lt;span class="math"&gt;\(U_n'\)&lt;/span&gt; is the maximum one
+among the &lt;span class="math"&gt;\(n\)&lt;/span&gt; variables, which has probability &lt;span class="math"&gt;\(1/n\)&lt;/span&gt;. Conditioning on this, &lt;span class="math"&gt;\(U_1,\dots,U_{n-1}\)&lt;/span&gt; are
+independent and uniformly distributed on &lt;span class="math"&gt;\([1,U_n']\)&lt;/span&gt;. So the conditional probably of &lt;span class="math"&gt;\(U_1+U_2 \dots
+U_{n-1} \le U_n'\)&lt;/span&gt; is &lt;span class="math"&gt;\(1/(n-1)!\)&lt;/span&gt; by induction. Put it together, we have
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
+\mathbb P\{U_1+U_2 \dots U_n \le 1\}
 =
-\mathbb P{U_1+U_2 \dots U_{n-1} \le U_n'|\text{$U_n'$ is the maximum}}
-\mathbb P{\text{$U_n'$ is the maximum}}
+\mathbb P\{U_1+U_2 \dots U_{n-1} \le U_n'|\text{$U_n'$ is the maximum}\}
+\mathbb P\{\text{$U_n'$ is the maximum}\}
 =
 \frac{1}{n!}.
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;Why do I bring up this? A few days ago, I found the following identity
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \int_{(x_1,\dots,x_n) \in S_n}
 (x_1 \dots x_n)^{-1/k}
 \mathrm{d}(x_1,\dots,x_n)
@@ -34669,16 +35174,78 @@ $$
 ,
 \qquad
 k \ge 2.
-$$
-Let $k \to \infty$, then we get back our $1/n!$. Does this have a probabilistic explanation?
-I do not know. Maybe you know?&lt;/p&gt;</content><category term="math"></category><category term="probability"></category></entry><entry><title>An example of proving summation identities with computer</title><link href="https://newptcai.github.io/an-example-of-proving-summation-identities-with-computer.html" rel="alternate"></link><published>2018-12-21T00:00:00+01:00</published><updated>2018-12-21T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-21:/an-example-of-proving-summation-identities-with-computer.html</id><summary type="html">&lt;p&gt;I am trying to learn how to use computers to prove identities like this one
-&lt;!-- END_SUMMARY --&gt;&lt;/p&gt;
-&lt;p&gt;$$
-\sum_{k=m}^n{k …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am trying to learn how to use computers to prove identities like this one
-&lt;!-- END_SUMMARY --&gt;&lt;/p&gt;
-&lt;p&gt;$$
+$$&lt;/div&gt;
+&lt;p&gt;
+Let &lt;span class="math"&gt;\(k \to \infty\)&lt;/span&gt;, then we get back our &lt;span class="math"&gt;\(1/n!\)&lt;/span&gt;. Does this have a probabilistic explanation?
+I do not know. Maybe you know?&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="probability"></category></entry><entry><title>An example of proving summation identities with computer</title><link href="https://newptcai.github.io/an-example-of-proving-summation-identities-with-computer.html" rel="alternate"></link><published>2018-12-21T00:00:00+01:00</published><updated>2018-12-21T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-21:/an-example-of-proving-summation-identities-with-computer.html</id><summary type="html">&lt;p&gt;I am trying to learn how to use computers to prove identities like this one
+&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am trying to learn how to use computers to prove identities like this one
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \sum_{k=m}^n{k\choose k-m}{2n\choose 2k}=4^{n-m}\frac{n(2n-m-1)!}{(2n-2m)!m!},
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 which I came across on &lt;a href="https://math.stackexchange.com/q/3047567/1618"&gt;math.stackexchange.com&lt;/a&gt;.  If
 you put it Mathematica and simplify, you will simply get a True without any explanation. 
 But how dose computer know it?  In
@@ -34687,68 +35254,202 @@ telescoping algorithms.&lt;/p&gt;
 &lt;p&gt;I am going to use the Mathematica package &lt;a href="https://www3.risc.jku.at/research/combinat/software/Sigma/index.php"&gt;Sigma&lt;/a&gt; by &lt;a href="https://www3.risc.jku.at/people/cschneid/"&gt;Carsten
 Schneider&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;First the left-hand-side can be written as 
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 S(n_0)=\underset{k=0}{\overset{n_0}{\sum }}
 f(n_0,k)
-$$
-where $n_0=n-m$ and
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
+where &lt;span class="math"&gt;\(n_0=n-m\)&lt;/span&gt; and
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 f(n_0,k)=
 \left(
 \begin{array}{c}
- k+m \
- k \
+ k+m \\
+ k \\
 \end{array}
 \right) \left(
 \begin{array}{c}
- 2 \left(m+n_0\right) \
- 2 (k+m) \
+ 2 \left(m+n_0\right) \\
+ 2 (k+m) \\
 \end{array}
 \right)
 .
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 Next, let
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 c_0(n)=2 (1 + m + n_0) (m + 2 n_0) (1 + m + 2 n_0),
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 and
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 c_1(n)=-(1 + n_0) (m + n_0) (1 + 2 n_0)
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 and
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 g(n_0,k)=-\frac{k (2 k+2 m-1) \left(m+n_0+1\right) \binom{k+m}{k} \left(2 k m+4 k n_0+2 k-4 m n_0-3 m-6 n_0^2-7 n_0-2\right) \binom{2 m+2 n_0}{2 k+2 m}}{\left(2 k-2 n_0-1\right) \left(k-n_0-1\right)}.
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 Then you can verify in your favorite CAS system that
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 g\left(n_0,k+1\right)-g\left(n_0,k\right)=c_0\left(n_0\right) f\left(n_0,k\right)+c_1\left(n_0\right) f\left(n_0+1,k\right)
 .
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 I did not magically find this recursion myself. This is done by &lt;a href="https://www3.risc.jku.at/research/combinat/software/Sigma/index.php"&gt;Sigma&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Summing over $k=1,..n_0-1$, the left-hand-side telescopes (perhaps this is where the name creative-telescoping comes from), and we get
-$$
+&lt;p&gt;Summing over &lt;span class="math"&gt;\(k=1,..n_0-1\)&lt;/span&gt;, the left-hand-side telescopes (perhaps this is where the name creative-telescoping comes from), and we get
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 c_0(n_0) S\left(n_0\right)+c_1(n_0)  S\left(n_0+1\right)=0
-$$
-This is a simple recursion. Put in $S(0)=f(0,0)=1$, we get
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
+This is a simple recursion. Put in &lt;span class="math"&gt;\(S(0)=f(0,0)=1\)&lt;/span&gt;, we get
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 S(n_0)=
 \frac{4^{n_0} \left(m+n_0\right) \left(m+2 n_0-1\right)!}{m! \left(2 n_0\right)!}
 =
 \frac{n 4^{n-m} (-m+2 n-1)!}{m! (2 n-2 m)!}
 .
-$$
-where we substitute by $n_0=n-m$. This is exactly the right-hand-side.&lt;/p&gt;
+$$&lt;/div&gt;
+&lt;p&gt;
+where we substitute by &lt;span class="math"&gt;\(n_0=n-m\)&lt;/span&gt;. This is exactly the right-hand-side.&lt;/p&gt;
 &lt;p&gt;All these have been completely automated. What you need to do is only to trust the computer when it says
 something is true. See &lt;a href="https://www3.risc.jku.at/research/combinat/software/Sigma/pub/SLC06.pdf"&gt;Schneider's
 paper&lt;/a&gt; for many more
-examples!&lt;/p&gt;</content><category term="math"></category><category term="summation"></category><category term="CAS"></category></entry><entry><title>The Strahler-Horton number on random trees</title><link href="https://newptcai.github.io/the-strahler-horton-number-on-random-trees.html" rel="alternate"></link><published>2018-12-17T00:00:00+01:00</published><updated>2018-12-17T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-17:/the-strahler-horton-number-on-random-trees.html</id><summary type="html">&lt;p&gt;We list some open problems regarding the Strahler-Horton number on random trees $T_n$.&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+examples!&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
 
-&lt;h1 id="the-definition"&gt;The definition&lt;/h1&gt;
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
 
-&lt;p&gt;&lt;img alt="Horton Number -- from Wikipedia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Flussordnung_%28Strahler%29.svg/1000px-Flussordnung_%28Strahler%29.svg.png"&gt;&lt;/p&gt;
-&lt;p&gt;One may assign a Strahler …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We list some open problems regarding the Strahler-Horton number on random trees $T_n$.&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="summation"></category><category term="CAS"></category></entry><entry><title>The Strahler-Horton number on random trees</title><link href="https://newptcai.github.io/the-strahler-horton-number-on-random-trees.html" rel="alternate"></link><published>2018-12-17T00:00:00+01:00</published><updated>2018-12-17T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-17:/the-strahler-horton-number-on-random-trees.html</id><summary type="html">&lt;p&gt;We list some open problems regarding the Strahler-Horton number on random trees &lt;span class="math"&gt;\(T_n\)&lt;/span&gt;.&lt;/p&gt;
+&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;We list some open problems regarding the Strahler-Horton number on random trees &lt;span class="math"&gt;\(T_n\)&lt;/span&gt;.&lt;/p&gt;
+
 
 &lt;h1 id="the-definition"&gt;The definition&lt;/h1&gt;
 
@@ -34796,33 +35497,159 @@ examples!&lt;/p&gt;</content><category term="math"></category><category term="su
 &lt;div id="ref-prodinger2012"&gt;
 &lt;p&gt;Prodinger, Helmut. 2012. “Introduction to Philippe Flajolet’s Work on the Register Function and Related Topics.” &lt;a href="http://math.sun.ac.za/~hproding/pdffiles/flajolet-introduction-register.pdf" class="uri"&gt;http://math.sun.ac.za/~hproding/pdffiles/flajolet-introduction-register.pdf&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><category term="math"></category><category term="probability"></category><category term="random-trees"></category><category term="combinatorics"></category><category term="open-problem"></category></entry><entry><title>The moment of truncated random variables</title><link href="https://newptcai.github.io/the-moment-of-truncated-random-variables.html" rel="alternate"></link><published>2018-12-08T00:00:00+01:00</published><updated>2018-12-08T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-08:/the-moment-of-truncated-random-variables.html</id><summary type="html">&lt;p&gt;Given a random variable $Y$, sometimes we want to compute the expectation of $Y[Y\le a]$, where
-$[P]=1 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Given a random variable $Y$, sometimes we want to compute the expectation of $Y[Y\le a]$, where
-$[P]=1$ if the $P$ and true and $[P]=0$ if $P$ is false. (The notation is called &lt;a href="https://en.wikipedia.org/wiki/Iverson_bracket"&gt;Iverson
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="random-trees"></category><category term="combinatorics"></category><category term="open-problem"></category></entry><entry><title>The moment of truncated random variables</title><link href="https://newptcai.github.io/the-moment-of-truncated-random-variables.html" rel="alternate"></link><published>2018-12-08T00:00:00+01:00</published><updated>2018-12-08T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-08:/the-moment-of-truncated-random-variables.html</id><summary type="html">&lt;p&gt;Given a random variable &lt;span class="math"&gt;\(Y\)&lt;/span&gt;, sometimes we want to compute the expectation of &lt;span class="math"&gt;\(Y[Y\le a]\)&lt;/span&gt;, where
+&lt;span class="math"&gt;\([P]=1 …&lt;/span&gt;&lt;/p&gt;&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</summary><content type="html">&lt;p&gt;Given a random variable &lt;span class="math"&gt;\(Y\)&lt;/span&gt;, sometimes we want to compute the expectation of &lt;span class="math"&gt;\(Y[Y\le a]\)&lt;/span&gt;, where
+&lt;span class="math"&gt;\([P]=1\)&lt;/span&gt; if the &lt;span class="math"&gt;\(P\)&lt;/span&gt; and true and &lt;span class="math"&gt;\([P]=0\)&lt;/span&gt; if &lt;span class="math"&gt;\(P\)&lt;/span&gt; is false. (The notation is called &lt;a href="https://en.wikipedia.org/wiki/Iverson_bracket"&gt;Iverson
 Bracket&lt;/a&gt;.) &lt;/p&gt;
-&lt;p&gt;In Patrice, it can be convenient to write $\mathbb E(Y[Y \le a])$ in terms of the left and right tails of
-$Y$. With just a bit calculus, it is not difficult to see that if $Y \ge 0$ and $p \ge 1$,
-\begin{align}
+&lt;p&gt;In Patrice, it can be convenient to write &lt;span class="math"&gt;\(\mathbb E(Y[Y \le a])\)&lt;/span&gt; in terms of the left and right tails of
+&lt;span class="math"&gt;\(Y\)&lt;/span&gt;. With just a bit calculus, it is not difficult to see that if &lt;span class="math"&gt;\(Y \ge 0\)&lt;/span&gt; and &lt;span class="math"&gt;\(p \ge 1\)&lt;/span&gt;,
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
 \mathbb E(Y^p[Y \le a])
 &amp;amp;
 = 
 a^p \mathbb P(Y \le a)-\int_0^ap y^{p-1} \mathbb P(Y \le y) \, dy
-\\
+\\\\
 &amp;amp;
 =
 \int_0^ap y^{p-1} P(Y&amp;gt;a) \, dy-a^p \mathbb P(Y&amp;gt;a)
-\end{align}&lt;/p&gt;
+\end{align}&lt;/div&gt;
 &lt;p&gt;Similarly
-\begin{align}
+&lt;/p&gt;
+&lt;div class="math"&gt;\begin{align}
 \mathbb E(e^{-Y}[Y \le a])
 &amp;amp;
 = 
 \int_0^ae^{-y} \mathbb P(Y \le a) \mathbb \, d y+e^{-a} \mathbb P(Y \le a)
-\\
+\\\\
 &amp;amp;
 =
 1-\int_0^a e^{-y} P(Y &amp;gt; a) \, dy-e^{-a} P(Y &amp;gt; a)
-\end{align}&lt;/p&gt;
+\end{align}&lt;/div&gt;
 &lt;p&gt;I recently put these two qualities in a Mathematica package &lt;code&gt;CalcMoment.m&lt;/code&gt;. You can find it &lt;a href="https://github.com/newptcai/Zeno"&gt;here&lt;/a&gt;.
 You can load it and try it a Mathematica notebook like this&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;SetDirectory&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;NotebookDirectory&lt;/span&gt;&lt;span class="p"&gt;[]];&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
@@ -34837,7 +35664,69 @@ You can load it and try it a Mathematica notebook like this&lt;/p&gt;
 &lt;span class="n"&gt;Assuming&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;etest&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Activate&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;FullSimplify&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;The output is of course &lt;code&gt;True&lt;/code&gt;.&lt;/p&gt;</content><category term="math"></category><category term="probability"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>The Convexity Property Related to Beta Densities -- In sage</title><link href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities-in-sage.html" rel="alternate"></link><published>2018-12-07T00:00:00+01:00</published><updated>2018-12-07T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-07:/the-convexity-property-related-to-beta-densities-in-sage.html</id><summary type="html">&lt;p&gt;This is a continuation of &lt;a href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities.html"&gt;my previous post on beta distribution&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The output is of course &lt;code&gt;True&lt;/code&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>The Convexity Property Related to Beta Densities -- In sage</title><link href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities-in-sage.html" rel="alternate"></link><published>2018-12-07T00:00:00+01:00</published><updated>2018-12-07T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-07:/the-convexity-property-related-to-beta-densities-in-sage.html</id><summary type="html">&lt;p&gt;This is a continuation of &lt;a href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities.html"&gt;my previous post on beta distribution&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;My colleague Tilo wants me to use Sagemath instead …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a continuation of &lt;a href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities.html"&gt;my previous post on beta distribution&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;My colleague Tilo wants me to use Sagemath instead of Mathematica, which turns out to be much harder. But now I have done it and we have a completely open source proof.&lt;/p&gt;
 &lt;p&gt;This is written in a Jupyter note book which can be downloaded &lt;a href="https://newptcai.github.io/notebook/2018-12-06-beta-2.ipynb"&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -36140,86 +37029,161 @@ and I mentioned in my &lt;a href="./the-convexity-property-related-to-beta-densi
 &lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="SageMath"></category><category term="CAS"></category></entry><entry><title>Another version of Chernoff's bound and a Mathematica package for it</title><link href="https://newptcai.github.io/another-version-of-chernoffs-bound-and-a-mathematica-package-for-it.html" rel="alternate"></link><published>2018-12-02T00:00:00+01:00</published><updated>2018-12-02T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-02:/another-version-of-chernoffs-bound-and-a-mathematica-package-for-it.html</id><summary type="html">&lt;p&gt;&lt;a href=""&gt;Chernoff's bound&lt;/a&gt; is a group of quite well-known concentration-inequalities. I though I know it
 but last week my collage &lt;a href="http://katalog.uu.se/empinfo/?id=N18-1440"&gt;Gabriel …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href=""&gt;Chernoff's bound&lt;/a&gt; is a group of quite well-known concentration-inequalities. I though I know it
 but last week my collage &lt;a href="http://katalog.uu.se/empinfo/?id=N18-1440"&gt;Gabriel Berzunza Ojeda&lt;/a&gt; taught
-me another version of it. Let $X$ be a binomial $(n,p)$ random variable. Then
-$$
+me another version of it. Let &lt;span class="math"&gt;\(X\)&lt;/span&gt; be a binomial &lt;span class="math"&gt;\((n,p)\)&lt;/span&gt; random variable. Then
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathbb P \left(X \ge (1+\delta) n p + \epsilon \right) \le (\delta +1)^{-\epsilon } \left(e^{\delta } (\delta +1)^{-\delta -1}\right)^{n p}
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 and
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathbb P \left(X \le (1-\delta) n p - \epsilon \right) \le (1-\delta )^{\epsilon } \left(e^{-\delta } (1-\delta )^{\delta -1}\right)^{n p}
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;A simpler version is
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathbb P \left(X \ge (1+\delta) n p + \epsilon \right) \le (\delta +1)^{-\epsilon } e^{\frac{1}{2} (\delta -1) \delta ^2 n p}
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 and
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathbb P \left(X \le (1-\delta) n p - \epsilon \right) \le (1-\delta )^{\epsilon } e^{\frac{1}{2} \delta ^3 n p-\frac{1}{2} \delta ^2 n p}
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;An even simpler version is
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathbb P \left(X \ge (1+\delta) n p + \epsilon \right) \le (\delta +1)^{-\epsilon } e^{-\frac{1}{3} a^2 n p}
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 and
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \mathbb P \left(X \le (1-\delta) n p - \epsilon \right) \le (1-\delta )^{\epsilon } e^{-\frac{1}{3} a^2 n p}
-$$&lt;/p&gt;
-&lt;p&gt;These inequalities can be handy if you are deal with a $\epsilon$ which is $o(n p)$ and $\delta$ is a constant.
+$$&lt;/div&gt;
+&lt;p&gt;These inequalities can be handy if you are deal with a &lt;span class="math"&gt;\(\epsilon\)&lt;/span&gt; which is &lt;span class="math"&gt;\(o(n p)\)&lt;/span&gt; and &lt;span class="math"&gt;\(\delta\)&lt;/span&gt; is a constant.
 The proof simply follows a small modification of &lt;a href="https://en.wikipedia.org/wiki/Chernoff_bound#Multiplicative_form"&gt;this proof on
 Wikipedia&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Anyway, as a practice for programming in Mathematica, I created a Mathematica package to collect the
 forms of Chernoff's bound that now I know. You can find the package here. I put it on GitHub and
-you can find it &lt;a href="https://github.com/newptcai/Zeno/tree/master/ProbChopper"&gt;here&lt;/a&gt;.&lt;/p&gt;</content><category term="math"></category><category term="probability"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>The Convexity Property Related to Beta Densities</title><link href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities.html" rel="alternate"></link><published>2018-12-01T00:00:00+01:00</published><updated>2018-12-01T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-01:/the-convexity-property-related-to-beta-densities.html</id><summary type="html">&lt;p&gt;&lt;img alt="Density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density.png"&gt;&lt;/p&gt;
+you can find it &lt;a href="https://github.com/newptcai/Zeno/tree/master/ProbChopper"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="probability"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>The Convexity Property Related to Beta Densities</title><link href="https://newptcai.github.io/the-convexity-property-related-to-beta-densities.html" rel="alternate"></link><published>2018-12-01T00:00:00+01:00</published><updated>2018-12-01T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-12-01:/the-convexity-property-related-to-beta-densities.html</id><summary type="html">&lt;p&gt;&lt;img alt="Density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density.png"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;(This is a question asked by &lt;a href="https://katalog.uu.se/profile/?id=N15-1140"&gt;Tilo Wiklund&lt;/a&gt; recently on our group meeting.)&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(This is a question asked by &lt;a href="https://katalog.uu.se/profile/?id=N15-1140"&gt;Tilo Wiklund&lt;/a&gt; recently on our group meeting.)&lt;/em&gt;&lt;/p&gt;
+
 
 &lt;h2&gt;The problem&lt;/h2&gt;
-&lt;p&gt;A &lt;a href="https://en.wikipedia.org/wiki/Beta_distribution"&gt;Beta distribution&lt;/a&gt; with parameters …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density.png"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;(This is a question asked by &lt;a href="https://katalog.uu.se/profile/?id=N15-1140"&gt;Tilo Wiklund&lt;/a&gt; recently on our group meeting.)&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
-
-&lt;h2&gt;The problem&lt;/h2&gt;
-&lt;p&gt;A &lt;a href="https://en.wikipedia.org/wiki/Beta_distribution"&gt;Beta distribution&lt;/a&gt; with parameters ($\alpha$,$\beta$) has the density function
-$$ 
+&lt;p&gt;A &lt;a href="https://en.wikipedia.org/wiki/Beta_distribution"&gt;Beta distribution&lt;/a&gt; with parameters (&lt;span class="math"&gt;\(\alpha\)&lt;/span&gt;,&lt;span class="math"&gt;\(\beta\)&lt;/span&gt;) has the density function
+&lt;/p&gt;
+&lt;div class="math"&gt;$$ 
 f(x;\alpha,\beta) = \frac{x^{\alpha -1} (1-x)^{\beta -1}}{B(\alpha ,\beta )}, \qquad x \in
 [0,1]
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 As shown in the above picture, the density of this function, is concave, not convex. So you may think there is a mistake in
 the title.&lt;/p&gt;
-&lt;p&gt;No, actually we are going to talk a related function $r(x)$ constructed from $f(x)$. Let $m$ be the
-point where $f(x)$ reaches maximum. With a bit calculus, we have
-$$
+&lt;p&gt;No, actually we are going to talk a related function &lt;span class="math"&gt;\(r(x)\)&lt;/span&gt; constructed from &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt;. Let &lt;span class="math"&gt;\(m\)&lt;/span&gt; be the
+point where &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt; reaches maximum. With a bit calculus, we have
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 m=\frac{\alpha -1}{\alpha +\beta -2}.
-$$
-(So in the above example, we have $m=1/4$, which can also be seen from the picture.)
-Let $f^{-1}&lt;em 2&gt;{1}$ and $f^{-1}&lt;/em&gt;$ be the inverse of $f(x)$ for $x \in (0,m)$ and $x \in (m,1)$
+$$&lt;/div&gt;
+&lt;p&gt;
+(So in the above example, we have &lt;span class="math"&gt;\(m=1/4\)&lt;/span&gt;, which can also be seen from the picture.)
+Let &lt;span class="math"&gt;\(f^{-1}_{1}\)&lt;/span&gt; and &lt;span class="math"&gt;\(f^{-1}_{2}\)&lt;/span&gt; be the inverse of &lt;span class="math"&gt;\(f(x)\)&lt;/span&gt; for &lt;span class="math"&gt;\(x \in (0,m)\)&lt;/span&gt; and &lt;span class="math"&gt;\(x \in (m,1)\)&lt;/span&gt;
 respectively. They would look like this
 &lt;img alt="The inverse of the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-inverse.png"&gt;
 Then we define this function
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 r(x)
 =
 \begin{array}{cc}
-\left{ 
+\left\{ 
 \begin{array}{cc}
- f^{-1}&lt;em 1&gt;{2} (f1(x)) &amp;amp; x \in (0,m) \
- f^{-1}&lt;/em&gt; (f1(x)) &amp;amp; x \in [m,1) \
+ f^{-1}_{2} (f1(x)) &amp;amp; x \in (0,m) \\
+ f^{-1}_{1} (f1(x)) &amp;amp; x \in [m,1) \\
 \end{array}
 \right.
- \
+ \\
 \end{array}
-$$
-What does this weird function do? It takes one point $x \in [0,1]$, and gives you the point $r(x)
-\in [0,1]$, such that $f(x)=f(r(x))$ and $x \ne r(x)$. In other words, it reflects the point $x$
+$$&lt;/div&gt;
+&lt;p&gt;
+What does this weird function do? It takes one point &lt;span class="math"&gt;\(x \in [0,1]\)&lt;/span&gt;, and gives you the point &lt;span class="math"&gt;\(r(x)
+\in [0,1]\)&lt;/span&gt;, such that &lt;span class="math"&gt;\(f(x)=f(r(x))\)&lt;/span&gt; and &lt;span class="math"&gt;\(x \ne r(x)\)&lt;/span&gt;. In other words, it reflects the point &lt;span class="math"&gt;\(x\)&lt;/span&gt;
 through the curve of beta density.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="r[x] reflects x through the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-reflect.png"&gt;&lt;/p&gt;
-&lt;p&gt;So what is the conjecture? Tilo suggests that if $\beta&amp;gt;\alpha&amp;gt;1$, then $r(x)$ must be convex. This
+&lt;p&gt;So what is the conjecture? Tilo suggests that if &lt;span class="math"&gt;\(\beta&amp;gt;\alpha&amp;gt;1\)&lt;/span&gt;, then &lt;span class="math"&gt;\(r(x)\)&lt;/span&gt; must be convex. This
 looks reasonable if you look at the picture.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="r[x] for the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-r.png"&gt;&lt;/p&gt;
 &lt;h2&gt;How to prove it?&lt;/h2&gt;
 &lt;p&gt;This is not an easy question as it seems. The main difficulty is that we do not how to inverse
-$x^{\alpha-1}(1-x)^{\beta-1}$. So if we take second derivative of $r(x)$, using the formula
-$$
+&lt;span class="math"&gt;\(x^{\alpha-1}(1-x)^{\beta-1}\)&lt;/span&gt;. So if we take second derivative of &lt;span class="math"&gt;\(r(x)\)&lt;/span&gt;, using the formula
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 \frac{
 \mathrm d
 }
@@ -36233,31 +37197,98 @@ f^{-1}(x)
 f'(f^{-1}(x))
 }
 ,
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 we get a bit chunk of mess.&lt;/p&gt;
-&lt;p&gt;Fortunately we live in 2018 and we have computers to help us. Yes, $r''(x)$ is very ugly. But with
-the help of computer, it is not to difficult to see that when $\beta&amp;gt;\alpha&amp;gt;1$, $r''(x)&amp;gt;0$ is
+&lt;p&gt;Fortunately we live in 2018 and we have computers to help us. Yes, &lt;span class="math"&gt;\(r''(x)\)&lt;/span&gt; is very ugly. But with
+the help of computer, it is not to difficult to see that when &lt;span class="math"&gt;\(\beta&amp;gt;\alpha&amp;gt;1\)&lt;/span&gt;, &lt;span class="math"&gt;\(r''(x)&amp;gt;0\)&lt;/span&gt; is
 equivalent to the following, very simple inequality
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 x + r(x) \ge 2 m.
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;Look at the picture again and it won't take you long to convince yourself that this is true.
 &lt;img alt="r[x] reflects x through the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-reflect.png"&gt;
-In this case $m$ at most $1/2$. So when $x=0$, the left hand side is $1&amp;gt; 2m$. And when $x=r(x)=m$,
+In this case &lt;span class="math"&gt;\(m\)&lt;/span&gt; at most &lt;span class="math"&gt;\(1/2\)&lt;/span&gt;. So when &lt;span class="math"&gt;\(x=0\)&lt;/span&gt;, the left hand side is &lt;span class="math"&gt;\(1&amp;gt; 2m\)&lt;/span&gt;. And when &lt;span class="math"&gt;\(x=r(x)=m\)&lt;/span&gt;,
 we have equality.&lt;/p&gt;
-&lt;p&gt;Now note that for $x \leq m$,
-$$
+&lt;p&gt;Now note that for &lt;span class="math"&gt;\(x \leq m\)&lt;/span&gt;,
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 x+r(x)\geq 2 m\Leftrightarrow {f_2^{-1}}(f(x))+x\geq 2 m\Leftrightarrow {f_2^{-1}}(f(x))\geq 2 m-x
-$$&lt;/p&gt;
+$$&lt;/div&gt;
 &lt;p&gt;&lt;img alt="The inverse of the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-inverse.png"&gt;&lt;/p&gt;
-&lt;p&gt;Looking at the picture of $f^{-1}(x)$ again, we see that ${f_2^{-1}}$ is decreasing.
+&lt;p&gt;Looking at the picture of &lt;span class="math"&gt;\(f^{-1}(x)\)&lt;/span&gt; again, we see that &lt;span class="math"&gt;\({f_2^{-1}}\)&lt;/span&gt; is decreasing.
 Therefore, we only need to prove that
-$$
+&lt;/p&gt;
+&lt;div class="math"&gt;$$
 f(x) \le f(2m - x), \qquad x \in (0,m).
-$$
+$$&lt;/div&gt;
+&lt;p&gt;
 The nice thing about this inequality is that all the inverse functions are gone!&lt;/p&gt;
 &lt;p&gt;As mathematicians often like say when they run out of time, "the rest is left as an exercise"! (Or if
-you have Mathematica install, you can have a look of my &lt;a href="https://newptcai.github.io/doc/beta-2.nb"&gt;somewhat messy code&lt;/a&gt; and check the details.)&lt;/p&gt;</content><category term="math"></category><category term="analysis"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>Notes about Mathematica</title><link href="https://newptcai.github.io/notes-about-mathematica.html" rel="alternate"></link><published>2018-09-25T00:00:00+02:00</published><updated>2018-09-25T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-09-25:/notes-about-mathematica.html</id><summary type="html">&lt;p&gt;I am trying to use more and more computer algebra system in my work. Here I collect some useful
+you have Mathematica install, you can have a look of my &lt;a href="https://newptcai.github.io/doc/beta-2.nb"&gt;somewhat messy code&lt;/a&gt; and check the details.)&lt;/p&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="math"></category><category term="analysis"></category><category term="Mathematica"></category><category term="CAS"></category></entry><entry><title>Notes about Mathematica</title><link href="https://newptcai.github.io/notes-about-mathematica.html" rel="alternate"></link><published>2018-09-25T00:00:00+02:00</published><updated>2018-09-25T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2018-09-25:/notes-about-mathematica.html</id><summary type="html">&lt;p&gt;I am trying to use more and more computer algebra system in my work. Here I collect some useful
 links …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am trying to use more and more computer algebra system in my work. Here I collect some useful
 links regarding Mathematica. (I also use SageMath and Maple occasionally.)&lt;/p&gt;
 &lt;h2&gt;General&lt;/h2&gt;
@@ -36314,23 +37345,15 @@ politely gave us a way to pass. Very civilized country!&lt;/p&gt;
 wild boar. I tried to speak loudly to scare it away, but apparently it got angry moved towards me. I
 ran at maximum speed for 10 minutes until I could not hear it anymore. The moral of this story is --
 1. French people seem to don't like to eat wild boars. 2 Jogging may save your life one day.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Marseilles" src="https://newptcai.github.io/images/2017-10-30/06.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="France-2017"></category><category term="travel"></category></entry><entry><title>Conference photos</title><link href="https://newptcai.github.io/conference-photos.html" rel="alternate"></link><published>2017-08-26T00:15:21+02:00</published><updated>2017-08-26T00:15:21+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-08-26:/conference-photos.html</id><summary type="html">&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/RSA2019.jpg"&gt;
+&lt;p&gt;&lt;img alt="Marseilles" src="https://newptcai.github.io/images/2017-10-30/06.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="France-2017"></category><category term="travel"></category></entry><entry><title>Conference photos</title><link href="https://newptcai.github.io/conference-photos.html" rel="alternate"></link><published>2017-08-26T00:15:21+02:00</published><updated>2017-08-26T00:15:21+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-08-26:/conference-photos.html</id><summary type="html">&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/RSA2019.jpg"/&gt;
 &lt;center&gt;
 &lt;em&gt;Random Structure &amp;amp; Algorithms.&lt;/em&gt; 2019, Zurich, Switzerland.
 &lt;/center&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/RSA2019.jpg"&gt;
+&lt;center&gt;
+&lt;em&gt;Random Structure &amp;amp; Algorithms.&lt;/em&gt; 2019, Zurich, Switzerland.
+&lt;/center&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/aofa2019.jpeg"&gt;
-&lt;center&gt;
-&lt;em&gt;Analysis of Algorithms.&lt;/em&gt; June 2019, Marseilles, France.
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/aofa2018.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;Analysis of Algorithms.&lt;/em&gt; June 2018, Uppsala, Sweden …&lt;/center&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/RSA2019.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;Random Structure &amp;amp; Algorithms.&lt;/em&gt; 2019, Zurich, Switzerland.
-&lt;/center&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
 
 &lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/conference/aofa2019.jpeg"&gt;
 &lt;center&gt;
@@ -36367,27 +37390,11 @@ ran at maximum speed for 10 minutes until I could not hear it anymore. The moral
 &lt;center&gt;
 &lt;em&gt;At home. 2020, Uppsala, Sweden.&lt;/em&gt;
 &lt;/center&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
-
-&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/me/12.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;Skating. 2018, Uppsala, Sweden.&lt;/em&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/me/11.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;2017, Umeå, Sweden.&lt;/em&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/me/13.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;2016, Stockholm, Sweden.&lt;/em&gt;
-&lt;/center&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/me/10.jpg"&gt;
-&lt;center&gt;
-&lt;em&gt;Hiking in New York State …&lt;/em&gt;&lt;/center&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img src="https://newptcai.github.io/images/me/14.png" style="max-width:450px"/&gt;
+</summary><content type="html">&lt;p&gt;&lt;img src="https://newptcai.github.io/images/me/14.png" style="max-width:450px"/&gt;
 &lt;center&gt;
 &lt;em&gt;At home. 2020, Uppsala, Sweden.&lt;/em&gt;
 &lt;/center&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+
 
 &lt;p&gt;&lt;img alt="Me" src="https://newptcai.github.io/images/me/12.jpg"&gt;
 &lt;center&gt;
@@ -36487,13 +37494,11 @@ find him. He was starving. It was nice to see him again.&lt;/p&gt;
 &lt;img alt="Birmingham" src="https://newptcai.github.io/images/2017-07-22/05.jpg"&gt;
 &lt;img alt="Birmingham" src="https://newptcai.github.io/images/2017-07-22/06.jpg"&gt;
 &lt;img alt="Birmingham" src="https://newptcai.github.io/images/2017-07-22/07.jpg"&gt;
-&lt;img alt="Birmingham" src="https://newptcai.github.io/images/2017-07-22/08.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="travel"></category><category term="Britain-2017"></category></entry><entry><title>A walk by the sea (part 3) -- Helsingborg to Höganäs</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-3-helsingborg-to-hoganas.html" rel="alternate"></link><published>2017-07-15T00:00:00+02:00</published><updated>2017-07-15T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-07-15:/a-walk-by-the-sea-part-3-helsingborg-to-hoganas.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-15/01.jpg"&gt;&lt;/p&gt;
+&lt;img alt="Birmingham" src="https://newptcai.github.io/images/2017-07-22/08.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="travel"></category><category term="Britain-2017"></category></entry><entry><title>A walk by the sea (part 3) -- Helsingborg to Höganäs</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-3-helsingborg-to-hoganas.html" rel="alternate"></link><published>2017-07-15T00:00:00+02:00</published><updated>2017-07-15T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-07-15:/a-walk-by-the-sea-part-3-helsingborg-to-hoganas.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-15/01.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part 3 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-15/01.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part 3 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2&gt;Day 3 …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-15/01.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is part 3 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
 
 &lt;h2&gt;Day 3 (2017-07-15) -- Helsingborg to Höganäs&lt;/h2&gt;
 &lt;p&gt;This was the second day of the hike. My plan was to keep walking along the coast until Höganäs,
@@ -36553,13 +37558,11 @@ people are tough!&lt;/p&gt;
 all by myself. The waiter was quite impressed. It was a pity my phone was out of battery!&lt;/p&gt;
 &lt;p&gt;After dinner, I went for grocery by, of course, walking. This is where you have to pass by for
 grocery in a small Swedish town.
-&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-15/24.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="travel Kullen-2017"></category></entry><entry><title>A walk by the sea (part 2) -- Helsingborg &amp; Helsingø</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-2-helsingborg-helsingo.html" rel="alternate"></link><published>2017-07-14T00:00:00+02:00</published><updated>2017-07-14T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-07-14:/a-walk-by-the-sea-part-2-helsingborg-helsingo.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/07.jpg"&gt;&lt;/p&gt;
+&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-15/24.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="travel Kullen-2017"></category></entry><entry><title>A walk by the sea (part 2) -- Helsingborg &amp; Helsingø</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-2-helsingborg-helsingo.html" rel="alternate"></link><published>2017-07-14T00:00:00+02:00</published><updated>2017-07-14T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-07-14:/a-walk-by-the-sea-part-2-helsingborg-helsingo.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/07.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part 2 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/07.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part 2 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2&gt;Day 2 …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/07.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is part 2 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
 
 &lt;h2&gt;Day 2 (2017-07-14) -- From Landskrona to Helsingborg&lt;/h2&gt;
 &lt;h3&gt;Be careful of cows&lt;/h3&gt;
@@ -36607,13 +37610,11 @@ a nice statute. And the Danes certainly know how to build a castle.&lt;/p&gt;
 &lt;p&gt;The producer of &lt;em&gt;The Game of Thrones&lt;/em&gt; probably have seen this.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/03.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;Dinner was Danish fish and chips, with a bit of salt wind form the sea.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/05.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="travel Kullen-2017"></category></entry><entry><title>A walk by the sea (part 1) -- Malmö</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-1-malmo.html" rel="alternate"></link><published>2017-07-13T00:00:00+02:00</published><updated>2017-07-13T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-07-13:/a-walk-by-the-sea-part-1-malmo.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-13/07.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-14/05.jpg"&gt;&lt;/p&gt;</content><category term="mumble"></category><category term="travel Kullen-2017"></category></entry><entry><title>A walk by the sea (part 1) -- Malmö</title><link href="https://newptcai.github.io/a-walk-by-the-sea-part-1-malmo.html" rel="alternate"></link><published>2017-07-13T00:00:00+02:00</published><updated>2017-07-13T00:00:00+02:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2017-07-13:/a-walk-by-the-sea-part-1-malmo.html</id><summary type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-13/07.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part 1 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-13/07.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part 1 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h2&gt;The plan …&lt;/h2&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Walk" src="https://newptcai.github.io/images/2017-07-13/07.jpg"&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is part 1 of the stories of my vacation in summer 2017 around west coast of Sweden.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
 
 &lt;h2&gt;The plan&lt;/h2&gt;
 &lt;p&gt;My opinion regarding vacation has always been that it's an invention of modern consumerism. There is
@@ -36679,9 +37680,10 @@ that I don't speak Swedish, she switched to Chinese and asked if I wanted to eat
 wait for two hours in a coffee shop. But that was Okay. I was totally absorbed in selecting good
 photos from the hundreds that I took on my first day of the trip. I didn't notice the passing of
 time.&lt;/p&gt;</content><category term="mumble"></category><category term="travel Kullen-2017"></category></entry><entry><title>Choices of Linear Programming Solver</title><link href="https://newptcai.github.io/choices-of-linear-programming-solver.html" rel="alternate"></link><published>2013-01-25T00:00:00+01:00</published><updated>2013-01-25T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2013-01-25:/choices-of-linear-programming-solver.html</id><summary type="html">&lt;p&gt;&lt;em&gt;At the time of written, I was TA for COMP 362, Honors Algorithm Design at McGill University. This
-post was …&lt;/em&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;At the time of written, I was TA for COMP 362, Honors Algorithm Design at McGill University. This
 post was written for the students.&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;em&gt;At the time of written, I was TA for COMP 362, Honors Algorithm Design at McGill University. This
+post was written for the students.&lt;/em&gt;&lt;/p&gt;
+
 
 &lt;p&gt;&lt;img src="https://newptcai.github.io/images/lp.jpg" class="thumbnail"/&gt;&lt;/p&gt;
 &lt;h2&gt;lp_solve&lt;/h2&gt;
@@ -36801,10 +37803,8 @@ be years of thinking and/or huge piles of scrap notes that lead nowhere,
 and one sheet where everything finally worked out nicely.  (Allan Gut, Probability: A Graduate
 Course)&lt;/p&gt;
 &lt;/blockquote&gt;</content><category term="math"></category><category term="funny"></category></entry><entry><title>The pitfall of using rand() for simulation</title><link href="https://newptcai.github.io/the-pitfall-of-using-rand-for-simulation.html" rel="alternate"></link><published>2011-01-22T00:00:00+01:00</published><updated>2011-01-22T00:00:00+01:00</updated><author><name>Xing Shi Cai</name></author><id>tag:newptcai.github.io,2011-01-22:/the-pitfall-of-using-rand-for-simulation.html</id><summary type="html">&lt;p&gt;&lt;em&gt;This was probably the first simulation I did. How naive I was!&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
+</summary><content type="html">&lt;p&gt;&lt;em&gt;This was probably the first simulation I did. How naive I was!&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;Today I was doing some simulation and I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;This was probably the first simulation I did. How naive I was!&lt;/em&gt;&lt;/p&gt;
-&lt;!-- END_SUMMARY --&gt;
 
 &lt;p&gt;Today I was doing some simulation and I need a uniform random bits stream.
 What I tried first is to use the standard C function &lt;a href="http://en.cppreference.com/w/c/numeric/random/rand"&gt;&lt;code&gt;rand()&lt;/code&gt;&lt;/a&gt;, which should return a uniform integer

@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="I created a Jupyter notebook for teaching induction in combinatorics to demonstrate that you can always tile a $2^n …" /> 
+    <meta name="description" content="I created a Jupyter notebook for teaching induction in combinatorics to demonstrate that you can always tile a \(2^n …if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) { var align = "center", indent = "0em", linebreak = "false"; if (false) { align = (screen.width" /> 
     <meta name="keywords" content="combinatorics, programming, teaching"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="Tiling chessboard with L-shaped tiles - You don't need to prove this" />
-    <meta property="og:description" content="I created a Jupyter notebook for teaching induction in combinatorics to demonstrate that you can always tile a $2^n …" />
+    <meta property="og:description" content="I created a Jupyter notebook for teaching induction in combinatorics to demonstrate that you can always tile a \(2^n …if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) { var align = "center", indent = "0em", linebreak = "false"; if (false) { align = (screen.width" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/tiling-chessboard-with-l-shaped-tiles.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tiling chessboard with L-shaped tiles - You don't need to prove this">
-    <meta name="twitter:description" content="I created a Jupyter notebook for teaching induction in combinatorics to demonstrate that you can always tile a $2^n …">
+    <meta name="twitter:description" content="I created a Jupyter notebook for teaching induction in combinatorics to demonstrate that you can always tile a \(2^n …if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) { var align = "center", indent = "0em", linebreak = "false"; if (false) { align = (screen.width">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -90,10 +90,72 @@
   <div class="col-main w3-container">
     <main id="article-content">
       <p>I created a <a href="https://github.com/newptcai/math-note/blob/v0.1.1/2019-05-22-chessboard.ipynb">Jupyter notebook</a> for teaching induction in combinatorics to demonstrate that you can
-always tile a $2^n \times 2^n$ chessboard which has one tile missing with L-shaped tiles. To see how it works,
+always tile a <span class="math">\(2^n \times 2^n\)</span> chessboard which has one tile missing with L-shaped tiles. To see how it works,
 run it on
 <a href="https://mybinder.org/v2/gh/newptcai/math-note/v0.1.1?filepath=2019-05-22-chessboard.ipynb">binder</a>.</p>
 <p><img alt="Tiing chess board with L-shaped tiles" src="https://newptcai.github.io/images/chess/chess-L-tiling.png"></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
     </main>
     <br>
     <footer>

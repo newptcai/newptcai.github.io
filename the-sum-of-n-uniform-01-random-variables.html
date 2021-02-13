@@ -83,51 +83,58 @@
     <main id="article-content">
       <p>Update: Svante Janson told me yesterday that the integral I had at the end of this post is
 known as the beta integral, see 5.14.1 of <em>NIST Handbook of Mathematical Functions, 2019 ed</em>.</p>
-<p>What is the size of the green triangle in the following picture? Of course it is $1/2$. Everybody
+<p>What is the size of the green triangle in the following picture? Of course it is <span class="math">\(1/2\)</span>. Everybody
 knows.</p>
-<p><img alt="Two dimensional polyhedron $S_2$" src="https://newptcai.github.io/images/2019-01-09-polyhedron/2d.png">
+<p><img alt="Two dimensional polyhedron \(S_2\)" src="https://newptcai.github.io/images/2019-01-09-polyhedron/2d.png">
 What about this polyhedron? 
-<img alt="Three dimensional polyhedron $S_3$" src="https://newptcai.github.io/images/2019-01-09-polyhedron/3d.png">
+<img alt="Three dimensional polyhedron \(S_3\)" src="https://newptcai.github.io/images/2019-01-09-polyhedron/3d.png">
 If you still remember a bit Euclidean geometry, then you will see this is
-$\frac{1}{6}=\frac{1}{2}\frac{1}{3}$. Do you see where I am going?</p>
-<p>Let's define an $n$-dimension polyhedron
-$$
-S_n = {(x_1,\dots,x_n) \in \mathbb R^n:1&gt;x_1&gt;0,\dots, 1&gt;x_n&gt;0, 1&gt;x_1+\dots+x_n}.
-$$
-Then the previous two pictures are just $S_2$ and $S_3$.
-If you compute the volume of $S_n$, you will see
-$$
+<span class="math">\(\frac{1}{6}=\frac{1}{2}\frac{1}{3}\)</span>. Do you see where I am going?</p>
+<p>Let's define an <span class="math">\(n\)</span>-dimension polyhedron
+</p>
+<div class="math">$$
+S_n = \{(x_1,\dots,x_n) \in \mathbb R^n:1&gt;x_1&gt;0,\dots, 1&gt;x_n&gt;0, 1&gt;x_1+\dots+x_n\}.
+$$</div>
+<p>
+Then the previous two pictures are just <span class="math">\(S_2\)</span> and <span class="math">\(S_3\)</span>.
+If you compute the volume of <span class="math">\(S_n\)</span>, you will see
+</p>
+<div class="math">$$
 \mathrm{vol}(S_n)=
 \int_{(x_1,\dots,x_n) \in S_n} \mathrm{d}(x_1,\dots,x_n)
 =\frac{1}{n!}
 .
-$$</p>
+$$</div>
 <p>There is another way to view this.
-Let $U_1,\dots,U_n$ be $n$ independent uniform random variables on $[0,1]$, what is the probability
-that $U_1+U_2 \dots U_n \le 1$? It is precise the volume of $S_n$ and is thus $1/n!$.</p>
+Let <span class="math">\(U_1,\dots,U_n\)</span> be <span class="math">\(n\)</span> independent uniform random variables on <span class="math">\([0,1]\)</span>, what is the probability
+that <span class="math">\(U_1+U_2 \dots U_n \le 1\)</span>? It is precise the volume of <span class="math">\(S_n\)</span> and is thus <span class="math">\(1/n!\)</span>.</p>
 <p>Can we get this without doing the integral? Yes.  We have
-$$
-\mathbb P{U_1+U_2 \dots U_n \le 1}
+</p>
+<div class="math">$$
+\mathbb P\{U_1+U_2 \dots U_n \le 1\}
 =
-\mathbb P{U_1+U_2 \dots U_{n-1} \le 1-U_n}
+\mathbb P\{U_1+U_2 \dots U_{n-1} \le 1-U_n\}
 =
-\mathbb P{U_1+U_2 \dots U_{n-1} \le U_n'}
-$$
-where $U_n'$ is again an independent uniform $[0,1]$ random variable.
-For the event $U_1+U_2 \dots U_{n-1} \le U_n'$ to happen, we need that $U_n'$ is the maximum one
-among the $n$ variables, which has probability $1/n$. Conditioning on this, $U_1,\dots,U_{n-1}$ are
-independent and uniformly distributed on $[1,U_n']$. So the conditional probably of $U_1+U_2 \dots
-U_{n-1} \le U_n'$ is $1/(n-1)!$ by induction. Put it together, we have
-$$
-\mathbb P{U_1+U_2 \dots U_n \le 1}
+\mathbb P\{U_1+U_2 \dots U_{n-1} \le U_n'\}
+$$</div>
+<p>
+where <span class="math">\(U_n'\)</span> is again an independent uniform <span class="math">\([0,1]\)</span> random variable.
+For the event <span class="math">\(U_1+U_2 \dots U_{n-1} \le U_n'\)</span> to happen, we need that <span class="math">\(U_n'\)</span> is the maximum one
+among the <span class="math">\(n\)</span> variables, which has probability <span class="math">\(1/n\)</span>. Conditioning on this, <span class="math">\(U_1,\dots,U_{n-1}\)</span> are
+independent and uniformly distributed on <span class="math">\([1,U_n']\)</span>. So the conditional probably of <span class="math">\(U_1+U_2 \dots
+U_{n-1} \le U_n'\)</span> is <span class="math">\(1/(n-1)!\)</span> by induction. Put it together, we have
+</p>
+<div class="math">$$
+\mathbb P\{U_1+U_2 \dots U_n \le 1\}
 =
-\mathbb P{U_1+U_2 \dots U_{n-1} \le U_n'|\text{$U_n'$ is the maximum}}
-\mathbb P{\text{$U_n'$ is the maximum}}
+\mathbb P\{U_1+U_2 \dots U_{n-1} \le U_n'|\text{$U_n'$ is the maximum}\}
+\mathbb P\{\text{$U_n'$ is the maximum}\}
 =
 \frac{1}{n!}.
-$$</p>
+$$</div>
 <p>Why do I bring up this? A few days ago, I found the following identity
-$$
+</p>
+<div class="math">$$
 \int_{(x_1,\dots,x_n) \in S_n}
 (x_1 \dots x_n)^{-1/k}
 \mathrm{d}(x_1,\dots,x_n)
@@ -136,9 +143,72 @@ $$
 ,
 \qquad
 k \ge 2.
-$$
-Let $k \to \infty$, then we get back our $1/n!$. Does this have a probabilistic explanation?
+$$</div>
+<p>
+Let <span class="math">\(k \to \infty\)</span>, then we get back our <span class="math">\(1/n!\)</span>. Does this have a probabilistic explanation?
 I do not know. Maybe you know?</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
     </main>
     <br>
     <footer>

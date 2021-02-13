@@ -94,7 +94,7 @@
 <hr>
 <p>I came across in a paper <a href="https://arxiv.org/abs/1812.04289v1">Counting triangles in power-law uniform random graphs</a><em> </em>by <em>Pu Gao, Remco van der Hofstad, Angus Southwell, Clara Stegehuis  </em>on ArXiv today. Then I spotted two integrals, equation (2.1) and (2.2). These two are left as unevaluated integrals. But they don’t look too intimidating so I gave them a try and voila they have closed form as below:</p>
 <p><img alt="1wagzewezpxds" src="https://newptcai.github.io/images/2020-04-12-triangle/1wagzewezpxds.png"></p>
-<p>for $2\leq t\leq 3$.</p>
+<p>for <span class="math">\(2\leq t\leq 3\)</span>.</p>
 <p>There is probably a book somewhere that has these formulas. But here I will show you how to use Mathematica to get them.</p>
 <h2>The first integral</h2>
 <p>The first one is actually quite easy. You can do it with directly in Mathematica 12.1 without any effort. Let</p>
@@ -136,7 +136,7 @@
 </code></pre></div>
 
 <p><img alt="11biy0j76yav1" src="https://newptcai.github.io/images/2020-04-12-triangle/11biy0j76yav1.png"></p>
-<p>Mathematica cannot do this directly. But we can do a change of variable by integrating $f(g(a,b,c))$ with</p>
+<p>Mathematica cannot do this directly. But we can do a change of variable by integrating <span class="math">\(f(g(a,b,c))\)</span> with</p>
 <div class="highlight"><pre><span></span><code><span class="n">g</span><span class="p">[</span><span class="nv">a_</span><span class="p">,</span><span class="w"> </span><span class="nv">b_</span><span class="p">,</span><span class="w"> </span><span class="nv">c_</span><span class="p">]</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">{(</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">*</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">c</span><span class="p">])</span><span class="o">/</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">b</span><span class="p">],</span><span class="w"> </span>
 <span class="w">     </span><span class="p">(</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">*</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">b</span><span class="p">])</span><span class="o">/</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">c</span><span class="p">],</span><span class="w"> </span><span class="p">(</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">b</span><span class="p">]</span><span class="o">*</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">c</span><span class="p">])</span><span class="o">/</span><span class="n">Sqrt</span><span class="p">[</span><span class="n">a</span><span class="p">]}</span><span class="w"></span>
 </code></pre></div>
@@ -188,6 +188,68 @@
 <h2>Reference</h2>
 <p>Gao, P., van der Hofstad, R., Southwell, A., &amp; Stegehuis, C.(2018).Counting triangles in power -- law
 uniform random graphs. <a href="http://arxiv.org/abs/1812.04289">ArXiv:1812.04289</a> [Math]. </p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
     </main>
     <br>
     <footer>

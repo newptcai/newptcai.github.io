@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="I am trying to learn how to use computers to prove identities like this one $$ \sum_{k=m}^n{k …" /> 
+    <meta name="description" content="I am trying to learn how to use computers to prove identities like this one" /> 
     <meta name="keywords" content="summation, CAS"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="An example of proving summation identities with computer - You don't need to prove this" />
-    <meta property="og:description" content="I am trying to learn how to use computers to prove identities like this one $$ \sum_{k=m}^n{k …" />
+    <meta property="og:description" content="I am trying to learn how to use computers to prove identities like this one" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/an-example-of-proving-summation-identities-with-computer.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="An example of proving summation identities with computer - You don't need to prove this">
-    <meta name="twitter:description" content="I am trying to learn how to use computers to prove identities like this one $$ \sum_{k=m}^n{k …">
+    <meta name="twitter:description" content="I am trying to learn how to use computers to prove identities like this one">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -86,10 +86,11 @@
   <div class="col-main w3-container">
     <main id="article-content">
       <p>I am trying to learn how to use computers to prove identities like this one
-<!-- END_SUMMARY --></p>
-<p>$$
+</p>
+<div class="math">$$
 \sum_{k=m}^n{k\choose k-m}{2n\choose 2k}=4^{n-m}\frac{n(2n-m-1)!}{(2n-2m)!m!},
-$$
+$$</div>
+<p>
 which I came across on <a href="https://math.stackexchange.com/q/3047567/1618">math.stackexchange.com</a>.  If
 you put it Mathematica and simplify, you will simply get a True without any explanation. 
 But how dose computer know it?  In
@@ -98,61 +99,139 @@ telescoping algorithms.</p>
 <p>I am going to use the Mathematica package <a href="https://www3.risc.jku.at/research/combinat/software/Sigma/index.php">Sigma</a> by <a href="https://www3.risc.jku.at/people/cschneid/">Carsten
 Schneider</a>.</p>
 <p>First the left-hand-side can be written as 
-$$
+</p>
+<div class="math">$$
 S(n_0)=\underset{k=0}{\overset{n_0}{\sum }}
 f(n_0,k)
-$$
-where $n_0=n-m$ and
-$$
+$$</div>
+<p>
+where <span class="math">\(n_0=n-m\)</span> and
+</p>
+<div class="math">$$
 f(n_0,k)=
 \left(
 \begin{array}{c}
- k+m \
- k \
+ k+m \\
+ k \\
 \end{array}
 \right) \left(
 \begin{array}{c}
- 2 \left(m+n_0\right) \
- 2 (k+m) \
+ 2 \left(m+n_0\right) \\
+ 2 (k+m) \\
 \end{array}
 \right)
 .
-$$
+$$</div>
+<p>
 Next, let
-$$
+</p>
+<div class="math">$$
 c_0(n)=2 (1 + m + n_0) (m + 2 n_0) (1 + m + 2 n_0),
-$$
+$$</div>
+<p>
 and
-$$
+</p>
+<div class="math">$$
 c_1(n)=-(1 + n_0) (m + n_0) (1 + 2 n_0)
-$$
+$$</div>
+<p>
 and
-$$
+</p>
+<div class="math">$$
 g(n_0,k)=-\frac{k (2 k+2 m-1) \left(m+n_0+1\right) \binom{k+m}{k} \left(2 k m+4 k n_0+2 k-4 m n_0-3 m-6 n_0^2-7 n_0-2\right) \binom{2 m+2 n_0}{2 k+2 m}}{\left(2 k-2 n_0-1\right) \left(k-n_0-1\right)}.
-$$
+$$</div>
+<p>
 Then you can verify in your favorite CAS system that
-$$
+</p>
+<div class="math">$$
 g\left(n_0,k+1\right)-g\left(n_0,k\right)=c_0\left(n_0\right) f\left(n_0,k\right)+c_1\left(n_0\right) f\left(n_0+1,k\right)
 .
-$$
+$$</div>
+<p>
 I did not magically find this recursion myself. This is done by <a href="https://www3.risc.jku.at/research/combinat/software/Sigma/index.php">Sigma</a>.</p>
-<p>Summing over $k=1,..n_0-1$, the left-hand-side telescopes (perhaps this is where the name creative-telescoping comes from), and we get
-$$
+<p>Summing over <span class="math">\(k=1,..n_0-1\)</span>, the left-hand-side telescopes (perhaps this is where the name creative-telescoping comes from), and we get
+</p>
+<div class="math">$$
 c_0(n_0) S\left(n_0\right)+c_1(n_0)  S\left(n_0+1\right)=0
-$$
-This is a simple recursion. Put in $S(0)=f(0,0)=1$, we get
-$$
+$$</div>
+<p>
+This is a simple recursion. Put in <span class="math">\(S(0)=f(0,0)=1\)</span>, we get
+</p>
+<div class="math">$$
 S(n_0)=
 \frac{4^{n_0} \left(m+n_0\right) \left(m+2 n_0-1\right)!}{m! \left(2 n_0\right)!}
 =
 \frac{n 4^{n-m} (-m+2 n-1)!}{m! (2 n-2 m)!}
 .
-$$
-where we substitute by $n_0=n-m$. This is exactly the right-hand-side.</p>
+$$</div>
+<p>
+where we substitute by <span class="math">\(n_0=n-m\)</span>. This is exactly the right-hand-side.</p>
 <p>All these have been completely automated. What you need to do is only to trust the computer when it says
 something is true. See <a href="https://www3.risc.jku.at/research/combinat/software/Sigma/pub/SLC06.pdf">Schneider's
 paper</a> for many more
 examples!</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
     </main>
     <br>
     <footer>
