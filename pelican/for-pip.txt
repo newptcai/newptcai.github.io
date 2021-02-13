@@ -9,6 +9,7 @@ defusedxml==0.6.0
 docutils @ file:///home/conda/feedstock_root/build_artifacts/docutils_1610127754852/work
 entrypoints==0.3
 feedgenerator==1.9.1
+ghp-import==1.0.1
 importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1602276842396/work
 ipython-genutils==0.2.0
 Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/jinja2_1612119311452/work
