@@ -79,9 +79,14 @@ PAGE_ORDER_BY = 'page-order'
 # Jupyter integration
 MARKUP = ('md')
 
-PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
+# PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
+
+from pelican_jupyter import liquid as nb_liquid
+PLUGINS = [nb_liquid]
 
 IGNORE_FILES = [".ipynb_checkpoints", ".git", "README.md"] 
+
+LIQUID_CONFIGS = (("IPYNB_EXPORT_TEMPLATE", "basic.tpl", ""), )
 
 # Social media
 SOCIAL = [

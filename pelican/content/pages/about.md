@@ -16,7 +16,7 @@ Hello! Welcome! My name is 蔡醒诗 ([how to say it](https://translate.google.c
 or Xing Shi Cai in English.  I just finished a postdoctoral researcher at [the Department of Mathematics of
 Uppsala University](https://www.uu.se/en) in Sweden.  My supervisor was [Cecilia
 Holmgren](http://katalog.uu.se/profile/?id=N5-824) <i class="fas fa-horse"></i>. Currently I am
-taking a (hopefully) short break from work.
+taking a (hopefully) short break from work at Montreal.
 
 I am interested in probability <i class="fas fa-dice"></i>, combinatorics <i class="fas fa-chess-queen"></i>, and 
 [experimental mathematics](https://en.wikipedia.org/wiki/Experimental_mathematics) <i class="fas fa-flask"></i>.  Check my
