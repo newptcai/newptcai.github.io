@@ -135,19 +135,17 @@ selection of encoding techniques per constraint, depending on various parameters
 <p>My choice is to use <a href="https://julialang.org/">Julia</a> to convert combinatorics problems into
 <code>BumbleBEE</code> code and this is why I wrote the package <a href="https://github.com/newptcai/BEE.jl"><code>BEE.jl</code></a>.</p>
 <p>Here's my workflow for smaller problems</p>
-<div class="highlight"><pre><span></span>Julia code --<span class="o">(</span>BEE.jl<span class="o">)</span>--&gt; BEE code --<span class="o">(</span>BumbleBEE<span class="o">)</span>--&gt; solution/unsatisfiable
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>Julia code --<span class="o">(</span>BEE.jl<span class="o">)</span>--&gt; BEE code --<span class="o">(</span>BumbleBEE<span class="o">)</span>--&gt; solution/unsatisfiable
+</code></pre></div>
 
 <p>When the problem is getting bigger, I try</p>
-<div class="highlight"><pre><span></span>Julia code --<span class="o">(</span>BEE.jl<span class="o">)</span>--&gt; BEE code -- <span class="o">(</span>BumbleBEE<span class="o">)</span>--&gt; CNF --<span class="o">(</span>SAT Solver<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>Julia code --<span class="o">(</span>BEE.jl<span class="o">)</span>--&gt; BEE code -- <span class="o">(</span>BumbleBEE<span class="o">)</span>--&gt; CNF --<span class="o">(</span>SAT Solver<span class="o">)</span>
                                                                <span class="p">|</span>
     +-------------------------+--------------------------------+
     <span class="p">|</span>                         <span class="p">|</span>
     v                         v
 unsatisfiable          CNF solution --<span class="o">(</span>BumbleSol<span class="o">)</span>--&gt; BEE solution
-</pre></div>
-
+</code></pre></div>
 
 <p>In the rest of this article, I will mostly describe how to use <code>BEE</code> 😀️. You do not need to know any
 Julia to understand this part. I will only briefly mention what <code>BEE.jl</code> does by the
@@ -157,16 +155,14 @@ end.</p>
 <p>The easiest way to try <code>BEE</code> and <code>BEE.jl</code> is to use this <a href="https://hub.docker.com/r/newptcai/bee">docker
 image</a> with everything you need. 
 If you have <a href="https://www.docker.com/">docker</a> install, simply type in a terminal</p>
-<div class="highlight"><pre><span></span>docker pull newptcai/bee
+<div class="highlight"><pre><span></span><code>docker pull newptcai/bee
 docker run -it newptcai/bee
-</pre></div>
-
+</code></pre></div>
 
 <p>This will download and start a bash shell within the image.  You will find <code>BEE</code> install in the
 folder <code>/bee</code>.  To check it works, run</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> bee <span class="o">&amp;&amp;</span> ./BumbleBEE beeSolver/bExamples/ex_sat.bee
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> bee <span class="o">&amp;&amp;</span> ./BumbleBEE beeSolver/bExamples/ex_sat.bee
+</code></pre></div>
 
 <p>The drawback of this method is that the image is quite large (about 600MB). This is unavoidable if we
 use docker. Julia itself needs about 400MB, and Prolog costs another 100MB. 😑️</p>
@@ -176,54 +172,46 @@ use docker. Julia itself needs about 400MB, and Prolog costs another 100MB. 😑
 Ubuntu. Other Linux system should work in similar ways.</p>
 <p>First install <a href="https://www.swi-prolog.org/build/PPA.txt">SWI-Prolog</a>. You can do this in a terminal
 by typing</p>
-<div class="highlight"><pre><span></span>sudo apt-add-repository ppa:swi-prolog/stable
+<div class="highlight"><pre><span></span><code>sudo apt-add-repository ppa:swi-prolog/stable
 sudo apt-get update
 sudo apt-get install swi-prolog-nox
-</pre></div>
-
+</code></pre></div>
 
 <p>Download <code>BEE</code> using the link above and unzip it somewhere on your computer.
 In a terminal, change directory to</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> /path-to-downloaded-file/bee20170615/satsolver_src
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /path-to-downloaded-file/bee20170615/satsolver_src
+</code></pre></div>
 
 <p>Compile sat solvers coming with <code>BEE</code> by</p>
-<div class="highlight"><pre><span></span>env <span class="nv">CPATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib/swi-prolog/include/&quot;</span> make satSolvers
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>env <span class="nv">CPATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib/swi-prolog/include/&quot;</span> make satSolvers
+</code></pre></div>
 
 <p>If compilation is successful, you should be able to excute</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> ../satsolver <span class="o">&amp;&amp;</span> ls
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../satsolver <span class="o">&amp;&amp;</span> ls
+</code></pre></div>
 
 <p>and see the following output</p>
-<div class="highlight"><pre><span></span>pl-glucose4.so  pl-glucose.so  pl-minisat.so  satsolver.pl
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>pl-glucose4.so  pl-glucose.so  pl-minisat.so  satsolver.pl
+</code></pre></div>
 
 <p>Next we compile <code>BumbleBEE</code> by</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> ../beeSolver/ <span class="o">&amp;&amp;</span> make
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> ../beeSolver/ <span class="o">&amp;&amp;</span> make
+</code></pre></div>
 
 <p>If you succeed, you will be able to find <code>BumbleBEE</code> and <code>BumbleSol</code> one directory above by</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> ls
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> ls
+</code></pre></div>
 
 <p>And you should see these files</p>
-<div class="highlight"><pre><span></span>bApplications  beeSolver  BumbleSol        pl-satsolver.so  satsolver
+<div class="highlight"><pre><span></span><code>bApplications  beeSolver  BumbleSol        pl-satsolver.so  satsolver
 beeCompiler    BumbleBEE  Constraints.pdf  README.txt       satsolver_src
-</pre></div>
-
+</code></pre></div>
 
 <h3>Using <code>BumbleBEE</code></h3>
 <p>We can now give <code>BEE</code> a try 😁️.  You can find examples of <code>BumbleBEE</code> problems in the folder
 <code>beeSolver/bExamples</code>. A very simple one is the following
 <code>ex_sat.bee</code>.</p>
-<div class="highlight"><pre><span></span>new_int<span class="o">(</span>x,0,5<span class="o">)</span>
+<div class="highlight"><pre><span></span><code>new_int<span class="o">(</span>x,0,5<span class="o">)</span>
 new_int<span class="o">(</span>y,-4,9<span class="o">)</span>
 new_int<span class="o">(</span>z,-5,10<span class="o">)</span>
 int_plus<span class="o">(</span>x,y,z<span class="o">)</span>
@@ -236,20 +224,18 @@ bool_eq<span class="o">(</span>x1,-x2<span class="o">)</span>
 bool_eq<span class="o">(</span>x2,true<span class="o">)</span>
 bool_array_sum_eq<span class="o">([</span>-x1,x2,-x3,x4<span class="o">]</span>,w<span class="o">)</span>
 solve satisfy
-</pre></div>
-
+</code></pre></div>
 
 <p>It defines 4 integer variables <code>x, y, z, w</code> in various range and 4 boolean variables <code>x1, x2, x3, x4</code>.
 Then it adds various constraints on these variables, for example, <code>x+y==z</code> and <code>x1==x2</code>. For the
 syntax, check the <a href="http://amit.metodi.me/research/bee/Constraints.pdf">document</a>.</p>
 <h3>Solving problem directly</h3>
 <p>We can solve problem directly with <code>BumbleBEE</code> by</p>
-<div class="highlight"><pre><span></span>./BumbleBEE beeSolver/bExamples/ex_sat.bee
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./BumbleBEE beeSolver/bExamples/ex_sat.bee
+</code></pre></div>
 
 <p>And the solution should be</p>
-<div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> xing@MAT-WL-xinca341:bee20170615$ ./BumbleBEE beeSolver/bExamples/ex_sat.bee
+<div class="highlight"><pre><span></span><code><span class="o">(</span>base<span class="o">)</span> xing@MAT-WL-xinca341:bee20170615$ ./BumbleBEE beeSolver/bExamples/ex_sat.bee
 %  <span class="se">\&#39;</span><span class="s1">&#39;&#39;</span>/ //      BumbleBEE       / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
 % -<span class="o">(||</span><span class="p">|</span><span class="o">)(</span><span class="err">&#39;</span><span class="o">)</span>     <span class="o">(</span><span class="m">15</span>/06/2017<span class="o">)</span>     <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\_</span>/
 %   ^^^        by Amit Metodi    / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
@@ -267,27 +253,24 @@ syntax, check the <a href="http://amit.metodi.me/research/bee/Constraints.pdf">d
 <span class="nv">x3</span> <span class="o">=</span> <span class="nb">false</span>
 <span class="nv">x4</span> <span class="o">=</span> <span class="nb">false</span>
 ----------
-</pre></div>
-
+</code></pre></div>
 
 <p>You can check that all the constraints are satisfied.</p>
 <p><font size="+2">⚠️ </font> But here is a caveat -- you must run <code>BumbleBEE</code> with the current
 directory <code>PWD</code> set to be where the file
 <code>BumbleBEE</code> is. You cannot use any other directory 🤦. For example if you try</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> bee20170615/BumbleBEE bee20170615/beeSolver/bExamples/ex_sat.bee
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> .. <span class="o">&amp;&amp;</span> bee20170615/BumbleBEE bee20170615/beeSolver/bExamples/ex_sat.bee
+</code></pre></div>
 
 <p>You will only get error messages.</p>
 <h3>Convert the problem to CNF</h3>
 <p>As I mentioned earlier, you can also compile your problem into CNF DIMACS format. For example</p>
-<div class="highlight"><pre><span></span>./BumbleBEE beeSolver/bExamples/ex_sat.bee -dimacs ./ex_sat.cnf ./ex_sat.map
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./BumbleBEE beeSolver/bExamples/ex_sat.bee -dimacs ./ex_sat.cnf ./ex_sat.map
+</code></pre></div>
 
 <p>will create two files <code>ex_sat.cnf</code> and <code>ex_sat.map</code>. The top few lines of
 <code>ex_sat.cnf</code> looks like this</p>
-<div class="highlight"><pre><span></span>c DIMACS File generated by BumbleBEE
+<div class="highlight"><pre><span></span><code>c DIMACS File generated by BumbleBEE
 p cnf <span class="m">37</span> <span class="m">189</span>
 <span class="m">1</span> <span class="m">0</span>
 -6 <span class="m">5</span> <span class="m">0</span>
@@ -297,8 +280,7 @@ p cnf <span class="m">37</span> <span class="m">189</span>
 -19 <span class="m">18</span> <span class="m">0</span>
 -18 <span class="m">17</span> <span class="m">0</span>
 -17 <span class="m">16</span> <span class="m">0</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>A little bit explanation for the first 4 lines</p>
 <ol>
@@ -314,17 +296,15 @@ helps.</p>
 <p>Now you can try your favourite SAT solver on the problem. I often use
 <a href="https://www.msoos.org/cryptominisat5/"><code>CryptoMiniSat</code></a>. Assuming that you have it on your <code>PATH</code>, you
 can now use</p>
-<div class="highlight"><pre><span></span>cryptominisat5 ex_sat.cnf &gt; ex_sat.sol
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cryptominisat5 ex_sat.cnf &gt; ex_sat.sol
+</code></pre></div>
 
 <p>to solve the problem and save the solution into a file <code>ex_sat.sol</code>. Most of <code>ex_sat.sol</code> are
 comments except the last 3 lines</p>
-<div class="highlight"><pre><span></span>s SATISFIABLE
+<div class="highlight"><pre><span></span><code>s SATISFIABLE
 v <span class="m">1</span> -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19 -20 -21 -22
 v -23 -24 -25 -26 -27 -28 -29 -30 -31 -32 -33 <span class="m">34</span> -35 -36 -37 <span class="m">0</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>It says the problem is satisfiable and one solution is given. A number in the line starting with an <code>v</code>
 means a variables. Without a <code>-</code> sign in front of it, a variable is assigned the value <code>true</code>
@@ -332,19 +312,17 @@ otherwise it is assigned <code>false</code>.</p>
 <p><font size="+2">⚠️ </font> To get back to a solution to <code>BEE</code> variables, we use <code>BumbleSol</code>, which is
 at the same folder as <code>BumbleBEE</code>. But <code>BumbleSol</code> needs bit help 😑️. Remove the starting <code>s</code> and <code>v</code>
 in the <code>ex_sat.sol</code> to make it like this</p>
-<div class="highlight"><pre><span></span>SATISFIABLE
+<div class="highlight"><pre><span></span><code>SATISFIABLE
 <span class="m">1</span> -2 -3 -4 -5 -6 -7 -8 -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19 -20 -21 -22
 -23 -24 -25 -26 -27 -28 -29 -30 -31 -32 -33 <span class="m">34</span> -35 -36 -37 <span class="m">0</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Then we can run</p>
-<div class="highlight"><pre><span></span>./BumbleSol ex_sat.map ex_sat.sol
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>./BumbleSol ex_sat.map ex_sat.sol
+</code></pre></div>
 
 <p>and get</p>
-<div class="highlight"><pre><span></span>%  <span class="se">\&#39;</span><span class="s1">&#39;&#39;</span>/ //  BumbleBEE Solution Reader  / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
+<div class="highlight"><pre><span></span><code>%  <span class="se">\&#39;</span><span class="s1">&#39;&#39;</span>/ //  BumbleBEE Solution Reader  / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
 % -<span class="o">(||</span><span class="p">|</span><span class="o">)(</span><span class="err">&#39;</span><span class="o">)</span>         <span class="o">(</span><span class="m">04</span>/06/2016<span class="o">)</span>        <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\_</span>/
 %   ^^^            by Amit Metodi       / <span class="se">\_</span>/ <span class="se">\_</span>/ <span class="se">\</span>
 %
@@ -360,8 +338,7 @@ in the <code>ex_sat.sol</code> to make it like this</p>
 <span class="nv">x4</span> <span class="o">=</span> <span class="nb">false</span>
 ----------
 <span class="o">==========</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>That's it! Now you know how to use <code>BEE</code> 🐝️! Have fan with your problem 🤣️.</p>
 <h3>Choice of SAT solver</h3>
@@ -383,12 +360,11 @@ try to encode your problem better.</p>
 <code>BEE.jl</code> may help. You can write your problem in Julia, and <code>BEE.jl</code> will convert it to <code>BEE</code> syntax.
 Here's how to do the example above with <code>BEE.jl</code></p>
 <p>First install <code>BEE.jl</code> by typing this in <code>Julia REPL</code>.</p>
-<div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Pkg</span><span class="p">;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;git@github.com:newptcai/BEE.jl.git&quot;</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">Pkg</span><span class="p">;</span> <span class="n">Pkg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;git@github.com:newptcai/BEE.jl.git&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>Then run the following code in Julia REPL</p>
-<div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">BEE</span>
+<div class="highlight"><pre><span></span><code><span class="k">using</span> <span class="n">BEE</span>
 
 <span class="nd">@beeint</span> <span class="n">x</span>  <span class="mi">0</span> <span class="mi">5</span>
 <span class="nd">@beeint</span> <span class="n">y</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">9</span>
@@ -406,11 +382,10 @@ Here's how to do the example above with <code>BEE.jl</code></p>
 <span class="nd">@constrain</span> <span class="n">sum</span><span class="p">([</span><span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="n">xl</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">xl</span><span class="p">[</span><span class="mi">4</span><span class="p">]])</span> <span class="o">==</span> <span class="n">w</span>
 
 <span class="n">BEE</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>You will get output like this</p>
-<div class="highlight"><pre><span></span><span class="n">new_int</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">new_int</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">new_int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">new_int</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">new_int</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
@@ -423,14 +398,13 @@ Here's how to do the example above with <code>BEE.jl</code></p>
 <span class="n">bool_eq</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
 <span class="n">bool_array_sum_eq</span><span class="p">(([</span><span class="o">-</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="o">-</span><span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">],</span> <span class="n">w</span><span class="p">))</span>
 <span class="n">solve</span> <span class="n">satisfy</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Exactly as above.
 You can solve this into a file and solve it with <code>BumbleBEE</code> as I described before.
 Or assuming that <code>BumbleBEE</code> can be found through your <code>PATH</code> environment variable, then you can run
 <code>BEE.solve()</code> directly in Julia and get the solution, like this.</p>
-<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">solve</span><span class="p">();</span>
+<div class="highlight"><pre><span></span><code><span class="n">julia</span><span class="o">&gt;</span> <span class="n">output</span> <span class="o">=</span> <span class="n">solve</span><span class="p">();</span>
 <span class="o">%</span> <span class="n">SWI</span><span class="o">-</span><span class="n">Prolog</span> <span class="n">interface</span> <span class="n">to</span> <span class="n">Glucose</span> <span class="n">v4</span><span class="o">.</span><span class="mi">0</span> <span class="o">...</span> <span class="n">OK</span>
 <span class="o">%</span>  <span class="o">\</span><span class="err">&#39;&#39;&#39;</span><span class="o">/</span> <span class="o">//</span>      <span class="n">BumbleBEE</span>       <span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span>
 <span class="o">%</span> <span class="o">-</span><span class="p">(</span><span class="o">|||</span><span class="p">)(</span><span class="err">&#39;</span><span class="p">)</span>     <span class="p">(</span><span class="mi">15</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">2017</span><span class="p">)</span>     <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span> <span class="o">\</span><span class="n">_</span><span class="o">/</span>
@@ -449,17 +423,15 @@ Or assuming that <code>BumbleBEE</code> can be found through your <code>PATH</co
 <span class="n">x3</span> <span class="o">=</span> <span class="kc">true</span>
 <span class="o">----------</span>
 <span class="o">==========</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>And if you check <code>output</code>, you will it is a dictionary containing the solution.</p>
-<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">out</span>
+<div class="highlight"><pre><span></span><code><span class="n">julia</span><span class="o">&gt;</span> <span class="n">out</span>
 <span class="n">BEE</span> <span class="n">solution</span><span class="o">:</span>
 <span class="o">*</span> <span class="n">Satisfiable</span><span class="o">:</span> <span class="kc">true</span>
 <span class="o">*</span> <span class="kt">Integer</span> <span class="n">variables</span><span class="o">:</span> <span class="kt">Dict</span><span class="p">(</span><span class="s">&quot;w&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span><span class="s">&quot;x&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="s">&quot;z&quot;</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="s">&quot;y&quot;</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
 <span class="o">*</span> <span class="n">Boolean</span> <span class="n">variables</span><span class="o">:</span> <span class="kt">Dict</span><span class="p">{</span><span class="n">String</span><span class="p">,</span><span class="kt">Bool</span><span class="p">}(</span><span class="s">&quot;x1&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="s">&quot;x4&quot;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span><span class="s">&quot;x2&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span><span class="s">&quot;x3&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Acknowledgement 🙏️</h2>
 <p>I want to thank all the generous ❤️  people who have spend their time to create these amazing SAT

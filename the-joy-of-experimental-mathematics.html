@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="I came across an interesting identity on math.stackexchange.com." /> 
+    <meta name="description" content="I came across an interesting identity on math.stackexchange.com. $$ \int_{0}^{1}((1-x^r)^{1/r}-x)^{2 n …" /> 
     <meta name="keywords" content="analysis, Mathematica, CAS, experimental-math"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="The joy of experimental mathematics - You don't need to prove this" />
-    <meta property="og:description" content="I came across an interesting identity on math.stackexchange.com." />
+    <meta property="og:description" content="I came across an interesting identity on math.stackexchange.com. $$ \int_{0}^{1}((1-x^r)^{1/r}-x)^{2 n …" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/the-joy-of-experimental-mathematics.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The joy of experimental mathematics - You don't need to prove this">
-    <meta name="twitter:description" content="I came across an interesting identity on math.stackexchange.com.">
+    <meta name="twitter:description" content="I came across an interesting identity on math.stackexchange.com. $$ \int_{0}^{1}((1-x^r)^{1/r}-x)^{2 n …">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -94,76 +94,65 @@
   <div class="col-main w3-container">
     <main id="article-content">
       <p>I came across <a href="https://math.stackexchange.com/q/3070440/1618">an interesting identity</a> on math.stackexchange.com.
-
-</p>
-<div class="math">$$
+<!-- END_SUMMARY --></p>
+<p>$$
 \int_{0}^{1}((1-x^r)^{1/r}-x)^{2 n}\,\mathrm dx=\frac{1}{2 n+1}
-$$</div>
-<p>
-for all <span class="math">\(n \in \mathbb N\)</span> and <span class="math">\(r &gt; 0\)</span>.
+$$
+for all $n \in \mathbb N$ and $r &gt; 0$.
 Someone has found this <a href="https://math.stackexchange.com/a/3070493/1618">very smart proof</a> for it.</p>
 <p>I will give a much less smart proof, but perhaps equally joyful one. When I see something like this,
 I always try it with a few fix numbers with Mathematica.  Let
-</p>
-<div class="math">$$
+$$
 f(n)=\int \left(\left(1-x^r\right)^{1/r}-x\right)^{2 n} \, \mathrm dx
-$$</div>
-<p>
+$$
 then,
-</p>
-<div class="math">$$
+$$
 f(1)
 =
 x \, _2F_1\left(-\frac{2}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^2 \, _2F_1\left(-\frac{1}{r},\frac{2}{r};1+\frac{2}{r};x^r\right)+\frac{x^3}{3},
-$$</div>
-<div class="math">\begin{align}
+$$
+\begin{align}
 f(2)
 =
-&amp; x \, _2F_1\left(-\frac{4}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^4 \, _2F_1\left(-\frac{1}{r},\frac{4}{r};1+\frac{4}{r};x^r\right) \\
+&amp; x \, _2F_1\left(-\frac{4}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^4 \, _2F_1\left(-\frac{1}{r},\frac{4}{r};1+\frac{4}{r};x^r\right) \
 &amp; +2 x^3 \, _2F_1\left(-\frac{2}{r},\frac{3}{r};1+\frac{3}{r};x^r\right)-2 x^2 \, _2F_1\left(-\frac{3}{r},\frac{2}{r};1+\frac{2}{r};x^r\right)+\frac{x^5}{5}
 ,
-\end{align}</div>
-<p>
+\end{align}
 and
-</p>
-<div class="math">\begin{align}
+\begin{align}
 f(3)
 =
 &amp;
 x \, _2F_1\left(-\frac{6}{r},\frac{1}{r};1+\frac{1}{r};x^r\right)-x^6 \, _2F_1\left(-\frac{1}{r},\frac{6}{r};1+\frac{6}{r};x^r\right)
-\\
+\
 &amp;
 +3 x^5 \, _2F_1\left(-\frac{2}{r},\frac{5}{r};1+\frac{5}{r};x^r\right)-5 x^4 \, _2F_1\left(-\frac{3}{r},\frac{4}{r};1+\frac{4}{r};x^r\right)
-\\
+\
 &amp;
 +5 x^3 \, _2F_1\left(-\frac{4}{r},\frac{3}{r};1+\frac{3}{r};x^r\right)-3 x^2 \, _2F_1\left(-\frac{5}{r},\frac{2}{r};1+\frac{2}{r};x^r\right)+\frac{x^7}{7}
-\end{align}</div>
-<p>
-where <span class="math">\(_2F_1\)</span> is the hypergeometric function.</p>
+\end{align}
+where $_2F_1$ is the hypergeometric function.</p>
 <p>Do you see the patterns? Looks like a binomial expansion, right? It turns out, if we do a binomail
 expansion
-</p>
-<div class="math">$$
+$$
 \left(\left(1-x^r\right)^{1/r}-x\right)^{2 n}
 =
 \underset{j=1}{\overset{2 n+1}{\sum }} 
 \left(
 \begin{array}{c}
- 2 n \\
- j-1 \\
+ 2 n \
+ j-1 \
 \end{array}
 \right) 
 (-x)^{j-1}
 \left(\left(1-x^r\right)^{1/r}\right)^{-j+2 n+1}
-$$</div>
-<p>
+$$
 Then it is easy to verify with Mathematica that
-</p>
-<div class="math">$$
+$$
 \left(
 \begin{array}{c}
- 2 n \\
- j-1 \\
+ 2 n \
+ j-1 \
 \end{array}
 \right) 
 (-x)^{j-1}
@@ -171,85 +160,20 @@ Then it is easy to verify with Mathematica that
 =
 \frac{\mathrm d}{\mathrm d x}\left(
 \frac{1}{2 n+1}
-(-1)^{j+1} x^j \binom{2 n+1}{j} \, _2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right)
+(-1)^{j+1} x^j \binom{2 n+1}{j} \, <em j="1">2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right)
 \right)
-$$</div>
-<p>
+$$
 Therefore, we have
-</p>
-<div class="math">$$
+$$
 \int((1-x^r)^{1/r}-x)^{2 n} \mathrm dx
 =
-\sum _{j=1}^{2 n+1} \frac{1}{2 n+1} (-1)^{j+1} x^j \binom{2 n+1}{j} \, _2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right).
-$$</div>
-<p>
-When <span class="math">\(j=2n+1\)</span>, the summand in the right hand equals <span class="math">\(\frac{x^{2 n+1}}{2 n+1}\)</span>. This is the term
-which gives us <span class="math">\(\frac 1 {2n+1}\)</span>. Everything else vanishes in the original definite integral.</p>
+\sum </em>^{2 n+1} \frac{1}{2 n+1} (-1)^{j+1} x^j \binom{2 n+1}{j} \, _2F_1\left(\frac{j}{r},-\frac{-j+2 n+1}{r};\frac{j}{r}+1;x^r\right).
+$$
+When $j=2n+1$, the summand in the right hand equals $\frac{x^{2 n+1}}{2 n+1}$. This is the term
+which gives us $\frac 1 {2n+1}$. Everything else vanishes in the original definite integral.</p>
 <p>The moral of this story is perhaps with the help of computers, it is much easier to find patterns
 and often seeing the pattern is enough to give the proof. Moreover, the moment when you see the
 pattern is quite joyful, as much as the moment that you come up with a proof.</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
     </main>
     <br>
     <footer>

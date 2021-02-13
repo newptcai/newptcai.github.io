@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="(This is a question asked by Tilo Wiklund recently on our group meeting.)" /> 
+    <meta name="description" content="(This is a question asked by Tilo Wiklund recently on our group meeting.) The problem A Beta distribution with parameters …" /> 
     <meta name="keywords" content="analysis, Mathematica, CAS"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="The Convexity Property Related to Beta Densities - You don't need to prove this" />
-    <meta property="og:description" content="(This is a question asked by Tilo Wiklund recently on our group meeting.)" />
+    <meta property="og:description" content="(This is a question asked by Tilo Wiklund recently on our group meeting.) The problem A Beta distribution with parameters …" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/the-convexity-property-related-to-beta-densities.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Convexity Property Related to Beta Densities - You don't need to prove this">
-    <meta name="twitter:description" content="(This is a question asked by Tilo Wiklund recently on our group meeting.)">
+    <meta name="twitter:description" content="(This is a question asked by Tilo Wiklund recently on our group meeting.) The problem A Beta distribution with parameters …">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -91,57 +91,50 @@
     <main id="article-content">
       <p><img alt="Density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density.png"></p>
 <p><em>(This is a question asked by <a href="https://katalog.uu.se/profile/?id=N15-1140">Tilo Wiklund</a> recently on our group meeting.)</em></p>
-
+<!-- END_SUMMARY -->
 
 <h2>The problem</h2>
-<p>A <a href="https://en.wikipedia.org/wiki/Beta_distribution">Beta distribution</a> with parameters (<span class="math">\(\alpha\)</span>,<span class="math">\(\beta\)</span>) has the density function
-</p>
-<div class="math">$$ 
+<p>A <a href="https://en.wikipedia.org/wiki/Beta_distribution">Beta distribution</a> with parameters ($\alpha$,$\beta$) has the density function
+$$ 
 f(x;\alpha,\beta) = \frac{x^{\alpha -1} (1-x)^{\beta -1}}{B(\alpha ,\beta )}, \qquad x \in
 [0,1]
-$$</div>
-<p>
+$$
 As shown in the above picture, the density of this function, is concave, not convex. So you may think there is a mistake in
 the title.</p>
-<p>No, actually we are going to talk a related function <span class="math">\(r(x)\)</span> constructed from <span class="math">\(f(x)\)</span>. Let <span class="math">\(m\)</span> be the
-point where <span class="math">\(f(x)\)</span> reaches maximum. With a bit calculus, we have
-</p>
-<div class="math">$$
+<p>No, actually we are going to talk a related function $r(x)$ constructed from $f(x)$. Let $m$ be the
+point where $f(x)$ reaches maximum. With a bit calculus, we have
+$$
 m=\frac{\alpha -1}{\alpha +\beta -2}.
-$$</div>
-<p>
-(So in the above example, we have <span class="math">\(m=1/4\)</span>, which can also be seen from the picture.)
-Let <span class="math">\(f^{-1}_{1}\)</span> and <span class="math">\(f^{-1}_{2}\)</span> be the inverse of <span class="math">\(f(x)\)</span> for <span class="math">\(x \in (0,m)\)</span> and <span class="math">\(x \in (m,1)\)</span>
+$$
+(So in the above example, we have $m=1/4$, which can also be seen from the picture.)
+Let $f^{-1}<em 2>{1}$ and $f^{-1}</em>$ be the inverse of $f(x)$ for $x \in (0,m)$ and $x \in (m,1)$
 respectively. They would look like this
 <img alt="The inverse of the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-inverse.png">
 Then we define this function
-</p>
-<div class="math">$$
+$$
 r(x)
 =
 \begin{array}{cc}
-\left\{ 
+\left{ 
 \begin{array}{cc}
- f^{-1}_{2} (f1(x)) &amp; x \in (0,m) \\
- f^{-1}_{1} (f1(x)) &amp; x \in [m,1) \\
+ f^{-1}<em 1>{2} (f1(x)) &amp; x \in (0,m) \
+ f^{-1}</em> (f1(x)) &amp; x \in [m,1) \
 \end{array}
 \right.
- \\
+ \
 \end{array}
-$$</div>
-<p>
-What does this weird function do? It takes one point <span class="math">\(x \in [0,1]\)</span>, and gives you the point <span class="math">\(r(x)
-\in [0,1]\)</span>, such that <span class="math">\(f(x)=f(r(x))\)</span> and <span class="math">\(x \ne r(x)\)</span>. In other words, it reflects the point <span class="math">\(x\)</span>
+$$
+What does this weird function do? It takes one point $x \in [0,1]$, and gives you the point $r(x)
+\in [0,1]$, such that $f(x)=f(r(x))$ and $x \ne r(x)$. In other words, it reflects the point $x$
 through the curve of beta density.</p>
 <p><img alt="r[x] reflects x through the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-reflect.png"></p>
-<p>So what is the conjecture? Tilo suggests that if <span class="math">\(\beta&gt;\alpha&gt;1\)</span>, then <span class="math">\(r(x)\)</span> must be convex. This
+<p>So what is the conjecture? Tilo suggests that if $\beta&gt;\alpha&gt;1$, then $r(x)$ must be convex. This
 looks reasonable if you look at the picture.</p>
 <p><img alt="r[x] for the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-r.png"></p>
 <h2>How to prove it?</h2>
 <p>This is not an easy question as it seems. The main difficulty is that we do not how to inverse
-<span class="math">\(x^{\alpha-1}(1-x)^{\beta-1}\)</span>. So if we take second derivative of <span class="math">\(r(x)\)</span>, using the formula
-</p>
-<div class="math">$$
+$x^{\alpha-1}(1-x)^{\beta-1}$. So if we take second derivative of $r(x)$, using the formula
+$$
 \frac{
 \mathrm d
 }
@@ -155,98 +148,31 @@ f^{-1}(x)
 f'(f^{-1}(x))
 }
 ,
-$$</div>
-<p>
+$$
 we get a bit chunk of mess.</p>
-<p>Fortunately we live in 2018 and we have computers to help us. Yes, <span class="math">\(r''(x)\)</span> is very ugly. But with
-the help of computer, it is not to difficult to see that when <span class="math">\(\beta&gt;\alpha&gt;1\)</span>, <span class="math">\(r''(x)&gt;0\)</span> is
+<p>Fortunately we live in 2018 and we have computers to help us. Yes, $r''(x)$ is very ugly. But with
+the help of computer, it is not to difficult to see that when $\beta&gt;\alpha&gt;1$, $r''(x)&gt;0$ is
 equivalent to the following, very simple inequality
-</p>
-<div class="math">$$
+$$
 x + r(x) \ge 2 m.
-$$</div>
+$$</p>
 <p>Look at the picture again and it won't take you long to convince yourself that this is true.
 <img alt="r[x] reflects x through the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-reflect.png">
-In this case <span class="math">\(m\)</span> at most <span class="math">\(1/2\)</span>. So when <span class="math">\(x=0\)</span>, the left hand side is <span class="math">\(1&gt; 2m\)</span>. And when <span class="math">\(x=r(x)=m\)</span>,
+In this case $m$ at most $1/2$. So when $x=0$, the left hand side is $1&gt; 2m$. And when $x=r(x)=m$,
 we have equality.</p>
-<p>Now note that for <span class="math">\(x \leq m\)</span>,
-</p>
-<div class="math">$$
+<p>Now note that for $x \leq m$,
+$$
 x+r(x)\geq 2 m\Leftrightarrow {f_2^{-1}}(f(x))+x\geq 2 m\Leftrightarrow {f_2^{-1}}(f(x))\geq 2 m-x
-$$</div>
+$$</p>
 <p><img alt="The inverse of the density function of Beta[3,7]" src="https://newptcai.github.io/images/2018-12-01-beta/beta-density-inverse.png"></p>
-<p>Looking at the picture of <span class="math">\(f^{-1}(x)\)</span> again, we see that <span class="math">\({f_2^{-1}}\)</span> is decreasing.
+<p>Looking at the picture of $f^{-1}(x)$ again, we see that ${f_2^{-1}}$ is decreasing.
 Therefore, we only need to prove that
-</p>
-<div class="math">$$
+$$
 f(x) \le f(2m - x), \qquad x \in (0,m).
-$$</div>
-<p>
+$$
 The nice thing about this inequality is that all the inverse functions are gone!</p>
 <p>As mathematicians often like say when they run out of time, "the rest is left as an exercise"! (Or if
 you have Mathematica install, you can have a look of my <a href="https://newptcai.github.io/doc/beta-2.nb">somewhat messy code</a> and check the details.)</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
     </main>
     <br>
     <footer>

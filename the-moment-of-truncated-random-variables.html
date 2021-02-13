@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="Given a random variable \(Y\), sometimes we want to compute the expectation of \(Y[Y\le a]\), where \([P]=1 …" /> 
+    <meta name="description" content="Given a random variable $Y$, sometimes we want to compute the expectation of $Y[Y\le a]$, where $[P]=1 …" /> 
     <meta name="keywords" content="probability, Mathematica, CAS"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="The moment of truncated random variables - You don't need to prove this" />
-    <meta property="og:description" content="Given a random variable \(Y\), sometimes we want to compute the expectation of \(Y[Y\le a]\), where \([P]=1 …" />
+    <meta property="og:description" content="Given a random variable $Y$, sometimes we want to compute the expectation of $Y[Y\le a]$, where $[P]=1 …" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/the-moment-of-truncated-random-variables.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The moment of truncated random variables - You don't need to prove this">
-    <meta name="twitter:description" content="Given a random variable \(Y\), sometimes we want to compute the expectation of \(Y[Y\le a]\), where \([P]=1 …">
+    <meta name="twitter:description" content="Given a random variable $Y$, sometimes we want to compute the expectation of $Y[Y\le a]$, where $[P]=1 …">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -89,37 +89,35 @@
   <br>
   <div class="col-main w3-container">
     <main id="article-content">
-      <p>Given a random variable <span class="math">\(Y\)</span>, sometimes we want to compute the expectation of <span class="math">\(Y[Y\le a]\)</span>, where
-<span class="math">\([P]=1\)</span> if the <span class="math">\(P\)</span> and true and <span class="math">\([P]=0\)</span> if <span class="math">\(P\)</span> is false. (The notation is called <a href="https://en.wikipedia.org/wiki/Iverson_bracket">Iverson
+      <p>Given a random variable $Y$, sometimes we want to compute the expectation of $Y[Y\le a]$, where
+$[P]=1$ if the $P$ and true and $[P]=0$ if $P$ is false. (The notation is called <a href="https://en.wikipedia.org/wiki/Iverson_bracket">Iverson
 Bracket</a>.) </p>
-<p>In Patrice, it can be convenient to write <span class="math">\(\mathbb E(Y[Y \le a])\)</span> in terms of the left and right tails of
-<span class="math">\(Y\)</span>. With just a bit calculus, it is not difficult to see that if <span class="math">\(Y \ge 0\)</span> and <span class="math">\(p \ge 1\)</span>,
-</p>
-<div class="math">\begin{align}
+<p>In Patrice, it can be convenient to write $\mathbb E(Y[Y \le a])$ in terms of the left and right tails of
+$Y$. With just a bit calculus, it is not difficult to see that if $Y \ge 0$ and $p \ge 1$,
+\begin{align}
 \mathbb E(Y^p[Y \le a])
 &amp;
 = 
 a^p \mathbb P(Y \le a)-\int_0^ap y^{p-1} \mathbb P(Y \le y) \, dy
-\\\\
+\\
 &amp;
 =
 \int_0^ap y^{p-1} P(Y&gt;a) \, dy-a^p \mathbb P(Y&gt;a)
-\end{align}</div>
+\end{align}</p>
 <p>Similarly
-</p>
-<div class="math">\begin{align}
+\begin{align}
 \mathbb E(e^{-Y}[Y \le a])
 &amp;
 = 
 \int_0^ae^{-y} \mathbb P(Y \le a) \mathbb \, d y+e^{-a} \mathbb P(Y \le a)
-\\\\
+\\
 &amp;
 =
 1-\int_0^a e^{-y} P(Y &gt; a) \, dy-e^{-a} P(Y &gt; a)
-\end{align}</div>
+\end{align}</p>
 <p>I recently put these two qualities in a Mathematica package <code>CalcMoment.m</code>. You can find it <a href="https://github.com/newptcai/Zeno">here</a>.
 You can load it and try it a Mathematica notebook like this</p>
-<div class="highlight"><pre><span></span><span class="n">SetDirectory</span><span class="p">[</span><span class="n">NotebookDirectory</span><span class="p">[]];</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="n">SetDirectory</span><span class="p">[</span><span class="n">NotebookDirectory</span><span class="p">[]];</span><span class="w"></span>
 <span class="n">Get</span><span class="p">[</span><span class="s">&quot;CalcMoment`&quot;</span><span class="p">]</span><span class="w"></span>
 
 <span class="n">gdist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GammaDistribution</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">]</span><span class="w"></span>
@@ -129,72 +127,9 @@ You can load it and try it a Mathematica notebook like this</p>
 <span class="n">edist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExponentialDistribution</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
 <span class="n">etest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TruncatedExpMoment</span><span class="p">[</span><span class="n">edist</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TruncatedExpMoment</span><span class="p">[</span><span class="n">edist</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">MomentForm</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;Left&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TruncatedExpMoment</span><span class="p">[</span><span class="n">edist</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">MomentForm</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;Right&quot;</span><span class="p">]</span><span class="w"></span>
 <span class="n">Assuming</span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">etest</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">Activate</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FullSimplify</span><span class="p">]</span><span class="w"></span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The output is of course <code>True</code>.</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
     </main>
     <br>
     <footer>

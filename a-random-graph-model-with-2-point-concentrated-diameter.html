@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="Consider a random multi-graph process \(G_{m}(t)\) constructed with the following procedure. Let \(G_{m}(1)\) be just a …" /> 
+    <meta name="description" content="Consider a random multi-graph process $G_{m}(t)$ constructed with the following procedure. Let $G_{m}(1)$ be just a …" /> 
     <meta name="keywords" content="random-graph, open-problem, probability, experimental-math"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="A random graph model with 2-point-concentrated diameter - You don't need to prove this" />
-    <meta property="og:description" content="Consider a random multi-graph process \(G_{m}(t)\) constructed with the following procedure. Let \(G_{m}(1)\) be just a …" />
+    <meta property="og:description" content="Consider a random multi-graph process $G_{m}(t)$ constructed with the following procedure. Let $G_{m}(1)$ be just a …" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/a-random-graph-model-with-2-point-concentrated-diameter.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="A random graph model with 2-point-concentrated diameter - You don't need to prove this">
-    <meta name="twitter:description" content="Consider a random multi-graph process \(G_{m}(t)\) constructed with the following procedure. Let \(G_{m}(1)\) be just a …">
+    <meta name="twitter:description" content="Consider a random multi-graph process $G_{m}(t)$ constructed with the following procedure. Let $G_{m}(1)$ be just a …">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -93,10 +93,10 @@
   <br>
   <div class="col-main w3-container">
     <main id="article-content">
-      <p>Consider a random multi-graph process <span class="math">\(G_{m}(t)\)</span> constructed with the following procedure. Let
-<span class="math">\(G_{m}(1)\)</span> be just a single vertex <span class="math">\(1\)</span>. Given <span class="math">\(G_{m}(t)\)</span>, we construct <span class="math">\(G_{m}(t+1)\)</span> by adding a vertex
-<span class="math">\(t+1\)</span> and connect it to <span class="math">\(m\)</span> vertices chosen independently and uniformly at random for vertices <span class="math">\(1,
-\cdots, t\)</span>. This can be a multi-graph since there maybe more than one edges between two vertices.
+      <p>Consider a random multi-graph process $G_{m}(t)$ constructed with the following procedure. Let
+$G_{m}(1)$ be just a single vertex $1$. Given $G_{m}(t)$, we construct $G_{m}(t+1)$ by adding a vertex
+$t+1$ and connect it to $m$ vertices chosen independently and uniformly at random for vertices $1,
+\cdots, t$. This can be a multi-graph since there maybe more than one edges between two vertices.
 But there can be no self-loops and the graph is always connected.</p>
 <p>I came up with this model while reading about P2P network. These are computer networks that
 collaborate in a decentralized way to share resource. The most well-known examples include
@@ -106,76 +106,14 @@ to network. But in general, there is no particular preferences to any one in the
 contra to social networks, where the most well-connected are more likely to be connected to others.)</p>
 <p>I did some simulation on this model and found something rarely intriguing -- the diameter of the
 model seems to concentrates very quickly to two consecutive integers. See the picture below. The
-number above each plot is the number of nodes <span class="math">\(t\)</span>. The histogram shows the distribution of the diameters
-of 2000 samples for each <span class="math">\(t\)</span>.</p>
+number above each plot is the number of nodes $t$. The histogram shows the distribution of the diameters
+of 2000 samples for each $t$.</p>
 <p><img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-512.png">
 <img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-1024.png">
 <img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-2048.png">
 <img alt="Diameters" src="https://newptcai.github.io/images/2020-09-23/diameter-4096.png"></p>
-<p>It's not difficult to show the diameter is of the order <span class="math">\(\log n\)</span> following along the line of <a href="https://doi.org/10.1007/s10955-010-9921-z">this
+<p>It's not difficult to show the diameter is of the order $\log n$ following along the line of <a href="https://doi.org/10.1007/s10955-010-9921-z">this
 paper</a>. But can we actually prove the two-point concentration?</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        availableFonts: ['STIX', 'TeX']," +
-        "        preferredFont: 'STIX'," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
     </main>
     <br>
     <footer>

@@ -25,13 +25,13 @@
     <meta name="HandheldFriendly" content="True" />
 
     <meta name="author" content="Xing Shi Cai" />
-    <meta name="description" content="This was probably the first simulation I did. How naive I was!" /> 
+    <meta name="description" content="This was probably the first simulation I did. How naive I was! Today I was doing some simulation and I …" /> 
     <meta name="keywords" content="probability, programming, experimental-math"> 
 
     <!-- Facebook OpenGraph -->
     <meta property="og:site_name" content="You don't need to prove this">
     <meta property="og:title" content="The pitfall of using rand() for simulation - You don't need to prove this" />
-    <meta property="og:description" content="This was probably the first simulation I did. How naive I was!" />
+    <meta property="og:description" content="This was probably the first simulation I did. How naive I was! Today I was doing some simulation and I …" />
     <meta property="og:image" content="https://newptcai.github.io">
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://newptcai.github.io/the-pitfall-of-using-rand-for-simulation.html" />
@@ -41,7 +41,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The pitfall of using rand() for simulation - You don't need to prove this">
-    <meta name="twitter:description" content="This was probably the first simulation I did. How naive I was!">
+    <meta name="twitter:description" content="This was probably the first simulation I did. How naive I was! Today I was doing some simulation and I …">
     <meta name="twitter:image" content="https://newptcai.github.io">
 </head>
 <body>
@@ -90,7 +90,7 @@
   <div class="col-main w3-container">
     <main id="article-content">
       <p><em>This was probably the first simulation I did. How naive I was!</em></p>
-
+<!-- END_SUMMARY -->
 
 <p>Today I was doing some simulation and I need a uniform random bits stream.
 What I tried first is to use the standard C function <a href="http://en.cppreference.com/w/c/numeric/random/rand"><code>rand()</code></a>, which should return a uniform integer
@@ -103,12 +103,12 @@ use <code>rand()</code> many times.</p>
     #include <stdlib.h>
     #include <time.h>
     #include <math.h></p>
-<div class="highlight"><pre><span></span><span class="o">#</span><span class="n">define</span> <span class="n">INT_BITS</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="o">#</span><span class="n">define</span> <span class="n">INT_BITS</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">sizeof</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
 
 
 <span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
 <span class="err">{</span>
-    <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span> <span class="o">//</span><span class="n">use</span> <span class="k">current</span> <span class="n">time</span> <span class="k">as</span> <span class="n">seed</span> <span class="k">for</span> <span class="n">random</span> <span class="n">generator</span>
+    <span class="n">srand</span><span class="p">(</span><span class="k">time</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span> <span class="o">//</span><span class="n">use</span> <span class="k">current</span> <span class="k">time</span> <span class="k">as</span> <span class="n">seed</span> <span class="k">for</span> <span class="n">random</span> <span class="n">generator</span>
 
     <span class="nb">int</span> <span class="n">random_variable</span><span class="p">;</span>
 
@@ -138,14 +138,12 @@ use <code>rand()</code> many times.</p>
     <span class="o">//</span><span class="n">printf</span><span class="p">(</span><span class="ss">&quot;RAND_MAX %d\n&quot;</span><span class="p">,</span> <span class="n">RAND_MAX</span><span class="p">);</span>
     <span class="n">printf</span><span class="p">(</span><span class="ss">&quot;total zeros %lu total bits %lu average %f\n&quot;</span><span class="p">,</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">total_bits</span><span class="p">,</span> <span class="n">zero_ratio</span><span class="p">);</span>
 <span class="err">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>{% endhighlight %}</p>
 <p>The result is pretty clear on my machine.</p>
-<div class="highlight"><pre><span></span><span class="err">total zeros 164992607 total bits 320000000 average 0.515602</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="err">total zeros 164992607 total bits 320000000 average 0.515602</span>
+</code></pre></div>
 
 <p>I consistently got more zeros than ones. And this bias does not vanish when I increased size.
 In the end I switched to <a href="http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html">Mersenne

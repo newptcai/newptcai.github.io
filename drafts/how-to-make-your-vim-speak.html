@@ -77,7 +77,7 @@
     <main id="article-content">
       <p>Today I wrote some code to make <a href="http://www.vim.org/">Vim</a> speaks using python and TTS.</p>
 <p>If you are interested, install <a href="https://pypi.python.org/pypi/pyttsx">pyttsx</a>, and paste the code snippet to your <code>.vimrc</code> file.</p>
-<div class="highlight"><pre><span></span><span class="n">function</span><span class="err">!</span> <span class="n">Speak</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="err">!</span> <span class="n">Speak</span><span class="p">()</span>
 <span class="n">python</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
 <span class="kn">import</span> <span class="nn">vim</span>
 <span class="n">l</span> <span class="o">=</span> <span class="n">vim</span><span class="o">.</span><span class="n">current</span><span class="o">.</span><span class="n">line</span>
@@ -104,7 +104,7 @@
         <span class="n">engine</span><span class="o">.</span><span class="n">runAndWait</span><span class="p">()</span>
 <span class="n">EOF</span>
 <span class="n">endfunction</span>
-</pre></div>
+</code></pre></div>
     </main>
     <br>
     <footer>

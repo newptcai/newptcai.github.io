@@ -88,14 +88,12 @@
       <p>A couple of days ago, I found that I <a href="https://github.com/JeffreySarnoff/ArbNumerics.jl/issues/41">could not install and compile
 <code>ArbNumerics.jl</code></a>. The only options is to reinstall Julia. Fortunately, this is quite easy.</p>
 <p>To be extra cautious, I started with a backup of the whole <code>~/.julia</code>. Start a terminal by typing</p>
-<div class="highlight"><pre><span></span>cp -r ~/.julia/ ~/Downloads/
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>cp -r ~/.julia/ ~/Downloads/
+</code></pre></div>
 
 <p>Then I removed <code>~/.julia</code> without mercy 👿.</p>
-<div class="highlight"><pre><span></span>rm -rf ~/.julia/
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>rm -rf ~/.julia/
+</code></pre></div>
 
 <p>This means all my previously installed Julia packages are now gone, but Julia itself (the binary and
 core packages) are still there.</p>
@@ -103,15 +101,14 @@ core packages) are still there.</p>
 <code>Manifest.tomal</code> in the directory containing an environment. For example, to play with <code>Weave.jl</code>, I
 have an environment in <code>~/Work/weave</code>. The content of <code>Project.toml</code> is quite simple,
 which just indicates that this environment needs three dependencies <code>DSP</code>, <code>Plots</code> and <code>Weave</code>.</p>
-<div class="highlight"><pre><span></span><span class="k">[deps]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[deps]</span>
 <span class="n">DSP</span> <span class="o">=</span> <span class="s">&quot;717857b8-e6f2-59f4-9121-6e50c889abd2&quot;</span>
 <span class="n">Plots</span> <span class="o">=</span> <span class="s">&quot;91a5bcdd-55d7-5caf-9e0b-520d859cae80&quot;</span>
 <span class="n">Weave</span> <span class="o">=</span> <span class="s">&quot;44d3d7a6-8a23-5bf8-98c5-b353f8df5ec9&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>The content of <code>Manifest.toml</code> is a bit more complicated. The first few lines of it are like this.</p>
-<div class="highlight"><pre><span></span><span class="c1"># This file is machine-generated - editing it directly is not advised</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># This file is machine-generated - editing it directly is not advised</span>
 
 <span class="k">[[AbstractFFTs]]</span>
 <span class="n">deps</span> <span class="o">=</span> <span class="k">[&quot;LinearAlgebra&quot;]</span>
@@ -121,15 +118,14 @@ which just indicates that this environment needs three dependencies <code>DSP</c
 
 <span class="k">[[Base64]]</span>
 <span class="n">uuid</span> <span class="o">=</span> <span class="s">&quot;2a0f44e3-6c83-55bd-87e4-b1978d98bd5f&quot;</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>What it does, is to indicate what exact packages are installed the last time I modified the
 environment. </p>
 <p>These two files allow me to install all the packages needed to run this environment. I can simply to
 launch Julia <code>REPL</code> in the directly where the environment is, <code>active</code> the environment, and run the command
 <code>instantiate</code>.</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="nd">@v1</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span> <span class="n">pkg</span><span class="o">&gt;</span> <span class="n">activate</span> <span class="o">.</span> <span class="c"># press ] to get the pkg prompt</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="nd">@v1</span><span class="o">.</span><span class="mi">4</span><span class="p">)</span> <span class="n">pkg</span><span class="o">&gt;</span> <span class="n">activate</span> <span class="o">.</span> <span class="c"># press ] to get the pkg prompt</span>
  <span class="n">Activating</span> <span class="n">environment</span> <span class="n">at</span> <span class="sb">`~/Work/weave/Project.toml`</span>
 
 <span class="p">(</span><span class="n">weave</span><span class="p">)</span> <span class="n">pkg</span><span class="o">&gt;</span> <span class="n">st</span>
@@ -168,30 +164,26 @@ launch Julia <code>REPL</code> in the directly where the environment is, <code>a
 <span class="n">Downloading</span> <span class="n">artifact</span><span class="o">:</span> <span class="n">IntelOpenMP</span>
 <span class="c">######################################################################## 100.0%##O=#  #                               Downloading artifact: FFTW</span>
 <span class="c">######################################################################## 100.0%##O=#  #                          </span>
-</pre></div>
-
+</code></pre></div>
 
 <p>To test, I load <code>Weave</code> into the <code>REPL</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">Weave</span>
+<div class="highlight"><pre><span></span><code><span class="n">julia</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">Weave</span>
 <span class="p">[</span> <span class="n">Info</span><span class="o">:</span> <span class="n">Precompiling</span> <span class="n">Weave</span> <span class="p">[</span><span class="mi">44</span><span class="n">d3d7a6</span><span class="o">-</span><span class="mi">8</span><span class="n">a23</span><span class="o">-</span><span class="mi">5</span><span class="n">bf8</span><span class="o">-</span><span class="mi">98</span><span class="n">c5</span><span class="o">-</span><span class="n">b353f8df5ec9</span><span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Everything seems to be fine. 😄</p>
 <p>Now if you check, you will see a <code>~/.julia</code> has been recreated.</p>
-<div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span> <span class="n">ls</span> <span class="o">~/.</span><span class="n">julia</span> <span class="c"># Press ; to get shell prompt</span>
+<div class="highlight"><pre><span></span><code><span class="n">shell</span><span class="o">&gt;</span> <span class="n">ls</span> <span class="o">~/.</span><span class="n">julia</span> <span class="c"># Press ; to get shell prompt</span>
 <span class="n">artifacts</span>  <span class="n">compiled</span>  <span class="n">conda</span>  <span class="n">environments</span>  <span class="n">logs</span>  <span class="n">packages</span>  <span class="n">prefs</span>  <span class="n">registries</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>So one last thing is to do is to restore my <code>config</code> folder by.</p>
-<div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/</span><span class="n">Downloads</span><span class="o">/.</span><span class="n">julia</span><span class="o">/</span><span class="n">config</span><span class="o">/</span> <span class="o">~/.</span><span class="n">julia</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">shell</span><span class="o">&gt;</span> <span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/</span><span class="n">Downloads</span><span class="o">/.</span><span class="n">julia</span><span class="o">/</span><span class="n">config</span><span class="o">/</span> <span class="o">~/.</span><span class="n">julia</span>
+</code></pre></div>
 
 <p>and remove the backup</p>
-<div class="highlight"><pre><span></span><span class="n">shell</span><span class="o">&gt;</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="n">Downloads</span><span class="o">/.</span><span class="n">julia</span><span class="o">/</span><span class="n">config</span><span class="o">/</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">shell</span><span class="o">&gt;</span> <span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">~/</span><span class="n">Downloads</span><span class="o">/.</span><span class="n">julia</span><span class="o">/</span><span class="n">config</span><span class="o">/</span>
+</code></pre></div>
     </main>
     <br>
     <footer>
