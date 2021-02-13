@@ -91,16 +91,16 @@ LIQUID_CONFIGS = (("IPYNB_EXPORT_TEMPLATE", "basic.tpl", ""), )
 # Social media
 SOCIAL = [
          ('github', 'https://github.com/newptcai'), 
-         ('goodreads', 'https://www.goodreads.com/review/list/4410353-xing-shi?order=d&shelf=read'), 
-         ('meetup', 'https://www.meetup.com/members/55719622/'),
-         ('skype', 'https://join.skype.com/invite/h4i4wxzWD3i6'),
-         ('orcid', 'https://orcid.org/0000-0002-3768-8078'),
-         ('researchgate', 'https://www.researchgate.net/profile/Xing_Shi_Cai'),
+#         ('goodreads', 'https://www.goodreads.com/review/list/4410353-xing-shi?order=d&shelf=read'), 
+#         ('meetup', 'https://www.meetup.com/members/55719622/'),
+#         ('skype', 'https://join.skype.com/invite/h4i4wxzWD3i6'),
+#         ('orcid', 'https://orcid.org/0000-0002-3768-8078'),
+#         ('researchgate', 'https://www.researchgate.net/profile/Xing_Shi_Cai'),
          ]
 
-SHOW_FOOTER = False
+# SHOW_FOOTER = True
 
-SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'reddit', 'mail')
+# SHARE_BUTTONS = ('twitter', 'facebook', 'whatsapp', 'reddit', 'mail')
 
 # Speed Up
 LOAD_CONTENT_CACHE = True
