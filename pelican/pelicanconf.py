@@ -58,7 +58,7 @@ SUMMARY_MAX_LENGTH = 20
 DEFAULT_PAGINATION = 10
 
 PLUGIN_PATHS = ['../../pelican-plugins']
-PLUGINS = ['summary', 'render_math', 'assets', 'tag_cloud']
+PLUGINS = ['summary', 'render_math', 'assets', 'tag_cloud', 'pelican.plugins.render_math']
 
 TAG_CLOUD_BADGE = True
 TAG_CLOUD_STEPS = 5
@@ -82,7 +82,7 @@ MARKUP = ('md')
 # PLUGINS = PLUGINS + ['pelican-ipynb.liquid']
 
 from pelican_jupyter import liquid as nb_liquid
-PLUGINS = [nb_liquid]
+PLUGINS = PLUGINS + [nb_liquid]
 
 IGNORE_FILES = [".ipynb_checkpoints", ".git", "README.md"] 
 
