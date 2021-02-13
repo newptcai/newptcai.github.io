@@ -11,7 +11,7 @@ AUTHOR_INFO = {
 
 PATH = 'content'
 
-TIMEZONE = 'Europe/Stockholm'
+TIMEZONE = 'America/Montreal'
 
 DEFAULT_LANG = u'en'
 

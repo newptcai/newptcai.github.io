@@ -37,7 +37,7 @@ I am also the author of the software package
 random trees. It is written in [Julia](https://julialang.org/), a Python-like high performance
 programming language which is becoming popular in the scientific computing community.
 
-Here are some of my other projects on <i class="fab fa-github"></i> [GitHub](https://github.com/newptcai).
+Here are some of my other projects on  [GitHub](https://github.com/newptcai).
 
 ## My colleagues and friends
 
@@ -47,15 +47,15 @@ Here are some of my other projects on <i class="fab fa-github"></i> [GitHub](htt
 
 We have a big group in probability and combinatorics here in Uppsala:
 
-* [Gabriel Berzunza Ojeda](http://www2.math.uu.se/~gabbe533/Gabo26.html) <i class="fas fa-dumbbell"></i>
-* [Fabian Burghart](https://katalog.uu.se/profile/?id=N18-1431) <i class="fas fa-music"></i>
-* [Colin Desmarais](https://katalog.uu.se/profile/?id=N17-1633) <i class="fab fa-canadian-maple-leaf"></i>
-* [Cecilia Holmgren](http://katalog.uu.se/profile/?id=N5-824) <i class="fas fa-camera-retro"></i> <i class="fas fa-horse"></i>
-* [Svante Janson](http://www2.math.uu.se/~svante/papers/) <i class="fas fa-skiing-nordic"></i>
-* [Fiona Skerman](http://www2.math.uu.se/~fiosk856/) <i class="fas fa-snowboarding"></i>
-* [Johanna Strömberg](https://katalog.uu.se/profile/?id=N16-1207) <i class="fas fa-glasses"></i>
-* [Stephan Wagner](https://www.researchgate.net/profile/Stephan_Wagner) <i class="fas fa-chess-king"></i>
-* [Raazesh Sainudiin](https://lamastex.github.io/) <i class="fab fa-reddit-alien"></i>
+* [Gabriel Berzunza Ojeda](http://www2.math.uu.se/~gabbe533/Gabo26.html) 
+* [Fabian Burghart](https://katalog.uu.se/profile/?id=N18-1431) 
+* [Colin Desmarais](https://katalog.uu.se/profile/?id=N17-1633) 
+* [Cecilia Holmgren](http://katalog.uu.se/profile/?id=N5-824) 
+* [Svante Janson](http://www2.math.uu.se/~svante/papers/) 
+* [Fiona Skerman](http://www2.math.uu.se/~fiosk856/) 
+* [Johanna Strömberg](https://katalog.uu.se/profile/?id=N16-1207) 
+* [Stephan Wagner](https://www.researchgate.net/profile/Stephan_Wagner) 
+* [Raazesh Sainudiin](https://lamastex.github.io/) 
 
 <a style="color: black" href="{filename}../photo/friend.md">
 <img src="{static}/images/me/01.jpg" class="heading"></img>
@@ -63,14 +63,14 @@ We have a big group in probability and combinatorics here in Uppsala:
 
 Other mathematicians whom I have wrote paper with or did homework together include
 
-- [Laura Eslava](http://sigma.iimas.unam.mx/laura/) <i class="fas fa-hand-rock"></i>
-- [Luc Devroye](http://luc.devroye.org) <i class="fas fa-bicycle"></i>
+- [Laura Eslava](http://sigma.iimas.unam.mx/laura/) 
+- [Luc Devroye](http://luc.devroye.org) 
 - [Jose Luis Lopez Garcia](https://www.unavarra.es/pdi?uid=2369)
-- [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395) <i class="fas fa-theater-masks"></i>
-- [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/) <i class="far fa-laugh"></i>
-- [Bruce Reed](https://www.cs.mcgill.ca/~breed/) <i class="fas fa-beer"></i>
-- [Debleena Thacker](http://www2.math.uu.se/~debth221/) <i class="fas fa-rupee-sign"></i>
-- [Yelena Yuditsky](https://sites.google.com/view/yuditsky) <i class="fas fa-dragon"></i>
+- [Tony Johansson](https://katalog.uu.se/profile/?id=N17-395) 
+- [Guillem Perarnau](http://www-ma4.upc.edu/~guillem.perarnau/) 
+- [Bruce Reed](https://www.cs.mcgill.ca/~breed/) 
+- [Debleena Thacker](http://www2.math.uu.se/~debth221/) 
+- [Yelena Yuditsky](https://sites.google.com/view/yuditsky) 
 
 
 ## Talks

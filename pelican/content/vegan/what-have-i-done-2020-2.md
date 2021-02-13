@@ -3,7 +3,7 @@ title: What have I done in 2020? Part 2 -- Becoming an environmentalist
 date: 2020-12-27
 layout: post
 category: mumble
-tags: 2020, life, vegan, climate-change
+tags: 2020, life, vegan, climate-change, philosophy
 status: published
 ---
 

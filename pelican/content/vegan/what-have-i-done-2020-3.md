@@ -3,7 +3,7 @@ title: What have I done in 2020? Part 3 -- Donating to charities
 date: 2021-01-16
 layout: post
 category: mumble
-tags: 2020, life, climate
+tags: 2020, life, climate, philosophy, effective-altruism
 status: published
 ---
 
