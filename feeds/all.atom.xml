@@ -3680,7 +3680,8 @@ M999.133 716.155 L1537.41 1094.52 L1595.94 439.174 L999.133 716.155  Z
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;In the discrete Bak-Sneppen model [2], each node on a circle is given a fitness of either $0$ or $1$. Then a node with fitness zero is chosen uniformly at random. This node together with its two neighbors are replaced by three nodes,  each of which has a fitness $1$ with probability $p$ and $0$ with probability $1-p$.&lt;/p&gt;
+&lt;p&gt;In the discrete Bak-Sneppen model [2], each node on a circle of $n$ nodes is given a fitness of either $0$ or $1$. Then a node with fitness zero is chosen uniformly at random. This node together with its two neighbors are replaced by three nodes,  each of which has a fitness $1$ with probability $p$ and $0$ with probability $1-p$.&lt;/p&gt;
+&lt;p&gt;If no one has fitness $0$, then the process &lt;em&gt;restarts&lt;/em&gt; by choosing a uniform random node.&lt;/p&gt;
 &lt;p&gt;You can think of this model as if someone at work has Covid-19 😷️.
 So they and their colleagues sitting next to them have to go home and be replaced by people who (unfortunately) may or may not have Covid-19.&lt;/p&gt;
 
@@ -3752,7 +3753,18 @@ So they and their colleagues sitting next to them have to go home and be replace
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;It has been observed for a long time that if $p &amp;gt; 0.36$, then almost all nodes eventually will have fitness $1$. Otherwise we will always have some nodes with fitness $0$.&lt;/p&gt;
+&lt;p&gt;We can view the status of the $n$ nodes on the circle as a Markov chain. This converges to a stationary distribution $\pi^{(n)}$ on $\{0,1\}^n$. Let $\nu^{(n)}(p)$ be the probability that the first node (actually any fixed node) on the circle has fitness $1$ in the stationary distribution.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;It has been observed for a long time that if $p &amp;gt; 0.36$, then $\nu^{(n)} \to 1$.
+In other words, 
+a fixed node eventually will have fitness $1$ almost all the time. 
+Otherwise it will have fitness $0$ for some portion of time.&lt;/p&gt;
 &lt;p&gt;A &lt;a href="https://arxiv.org/abs/2003.00222"&gt;recent paper&lt;/a&gt; by Stanislav Volkov [1] which proved the first part for $p &amp;gt; 0.411$.&lt;/p&gt;
 &lt;p&gt;For the second part an &lt;a href="https://www.semanticscholar.org/paper/Non-Triviality-of-a-Discrete-Bak%E2%80%93Sneppen-Evolution-Meester-Znamenski/050d3597f5412ad6c1e9043b2200aab4731fff27"&gt;old paper&lt;/a&gt; [3] shows that it is true for $p&amp;lt;p_c$ where $p_c$ is non-zero constant. But no explicit bound on $p_c$ is given. So the problem now is if this gap can actually be closed? Or at least can we show that there is indeed a threshold?&lt;/p&gt;
 
@@ -3792,7 +3804,7 @@ So they and their colleagues sitting next to them have to go home and be replace
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;In the simulation, if the process dies we just restart it.&lt;/p&gt;
-&lt;p&gt;We call the difference between the largest and the smallest integer with a label 0  the &lt;em&gt;diameter&lt;/em&gt; of the process.&lt;/p&gt;
+&lt;p&gt;We call the distance between the largest and the smallest integer with a label 0  the &lt;strong&gt;diameter&lt;/strong&gt; of the process.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

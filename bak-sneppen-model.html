@@ -162,7 +162,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the discrete Bak-Sneppen model [2], each node on a circle is given a fitness of either $0$ or $1$. Then a node with fitness zero is chosen uniformly at random. This node together with its two neighbors are replaced by three nodes,  each of which has a fitness $1$ with probability $p$ and $0$ with probability $1-p$.</p>
+<p>In the discrete Bak-Sneppen model [2], each node on a circle of $n$ nodes is given a fitness of either $0$ or $1$. Then a node with fitness zero is chosen uniformly at random. This node together with its two neighbors are replaced by three nodes,  each of which has a fitness $1$ with probability $p$ and $0$ with probability $1-p$.</p>
+<p>If no one has fitness $0$, then the process <em>restarts</em> by choosing a uniform random node.</p>
 <p>You can think of this model as if someone at work has Covid-19 😷️.
 So they and their colleagues sitting next to them have to go home and be replaced by people who (unfortunately) may or may not have Covid-19.</p>
 
@@ -234,7 +235,18 @@ So they and their colleagues sitting next to them have to go home and be replace
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It has been observed for a long time that if $p &gt; 0.36$, then almost all nodes eventually will have fitness $1$. Otherwise we will always have some nodes with fitness $0$.</p>
+<p>We can view the status of the $n$ nodes on the circle as a Markov chain. This converges to a stationary distribution $\pi^{(n)}$ on $\{0,1\}^n$. Let $\nu^{(n)}(p)$ be the probability that the first node (actually any fixed node) on the circle has fitness $1$ in the stationary distribution.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It has been observed for a long time that if $p &gt; 0.36$, then $\nu^{(n)} \to 1$.
+In other words, 
+a fixed node eventually will have fitness $1$ almost all the time. 
+Otherwise it will have fitness $0$ for some portion of time.</p>
 <p>A <a href="https://arxiv.org/abs/2003.00222">recent paper</a> by Stanislav Volkov [1] which proved the first part for $p &gt; 0.411$.</p>
 <p>For the second part an <a href="https://www.semanticscholar.org/paper/Non-Triviality-of-a-Discrete-Bak%E2%80%93Sneppen-Evolution-Meester-Znamenski/050d3597f5412ad6c1e9043b2200aab4731fff27">old paper</a> [3] shows that it is true for $p&lt;p_c$ where $p_c$ is non-zero constant. But no explicit bound on $p_c$ is given. So the problem now is if this gap can actually be closed? Or at least can we show that there is indeed a threshold?</p>
 
@@ -274,7 +286,7 @@ So they and their colleagues sitting next to them have to go home and be replace
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the simulation, if the process dies we just restart it.</p>
-<p>We call the difference between the largest and the smallest integer with a label 0  the <em>diameter</em> of the process.</p>
+<p>We call the distance between the largest and the smallest integer with a label 0  the <strong>diameter</strong> of the process.</p>
 
 </div>
 </div>
