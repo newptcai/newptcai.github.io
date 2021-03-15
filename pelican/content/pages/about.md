@@ -6,6 +6,10 @@ status: hidden
 page-order: 0
 ---
 
+## New Website
+
+I started a new [website](https://newptcai.gitlab.io/) and will stop updating here.
+
 ## About Me
 
 <a style="color: black" href="{filename}/photo/my-photos.md">
